@@ -1,0 +1,41 @@
+WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=Record 
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=32 ASCIIString=0
+                                    name                                     type force                                                            value level type len format place expand specs
+                               CmdRecord                                     BOOL    0 "                                                           FALSE"    0    1    1    2    1    0         
+                        MpDataRecorder_0                           MpDataRecorder    0 "                                                               *"    0   24    1    0    1    1         
+                                  MpLink                                    UDINT    0 "                                                        70679208"    1    7    1   10    0    0         
+                                  Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                              ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                  Header                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                              DeviceName                                    UDINT    0 "                                                        90716296"    1    7    1   10    0    0         
+                            SamplingTime                                     TIME    0 "                                                           T#02s"    1   12    1    1    0    0         
+                              RecordMode                                     DINT    0 "                                                               1"    1    4    1   10    0    0 e,0,mpDA
+
+                                  Record                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                                 Trigger                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                SnapShot                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                  Active                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                                   Error                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                StatusID                                     DINT    0 "                                                               0"    1    4    1   10    0    0         
+                             CommandBusy                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                               Recording                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                              RecordDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                            SnapShotDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                    Info                   MpDataRecorderInfoType    0 "                                                               *"    1   24    1    0    0    1         
+                               FileCount                                     UINT    0 "                                                               0"    2    6    1   10    0    0         
+                         CurrentFileName                               STRING[50]    0 "                                                              ''"    2    9   51    1    0    0         
+                         CurrentFileSize                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                       CurrentBufferSize                                     UINT    0 "                                                               0"    2    6    1   10    0    0         
+                       RegisteredPVCount                                     UINT    0 "                                                              31"    2    6    1   10    0    0         
+                            TotalSamples                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                      ValueOutsideLimits                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                                    Diag                           MpDataDiagType    0 "                                                               *"    2   24    1    0    0    1         
+                                StatusID                       MpDataStatusIDType    0 "                                                               *"    3   24    1    0    0    1         
+                                      ID                                     DINT    0 "                                                               0"    4    4    1   10    0    0 e,0,mpDA
+
+                                Severity                                     DINT    0 "                                                               0"    4    4    1   10    0    0 e,0,mpCO
+
+                                    Code                                     UINT    0 "                                                               0"    4    6    1   10    0    0         
+                                Internal                    MpComInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
+                                 pObject                                    UDINT    0 "                                                       188972856"    2    7    1   10    0    0         
+                                   State                                    UDINT    0 "                                                               3"    2    7    1   10    0    0         

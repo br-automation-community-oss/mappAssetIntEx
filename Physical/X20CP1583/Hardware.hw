@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?AutomationStudio Version=4.12.5.95 FileVersion="4.9"?>
+<Hardware xmlns="http://br-automation.co.at/AS/Hardware">
+  <Module Name="X20CP3586" Type="X20CP3586" Version="1.10.0.0">
+    <Connector Name="IF2">
+      <Parameter ID="ActivateDevice" Value="1" />
+      <Parameter ID="Mode" Value="Manual" />
+      <Parameter ID="InternetAddress" Value="10.49.40.208" />
+      <Parameter ID="SubnetMask" Value="255.255.255.0" />
+      <Group ID="Vnc1" />
+      <Parameter ID="VncVcObjectName1" Value="Visu" />
+      <Parameter ID="VncKeyMappingFile1" Value="VC\PS2-Keyboard.dis" />
+      <Parameter ID="ActivateSnmp" Value="2" />
+    </Connector>
+    <Connector Name="IF3">
+      <Parameter ID="DNAConfiguration" Value="manual" />
+    </Connector>
+    <Parameter ID="ConfigurationID" Value="MappAssetInt_X20CP1583" />
+    <Parameter ID="UserPartitionSize" Value="0" />
+    <Parameter ID="Simulation" Value="1" />
+    <Parameter ID="UserRamSize" Value="731936" />
+    <Parameter ID="RemMemSize" Value="300000" />
+    <Group ID="FileDevice1" />
+    <Parameter ID="FileDeviceName1" Value="CFCard" />
+    <Parameter ID="FileDevicePath1" Value="c:\TG" />
+  </Module>
+</Hardware>

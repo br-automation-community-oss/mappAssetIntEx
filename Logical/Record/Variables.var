@@ -1,0 +1,7 @@
+VAR
+	MpDataRecorder_0 : MpDataRecorder;
+	CmdRecord : BOOL;
+	MpDataRegPar_0 : MpDataRegPar;
+	MpDataTableUI_0 : MpDataTableUI;
+	gMpDataTableUIConnect : MpDataTableUIConnectType;
+END_VAR
