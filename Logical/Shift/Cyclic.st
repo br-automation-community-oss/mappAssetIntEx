@@ -27,7 +27,7 @@ PROGRAM _CYCLIC
     MpAssetIntCore_0.MpLink := ADR(gAssetIntCore);
     MpAssetIntCore_0.Enable := 1;
     MpAssetIntCore_0.Parameters := ADR(AssetIntPar);
-    MpAssetIntCore_0.DeviceName := ADR('CFCard');
+    MpAssetIntCore_0.DeviceName := ADR('ARsim');
     MpAssetIntCore_0();
     
     ShiftStatistics := MpAssetIntCore_0.Info.ShiftStatistics;

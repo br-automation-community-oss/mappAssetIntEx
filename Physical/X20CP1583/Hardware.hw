@@ -21,7 +21,7 @@
     <Parameter ID="UserRamSize" Value="731936" />
     <Parameter ID="RemMemSize" Value="300000" />
     <Group ID="FileDevice1" />
-    <Parameter ID="FileDeviceName1" Value="CFCard" />
-    <Parameter ID="FileDevicePath1" Value="c:\TG" />
+    <Parameter ID="FileDeviceName1" Value="ARsim" />
+    <Parameter ID="FileDevicePath1" Value="c:\Temp\AssetInt" />
   </Module>
 </Hardware>

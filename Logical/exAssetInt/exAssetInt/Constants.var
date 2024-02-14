@@ -1,0 +1,9 @@
+VAR CONSTANT
+	CORE_EVENT_NUM : UINT := 1000; (*Maximum number of events*)
+	LOG_MSG_LEN : UINT := 100;
+	LOG_OFF : USINT := 0;
+	LOG_ERROR : USINT := 1;
+	LOG_INFO : USINT := 2;
+	LOG_ALL : USINT := 3;
+	LOG_LEVEL : USINT := LOG_ALL;
+END_VAR
