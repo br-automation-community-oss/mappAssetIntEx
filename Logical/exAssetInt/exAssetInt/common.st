@@ -2,15 +2,15 @@
 
 // -------------------------------------------------------------------------------------------
 // Handle log buffer
-FUNCTION_BLOCK Logger
+FUNCTION Logger
 	// Make sure we dont flood logger
 	IF log_msg <> last_msg AND log_level <= LOG_LEVEL THEN
 		// Make sure log message fits
-		IF brsstrlen(ADR(log_msg)) > log_size THEN
-			log_msg := '*** log messesage exceeds maximum length ***';
+		IF brsstrlen(ADR(log_msg)) > LOG_LEN THEN
+			log_msg := '*** log meassage exceeds maximum length ***';
 		END_IF
 		// Move ring buffer around
-		brsmemmove(log_buffer + log_size, log_buffer, log_size*(log_len-1));
+		brsmemmove(log_buffer+LOG_LEN+1, log_buffer, LOG_LEN*(LOG_NUM-1));
 		brsstrcpy(log_buffer, ADR(''));
 		// Create time information
 		RTC_gettime(ADR(rtc_gettime)); 
@@ -58,4 +58,4 @@ FUNCTION_BLOCK Logger
 	END_IF
 	last_msg := log_msg;
 
-END_FUNCTION_BLOCK
+END_FUNCTION

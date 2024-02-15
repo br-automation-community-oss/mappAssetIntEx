@@ -1,0 +1,47 @@
+WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=AssetTest 
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=151 Type=183 Scope=60 Force=60 Index=20 ASCIIString=0
+                                    name                                     type force                                                            value level type len format place expand specs
+                        exAssetIntCore_0                           exAssetIntCore    0 "                                                               *"    0   24    1    0    1    1         
+                                  exLink                                    UDINT    0 "                                                        98944472"    1    7    1   10    0    0         
+                                  Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                              ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                              Parameters                                    UDINT    0 "                                                        98944140"    1    7    1   10    0    0         
+                                  Update                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                StatusID                                     DINT    0 "                                                           65534"    1    4    1   10    0    0         
+                                Internal                    exComInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
+                                  Logger                       STRING[100][0..50]    0 "                                                               *"    2    9  101    0    0    1         
+                               Logger[0]                              STRING[100]    0 "                   '15.02 16:50:49.050 created folder structure'"    3    9  101    1    0    0         
+                               Logger[1]                              STRING[100]    0 "                    '15.02 16:50:49.050 created folder events10'"    3    9  101    1    0    0         
+                               Logger[2]                              STRING[100]    0 "                     '15.02 16:50:49.030 created folder events9'"    3    9  101    1    0    0         
+                               Logger[3]                              STRING[100]    0 "                     '15.02 16:50:49.010 created folder events8'"    3    9  101    1    0    0         
+                               Logger[4]                              STRING[100]    0 "                     '15.02 16:50:48.990 created folder events7'"    3    9  101    1    0    0         
+                               Logger[5]                              STRING[100]    0 "                     '15.02 16:50:48.970 created folder events6'"    3    9  101    1    0    0         
+                               Logger[6]                              STRING[100]    0 "                     '15.02 16:50:48.950 created folder events5'"    3    9  101    1    0    0         
+                               Logger[7]                              STRING[100]    0 "                     '15.02 16:50:48.930 created folder events4'"    3    9  101    1    0    0         
+                               Logger[8]                              STRING[100]    0 "                     '15.02 16:50:48.910 created folder events3'"    3    9  101    1    0    0         
+                               Logger[9]                              STRING[100]    0 "                     '15.02 16:50:48.890 created folder events2'"    3    9  101    1    0    0         
+                              Logger[10]                              STRING[100]    0 "                     '15.02 16:50:48.870 created folder events1'"    3    9  101    1    0    0         
+                              Logger[11]                              STRING[100]    0 "                     '15.02 16:50:48.850 created folder events0'"    3    9  101    1    0    0         
+                              Logger[12]                              STRING[100]    0 "                  '15.02 16:50:48.830 creating folder structure'"    3    9  101    1    0    0         
+                              Logger[13]                              STRING[100]    0 "                     '15.02 16:50:48.820 function block enabled'"    3    9  101    1    0    0         
+                              Logger[14]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[15]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                                   State                                     DINT    0 "                                                               2"    2    4    1   10    0    0 e,0,exAS
+
+                              StateError                                     DINT    0 "                                                              99"    2    4    1   10    0    0 e,0,exAS
+
+                      CreateDirStructure                       CreateDirStructure    0 "                                                               *"    2   24    1    0    0    1         
+                                  enable                                     BOOL    0 "                                                            TRUE"    3    1    1    2    0    0         
+                                  device                               STRING[50]    0 "                                                         'ARsim'"    3    9   51    1    0    0         
+                                  status                                     UINT    0 "                                                               0"    3    6    1   10    0    0         
+                             DirCreate_0                                DirCreate    0 "                                                               *"    3   24    1    0    0    1         
+                                  enable                                     BOOL    0 "                                                            TRUE"    4    1    1    2    0    0         
+                                 pDevice                                    UDINT    0 "                                                        98943832"    4    7    1   10    0    0         
+                                   pName                                    UDINT    0 "                                                        98943916"    4    7    1   10    0    0         
+                                  status                                     UINT    0 "                                                           20725"    4    6    1   10    0    0         
+                                 tmpStr1                               STRING[20]    0 "                                                      'events10'"    3    9   21    1    0    0         
+                                 tmpStr2                               STRING[20]    0 "                                       'created folder events10'"    3    9   21    1    0    0         
+                                     idx                                    USINT    0 "                                                              11"    3    5    1   10    0    0         
+                                   state                                    USINT    0 "                                                               0"    3    5    1   10    0    0         
+                             zzEdge00000                                     BOOL    0 "                                                            TRUE"    3    1    1    2    0    0         
+                             zzEdge00000                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         

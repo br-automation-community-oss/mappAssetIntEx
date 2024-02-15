@@ -2,7 +2,9 @@
 
 TYPE
 	exComInternalDataType : 	STRUCT 
+		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		State : exAssetIntStateEnum;
+		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		CreateDirStructure : CreateDirStructure;
 	END_STRUCT;
 END_TYPE
@@ -14,7 +16,16 @@ TYPE
 		(
 		exASSETINT_STATE_INIT_1 := 0, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_INIT_2 := 1, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_INIT_3 := 2 (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_INIT_3 := 2, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_ERROR := 3, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_NONE := 99 (*Status: Idle, Waiting for command*)
+		);
+	exAssetIntLogLevelEnum : 
+		(
+		exASSETINT_LOG_OFF := 0, (*Status: Idle, Waiting for command*)
+		exASSETINT_LOG_ERROR := 1, (*Status: Idle, Waiting for command*)
+		exASSETINT_LOG_INFO := 2, (*Status: Idle, Waiting for command*)
+		exASSETINT_LOG_ALL := 3 (*Status: Idle, Waiting for command*)
 		);
 	exAssetIntUIStatusEnum : 
 		(
