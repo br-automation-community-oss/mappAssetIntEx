@@ -55,6 +55,30 @@ FUNCTION_BLOCK CreateDirStructure
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK StoreEvent
+	VAR_INPUT
+		enable : BOOL;
+		device : STRING[50];
+		logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		record : exComInternalRecordType;
+	END_VAR
+	VAR_OUTPUT
+		status : UINT;
+	END_VAR
+	VAR
+		FileCreate_0 : FileCreate;
+		FileOpen_0 : FileOpen;
+		FileClose_0 : FileClose;
+		FileWrite_0 : FileWrite;
+		tmpStr1 : STRING[100];
+		tmpStr2 : STRING[100];
+		ident : UDINT;
+		idx : USINT;
+		state : USINT;
+		zzEdge00000 : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION Logger : USINT
 	VAR_INPUT
 		log_level : exAssetIntLogLevelEnum; (*Log Level*)

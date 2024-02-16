@@ -31,7 +31,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// Folder structure successful created
 			IF Internal.CreateDirStructure.status = ERR_OK THEN
 				Logger(exASSETINT_LOG_INFO, 'created folder structure', ADR(Internal.Logger));
-				Internal.State := exASSETINT_STATE_INIT_3;
+				Internal.State := exASSETINT_STATE_IDLE;
 			
 			// Error
 			ELSIF Internal.CreateDirStructure.status <> ERR_FUB_BUSY THEN
@@ -43,77 +43,66 @@ FUNCTION_BLOCK exAssetIntCore
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
+		// Wait for new event
+		exASSETINT_STATE_IDLE:
+			// Handle piece and reject counter
+			IF PieceCounter <> Internal.Record.PieceCounter OR RejectCounter <> Internal.Record.RejectCounter THEN
+				Internal.Record.PieceCounter := PieceCounter;
+				Internal.Record.RejectCounter := RejectCounter;
+				brsmemcpy(exLink, ADR(Internal.Record), SIZEOF(Internal.Record));
+			END_IF
+			
+			// Handle job, shift or information change
+			IF Parameters.NominalProductionRate <> Internal.Record.NominalProductionRate OR Parameters.Job <> Internal.Record.Job OR Parameters.CurrentUser <> Internal.Record.CurrentUser OR Parameters.AdditionalData <> Internal.Record.AdditionalData THEN
+				Internal.Record.NominalProductionRate := Parameters.NominalProductionRate;
+				Internal.Record.Job := Parameters.Job;
+				Internal.Record.CurrentUser := Parameters.CurrentUser;
+				Internal.Record.AdditionalData := Parameters.AdditionalData;
+				
+				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+			END_IF
+			
+		// -------------------------------------------------------------------------------------------
+		// Wait for new event
+		exASSETINT_STATE_STORE_EVENT_1:
+			Internal.StoreEvent.enable := TRUE;
+			Internal.StoreEvent.device := DeviceName;
+			Internal.StoreEvent.logger := ADR(Internal.Logger);
+			Internal.StoreEvent.record := Internal.Record;
+			Internal.StoreEvent();
+		
+			// Event successful created
+			IF Internal.StoreEvent.status = ERR_OK THEN
+				Logger(exASSETINT_LOG_INFO, 'created new event', ADR(Internal.Logger));
+				
+				// Calculate new event ID
+				Internal.Record.ID := Internal.Record.ID + 1;
+				IF Internal.Record.ID > CORE_EVENT_NUM_MAX THEN
+					Internal.Record.ID := 0;
+				END_IF
+				
+				Internal.State := exASSETINT_STATE_IDLE;
+			
+			// Error
+			ELSIF Internal.StoreEvent.status <> ERR_FUB_BUSY THEN
+				// Set status, remember state, go to error state
+				Logger(exASSETINT_LOG_ERROR, 'error creating event', ADR(Internal.Logger));
+				StatusID := Internal.StoreEvent.status;
+				Internal.StateError := Internal.State;
+				Internal.State := exASSETINT_STATE_ERROR;
+			END_IF
+			
+		// -------------------------------------------------------------------------------------------
 		// Error state
 		exASSETINT_STATE_ERROR:
+			Internal.CreateDirStructure.enable := FALSE;
+			Internal.CreateDirStructure();
+			Internal.StoreEvent.enable := FALSE;
+			Internal.StoreEvent();
+			
 			IF EDGEPOS(ErrorReset) THEN
 				Internal.StateError := exASSETINT_STATE_NONE;
 				Internal.State := exASSETINT_STATE_INIT_1;
 			END_IF
 	END_CASE;
 END_FUNCTION_BLOCK
-
-// -------------------------------------------------------------------------------------------
-// Create folder structure
-// -------------------------------------------------------------------------------------------
-FUNCTION_BLOCK CreateDirStructure
-	// -------------------------------------------------------------------------------------------
-	// Reset everything when enable is false
-	IF NOT enable THEN
-		DirCreate_0.enable := FALSE;
-		DirCreate_0();
-
-		status := ERR_FUB_ENABLE_FALSE;
-		state := 0;		
-		RETURN;
-	END_IF
-	
-	CASE state OF
-		// -------------------------------------------------------------------------------------------
-		// Wait for enable
-		0:
-			IF EDGEPOS(enable) THEN
-				idx := 0;
-				tmpStr1 := 'events0';
-				status := ERR_FUB_BUSY;
-				Logger(exASSETINT_LOG_INFO, 'creating folder structure', logger);
-				state := state + 1;
-			END_IF
-
-		// -------------------------------------------------------------------------------------------
-		// Create folders
-		1:
-			DirCreate_0.enable := TRUE;
-			DirCreate_0.pDevice := ADR(device);
-			DirCreate_0.pName := ADR(tmpStr1);
-			DirCreate_0();
-	
-			// Folder created successful or folder already exsist
-			IF DirCreate_0.status = ERR_OK OR DirCreate_0.status = fiERR_DIR_ALREADY_EXIST THEN
-				// Generate log entry
-				tmpStr2 := 'created folder ';
-				brsstrcat(ADR(tmpStr2), ADR(tmpStr1));
-				Logger(exASSETINT_LOG_ALL, tmpStr2, logger);
-				
-				// Create folders for 100 events each, finish when all folders are created
-				idx := idx + 1;
-				IF idx > CORE_EVENT_NUM_MAX / 100 THEN
-					status := ERR_OK;
-					state := 0;
-					
-				// Generate next folder name
-				ELSE
-					tmpStr1 := 'events';
-					brsitoa(idx, ADR(tmpStr2));
-					brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
-				END_IF
-				
-			// Error
-			ELSIF DirCreate_0.status <> ERR_FUB_BUSY THEN
-				status := DirCreate_0.status;
-				state := 0;
-			END_IF
-
-	END_CASE;
-
-END_FUNCTION_BLOCK
-

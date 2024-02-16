@@ -1,47 +1,97 @@
 WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=AssetTest 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=151 Type=183 Scope=60 Force=60 Index=20 ASCIIString=0
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=151 Type=183 Scope=60 Force=60 Index=18 ASCIIString=0
                                     name                                     type force                                                            value level type len format place expand specs
                         exAssetIntCore_0                           exAssetIntCore    0 "                                                               *"    0   24    1    0    1    1         
-                                  exLink                                    UDINT    0 "                                                        98944472"    1    7    1   10    0    0         
-                                  Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                                  exLink                                    UDINT    0 "                                                        97368272"    1    7    1   10    0    0         
+                                  Enable                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                               ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                              Parameters                                    UDINT    0 "                                                        98944140"    1    7    1   10    0    0         
+                              Parameters                                    UDINT    0 "                                                        97367928"    1    7    1   10    0    0         
                                   Update                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                            PieceCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
                                 StatusID                                     DINT    0 "                                                           65534"    1    4    1   10    0    0         
                                 Internal                    exComInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
-                                  Logger                       STRING[100][0..50]    0 "                                                               *"    2    9  101    0    0    1         
-                               Logger[0]                              STRING[100]    0 "                   '15.02 16:50:49.050 created folder structure'"    3    9  101    1    0    0         
-                               Logger[1]                              STRING[100]    0 "                    '15.02 16:50:49.050 created folder events10'"    3    9  101    1    0    0         
-                               Logger[2]                              STRING[100]    0 "                     '15.02 16:50:49.030 created folder events9'"    3    9  101    1    0    0         
-                               Logger[3]                              STRING[100]    0 "                     '15.02 16:50:49.010 created folder events8'"    3    9  101    1    0    0         
-                               Logger[4]                              STRING[100]    0 "                     '15.02 16:50:48.990 created folder events7'"    3    9  101    1    0    0         
-                               Logger[5]                              STRING[100]    0 "                     '15.02 16:50:48.970 created folder events6'"    3    9  101    1    0    0         
-                               Logger[6]                              STRING[100]    0 "                     '15.02 16:50:48.950 created folder events5'"    3    9  101    1    0    0         
-                               Logger[7]                              STRING[100]    0 "                     '15.02 16:50:48.930 created folder events4'"    3    9  101    1    0    0         
-                               Logger[8]                              STRING[100]    0 "                     '15.02 16:50:48.910 created folder events3'"    3    9  101    1    0    0         
-                               Logger[9]                              STRING[100]    0 "                     '15.02 16:50:48.890 created folder events2'"    3    9  101    1    0    0         
-                              Logger[10]                              STRING[100]    0 "                     '15.02 16:50:48.870 created folder events1'"    3    9  101    1    0    0         
-                              Logger[11]                              STRING[100]    0 "                     '15.02 16:50:48.850 created folder events0'"    3    9  101    1    0    0         
-                              Logger[12]                              STRING[100]    0 "                  '15.02 16:50:48.830 creating folder structure'"    3    9  101    1    0    0         
-                              Logger[13]                              STRING[100]    0 "                     '15.02 16:50:48.820 function block enabled'"    3    9  101    1    0    0         
+                                  Record                  exComInternalRecordType    0 "                                                               *"    2   24    1   10    0    1         
+                                      ID                                     UINT    0 "                                                               *"    3    6    1   10    0    0         
+                   NominalProductionRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                            PieceCounter                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                                     Job                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                             CurrentUser                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
+                          AdditionalData                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
+                                  Logger                       STRING[100][0..50]    0 "                                                               *"    2    9  101    0    0    0         
+                               Logger[0]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[1]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[2]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[3]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[4]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[5]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[6]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[7]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[8]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                               Logger[9]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[10]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[11]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[12]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[13]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
                               Logger[14]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
                               Logger[15]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                                   State                                     DINT    0 "                                                               2"    2    4    1   10    0    0 e,0,exAS
+                              Logger[16]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[17]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[18]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[19]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[20]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[21]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[22]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[23]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[24]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[25]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[26]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[27]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[28]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[29]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[30]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[31]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[32]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[33]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[34]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[35]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[36]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[37]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[38]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[39]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[40]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[41]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[42]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[43]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[44]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[45]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[46]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[47]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[48]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[49]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                              Logger[50]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                                   State                                     DINT    0 "                                                               0"    2    4    1   10    0    0 e,0,exAS
 
                               StateError                                     DINT    0 "                                                              99"    2    4    1   10    0    0 e,0,exAS
 
-                      CreateDirStructure                       CreateDirStructure    0 "                                                               *"    2   24    1    0    0    1         
-                                  enable                                     BOOL    0 "                                                            TRUE"    3    1    1    2    0    0         
-                                  device                               STRING[50]    0 "                                                         'ARsim'"    3    9   51    1    0    0         
-                                  status                                     UINT    0 "                                                               0"    3    6    1   10    0    0         
-                             DirCreate_0                                DirCreate    0 "                                                               *"    3   24    1    0    0    1         
-                                  enable                                     BOOL    0 "                                                            TRUE"    4    1    1    2    0    0         
-                                 pDevice                                    UDINT    0 "                                                        98943832"    4    7    1   10    0    0         
-                                   pName                                    UDINT    0 "                                                        98943916"    4    7    1   10    0    0         
-                                  status                                     UINT    0 "                                                           20725"    4    6    1   10    0    0         
-                                 tmpStr1                               STRING[20]    0 "                                                      'events10'"    3    9   21    1    0    0         
-                                 tmpStr2                               STRING[20]    0 "                                       'created folder events10'"    3    9   21    1    0    0         
-                                     idx                                    USINT    0 "                                                              11"    3    5    1   10    0    0         
-                                   state                                    USINT    0 "                                                               0"    3    5    1   10    0    0         
-                             zzEdge00000                                     BOOL    0 "                                                            TRUE"    3    1    1    2    0    0         
-                             zzEdge00000                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                      CreateDirStructure                       CreateDirStructure    0 "                                                               *"    2   24    1    0    0    0         
+                                  enable                                     BOOL    0 "                                                               *"    3    1    1    2    0    0         
+                                  device                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
+                                  status                                     UINT    0 "                                                               *"    3    6    1   10    0    0         
+                             DirCreate_0                                DirCreate    0 "                                                               *"    3   24    1    0    0    0         
+                                  enable                                     BOOL    0 "                                                               *"    4    1    1    2    0    0         
+                                 pDevice                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                   pName                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                  status                                     UINT    0 "                                                               *"    4    6    1   10    0    0         
+                                 tmpStr1                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
+                                 tmpStr2                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
+                                     idx                                    USINT    0 "                                                               *"    3    5    1   10    0    0         
+                                   state                                    USINT    0 "                                                               *"    3    5    1   10    0    0         
+                             zzEdge00000                                     BOOL    0 "                                                               *"    3    1    1    2    0    0         
+                             zzEdge00000                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                           exAssetIntPar                        exAssetIntParType    0 "                                                               *"    0   24    1    0    1    1         
+                   NominalProductionRate                                     REAL    0 "                                                          1000.0"    1    8    1   10    0    0         
+                                     Job                               STRING[20]    0 "                                                       'Cookies'"    1    9   21    1    0    0         
+                             CurrentUser                               STRING[50]    0 "                                                   'TylerDurden'"    1    9   51    1    0    0         
+                          AdditionalData                              STRING[255]    0 "                                                              ''"    1    9  256    1    0    0         
