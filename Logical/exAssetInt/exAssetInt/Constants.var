@@ -1,7 +1,8 @@
 (*Insert your comment here.*)
 VAR CONSTANT
 	CORE_EVENT_NUM_MAX : UINT := 1000; (*Maximum number of events*)
-	LOG_LEN : UINT := 100;
-	LOG_NUM : UINT := 50;
+	EVENT_ADDITONAL_DATA_LEN : UINT := 100; (*Length of the event comment*)
+	LOG_LEN : UINT := 100; (*Length of the one log entry*)
+	LOG_NUM : UINT := 50; (*Number of log entries*)
 	LOG_LEVEL : exAssetIntLogLevelEnum := exASSETINT_LOG_ALL;
 END_VAR

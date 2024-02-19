@@ -9,6 +9,7 @@
     <File Description="Exported functions and function blocks">exAssetInt.fun</File>
     <File>exAssetIntCore.st</File>
     <File>CreateDirStructure.st</File>
+    <File>CreateMemory.st</File>
     <File>StoreEvent.st</File>
     <File>common.st</File>
   </Files>

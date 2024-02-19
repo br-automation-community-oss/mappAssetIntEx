@@ -31,7 +31,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// Folder structure successful created
 			IF Internal.CreateDirStructure.status = ERR_OK THEN
 				Logger(exASSETINT_LOG_INFO, 'created folder structure', ADR(Internal.Logger));
-				Internal.State := exASSETINT_STATE_IDLE;
+				Internal.State := exASSETINT_STATE_INIT_3;
 			
 			// Error
 			ELSIF Internal.CreateDirStructure.status <> ERR_FUB_BUSY THEN
@@ -43,6 +43,29 @@ FUNCTION_BLOCK exAssetIntCore
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
+		// Create internal memory
+		exASSETINT_STATE_INIT_3:
+			Internal.CreateMemory.enable := TRUE;
+			Internal.CreateMemory.size := CORE_EVENT_NUM_MAX*SIZEOF(Internal.Record);
+			Internal.CreateMemory.logger := ADR(Internal.Logger);
+			Internal.CreateMemory();
+		
+			// Folder structure successful created
+			IF Internal.CreateMemory.status = ERR_OK THEN
+				Logger(exASSETINT_LOG_INFO, 'created internal memory', ADR(Internal.Logger));
+				Internal.Memory := Internal.CreateMemory.memory;
+				Internal.State := exASSETINT_STATE_IDLE;
+			
+			// Error
+			ELSIF Internal.CreateMemory.status <> ERR_FUB_BUSY THEN
+				// Set status, remember state, go to error state
+				Logger(exASSETINT_LOG_ERROR, 'error creating internal memory', ADR(Internal.Logger));
+				StatusID := Internal.CreateMemory.status;
+				Internal.StateError := Internal.State;
+				Internal.State := exASSETINT_STATE_ERROR;
+			END_IF
+
+			// -------------------------------------------------------------------------------------------
 		// Wait for new event
 		exASSETINT_STATE_IDLE:
 			// Handle piece and reject counter

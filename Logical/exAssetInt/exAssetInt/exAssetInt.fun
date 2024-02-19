@@ -55,6 +55,27 @@ FUNCTION_BLOCK CreateDirStructure
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK CreateMemory
+	VAR_INPUT
+		enable : BOOL;
+		size : UDINT;
+		logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+	END_VAR
+	VAR_OUTPUT
+		memory : UDINT;
+		status : UINT;
+	END_VAR
+	VAR
+		DatObjCreate_0 : DatObjCreate;
+		tmpStr1 : STRING[100];
+		tmpStr2 : STRING[100];
+		idx : USINT;
+		state : USINT;
+		zzEdge00000 : BOOL;
+		zzEdge1 : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK StoreEvent
 	VAR_INPUT
 		enable : BOOL;

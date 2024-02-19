@@ -4,9 +4,11 @@ TYPE
 	exComInternalDataType : 	STRUCT 
 		Record : exComInternalRecordType;
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
+		Memory : UDINT;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		CreateDirStructure : CreateDirStructure;
+		CreateMemory : CreateMemory;
 		StoreEvent : StoreEvent;
 	END_STRUCT;
 	exComInternalRecordType : 	STRUCT 
@@ -16,7 +18,7 @@ TYPE
 		RejectCounter : UDINT;
 		Job : STRING[20];
 		CurrentUser : STRING[50];
-		AdditionalData : STRING[255];
+		AdditionalData : STRING[EVENT_ADDITONAL_DATA_LEN];
 	END_STRUCT;
 END_TYPE
 
@@ -25,12 +27,13 @@ END_TYPE
 TYPE
 	exAssetIntStateEnum : 
 		(
-		exASSETINT_STATE_INIT_1 := 0, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_INIT_2 := 1, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_INIT_1 := 1, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_INIT_2 := 2, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_INIT_3 := 3, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_IDLE := 10, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_STORE_EVENT_1 := 20, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_STORE_EVENT_2 := 21, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_STORE_EVENT_3 := 22, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_STORE_EVENT_1 := 21, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_STORE_EVENT_2 := 22, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_STORE_EVENT_3 := 23, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_ERROR := 50, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_NONE := 99 (*Status: Idle, Waiting for command*)
 		);
