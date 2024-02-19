@@ -1,20 +1,20 @@
 // -------------------------------------------------------------------------------------------
 // Create folder structure
 // -------------------------------------------------------------------------------------------
-FUNCTION_BLOCK StoreEvent
+FUNCTION_BLOCK WriteEventData
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
-	IF NOT enable THEN
-		status := ERR_FUB_ENABLE_FALSE;
-		state := 0;		
+	IF NOT Enable THEN
+		Status := ERR_FUB_ENABLE_FALSE;
+		State := 0;		
 		RETURN;
 	END_IF
 	
-	CASE state OF
+	CASE State OF
 		// -------------------------------------------------------------------------------------------
 		// Wait for enable
 		0:
-			IF enable THEN
+			IF Enable THEN
 				// Reset function blocks
 				FileOpen_0.enable := FALSE;
 				FileOpen_0();
@@ -26,71 +26,71 @@ FUNCTION_BLOCK StoreEvent
 				FileClose_0();
 
 				// Generate file name
-				tmpStr1 := 'events';
-				brsitoa(record.ID/100, ADR(tmpStr2));
-				brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
-				brsstrcat(ADR(tmpStr1), ADR('/event'));
-				brsitoa(record.ID, ADR(tmpStr2));
-				brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+				TmpStr1 := 'events';
+				brsitoa(RecordData.ID/100, ADR(TmpStr2));
+				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
+				brsstrcat(ADR(TmpStr1), ADR('/event'));
+				brsitoa(RecordData.ID, ADR(TmpStr2));
+				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
 				
-				status := ERR_FUB_BUSY;
-				Logger(exASSETINT_LOG_INFO, 'creating new event', logger);
-				state := state + 1;
+				Status := ERR_FUB_BUSY;
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'creating new event', Logger);
+				State := 1;
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
 		// Open file
 		1:
 			FileOpen_0.enable := TRUE;
-			FileOpen_0.pDevice := ADR(device);
-			FileOpen_0.pFile := ADR(tmpStr1);
+			FileOpen_0.pDevice := ADR(Device);
+			FileOpen_0.pFile := ADR(TmpStr1);
 			FileOpen_0.mode := fiREAD_WRITE;
 			FileOpen_0();
 	
 			// File opened successful
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				tmpStr2 := 'opened event file ';
-				brsstrcat(ADR(tmpStr2), ADR(tmpStr1));
-				Logger(exASSETINT_LOG_ALL, tmpStr2, logger);
+				TmpStr2 := 'opened event file ';
+				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
 				// Remember ident go to next step
-				ident := FileOpen_0.ident;
-				state := 3;
+				Ident := FileOpen_0.ident;
+				State := 3;
 
 			// Create event file when it does not exist
 			ELSIF FileOpen_0.status = fiERR_FILE_NOT_FOUND  THEN
-				state := 2;
+				State := 2;
 
 			// Error
 			ELSIF FileOpen_0.status <> ERR_FUB_BUSY THEN
-				status := FileOpen_0.status;
-				state := 0;
+				Status := FileOpen_0.status;
+				State := 0;
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
 		// Create file
 		2:
 			FileCreate_0.enable := TRUE;
-			FileCreate_0.pDevice := ADR(device);
-			FileCreate_0.pFile := ADR(tmpStr1);
+			FileCreate_0.pDevice := ADR(Device);
+			FileCreate_0.pFile := ADR(TmpStr1);
 			FileCreate_0();
 	
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
-				tmpStr2 := 'created event file ';
-				brsstrcat(ADR(tmpStr2), ADR(tmpStr1));
-				Logger(exASSETINT_LOG_ALL, tmpStr2, logger);
+				TmpStr2 := 'created event file ';
+				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
 				// Remember ident go to next step
-				ident := FileCreate_0.ident;
-				state := 3;
+				Ident := FileCreate_0.ident;
+				State := 3;
 				
 			// Error
 			ELSIF FileCreate_0.status <> ERR_FUB_BUSY THEN
-				status := FileCreate_0.status;
-				state := 0;
+				Status := FileCreate_0.status;
+				State := 0;
 			END_IF
 		
 		
@@ -98,49 +98,49 @@ FUNCTION_BLOCK StoreEvent
 		// Write data
 		3:
 			FileWrite_0.enable := TRUE;
-			FileWrite_0.ident := ident;
-			FileWrite_0.pSrc := ADR(record);
-			FileWrite_0.len := SIZEOF(record);
+			FileWrite_0.ident := Ident;
+			FileWrite_0.pSrc := ADR(RecordData);
+			FileWrite_0.len := SIZEOF(RecordData);
 			FileWrite_0();
 	
 			// File created successful
 			IF FileWrite_0.status = ERR_OK THEN
 				// Generate log entry
-				tmpStr2 := 'wrote event file ';
-				brsstrcat(ADR(tmpStr2), ADR(tmpStr1));
-				Logger(exASSETINT_LOG_ALL, tmpStr2, logger);
+				TmpStr2 := 'wrote event file ';
+				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
 				// Go to next step
-				state := 4;
+				State := 4;
 				
 			// Error
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
-				status := FileWrite_0.status;
-				state := 0;
+				Status := FileWrite_0.status;
+				State := 0;
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
 		// Close file
 		4:
 			FileClose_0.enable := TRUE;
-			FileClose_0.ident := ident;
+			FileClose_0.ident := Ident;
 			FileClose_0();
 	
 			// File created successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				tmpStr2 := 'closed event file ';
-				brsstrcat(ADR(tmpStr2), ADR(tmpStr1));
-				Logger(exASSETINT_LOG_ALL, tmpStr2, logger);
+				TmpStr2 := 'closed event file ';
+				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
 				// Finish up
-				status := ERR_OK;
-				state := 0;
+				Status := ERR_OK;
+				State := 0;
 				
 			// Error
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
-				status := FileWrite_0.status;
-				state := 0;
+				Status := FileClose_0.status;
+				State := 0;
 			END_IF
 	END_CASE;
 

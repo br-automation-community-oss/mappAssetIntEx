@@ -38,77 +38,121 @@ END_FUNCTION_BLOCK
 
 FUNCTION_BLOCK CreateDirStructure
 	VAR_INPUT
-		enable : BOOL;
-		device : STRING[50];
-		logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		Enable : BOOL;
+		Device : STRING[50];
+		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
 	END_VAR
 	VAR_OUTPUT
-		status : UINT;
+		Status : DINT;
 	END_VAR
 	VAR
 		DirCreate_0 : DirCreate;
-		tmpStr1 : STRING[100];
-		tmpStr2 : STRING[100];
-		idx : USINT;
-		state : USINT;
+		TmpStr1 : STRING[100];
+		TmpStr2 : STRING[100];
+		DirCount : USINT;
+		State : USINT;
 		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
 FUNCTION_BLOCK CreateMemory
 	VAR_INPUT
-		enable : BOOL;
-		size : UDINT;
-		logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		Enable : BOOL;
+		Size : UDINT;
+		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
 	END_VAR
 	VAR_OUTPUT
-		memory : UDINT;
-		status : UINT;
+		Memory : UDINT;
+		Status : UINT;
 	END_VAR
 	VAR
 		DatObjCreate_0 : DatObjCreate;
-		tmpStr1 : STRING[100];
-		tmpStr2 : STRING[100];
-		idx : USINT;
-		state : USINT;
+		TmpStr1 : STRING[100];
+		TmpStr2 : STRING[100];
+		Cnt : USINT;
+		State : USINT;
 		zzEdge00000 : BOOL;
 		zzEdge1 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK StoreEvent
+FUNCTION_BLOCK ReadEventData
 	VAR_INPUT
-		enable : BOOL;
-		device : STRING[50];
-		logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
-		record : exComInternalRecordType;
+		Enable : BOOL;
+		Device : STRING[50];
+		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		Memory : UDINT;
+		RecordSize : UDINT;
 	END_VAR
 	VAR_OUTPUT
-		status : UINT;
+		RecordIdFirst : UINT;
+		RecordIdLast : UINT;
+		RecordCount : UINT;
+		Status : UINT;
+	END_VAR
+	VAR
+		DirOpen_0 : DirOpen;
+		DirReadEx_0 : DirReadEx;
+		DirClose_0 : DirClose;
+		DirName : STRING[100];
+		DirCount : USINT;
+		FileOpen_0 : FileOpen;
+		FileClose_0 : FileClose;
+		FileRead_0 : FileRead;
+		FileName : STRING[100];
+		FileInfo : fiDIR_READ_EX_DATA;
+		RecordData : exComInternalRecordType;
+		IdFirst : DINT;
+		IdLast : DINT;
+		TmpStr1 : STRING[100];
+		TmpStr2 : STRING[100];
+		x : UINT;
+		State : USINT;
+		zzEdge00000 : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK WriteEventData
+	VAR_INPUT
+		Enable : BOOL;
+		Device : STRING[50];
+		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		RecordData : exComInternalRecordType;
+		RecordCount : UINT;
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
 	END_VAR
 	VAR
 		FileCreate_0 : FileCreate;
 		FileOpen_0 : FileOpen;
 		FileClose_0 : FileClose;
 		FileWrite_0 : FileWrite;
-		tmpStr1 : STRING[100];
-		tmpStr2 : STRING[100];
-		ident : UDINT;
-		idx : USINT;
-		state : USINT;
+		TmpStr1 : STRING[100];
+		TmpStr2 : STRING[100];
+		Ident : UDINT;
+		Cnt : USINT;
+		State : USINT;
 		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION Logger : USINT
+FUNCTION CreateLoggerEntry : USINT
 	VAR_INPUT
-		log_level : exAssetIntLogLevelEnum; (*Log Level*)
-		log_msg : STRING[LOG_LEN]; (*Log message*)
-		log_buffer : UDINT; (*Address of log buffer*)
+		LogLevel : exAssetIntLogLevelEnum; (*Log Level*)
+		LogMsg : STRING[LOG_LEN]; (*Log message*)
+		LogBuffer : UDINT; (*Address of log buffer*)
 	END_VAR
 	VAR
-		rtc_gettime : RTCtime_typ;
-		tmpSTR : STRING[20];
-		last_msg : STRING[LOG_LEN];
+		RtcGettime : RTCtime_typ;
+		TmpStr : STRING[20];
+		LastMsg : STRING[LOG_LEN];
+	END_VAR
+END_FUNCTION
+
+FUNCTION CreateErrorState : DINT
+	VAR_INPUT
+		ErrorID : DINT;
+		Internal : REFERENCE TO exComInternalDataType;
 	END_VAR
 END_FUNCTION

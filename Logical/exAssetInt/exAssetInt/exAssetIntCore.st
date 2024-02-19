@@ -16,112 +16,156 @@ FUNCTION_BLOCK exAssetIntCore
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF EDGEPOS(Enable) THEN
-				Logger(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
 				Internal.State := exASSETINT_STATE_INIT_2;
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
 		// Create folder structure
 		exASSETINT_STATE_INIT_2:
-			Internal.CreateDirStructure.enable := TRUE;
-			Internal.CreateDirStructure.device := DeviceName;
-			Internal.CreateDirStructure.logger := ADR(Internal.Logger);
+			Internal.CreateDirStructure.Enable := TRUE;
+			Internal.CreateDirStructure.Device := DeviceName;
+			Internal.CreateDirStructure.Logger := ADR(Internal.Logger);
 			Internal.CreateDirStructure();
 		
 			// Folder structure successful created
-			IF Internal.CreateDirStructure.status = ERR_OK THEN
-				Logger(exASSETINT_LOG_INFO, 'created folder structure', ADR(Internal.Logger));
+			IF Internal.CreateDirStructure.Status = ERR_OK THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created folder structure', ADR(Internal.Logger));
 				Internal.State := exASSETINT_STATE_INIT_3;
 			
 			// Error
-			ELSIF Internal.CreateDirStructure.status <> ERR_FUB_BUSY THEN
+			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				Logger(exASSETINT_LOG_ERROR, 'error creating folder structure', ADR(Internal.Logger));
-				StatusID := Internal.CreateDirStructure.status;
-				Internal.StateError := Internal.State;
-				Internal.State := exASSETINT_STATE_ERROR;
+				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating folder structure', ADR(Internal.Logger));
+				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, ADR(Internal));
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
 		// Create internal memory
 		exASSETINT_STATE_INIT_3:
-			Internal.CreateMemory.enable := TRUE;
-			Internal.CreateMemory.size := CORE_EVENT_NUM_MAX*SIZEOF(Internal.Record);
-			Internal.CreateMemory.logger := ADR(Internal.Logger);
+			Internal.CreateMemory.Enable := TRUE;
+			Internal.CreateMemory.Size := CORE_EVENT_NUM_MAX*SIZEOF(Internal.RecordData);
+			Internal.CreateMemory.Logger := ADR(Internal.Logger);
 			Internal.CreateMemory();
 		
 			// Folder structure successful created
-			IF Internal.CreateMemory.status = ERR_OK THEN
-				Logger(exASSETINT_LOG_INFO, 'created internal memory', ADR(Internal.Logger));
-				Internal.Memory := Internal.CreateMemory.memory;
-				Internal.State := exASSETINT_STATE_IDLE;
+			IF Internal.CreateMemory.Status = ERR_OK THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created internal memory', ADR(Internal.Logger));
+				Internal.Memory := Internal.CreateMemory.Memory;
+				Internal.State := exASSETINT_STATE_INIT_4;
 			
 			// Error
-			ELSIF Internal.CreateMemory.status <> ERR_FUB_BUSY THEN
+			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				Logger(exASSETINT_LOG_ERROR, 'error creating internal memory', ADR(Internal.Logger));
-				StatusID := Internal.CreateMemory.status;
-				Internal.StateError := Internal.State;
-				Internal.State := exASSETINT_STATE_ERROR;
+				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating internal memory', ADR(Internal.Logger));
+				StatusID := CreateErrorState(Internal.CreateMemory.Status, ADR(Internal));
+			END_IF
+		
+			// -------------------------------------------------------------------------------------------
+			// Read event data
+		exASSETINT_STATE_INIT_4:
+			Internal.ReadEventData.Enable := TRUE;
+			Internal.ReadEventData.Device := DeviceName;
+			Internal.ReadEventData.Memory := Internal.Memory;
+			Internal.ReadEventData.RecordSize := SIZEOF(Internal.RecordData);
+			Internal.ReadEventData.Logger := ADR(Internal.Logger);
+			Internal.ReadEventData();
+		
+			// Folder structure successful created
+			IF Internal.ReadEventData.Status = ERR_OK THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'reading stored events', ADR(Internal.Logger));
+				Internal.RecordCount := Internal.ReadEventData.RecordCount;
+				Internal.State := exASSETINT_STATE_IDLE;
+			
+				// Error
+			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
+				// Set status, remember state, go to error state
+				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error reading stored events', ADR(Internal.Logger));
+				StatusID := CreateErrorState(Internal.ReadEventData.Status, ADR(Internal));
 			END_IF
 
-			// -------------------------------------------------------------------------------------------
+		// -------------------------------------------------------------------------------------------
 		// Wait for new event
 		exASSETINT_STATE_IDLE:
 			// Handle piece and reject counter
-			IF PieceCounter <> Internal.Record.PieceCounter OR RejectCounter <> Internal.Record.RejectCounter THEN
-				Internal.Record.PieceCounter := PieceCounter;
-				Internal.Record.RejectCounter := RejectCounter;
-				brsmemcpy(exLink, ADR(Internal.Record), SIZEOF(Internal.Record));
+			IF PieceCounter <> Internal.RecordData.PieceCounter OR RejectCounter <> Internal.RecordData.RejectCounter THEN
+				Internal.RecordData.PieceCounter := PieceCounter;
+				Internal.RecordData.RejectCounter := RejectCounter;
+				
+				brsmemcpy(exLink, ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
 			END_IF
 			
-			// Handle job, shift or information change
-			IF Parameters.NominalProductionRate <> Internal.Record.NominalProductionRate OR Parameters.Job <> Internal.Record.Job OR Parameters.CurrentUser <> Internal.Record.CurrentUser OR Parameters.AdditionalData <> Internal.Record.AdditionalData THEN
-				Internal.Record.NominalProductionRate := Parameters.NominalProductionRate;
-				Internal.Record.Job := Parameters.Job;
-				Internal.Record.CurrentUser := Parameters.CurrentUser;
-				Internal.Record.AdditionalData := Parameters.AdditionalData;
+			// Handle nominal production rate change
+			IF Parameters.NominalProductionRate <> Internal.RecordData.NominalProductionRate THEN
+				Internal.RecordData.NominalProductionRate := Parameters.NominalProductionRate;
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'new nominal production rate', ADR(Internal.Logger));
+
+				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+			END_IF
+
+			// Handle job change
+			IF Parameters.Job <> Internal.RecordData.Job THEN
+				Internal.RecordData.Job := Parameters.Job;
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'new job name', ADR(Internal.Logger));
 				
 				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
 			END_IF
-			
+
+			// Handle user change
+			IF Parameters.CurrentUser <> Internal.RecordData.CurrentUser THEN
+				Internal.RecordData.CurrentUser := Parameters.CurrentUser;
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'new user name', ADR(Internal.Logger));
+				
+				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+			END_IF
+
+			// Handle information change
+			IF Parameters.AdditionalData <> Internal.RecordData.AdditionalData THEN
+				Internal.RecordData.AdditionalData := Parameters.AdditionalData;
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'new additional information', ADR(Internal.Logger));
+				
+				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+			END_IF
+
 		// -------------------------------------------------------------------------------------------
 		// Wait for new event
 		exASSETINT_STATE_STORE_EVENT_1:
-			Internal.StoreEvent.enable := TRUE;
-			Internal.StoreEvent.device := DeviceName;
-			Internal.StoreEvent.logger := ADR(Internal.Logger);
-			Internal.StoreEvent.record := Internal.Record;
-			Internal.StoreEvent();
+			Internal.WriteEventData.Enable := TRUE;
+			Internal.WriteEventData.Device := DeviceName;
+			Internal.WriteEventData.Logger := ADR(Internal.Logger);
+			Internal.WriteEventData.RecordData := Internal.RecordData;
+			Internal.WriteEventData();
 		
 			// Event successful created
-			IF Internal.StoreEvent.status = ERR_OK THEN
-				Logger(exASSETINT_LOG_INFO, 'created new event', ADR(Internal.Logger));
+			IF Internal.WriteEventData.Status = ERR_OK THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created new event', ADR(Internal.Logger));
 				
 				// Calculate new event ID
-				Internal.Record.ID := Internal.Record.ID + 1;
-				IF Internal.Record.ID > CORE_EVENT_NUM_MAX THEN
-					Internal.Record.ID := 0;
+				Internal.RecordData.ID := Internal.RecordData.ID + 1;
+				IF Internal.RecordData.ID > CORE_EVENT_NUM_MAX THEN
+					Internal.RecordData.ID := 0;
 				END_IF
 				
 				Internal.State := exASSETINT_STATE_IDLE;
 			
 			// Error
-			ELSIF Internal.StoreEvent.status <> ERR_FUB_BUSY THEN
+			ELSIF Internal.WriteEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				Logger(exASSETINT_LOG_ERROR, 'error creating event', ADR(Internal.Logger));
-				StatusID := Internal.StoreEvent.status;
-				Internal.StateError := Internal.State;
-				Internal.State := exASSETINT_STATE_ERROR;
+				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating event', ADR(Internal.Logger));
+				StatusID := CreateErrorState(Internal.WriteEventData.Status, ADR(Internal));
 			END_IF
 			
-		// -------------------------------------------------------------------------------------------
-		// Error state
+			// -------------------------------------------------------------------------------------------
+			// Error state
 		exASSETINT_STATE_ERROR:
-			Internal.CreateDirStructure.enable := FALSE;
+			Internal.CreateDirStructure.Enable := FALSE;
 			Internal.CreateDirStructure();
-			Internal.StoreEvent.enable := FALSE;
-			Internal.StoreEvent();
+			Internal.CreateMemory.Enable := FALSE;
+			Internal.CreateMemory();
+			Internal.WriteEventData.Enable := FALSE;
+			Internal.WriteEventData();
+			Internal.ReadEventData.Enable := FALSE;
+			Internal.ReadEventData();
 			
 			IF EDGEPOS(ErrorReset) THEN
 				Internal.StateError := exASSETINT_STATE_NONE;

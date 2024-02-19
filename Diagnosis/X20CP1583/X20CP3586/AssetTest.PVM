@@ -1,97 +1,98 @@
 WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=AssetTest 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=151 Type=183 Scope=60 Force=60 Index=18 ASCIIString=0
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=151 Type=183 Scope=60 Force=60 Index=70 ASCIIString=0
                                     name                                     type force                                                            value level type len format place expand specs
                         exAssetIntCore_0                           exAssetIntCore    0 "                                                               *"    0   24    1    0    1    1         
-                                  exLink                                    UDINT    0 "                                                        97368272"    1    7    1   10    0    0         
-                                  Enable                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                  exLink                                    UDINT    0 "                                                        95743440"    1    7    1   10    0    0         
+                                  Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
                               ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                              Parameters                                    UDINT    0 "                                                        97367928"    1    7    1   10    0    0         
+                              Parameters                                    UDINT    0 "                                                        95743084"    1    7    1   10    0    0         
                                   Update                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                             PieceCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
                            RejectCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
                                 StatusID                                     DINT    0 "                                                           65534"    1    4    1   10    0    0         
                                 Internal                    exComInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
-                                  Record                  exComInternalRecordType    0 "                                                               *"    2   24    1   10    0    1         
-                                      ID                                     UINT    0 "                                                               *"    3    6    1   10    0    0         
-                   NominalProductionRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
-                            PieceCounter                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
-                           RejectCounter                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
-                                     Job                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                             CurrentUser                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          AdditionalData                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
-                                  Logger                       STRING[100][0..50]    0 "                                                               *"    2    9  101    0    0    0         
-                               Logger[0]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[1]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[2]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[3]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[4]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[5]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[6]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[7]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[8]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                               Logger[9]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[10]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[11]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[12]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[13]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[14]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[15]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[16]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[17]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[18]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[19]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[20]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[21]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[22]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[23]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[24]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[25]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[26]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[27]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[28]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[29]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[30]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[31]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[32]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[33]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[34]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[35]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[36]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[37]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[38]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[39]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[40]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[41]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[42]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[43]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[44]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[45]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[46]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[47]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[48]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                              Logger[49]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
+                                  Record                  exComInternalRecordType    0 "                                                               *"    2   24    1    0    0    1         
+                                      ID                                     UINT    0 "                                                               1"    3    6    1   10    0    0         
+                   NominalProductionRate                                     REAL    0 "                                                          1000.0"    3    8    1   10    0    0         
+                            PieceCounter                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                                     Job                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                             CurrentUser                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          AdditionalData                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
+                                  Logger                       STRING[100][0..50]    0 "                                                               *"    2    9  101    0    0    1         
+                               Logger[0]                              STRING[100]    0 "                          '19.02 14:51:00.575 created new event'"    3    9  101    1    0    0         
+                               Logger[1]                              STRING[100]    0 "           '19.02 14:51:00.575 closed event file events0/event0'"    3    9  101    1    0    0         
+                               Logger[2]                              STRING[100]    0 "            '19.02 14:51:00.555 wrote event file events0/event0'"    3    9  101    1    0    0         
+                               Logger[3]                              STRING[100]    0 "           '19.02 14:51:00.535 opened event file events0/event0'"    3    9  101    1    0    0         
+                               Logger[4]                              STRING[100]    0 "                         '19.02 14:51:00.515 creating new event'"    3    9  101    1    0    0         
+                               Logger[5]                              STRING[100]    0 "                              '19.02 14:51:00.505 new user name'"    3    9  101    1    0    0         
+                               Logger[6]                              STRING[100]    0 "                               '19.02 14:51:00.505 new job name'"    3    9  101    1    0    0         
+                               Logger[7]                              STRING[100]    0 "                '19.02 14:51:00.505 new nominal production rate'"    3    9  101    1    0    0         
+                               Logger[8]                              STRING[100]    0 "                      '19.02 14:51:00.495 reading stored events'"    3    9  101    1    0    0         
+                               Logger[9]                              STRING[100]    0 "                        '19.02 14:51:00.495 closed dir events10'"    3    9  101    1    0    0         
+                              Logger[10]                              STRING[100]    0 "              '19.02 14:51:00.475 finished reading dir events10'"    3    9  101    1    0    0         
+                              Logger[11]                              STRING[100]    0 "                        '19.02 14:51:00.415 opened dir events10'"    3    9  101    1    0    0         
+                              Logger[12]                              STRING[100]    0 "                         '19.02 14:51:00.395 closed dir events9'"    3    9  101    1    0    0         
+                              Logger[13]                              STRING[100]    0 "               '19.02 14:51:00.375 finished reading dir events9'"    3    9  101    1    0    0         
+                              Logger[14]                              STRING[100]    0 "                         '19.02 14:51:00.315 opened dir events9'"    3    9  101    1    0    0         
+                              Logger[15]                              STRING[100]    0 "                         '19.02 14:51:00.295 closed dir events8'"    3    9  101    1    0    0         
+                              Logger[16]                              STRING[100]    0 "               '19.02 14:51:00.275 finished reading dir events8'"    3    9  101    1    0    0         
+                              Logger[17]                              STRING[100]    0 "                         '19.02 14:51:00.215 opened dir events8'"    3    9  101    1    0    0         
+                              Logger[18]                              STRING[100]    0 "                         '19.02 14:51:00.195 closed dir events7'"    3    9  101    1    0    0         
+                              Logger[19]                              STRING[100]    0 "               '19.02 14:51:00.175 finished reading dir events7'"    3    9  101    1    0    0         
+                              Logger[20]                              STRING[100]    0 "                         '19.02 14:51:00.115 opened dir events7'"    3    9  101    1    0    0         
+                              Logger[21]                              STRING[100]    0 "                         '19.02 14:51:00.095 closed dir events6'"    3    9  101    1    0    0         
+                              Logger[22]                              STRING[100]    0 "               '19.02 14:51:00.075 finished reading dir events6'"    3    9  101    1    0    0         
+                              Logger[23]                              STRING[100]    0 "                         '19.02 14:51:00.015 opened dir events6'"    3    9  101    1    0    0         
+                              Logger[24]                              STRING[100]    0 "                         '19.02 14:50:59.995 closed dir events5'"    3    9  101    1    0    0         
+                              Logger[25]                              STRING[100]    0 "               '19.02 14:50:59.975 finished reading dir events5'"    3    9  101    1    0    0         
+                              Logger[26]                              STRING[100]    0 "                         '19.02 14:50:59.915 opened dir events5'"    3    9  101    1    0    0         
+                              Logger[27]                              STRING[100]    0 "                         '19.02 14:50:59.895 closed dir events4'"    3    9  101    1    0    0         
+                              Logger[28]                              STRING[100]    0 "               '19.02 14:50:59.875 finished reading dir events4'"    3    9  101    1    0    0         
+                              Logger[29]                              STRING[100]    0 "                         '19.02 14:50:59.815 opened dir events4'"    3    9  101    1    0    0         
+                              Logger[30]                              STRING[100]    0 "                         '19.02 14:50:59.795 closed dir events3'"    3    9  101    1    0    0         
+                              Logger[31]                              STRING[100]    0 "               '19.02 14:50:59.775 finished reading dir events3'"    3    9  101    1    0    0         
+                              Logger[32]                              STRING[100]    0 "                         '19.02 14:50:59.715 opened dir events3'"    3    9  101    1    0    0         
+                              Logger[33]                              STRING[100]    0 "                         '19.02 14:50:59.695 closed dir events2'"    3    9  101    1    0    0         
+                              Logger[34]                              STRING[100]    0 "               '19.02 14:50:59.675 finished reading dir events2'"    3    9  101    1    0    0         
+                              Logger[35]                              STRING[100]    0 "                         '19.02 14:50:59.615 opened dir events2'"    3    9  101    1    0    0         
+                              Logger[36]                              STRING[100]    0 "                         '19.02 14:50:59.595 closed dir events1'"    3    9  101    1    0    0         
+                              Logger[37]                              STRING[100]    0 "               '19.02 14:50:59.575 finished reading dir events1'"    3    9  101    1    0    0         
+                              Logger[38]                              STRING[100]    0 "                         '19.02 14:50:59.515 opened dir events1'"    3    9  101    1    0    0         
+                              Logger[39]                              STRING[100]    0 "                         '19.02 14:50:59.495 closed dir events0'"    3    9  101    1    0    0         
+                              Logger[40]                              STRING[100]    0 "               '19.02 14:50:59.475 finished reading dir events0'"    3    9  101    1    0    0         
+                              Logger[41]                              STRING[100]    0 "           '19.02 14:50:59.455 closed event file events0/event2'"    3    9  101    1    0    0         
+                              Logger[42]                              STRING[100]    0 "             '19.02 14:50:59.435 read event file events0/event2'"    3    9  101    1    0    0         
+                              Logger[43]                              STRING[100]    0 "           '19.02 14:50:59.415 opened event file events0/event2'"    3    9  101    1    0    0         
+                              Logger[44]                              STRING[100]    0 "                          '19.02 14:50:59.395 found file event2'"    3    9  101    1    0    0         
+                              Logger[45]                              STRING[100]    0 "           '19.02 14:50:59.375 closed event file events0/event1'"    3    9  101    1    0    0         
+                              Logger[46]                              STRING[100]    0 "             '19.02 14:50:59.355 read event file events0/event1'"    3    9  101    1    0    0         
+                              Logger[47]                              STRING[100]    0 "           '19.02 14:50:59.335 opened event file events0/event1'"    3    9  101    1    0    0         
+                              Logger[48]                              STRING[100]    0 "                          '19.02 14:50:59.315 found file event1'"    3    9  101    1    0    0         
+                              Logger[49]                              STRING[100]    0 "           '19.02 14:50:59.295 closed event file events0/event0'"    3    9  101    1    0    0         
                               Logger[50]                              STRING[100]    0 "                                                              ''"    3    9  101    1    0    0         
-                                   State                                     DINT    0 "                                                               0"    2    4    1   10    0    0 e,0,exAS
+                                EventCnt                                     UINT    0 "                                                               3"    2    6    1   10    0    0         
+                                   State                                     DINT    0 "                                                              10"    2    4    1   10    0    0 e,0,exAS
 
                               StateError                                     DINT    0 "                                                              99"    2    4    1   10    0    0 e,0,exAS
 
                       CreateDirStructure                       CreateDirStructure    0 "                                                               *"    2   24    1    0    0    0         
                                   enable                                     BOOL    0 "                                                               *"    3    1    1    2    0    0         
-                                  device                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
+                                  device                                 STRING[]    0 "                                                               *"    3    9   51    1    0    0         
                                   status                                     UINT    0 "                                                               *"    3    6    1   10    0    0         
                              DirCreate_0                                DirCreate    0 "                                                               *"    3   24    1    0    0    0         
                                   enable                                     BOOL    0 "                                                               *"    4    1    1    2    0    0         
                                  pDevice                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                    pName                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                   status                                     UINT    0 "                                                               *"    4    6    1   10    0    0         
-                                 tmpStr1                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
-                                 tmpStr2                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
+                                 tmpStr1                                 STRING[]    0 "                                                               *"    3    9  101    1    0    0       fP
+                                 tmpStr2                                 STRING[]    0 "                                                               *"    3    9  101    1    0    0         
                                      idx                                    USINT    0 "                                                               *"    3    5    1   10    0    0         
                                    state                                    USINT    0 "                                                               *"    3    5    1   10    0    0         
                              zzEdge00000                                     BOOL    0 "                                                               *"    3    1    1    2    0    0         
-                             zzEdge00000                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                             zzEdge00000                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
                            exAssetIntPar                        exAssetIntParType    0 "                                                               *"    0   24    1    0    1    1         
-                   NominalProductionRate                                     REAL    0 "                                                          1000.0"    1    8    1   10    0    0         
-                                     Job                               STRING[20]    0 "                                                       'Cookies'"    1    9   21    1    0    0         
-                             CurrentUser                               STRING[50]    0 "                                                   'TylerDurden'"    1    9   51    1    0    0         
+                   NominalProductionRate                                     REAL    0 "                                                               *"    1    8    1   10    0    0         
+                                     Job                               STRING[20]    0 "                                                              ''"    1    9   21    1    0    0         
+                             CurrentUser                               STRING[50]    0 "                                                              ''"    1    9   51    1    0    0         
                           AdditionalData                              STRING[255]    0 "                                                              ''"    1    9  256    1    0    0         

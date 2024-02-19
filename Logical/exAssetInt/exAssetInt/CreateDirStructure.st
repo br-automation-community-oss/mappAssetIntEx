@@ -4,59 +4,59 @@
 FUNCTION_BLOCK CreateDirStructure
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
-	IF NOT enable THEN
-		DirCreate_0.enable := FALSE;
-		DirCreate_0();
-
-		status := ERR_FUB_ENABLE_FALSE;
-		state := 0;		
+	IF NOT Enable THEN
+		Status := ERR_FUB_ENABLE_FALSE;
+		State := 0;		
 		RETURN;
 	END_IF
 	
-	CASE state OF
+	CASE State OF
 		// -------------------------------------------------------------------------------------------
 		// Wait for enable
 		0:
-			IF EDGEPOS(enable) THEN
-				idx := 0;
-				tmpStr1 := 'events0';
-				status := ERR_FUB_BUSY;
-				Logger(exASSETINT_LOG_INFO, 'creating folder structure', logger);
-				state := state + 1;
+			IF Enable THEN
+				DirCreate_0.enable := FALSE;
+				DirCreate_0();
+
+				DirCount := 0;
+				TmpStr1 := 'events0';
+				Status := ERR_FUB_BUSY;
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'creating folder structure', Logger);
+				State := 1;
 			END_IF
 
-			// -------------------------------------------------------------------------------------------
-			// Create folders
+		// -------------------------------------------------------------------------------------------
+		// Create folders
 		1:
 			DirCreate_0.enable := TRUE;
-			DirCreate_0.pDevice := ADR(device);
-			DirCreate_0.pName := ADR(tmpStr1);
+			DirCreate_0.pDevice := ADR(Device);
+			DirCreate_0.pName := ADR(TmpStr1);
 			DirCreate_0();
 	
 			// Folder created successful or folder already exsist
 			IF DirCreate_0.status = ERR_OK OR DirCreate_0.status = fiERR_DIR_ALREADY_EXIST THEN
 				// Generate log entry
-				tmpStr2 := 'created folder ';
-				brsstrcat(ADR(tmpStr2), ADR(tmpStr1));
-				Logger(exASSETINT_LOG_ALL, tmpStr2, logger);
+				TmpStr2 := 'created folder ';
+				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
 				// Create folders for 100 events each, finish when all folders are created
-				idx := idx + 1;
-				IF idx > CORE_EVENT_NUM_MAX / 100 THEN
-					status := ERR_OK;
-					state := 0;
+				DirCount := DirCount + 1;
+				IF DirCount > CORE_EVENT_NUM_MAX / 100 THEN
+					Status := ERR_OK;
+					State := 0;
 					
 					// Generate next folder name
 				ELSE
-					tmpStr1 := 'events';
-					brsitoa(idx, ADR(tmpStr2));
-					brsstrcat(ADR(tmpStr1), ADR(tmpStr2));
+					TmpStr1 := 'events';
+					brsitoa(DirCount, ADR(TmpStr2));
+					brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
 				END_IF
 				
 				// Error
 			ELSIF DirCreate_0.status <> ERR_FUB_BUSY THEN
-				status := DirCreate_0.status;
-				state := 0;
+				Status := DirCreate_0.status;
+				State := 0;
 			END_IF
 
 	END_CASE;

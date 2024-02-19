@@ -10,7 +10,8 @@
     <File>exAssetIntCore.st</File>
     <File>CreateDirStructure.st</File>
     <File>CreateMemory.st</File>
-    <File>StoreEvent.st</File>
-    <File>common.st</File>
+    <File>WriteEventData.st</File>
+    <File>ReadEventData.st</File>
+    <File>Common.st</File>
   </Files>
 </Library>

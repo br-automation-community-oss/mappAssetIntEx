@@ -2,17 +2,21 @@
 
 TYPE
 	exComInternalDataType : 	STRUCT 
-		Record : exComInternalRecordType;
+		RecordCount : UINT;
+		RecordLast : UINT;
+		RecordFirst : UINT;
+		RecordData : exComInternalRecordType;
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		Memory : UDINT;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		CreateDirStructure : CreateDirStructure;
 		CreateMemory : CreateMemory;
-		StoreEvent : StoreEvent;
+		ReadEventData : ReadEventData;
+		WriteEventData : WriteEventData;
 	END_STRUCT;
 	exComInternalRecordType : 	STRUCT 
-		ID : UINT;
+		Id : UINT;
 		NominalProductionRate : REAL;
 		PieceCounter : UDINT;
 		RejectCounter : UDINT;
@@ -30,6 +34,7 @@ TYPE
 		exASSETINT_STATE_INIT_1 := 1, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_INIT_2 := 2, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_INIT_3 := 3, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_INIT_4 := 4, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_IDLE := 10, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_STORE_EVENT_1 := 21, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_STORE_EVENT_2 := 22, (*Status: Idle, Waiting for command*)
