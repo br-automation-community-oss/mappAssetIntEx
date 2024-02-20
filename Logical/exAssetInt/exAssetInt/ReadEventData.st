@@ -31,7 +31,7 @@ FUNCTION_BLOCK ReadEventData
 
 				// Generate folder name
 				DirCount := 0;
-				Idfir
+				TimeFirst := 0;
 				DirName := 'events0';
 				
 				Status := ERR_FUB_BUSY;
@@ -179,8 +179,8 @@ FUNCTION_BLOCK ReadEventData
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_INFO, TmpStr1, Logger);
 				
-				// Copy data into memory buffer
-				IF RecordData.Id <
+				// Check if record is newest
+				InsertEventData(Memory, RecordCount, RecordData);
 				
 				// Increase record count, go to next step
 				RecordCount := RecordCount + 1;
@@ -217,4 +217,62 @@ FUNCTION_BLOCK ReadEventData
 	END_CASE;
 
 END_FUNCTION_BLOCK
+
+FUNCTION InsertEventData
+	x := 0;
+	y := 0;
+	sort := 0;
+
+	// Set up start values for iteration
+	IF RecordCount <> 0 THEN
+		y := RecordCount - 1;
+	END_IF
+	x := y;
+
+	// Start itteration	search
+	WHILE y > 1 DO
+		// Check current entry
+		RecordMemory ACCESS Memory + x*SIZEOF(RecordData);
+		sort := DiffDT(RecordData.TimeEnd, RecordMemory.TimeEnd);
+
+		// Solve new search range
+		IF y MOD 2 = 0 THEN
+			y := y / 2;
+		ELSE
+			y := y / 2 + 1;
+		END_IF
+
+		// New range is lower OR higher than current
+		IF sort > 0 THEN
+			x := x + y;
+			IF x > RecordCount THEN
+				x := UINT_TO_INT(RecordCount);
+			END_IF
+		ELSE
+			x := x - y;
+			IF x < 1 THEN
+				x := 1;
+			END_IF
+		END_IF
+	END_WHILE;	
+
+	// New entry is this, next OR previous
+	RecordMemory ACCESS Memory + x*SIZEOF(RecordData);
+	sort := DiffDT(RecordData.TimeEnd, RecordMemory.TimeEnd);
+
+	IF sort > 0 AND x <> RecordCount THEN
+		x := x + 1;
+	ELSIF x > 0 THEN
+		RecordMemory ACCESS Memory + (x - 1)*SIZEOF(RecordData);
+		sort := DiffDT(RecordData.TimeEnd, RecordMemory.TimeEnd);
+		IF sort = 16#FFFFFFFF THEN
+			x := x - 1;
+		END_IF
+	END_IF
+	
+	// Move all entrys backwards and fill in new entry
+	brsmemmove(Memory + (x + 1)*SIZEOF(RecordData), Memory + x*SIZEOF(RecordData), (RecordCount - x)*SIZEOF(RecordData));
+	brsmemcpy(Memory + x*SIZEOF(RecordData), ADR(RecordData), SIZEOF(RecordData));
+
+END_FUNCTION
 

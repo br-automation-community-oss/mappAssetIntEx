@@ -76,6 +76,32 @@ FUNCTION_BLOCK CreateMemory
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK WriteEventData
+	VAR_INPUT
+		Enable : BOOL;
+		Device : STRING[50];
+		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		RecordData : exComInternalRecordType;
+		RecordNext : UINT;
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+	END_VAR
+	VAR
+		FileCreate_0 : FileCreate;
+		FileOpen_0 : FileOpen;
+		FileClose_0 : FileClose;
+		FileWrite_0 : FileWrite;
+		DTGetTime_0 : DTGetTime;
+		TmpStr1 : STRING[100];
+		TmpStr2 : STRING[100];
+		Ident : UDINT;
+		Cnt : USINT;
+		State : USINT;
+		zzEdge00000 : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK ReadEventData
 	VAR_INPUT
 		Enable : BOOL;
@@ -102,8 +128,8 @@ FUNCTION_BLOCK ReadEventData
 		FileName : STRING[100];
 		FileInfo : fiDIR_READ_EX_DATA;
 		RecordData : exComInternalRecordType;
-		IdFirst : DINT;
-		IdLast : DINT;
+		TimeFirst : DATE_AND_TIME;
+		TimeDiff : UDINT;
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
 		x : UINT;
@@ -112,30 +138,19 @@ FUNCTION_BLOCK ReadEventData
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK WriteEventData
+FUNCTION InsertEventData : USINT
 	VAR_INPUT
-		Enable : BOOL;
-		Device : STRING[50];
-		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
-		RecordData : exComInternalRecordType;
+		Memory : UDINT;
 		RecordCount : UINT;
-	END_VAR
-	VAR_OUTPUT
-		Status : UINT;
+		RecordData : exComInternalRecordType;
 	END_VAR
 	VAR
-		FileCreate_0 : FileCreate;
-		FileOpen_0 : FileOpen;
-		FileClose_0 : FileClose;
-		FileWrite_0 : FileWrite;
-		TmpStr1 : STRING[100];
-		TmpStr2 : STRING[100];
-		Ident : UDINT;
-		Cnt : USINT;
-		State : USINT;
-		zzEdge00000 : BOOL;
+		RecordMemory : REFERENCE TO exComInternalRecordType;
+		sort : UDINT;
+		x : INT;
+		y : INT;
 	END_VAR
-END_FUNCTION_BLOCK
+END_FUNCTION
 
 FUNCTION CreateLoggerEntry : USINT
 	VAR_INPUT

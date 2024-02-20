@@ -3,8 +3,7 @@
 TYPE
 	exComInternalDataType : 	STRUCT 
 		RecordCount : UINT;
-		RecordLast : UINT;
-		RecordFirst : UINT;
+		RecordNext : UINT;
 		RecordData : exComInternalRecordType;
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		Memory : UDINT;
@@ -16,7 +15,8 @@ TYPE
 		WriteEventData : WriteEventData;
 	END_STRUCT;
 	exComInternalRecordType : 	STRUCT 
-		Id : UINT;
+		TimeStart : DATE_AND_TIME;
+		TimeEnd : DATE_AND_TIME;
 		NominalProductionRate : REAL;
 		PieceCounter : UDINT;
 		RejectCounter : UDINT;

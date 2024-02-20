@@ -134,16 +134,20 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.WriteEventData.Device := DeviceName;
 			Internal.WriteEventData.Logger := ADR(Internal.Logger);
 			Internal.WriteEventData.RecordData := Internal.RecordData;
+			Internal.WriteEventData.RecordNext := Internal.RecordNext;
 			Internal.WriteEventData();
 		
 			// Event successful created
 			IF Internal.WriteEventData.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created new event', ADR(Internal.Logger));
 				
-				// Calculate new event ID
-				Internal.RecordData.ID := Internal.RecordData.ID + 1;
-				IF Internal.RecordData.ID > CORE_EVENT_NUM_MAX THEN
-					Internal.RecordData.ID := 0;
+				// Calculate new last record and record count
+				Internal.RecordNext := Internal.RecordNext + 1;
+				IF Internal.RecordNext > CORE_EVENT_NUM_MAX THEN
+					Internal.RecordNext := 0;
+				END_IF
+				IF Internal.RecordCount < CORE_EVENT_NUM_MAX THEN
+					Internal.RecordCount := Internal.RecordCount + 1;
 				END_IF
 				
 				Internal.State := exASSETINT_STATE_IDLE;

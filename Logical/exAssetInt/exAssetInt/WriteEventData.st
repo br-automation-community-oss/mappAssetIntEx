@@ -15,6 +15,11 @@ FUNCTION_BLOCK WriteEventData
 		// Wait for enable
 		0:
 			IF Enable THEN
+				// Get date and time
+				DTGetTime_0(enable := TRUE);
+				RecordData.TimeStart := DTGetTime_0.DT1;
+				RecordData.TimeEnd := DTGetTime_0.DT1;								  
+
 				// Reset function blocks
 				FileOpen_0.enable := FALSE;
 				FileOpen_0();
@@ -27,10 +32,10 @@ FUNCTION_BLOCK WriteEventData
 
 				// Generate file name
 				TmpStr1 := 'events';
-				brsitoa(RecordData.ID/100, ADR(TmpStr2));
+				brsitoa(RecordNext/100, ADR(TmpStr2));
 				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
 				brsstrcat(ADR(TmpStr1), ADR('/event'));
-				brsitoa(RecordData.ID, ADR(TmpStr2));
+				brsitoa(RecordNext, ADR(TmpStr2));
 				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
 				
 				Status := ERR_FUB_BUSY;
@@ -38,8 +43,8 @@ FUNCTION_BLOCK WriteEventData
 				State := 1;
 			END_IF
 
-		// -------------------------------------------------------------------------------------------
-		// Open file
+			// -------------------------------------------------------------------------------------------
+			// Open file
 		1:
 			FileOpen_0.enable := TRUE;
 			FileOpen_0.pDevice := ADR(Device);
@@ -58,18 +63,18 @@ FUNCTION_BLOCK WriteEventData
 				Ident := FileOpen_0.ident;
 				State := 3;
 
-			// Create event file when it does not exist
+				// Create event file when it does not exist
 			ELSIF FileOpen_0.status = fiERR_FILE_NOT_FOUND  THEN
 				State := 2;
 
-			// Error
+				// Error
 			ELSIF FileOpen_0.status <> ERR_FUB_BUSY THEN
 				Status := FileOpen_0.status;
 				State := 0;
 			END_IF
 
-		// -------------------------------------------------------------------------------------------
-		// Create file
+			// -------------------------------------------------------------------------------------------
+			// Create file
 		2:
 			FileCreate_0.enable := TRUE;
 			FileCreate_0.pDevice := ADR(Device);
@@ -87,16 +92,16 @@ FUNCTION_BLOCK WriteEventData
 				Ident := FileCreate_0.ident;
 				State := 3;
 				
-			// Error
+				// Error
 			ELSIF FileCreate_0.status <> ERR_FUB_BUSY THEN
 				Status := FileCreate_0.status;
 				State := 0;
 			END_IF
 		
 		
-		// -------------------------------------------------------------------------------------------
-		// Write data
-		3:
+			// -------------------------------------------------------------------------------------------
+			// Write data
+		3:			
 			FileWrite_0.enable := TRUE;
 			FileWrite_0.ident := Ident;
 			FileWrite_0.pSrc := ADR(RecordData);
@@ -113,14 +118,14 @@ FUNCTION_BLOCK WriteEventData
 				// Go to next step
 				State := 4;
 				
-			// Error
+				// Error
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
 				Status := FileWrite_0.status;
 				State := 0;
 			END_IF
 
-		// -------------------------------------------------------------------------------------------
-		// Close file
+			// -------------------------------------------------------------------------------------------
+			// Close file
 		4:
 			FileClose_0.enable := TRUE;
 			FileClose_0.ident := Ident;
@@ -137,7 +142,7 @@ FUNCTION_BLOCK WriteEventData
 				Status := ERR_OK;
 				State := 0;
 				
-			// Error
+				// Error
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN
 				Status := FileClose_0.status;
 				State := 0;
