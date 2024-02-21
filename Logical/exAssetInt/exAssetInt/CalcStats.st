@@ -1,19 +1,23 @@
 // -------------------------------------------------------------------------------------------
 // Calculate current job statistics
 FUNCTION CalcStatsJob
+	DTGetTime_0(enable := TRUE);
+	
 	JobStatistics.JobName := Parameter.Job;
 	JobStatistics.CurrentUser := Parameter.CurrentUser;
 	JobStatistics.AdditionalData := Parameter.AdditionalData;
 	
-//	JobStatistics.TotalTime := 0;
-//	JobStatistics.ScheduledDowntime := 0;
+	JobStatistics.TotalTime.Hours := DiffDT(DTGetTime_0.DT1, TimeStartup)/3600;
+	JobStatistics.TotalTime.Minutes := UDINT_TO_USINT((DiffDT(DTGetTime_0.DT1, TimeStartup) - JobStatistics.TotalTime.Hours*3600)/60);
+	JobStatistics.TotalTime.Seconds := UDINT_TO_USINT(DiffDT(DTGetTime_0.DT1, TimeStartup) - JobStatistics.TotalTime.Hours*3600 - JobStatistics.TotalTime.Minutes*60);
+	//	JobStatistics.ScheduledDowntime := 0;
 //	JobStatistics.UnscheduledDowntime := 0;
 //	JobStatistics.Uptime := 0;
 //	JobStatistics.NominalProductionTime := 0;
 //	JobStatistics.GoodProductionTime := 0;
 //	JobStatistics.ScheduledDowntimeRate := 0;
 //	JobStatistics.UnscheduledDowntimeRate := 0;
-	//	JobStatistics.NominalProductionTimeRate := 0;
+//	JobStatistics.NominalProductionTimeRate := 0;
 	
 	JobStatistics.TotalPieces := exLink.PieceCounter;
 	JobStatistics.RejectPieces := exLink.RejectCounter;

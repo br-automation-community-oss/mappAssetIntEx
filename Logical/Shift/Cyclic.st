@@ -1,6 +1,8 @@
 PROGRAM _CYCLIC
 	AssetIntPar.NominalProductionRate := gNominalProductionRate;
-	AssetIntPar.AdditionalData := gAdditionalData;	 
+	AssetIntPar.AdditionalData := gAdditionalData;
+	AssetIntPar.CurrentUser := gCurrentUser;
+	AssetIntPar.Job := gJobName;
       
 	MpAssetIntCore_0.PieceCounter := gPieceCounter;
 	MpAssetIntCore_0.RejectCounter := gRejectCounter;

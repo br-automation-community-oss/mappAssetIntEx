@@ -251,7 +251,11 @@ END_FUNCTION
 FUNCTION CalcStatsJob : USINT
 	VAR_INPUT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		TimeStartup : DATE_AND_TIME;
 		Parameter : exAssetIntParType; (*Log Level*)
 		JobStatistics : REFERENCE TO exAssetIntJobStatisticsType; (*Log message*)
+	END_VAR
+	VAR
+		DTGetTime_0 : DTGetTime;
 	END_VAR
 END_FUNCTION

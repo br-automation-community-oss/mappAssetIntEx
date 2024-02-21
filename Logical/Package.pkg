@@ -9,5 +9,6 @@
     <Object Type="Program" Language="IEC">Shift</Object>
     <Object Type="Program" Language="IEC">AssetTest</Object>
     <Object Type="Package">exAssetInt</Object>
+    <Object Type="DataObject" Language="Vc" Description="1600x1200">Visu_Resized</Object>
   </Objects>
 </Package>

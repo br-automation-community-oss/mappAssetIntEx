@@ -1,6 +1,6 @@
 /* Automation Studio generated header file */
 /* Do not edit ! */
-/* MpAssetInt 5.24.1 */
+/* MpAssetInt 5.23.1 */
 
 #ifndef _MPASSETINT_
 #define _MPASSETINT_
@@ -9,7 +9,7 @@ extern "C"
 {
 #endif
 #ifndef _MpAssetInt_VERSION
-#define _MpAssetInt_VERSION 5.24.1
+#define _MpAssetInt_VERSION 5.23.1
 #endif
 
 #include <bur/plctypes.h>

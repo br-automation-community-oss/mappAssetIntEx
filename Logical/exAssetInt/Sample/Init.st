@@ -22,9 +22,5 @@ PROGRAM _INIT
 	IF (AssetIntConfig.Shifts[0].TotalTime.Start = AssetIntConfig.Shifts[2].TotalTime.End) THEN
 		AssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 1);
 	END_IF
-	
-	exAssetIntPar.CurrentUser := 'TylerDurden';
-	exAssetIntPar.Job := 'Cookies';
-	exAssetIntPar.NominalProductionRate := 1000;
-	 
+		 
 END_PROGRAM

@@ -8,6 +8,10 @@ TYPE
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
+		TimeTotalStart : DATE_AND_TIME;
+		TimeJobStart : DATE_AND_TIME;
+		DTGetTime_0 : DTGetTime;
+		StatsRefresh : TON_10ms;
 		CreateDirStructure : CreateDirStructure;
 		CreateMemory : CreateMemory;
 		ReadEventData : ReadEventData;
@@ -34,6 +38,7 @@ TYPE
 		Memory : UDINT;
 		PieceCounter : UDINT;
 		RejectCounter : UDINT;
+		JobStart : DATE_AND_TIME;
 	END_STRUCT;
 END_TYPE
 
@@ -91,6 +96,7 @@ END_TYPE
 TYPE
 	exAssetIntCoreConfigType : 	STRUCT 
 		EnableFileBackup : BOOL := FALSE; (*Enable file backup functionality or not.*)
+		CalculationTimeBase : UDINT := 1000; (*Cycle time for calculating the current production rate*)
 		Shifts : ARRAY[0..4]OF exAssetIntShiftParType := [5(0)]; (*Shift schedule in detailed*)
 		Export : exAssetIntExportType; (*Configuration for export*)
 	END_STRUCT;

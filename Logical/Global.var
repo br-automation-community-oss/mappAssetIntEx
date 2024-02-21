@@ -11,4 +11,6 @@ VAR
 	gPieceCounter : UDINT;
 	gRejectCounter : UDINT;
 	gRejectCounterRatio : UDINT := 10;
+	gCurrentUser : STRING[50];
+	gJobName : STRING[20];
 END_VAR
