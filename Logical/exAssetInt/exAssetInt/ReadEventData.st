@@ -242,8 +242,8 @@ FUNCTION InsertEventData
 			y := y / 2 + 1;
 		END_IF
 
-		// New range is lower OR higher than current
-		IF sort > 0 THEN
+		// New range is lower or higher than current
+		IF sort <> 16#FFFFFFFF THEN
 			x := x + y;
 			IF x > RecordCount THEN
 				x := UINT_TO_INT(RecordCount);
@@ -256,7 +256,7 @@ FUNCTION InsertEventData
 		END_IF
 	END_WHILE;	
 
-	// New entry is this, next OR previous
+	// New entry is this, next or previous
 	RecordMemory ACCESS Memory + x*SIZEOF(RecordData);
 	sort := DiffDT(RecordData.TimeEnd, RecordMemory.TimeEnd);
 

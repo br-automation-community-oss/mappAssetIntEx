@@ -80,7 +80,7 @@ FUNCTION_BLOCK WriteEventData
 	VAR_INPUT
 		Enable : BOOL;
 		Device : STRING[50];
-		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		Logger : UDINT; (*Address of log buffer*)
 		RecordData : exComInternalRecordType;
 		RecordNext : UINT;
 	END_VAR
@@ -93,6 +93,7 @@ FUNCTION_BLOCK WriteEventData
 		FileClose_0 : FileClose;
 		FileWrite_0 : FileWrite;
 		DTGetTime_0 : DTGetTime;
+		RecordDataIntern : exComInternalRecordType;
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
 		Ident : UDINT;

@@ -48,7 +48,7 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.CreateMemory.Logger := ADR(Internal.Logger);
 			Internal.CreateMemory();
 		
-			// Folder structure successful created
+			// Memory structure successful created
 			IF Internal.CreateMemory.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created internal memory', ADR(Internal.Logger));
 				Internal.Memory := Internal.CreateMemory.Memory;
@@ -61,8 +61,8 @@ FUNCTION_BLOCK exAssetIntCore
 				StatusID := CreateErrorState(Internal.CreateMemory.Status, ADR(Internal));
 			END_IF
 		
-			// -------------------------------------------------------------------------------------------
-			// Read event data
+		// -------------------------------------------------------------------------------------------
+		// Read event data
 		exASSETINT_STATE_INIT_4:
 			Internal.ReadEventData.Enable := TRUE;
 			Internal.ReadEventData.Device := DeviceName;
@@ -71,10 +71,11 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.ReadEventData.Logger := ADR(Internal.Logger);
 			Internal.ReadEventData();
 		
-			// Folder structure successful created
+			// Read events successful
 			IF Internal.ReadEventData.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'reading stored events', ADR(Internal.Logger));
 				Internal.RecordCount := Internal.ReadEventData.RecordCount;
+				Internal.RecordNext := Internal.ReadEventData.RecordCount;
 				Internal.State := exASSETINT_STATE_IDLE;
 			
 				// Error

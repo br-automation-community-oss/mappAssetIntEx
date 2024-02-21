@@ -15,10 +15,12 @@ FUNCTION_BLOCK WriteEventData
 		// Wait for enable
 		0:
 			IF Enable THEN
+				RecordDataIntern := RecordData;
+				
 				// Get date and time
 				DTGetTime_0(enable := TRUE);
-				RecordData.TimeStart := DTGetTime_0.DT1;
-				RecordData.TimeEnd := DTGetTime_0.DT1;								  
+				RecordDataIntern.TimeStart := DTGetTime_0.DT1;
+				RecordDataIntern.TimeEnd := DTGetTime_0.DT1;								  
 
 				// Reset function blocks
 				FileOpen_0.enable := FALSE;
@@ -104,8 +106,8 @@ FUNCTION_BLOCK WriteEventData
 		3:			
 			FileWrite_0.enable := TRUE;
 			FileWrite_0.ident := Ident;
-			FileWrite_0.pSrc := ADR(RecordData);
-			FileWrite_0.len := SIZEOF(RecordData);
+			FileWrite_0.pSrc := ADR(RecordDataIntern);
+			FileWrite_0.len := SIZEOF(RecordDataIntern);
 			FileWrite_0();
 	
 			// File created successful
