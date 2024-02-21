@@ -1,0 +1,13 @@
+VAR RETAIN
+	exAssetIntLink : exAssetIntLinkType;
+END_VAR
+(*Asset core*)
+VAR
+	exAssetIntCore_0 : exAssetIntCore;
+	exAssetIntPar : exAssetIntParType;
+END_VAR
+(*Asset configuration*)
+VAR
+	exAssetIntConfig_0 : exAssetIntCoreConfig;
+	AssetIntConfig : exAssetIntCoreConfigType;
+END_VAR

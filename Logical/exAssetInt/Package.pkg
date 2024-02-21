@@ -3,6 +3,6 @@
 <Package xmlns="http://br-automation.co.at/AS/Package">
   <Objects>
     <Object Type="Library" Language="IEC">exAssetInt</Object>
-    <Object Type="Program" Language="IEC">AssetTest</Object>
+    <Object Type="Program" Language="IEC">Sample</Object>
   </Objects>
 </Package>

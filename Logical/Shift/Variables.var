@@ -3,20 +3,10 @@ VAR
 	AssetIntPar : MpAssetIntParType;
 	MpAssetIntCoreConfig_0 : MpAssetIntCoreConfig;
 	AssetIntConfig : MpAssetIntCoreConfigType;
-	Shift : ARRAY[0..3] OF SHIFT_typ;
 	MpAssetIntShiftListUI_0 : MpAssetIntShiftListUI;
 	MpAssetIntJobListUI_0 : MpAssetIntJobListUI;
 	JobListUIConnect : MpAssetIntJobListUIConnectType;
 	ShiftListUIConnect : MpAssetIntShiftListUIConnectType;
 	SizeShift : UDINT;
-	TmpCount : UINT;
-END_VAR
-VAR RETAIN
-	TmpAdditionalData : STRING[255];
-END_VAR
-VAR
 	ActShiftName : STRING[20];
-END_VAR
-VAR RETAIN
-	ShiftCount : USINT;
 END_VAR

@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------------------------------
-// Write event data
+// Write configuration
 // -------------------------------------------------------------------------------------------
-FUNCTION_BLOCK WriteEventData
+FUNCTION_BLOCK WriteConfiguration
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
 	IF NOT Enable THEN
@@ -15,13 +15,6 @@ FUNCTION_BLOCK WriteEventData
 		// Wait for enable
 		0:
 			IF Enable THEN
-				RecordDataIntern := RecordData;
-				
-				// Get date and time
-				DTGetTime_0(enable := TRUE);
-				RecordDataIntern.TimeStart := DTGetTime_0.DT1;
-				RecordDataIntern.TimeEnd := DTGetTime_0.DT1;								  
-
 				// Reset function blocks
 				FileOpen_0.enable := FALSE;
 				FileOpen_0();
@@ -31,17 +24,9 @@ FUNCTION_BLOCK WriteEventData
 				FileWrite_0();
 				FileClose_0.enable := FALSE;
 				FileClose_0();
-
-				// Generate file name
-				TmpStr1 := 'events';
-				brsitoa(RecordNext/100, ADR(TmpStr2));
-				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
-				brsstrcat(ADR(TmpStr1), ADR('/event'));
-				brsitoa(RecordNext, ADR(TmpStr2));
-				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
-				
+			
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'creating new event', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'save configuration', Logger);
 				State := 1;
 			END_IF
 
@@ -50,26 +35,24 @@ FUNCTION_BLOCK WriteEventData
 		1:
 			FileOpen_0.enable := TRUE;
 			FileOpen_0.pDevice := ADR(Device);
-			FileOpen_0.pFile := ADR(TmpStr1);
+			FileOpen_0.pFile := ADR('exAssetConfig');
 			FileOpen_0.mode := fiREAD_WRITE;
 			FileOpen_0();
 	
 			// File opened successful
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr2 := 'opened event file ';
-				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, 'opened configuration file', Logger);
 				
 				// Remember ident go to next step
 				Ident := FileOpen_0.ident;
 				State := 3;
 
-				// Create event file when it does not exist
+			// Create event file when it does not exist
 			ELSIF FileOpen_0.status = fiERR_FILE_NOT_FOUND  THEN
 				State := 2;
 
-				// Error
+			// Error
 			ELSIF FileOpen_0.status <> ERR_FUB_BUSY THEN
 				Status := FileOpen_0.status;
 				State := 0;
@@ -80,15 +63,13 @@ FUNCTION_BLOCK WriteEventData
 		2:
 			FileCreate_0.enable := TRUE;
 			FileCreate_0.pDevice := ADR(Device);
-			FileCreate_0.pFile := ADR(TmpStr1);
+			FileCreate_0.pFile := ADR('exAssetConfig');
 			FileCreate_0();
 	
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr2 := 'created event file ';
-				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, 'created configuration file', Logger);
 				
 				// Remember ident go to next step
 				Ident := FileCreate_0.ident;
@@ -106,21 +87,19 @@ FUNCTION_BLOCK WriteEventData
 		3:			
 			FileWrite_0.enable := TRUE;
 			FileWrite_0.ident := Ident;
-			FileWrite_0.pSrc := ADR(RecordDataIntern);
-			FileWrite_0.len := SIZEOF(RecordDataIntern);
+			FileWrite_0.pSrc := ADR(Configuration);
+			FileWrite_0.len := SIZEOF(Configuration);
 			FileWrite_0();
 	
 			// File created successful
 			IF FileWrite_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr2 := 'wrote event file ';
-				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, 'wrote configuration file', Logger);
 				
 				// Go to next step
 				State := 4;
 				
-				// Error
+			// Error
 			ELSIF FileWrite_0.status <> ERR_FUB_BUSY THEN
 				Status := FileWrite_0.status;
 				State := 0;
@@ -136,9 +115,7 @@ FUNCTION_BLOCK WriteEventData
 			// File created successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr2 := 'closed event file ';
-				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, 'closed configuration file', Logger);
 				
 				// Finish up
 				Status := ERR_OK;

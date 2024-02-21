@@ -8,10 +8,13 @@
     <File Description="Exported constants">Constants.var</File>
     <File Description="Exported functions and function blocks">exAssetInt.fun</File>
     <File>exAssetIntCore.st</File>
+    <File>exAssetIntCoreConfig.st</File>
     <File>CreateDirStructure.st</File>
     <File>CreateMemory.st</File>
     <File>WriteEventData.st</File>
     <File>ReadEventData.st</File>
+    <File>ReadConfiguration.st</File>
+    <File>WriteConfiguration.st</File>
     <File>Common.st</File>
   </Files>
 </Library>

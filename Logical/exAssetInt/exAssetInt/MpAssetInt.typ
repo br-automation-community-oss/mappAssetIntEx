@@ -1,20 +1,18 @@
 (*Internal type*)
 
 TYPE
-	exComInternalDataType : 	STRUCT 
+	exCoreInternalDataType : 	STRUCT 
 		RecordCount : UINT;
 		RecordNext : UINT;
-		RecordData : exComInternalRecordType;
+		RecordData : exCoreInternalRecordType;
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		Memory : UDINT;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
-		CreateDirStructure : CreateDirStructure;
-		CreateMemory : CreateMemory;
 		ReadEventData : ReadEventData;
 		WriteEventData : WriteEventData;
 	END_STRUCT;
-	exComInternalRecordType : 	STRUCT 
+	exCoreInternalRecordType : 	STRUCT 
 		TimeStart : DATE_AND_TIME;
 		TimeEnd : DATE_AND_TIME;
 		NominalProductionRate : REAL;
@@ -23,6 +21,21 @@ TYPE
 		Job : STRING[20];
 		CurrentUser : STRING[50];
 		AdditionalData : STRING[EVENT_ADDITONAL_DATA_LEN];
+	END_STRUCT;
+	exConfigInternalDataType : 	STRUCT 
+		RecordData : exCoreInternalRecordType;
+		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
+		State : exAssetIntStateEnum;
+		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
+		CreateDirStructure : CreateDirStructure;
+		CreateMemory : CreateMemory;
+		ReadConfiguration : ReadConfiguration;
+		WriteConfiguration : WriteConfiguration;
+	END_STRUCT;
+	exAssetIntLinkType : 	STRUCT 
+		Memory : UDINT;
+		PieceCounter : UDINT;
+		RejectCounter : UDINT;
 	END_STRUCT;
 END_TYPE
 
@@ -39,6 +52,8 @@ TYPE
 		exASSETINT_STATE_STORE_EVENT_1 := 21, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_STORE_EVENT_2 := 22, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_STORE_EVENT_3 := 23, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_SAVE_CFG := 25, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_LOAD_CFG := 26, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_ERROR := 50, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_NONE := 99 (*Status: Idle, Waiting for command*)
 		);
@@ -48,6 +63,10 @@ TYPE
 		exASSETINT_LOG_ERROR := 1, (*Status: Idle, Waiting for command*)
 		exASSETINT_LOG_INFO := 2, (*Status: Idle, Waiting for command*)
 		exASSETINT_LOG_ALL := 3 (*Status: Idle, Waiting for command*)
+		);
+	exAssetIntBufferOffsets : 
+		(
+		exASSETINT_BUFFER_MEMORY := 0
 		);
 	exAssetIntUIStatusEnum : 
 		(
@@ -74,12 +93,6 @@ END_TYPE
 TYPE
 	exAssetIntCoreConfigType : 	STRUCT 
 		EnableFileBackup : BOOL := FALSE; (*Enable file backup functionality or not.*)
-		RecordingSizeJobStatistics : UDINT := 20; (*Size of the jobstatistics-Buffer [kBytes]. *)
-		RecordingSizeShiftStatistics : UDINT := 20; (*Size of the shiftstatistics-Buffer [kBytes]. *)
-		RecordingSizeTimeline : UDINT := 20; (*Size of the timeline-Buffer [kBytes]. *)
-		CalculationTimeBase : UDINT := 1000; (*Calculation cycle time for current production rate [ms]*)
-		RecordMemory : exAssetIntMemoryEnum := (0); (*Memory where logging is stored while active. This value is only read when the coexonent is initialized (Disabled -> Enabled).*)
-		SaveInterval : REAL := 60.0; (*Defines how often buffer is saved for data protection*)
 		Shifts : ARRAY[0..4]OF exAssetIntShiftParType := [5(0)]; (*Shift schedule in detailed*)
 		Export : exAssetIntExportType; (*Configuration for export*)
 	END_STRUCT;

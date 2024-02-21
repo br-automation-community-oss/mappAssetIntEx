@@ -4,12 +4,14 @@
   <TaskClass Name="Cyclic#1" />
   <TaskClass Name="Cyclic#2" />
   <TaskClass Name="Cyclic#3" />
-  <TaskClass Name="Cyclic#4" />
+  <TaskClass Name="Cyclic#4">
+    <Task Name="AssetTest" Source="AssetTest.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+  </TaskClass>
   <TaskClass Name="Cyclic#5" />
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
-    <Task Name="AssetTest" Source="exAssetInt.AssetTest.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Sample" Source="exAssetInt.Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Shift" Source="Shift.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <VcDataObjects>
@@ -75,5 +77,6 @@
     <LibraryObject Name="vcresman" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="asieccon" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="ashw" Source="" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="standard" Source="Libraries.standard.lby" Memory="UserROM" Language="binary" Debugging="true" />
   </Libraries>
 </SwConfiguration>

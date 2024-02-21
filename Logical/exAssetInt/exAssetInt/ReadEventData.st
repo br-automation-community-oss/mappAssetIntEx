@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// Create folder structure
+// Read event data
 // -------------------------------------------------------------------------------------------
 FUNCTION_BLOCK ReadEventData
 	// -------------------------------------------------------------------------------------------
@@ -172,7 +172,7 @@ FUNCTION_BLOCK ReadEventData
 			FileRead_0.len := FileOpen_0.filelen;
 			FileRead_0();
 	
-			// File created successful
+			// File read successful
 			IF FileRead_0.status = ERR_OK THEN
 				// Generate log entry
 				TmpStr1 := 'read event file ';
@@ -199,7 +199,7 @@ FUNCTION_BLOCK ReadEventData
 			FileClose_0.ident := FileOpen_0.ident;
 			FileClose_0();
 	
-			// File created successful
+			// File closed successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
 				TmpStr1 := 'closed event file ';

@@ -1,12 +1,3 @@
-
-// -------------------------------------------------------------------------------------------
-// Go to error state
-FUNCTION CreateErrorState
-	Internal.StateError := Internal.State;
-	Internal.State := exASSETINT_STATE_ERROR;
-	CreateErrorState := ErrorID;
-END_FUNCTION
-
 // -------------------------------------------------------------------------------------------
 // Handle log buffer
 FUNCTION CreateLoggerEntry

@@ -1,7 +1,0 @@
-VAR
-	exAssetIntCore_0 : exAssetIntCore;
-	exAssetIntPar : exAssetIntParType;
-END_VAR
-VAR RETAIN
-	exBuffer : ARRAY[0..500] OF USINT;
-END_VAR
