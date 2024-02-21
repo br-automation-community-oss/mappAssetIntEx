@@ -16,6 +16,7 @@ PROGRAM _CYCLIC
 	exAssetIntCore_0.exLink := ADR(exAssetIntLink);
 	//exAssetIntCore_0.Enable := TRUE;
 	exAssetIntCore_0.Parameters := ADR(exAssetIntPar);
+	exAssetIntCore_0.Configuration := ADR(AssetIntConfig);
 	exAssetIntCore_0.DeviceName := ADR('ARsim');
 	exAssetIntCore_0.PieceCounter := gPieceCounter;
 	exAssetIntCore_0.RejectCounter := gRejectCounter;

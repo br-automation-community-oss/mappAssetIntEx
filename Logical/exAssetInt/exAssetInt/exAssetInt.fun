@@ -5,6 +5,7 @@ FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset 
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
 		Parameters : REFERENCE TO exAssetIntParType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
+		Configuration : REFERENCE TO exAssetIntCoreConfigType;
 		Update : BOOL; (*Updates the parameters (mapp standard interface)*) (* *) (*#PAR#; *)
 		Downtime : exAssetIntDowntimeEnum; (*The machine is in down time*) (* *) (*#CMD#; *)
 		DowntimeReason : REFERENCE TO STRING[50]; (*The reason for down time*) (* *) (*#CMD#; *)
@@ -244,5 +245,13 @@ FUNCTION CreateConfigErrorState : DINT
 	VAR_INPUT
 		ErrorID : DINT;
 		Internal : REFERENCE TO exConfigInternalDataType;
+	END_VAR
+END_FUNCTION
+
+FUNCTION CalcStatsJob : USINT
+	VAR_INPUT
+		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		Parameter : exAssetIntParType; (*Log Level*)
+		JobStatistics : REFERENCE TO exAssetIntJobStatisticsType; (*Log message*)
 	END_VAR
 END_FUNCTION

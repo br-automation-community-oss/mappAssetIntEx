@@ -6,9 +6,10 @@ TYPE
 		RecordNext : UINT;
 		RecordData : exCoreInternalRecordType;
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
-		Memory : UDINT;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
+		CreateDirStructure : CreateDirStructure;
+		CreateMemory : CreateMemory;
 		ReadEventData : ReadEventData;
 		WriteEventData : WriteEventData;
 	END_STRUCT;
@@ -23,12 +24,9 @@ TYPE
 		AdditionalData : STRING[EVENT_ADDITONAL_DATA_LEN];
 	END_STRUCT;
 	exConfigInternalDataType : 	STRUCT 
-		RecordData : exCoreInternalRecordType;
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
-		CreateDirStructure : CreateDirStructure;
-		CreateMemory : CreateMemory;
 		ReadConfiguration : ReadConfiguration;
 		WriteConfiguration : WriteConfiguration;
 	END_STRUCT;

@@ -15,6 +15,7 @@
     <File>ReadEventData.st</File>
     <File>ReadConfiguration.st</File>
     <File>WriteConfiguration.st</File>
-    <File>Common.st</File>
+    <File>CalcStats.st</File>
+    <File>Common1.st</File>
   </Files>
 </Library>
