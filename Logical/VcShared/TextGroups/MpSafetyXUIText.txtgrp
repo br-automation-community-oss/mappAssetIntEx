@@ -4,7 +4,7 @@
   <Property Name="Description" Value="General page text for MpSafetyX"/>
   <Property Name="Index" Value="2121"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="181187" Value="Refresh"/>
     <Text ID="181188" Value="Senden"/>
     <Text ID="181189" Value="Bestätigung"/>

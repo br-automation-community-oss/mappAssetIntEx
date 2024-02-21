@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Message box headertext for UserUI"/>
   <Property Name="Index" Value="2005"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="133711" Value="Fehler"/>
     <Text ID="133712" Value="Anwender Löschen"/>
     <Text ID="133713" Value=""/>

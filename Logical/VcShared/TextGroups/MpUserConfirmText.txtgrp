@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Message box text for MpUserUI"/>
   <Property Name="Index" Value="2117"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="182916" Value="Importieren: Bestätigen der Gruppe"/>
     <Text ID="182917" Value="Name"/>
     <Text ID="182918" Value="Anzahl an Konflikten"/>

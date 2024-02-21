@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Textgroup for MpTweetCoreUI errors"/>
   <Property Name="Index" Value="2126"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="195423" Value="Angegebener Empfänger ist ungültig"/>
     <Text ID="195424" Value="Es ist eine ungültige Anfrage empfangen worden."/>
     <Text ID="195425" Value="Es wird gerade die Verbindung zum Server aufgebaut"/>

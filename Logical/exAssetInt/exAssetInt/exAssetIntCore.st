@@ -19,7 +19,9 @@ FUNCTION_BLOCK exAssetIntCore
 				// Remember start time
 				Internal.DTGetTime_0(enable := TRUE);
 				Internal.TimeTotalStart := Internal.DTGetTime_0.DT1;
-				Internal.TimeJobStart := Internal.DTGetTime_0.DT1;
+				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN
+					exLink.JobStart := Internal.DTGetTime_0.DT1;
+				END_IF
 				
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
 				Internal.State := exASSETINT_STATE_INIT_2;
@@ -106,15 +108,18 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.StatsRefresh();
 	
 				// Create job and shift statistics
-				CalcStatsJob(exLink, Internal.TimeJobStart, Parameters, ADR(Info.JobStatistics));
+				CalcStatsJob(exLink, Downtime, Parameters, ADR(Info.JobStatistics));
 			END_IF
 					
-			// Handle nominal production rate change
-			IF Parameters.NominalProductionRate <> Internal.RecordData.NominalProductionRate THEN
-				Internal.RecordData.NominalProductionRate := Parameters.NominalProductionRate;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'new nominal production rate', ADR(Internal.Logger));
-
-				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+			// Handle downtime changes
+			IF Downtime <> Internal.DowntimeOld THEN
+				// Remember downtime start
+				IF Downtime > exASSETINT_NO_DOWNTIME THEN
+					Internal.DTGetTime_0(enable := TRUE);
+					exLink.DowntimeStart := Internal.DTGetTime_0.DT1;
+				END_IF
+				
+				Internal.DowntimeOld := Downtime;
 			END_IF
 
 			// Handle update command
@@ -130,22 +135,6 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.State := exASSETINT_STATE_STORE_EVENT_1;
 				END_IF
 			END_IF
-
-//			// Handle user change
-//			IF Parameters.CurrentUser <> Internal.RecordData.CurrentUser THEN
-//				Internal.RecordData.CurrentUser := Parameters.CurrentUser;
-//				CreateLoggerEntry(exASSETINT_LOG_INFO, 'new user name', ADR(Internal.Logger));
-//				
-//				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
-//			END_IF
-//
-//			// Handle information change
-//			IF Parameters.AdditionalData <> Internal.RecordData.AdditionalData THEN
-//				Internal.RecordData.AdditionalData := Parameters.AdditionalData;
-//				CreateLoggerEntry(exASSETINT_LOG_INFO, 'new additional information', ADR(Internal.Logger));
-//				
-//				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
-//			END_IF
 
 		// -------------------------------------------------------------------------------------------
 		// Store new event

@@ -10,7 +10,9 @@ PROGRAM _CYCLIC
     MpAssetIntCore_0.MpLink := ADR(gAssetIntCore);
     MpAssetIntCore_0.Enable := 1;
     MpAssetIntCore_0.Parameters := ADR(AssetIntPar);
-    MpAssetIntCore_0.DeviceName := ADR('ARsim');
+	MpAssetIntCore_0.DeviceName := ADR('ARsim');
+	MpAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
+	MpAssetIntCore_0.Downtime := UDINT_TO_UINT(gDowntime);
     MpAssetIntCore_0();
        
 	AssetIntConfig.Export.DecimalMark := ',';

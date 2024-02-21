@@ -41,7 +41,7 @@
       <Property Name="MinChars" Value="None"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="169052" Value="{ErrorText}"/>
     <Text ID="169053" Value="Möchten sie wirklich den Benutzer {SelectedUser} löschen?"/>
     <Text ID="169054" Value="Wollen Sie wirklich den Benutzer {SelectedUser} sperren? Der Benutzer wird nicht mehr gestattet sich anzumelden!"/>

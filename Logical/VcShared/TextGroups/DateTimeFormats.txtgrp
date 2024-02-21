@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Formats for Date and Time"/>
   <Property Name="Index" Value="0"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="206831" Value="%d.%m.%Y %H:%M:%S"/>
     <Text ID="206832" Value="%H:%M:%S"/>
     <Text ID="206833" Value="%H:%M"/>

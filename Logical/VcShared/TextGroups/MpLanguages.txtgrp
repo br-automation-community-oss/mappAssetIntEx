@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Texts for languages"/>
   <Property Name="Index" Value="997"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="109759" Value="Deutsch"/>
     <Text ID="109760" Value="Englisch"/>
   </TextLayer>

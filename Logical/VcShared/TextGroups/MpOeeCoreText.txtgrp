@@ -4,7 +4,7 @@
   <Property Name="Description" Value="General page text for OeeCore"/>
   <Property Name="Index" Value="1179"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="125478" Value="MpOeeCore / RunStatistics"/>
     <Text ID="125479" Value="Stückzähler"/>
     <Text ID="125481" Value="Grund der Ausfallzeit"/>

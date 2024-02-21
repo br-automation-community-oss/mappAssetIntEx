@@ -29,7 +29,7 @@
       <Property Name="MinChars" Value="None"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="168933" Value="Anwendername"/>
     <Text ID="168934" Value="Benutzer"/>
     <Text ID="168935" Value="Passwort"/>

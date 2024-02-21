@@ -165,7 +165,7 @@
       <Property Name="MinChars" Value="None"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="133696" Value="{Point0}"/>
     <Text ID="133697" Value="{Point1}"/>
     <Text ID="133698" Value="{Point2}"/>

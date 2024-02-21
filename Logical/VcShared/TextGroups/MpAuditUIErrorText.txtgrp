@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Error texts for MpAuditUI"/>
   <Property Name="Index" Value="2120"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="182991" Value="Textquelle wurde nicht gefunden"/>
     <Text ID="188286" Value="Beim Schreiben der Exportdatei ist ein Fehler aufgetreten"/>
     <Text ID="188288" Value="Fehler beim Lesen der Ereignisse"/>

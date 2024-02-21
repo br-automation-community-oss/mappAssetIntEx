@@ -15,7 +15,7 @@
       <Property Name="TextIndexOffset" Value="0"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="177104" Value="{LoginError}"/>
   </TextLayer>
   <IndexMap>

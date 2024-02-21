@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Texts for the bypass state of an alarm - index 0-1 long, index 10-11 short"/>
   <Property Name="Index" Value="153"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="206811" Value="Gebrückt"/>
     <Text ID="206812" Value="Entbrückt"/>
     <Text ID="206813" Value="nB"/>

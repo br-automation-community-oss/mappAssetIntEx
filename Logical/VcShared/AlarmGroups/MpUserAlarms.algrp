@@ -56,7 +56,7 @@
         <Property Name="Persistent" Value="True"/>
       </TextSnippet>
     </TextSnippets>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="2449" Value="Benutzer aufgrund von max. fehlgeschlagene Logins gesperrt {AddInfo0}"/>
       <Text ID="2448" Value=""/>
     </TextLayer>

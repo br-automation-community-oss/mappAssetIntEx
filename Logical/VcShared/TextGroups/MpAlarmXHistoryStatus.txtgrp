@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Status text for AlarmXUIs"/>
   <Property Name="Index" Value="1211"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="143159" Value="IDLE"/>
     <Text ID="143160" Value="FEHLER"/>
   </TextLayer>

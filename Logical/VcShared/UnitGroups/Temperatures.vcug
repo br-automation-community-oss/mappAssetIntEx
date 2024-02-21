@@ -12,7 +12,7 @@
     <Property Name="Description" Value=""/>
     <Property Name="Index" Value="65535"/>
     <TextSnippets/>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="255" Value="Fahrenheit"/>
       <Text ID="256" Value="°F"/>
       <Text ID="257" Value="Celsius"/>

@@ -4,7 +4,7 @@
   <Property Name="Description" Value="UserUI Yes/No label"/>
   <Property Name="Index" Value="1012"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="109722" Value="NEIN"/>
     <Text ID="109723" Value="JA"/>
   </TextLayer>

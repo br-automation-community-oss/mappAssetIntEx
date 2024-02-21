@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Text for generated program type  drop down menu"/>
   <Property Name="Index" Value="2008"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="147437" Value="Datei"/>
     <Text ID="147438" Value="Daten Objekt"/>
     <Text ID="147439" Value="Programm"/>

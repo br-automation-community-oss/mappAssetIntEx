@@ -124,7 +124,7 @@
   </Alarms>
   <TextGroup>
     <TextSnippets/>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="10" Value="Summenquittierung"/>
       <Text ID="11" Value="Summenbrückung"/>
       <Text ID="12" Value="System initialisiert"/>

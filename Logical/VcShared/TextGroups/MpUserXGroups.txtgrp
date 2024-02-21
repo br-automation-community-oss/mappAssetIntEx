@@ -85,7 +85,7 @@
       <Property Name="MinChars" Value="None"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="168991" Value="{RoleNameList_0}"/>
     <Text ID="168992" Value="{RoleNameList_1}"/>
     <Text ID="168993" Value="{RoleNameList_2}"/>

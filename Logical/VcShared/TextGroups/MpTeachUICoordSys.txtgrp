@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Text for coordinate system drop down menu"/>
   <Property Name="Index" Value="2002"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="133752" Value="ACS"/>
     <Text ID="133753" Value="MCS"/>
   </TextLayer>

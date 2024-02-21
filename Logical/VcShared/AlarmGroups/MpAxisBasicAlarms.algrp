@@ -371,7 +371,7 @@
         <Property Name="Persistent" Value="True"/>
       </TextSnippet>
     </TextSnippets>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="1059" Value="Eingabeparameter ungültig {AddInfo2}"/>
       <Text ID="1060" Value="Motor Übertemperatur {AddInfo3}"/>
       <Text ID="1061" Value="Schleppfehler {AddInfo4}"/>

@@ -12,7 +12,7 @@
     <Property Name="Description" Value=""/>
     <Property Name="Index" Value="65535"/>
     <TextSnippets/>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="259" Value="Watt"/>
       <Text ID="260" Value="W"/>
       <Text ID="261" Value="Kilowatt"/>

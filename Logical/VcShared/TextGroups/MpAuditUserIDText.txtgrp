@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Examples for using the UserID replacement text for MpAudit"/>
   <Property Name="Index" Value="1161"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="132576" Value="MpAudit 100"/>
     <Text ID="132577" Value="MpAudit 101"/>
     <Text ID="132578" Value="MpAudit 102"/>

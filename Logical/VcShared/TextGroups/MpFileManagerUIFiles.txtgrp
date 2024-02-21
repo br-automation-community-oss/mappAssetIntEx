@@ -85,7 +85,7 @@
       <Property Name="MinChars" Value="None"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="96057" Value="{Name0}"/>
     <Text ID="96058" Value="{Name1}"/>
     <Text ID="96060" Value="{Name3}"/>

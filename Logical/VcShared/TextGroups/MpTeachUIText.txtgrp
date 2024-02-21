@@ -4,7 +4,7 @@
   <Property Name="Description" Value="General page text for MpTeach"/>
   <Property Name="Index" Value="2000"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="133785" Value="Generieren Sie eine Programm oder Punktliste"/>
     <Text ID="133786" Value="Name"/>
     <Text ID="133787" Value="Mode"/>

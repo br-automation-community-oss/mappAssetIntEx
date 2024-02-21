@@ -4,7 +4,7 @@
   <Property Name="Description" Value="OeeTimeLineUI production state text"/>
   <Property Name="Index" Value="1184"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="121491" Value="INAKTIV"/>
     <Text ID="121492" Value="BETRIEBSZEIT"/>
     <Text ID="121493" Value="GEPLANTE AUSFALLZEIT"/>

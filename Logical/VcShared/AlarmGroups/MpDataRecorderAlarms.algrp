@@ -77,7 +77,7 @@
         <Property Name="Persistent" Value="True"/>
       </TextSnippet>
     </TextSnippets>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="501" Value="Aufzeichnung beendet {AddInfo0}"/>
       <Text ID="502" Value="Aufzeichnung wurde unterbrochen durch einen Fehler in MpDataRecorder {AddInfo1}"/>
       <Text ID="500" Value=""/>

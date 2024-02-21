@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Status text for RecipeUI"/>
   <Property Name="Index" Value="1018"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="110776" Value="IDLE"/>
     <Text ID="110777" Value="LADEN"/>
     <Text ID="110778" Value="SPEICHERN"/>

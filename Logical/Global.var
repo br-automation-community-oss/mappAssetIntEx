@@ -2,15 +2,13 @@ VAR
 	gShift : ARRAY[0..3] OF SHIFT_typ := [(Start:=(Hour:=6,Minutes:=0),End:=(Hour:=14,Minutes:=0)),(Start:=(Hour:=14,Minutes:=0),End:=(Hour:=22,Minutes:=0)),(Start:=(Hour:=22,Minutes:=0),End:=(Hour:=6,Minutes:=0)),(0)];
 	gAutoCount : BOOL;
 	gAutoCountCycle : UINT := 1000;
-END_VAR
-VAR RETAIN
-	gAdditionalData : STRING[255];
-END_VAR
-VAR
+	gAdditionalData : STRING[255] := 'Choclate';
 	gNominalProductionRate : REAL := 3600;
 	gPieceCounter : UDINT;
 	gRejectCounter : UDINT;
 	gRejectCounterRatio : UDINT := 10;
-	gCurrentUser : STRING[50];
-	gJobName : STRING[20];
+	gCurrentUser : STRING[50] := 'TylerDurden';
+	gJobName : STRING[20] := 'Cookies';
+	gDowntimeReason : STRING[50] := 'Winder is broken';
+	gDowntime : exAssetIntDowntimeEnum;
 END_VAR

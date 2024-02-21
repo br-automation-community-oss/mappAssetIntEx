@@ -4,7 +4,7 @@
   <Property Name="Description" Value="PackMLBasicUI command names"/>
   <Property Name="Index" Value="1171"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="117683" Value="Start"/>
     <Text ID="117684" Value="Stop"/>
     <Text ID="117685" Value="Hold"/>

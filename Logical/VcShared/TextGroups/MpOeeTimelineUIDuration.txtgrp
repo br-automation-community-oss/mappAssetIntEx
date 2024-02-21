@@ -221,7 +221,7 @@
       <Property Name="UnitText" Value="Abbreviation"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="121500" Value="{TimelineHour1}:{TimelineMinute1}:{TimelineSecond1}"/>
     <Text ID="121501" Value="{TimelineHour2}:{TimelineMinute2}:{TimelineSecond2}"/>
     <Text ID="121502" Value="{TimelineHour3}:{TimelineMinute3}:{TimelineSecond3}"/>

@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Error text for TeachUI"/>
   <Property Name="Index" Value="2006"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="146207" Value="Fehler beim erzeugen der Punktliste"/>
     <Text ID="146208" Value="Fehler beim erzeugen des Programs"/>
     <Text ID="146209" Value="UngültigerDateispeicher"/>

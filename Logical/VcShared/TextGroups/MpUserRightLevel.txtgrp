@@ -4,7 +4,7 @@
   <Property Name="Description" Value="UserUI RightsLevel labels"/>
   <Property Name="Index" Value="1014"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="109734" Value="Kein Zugriff"/>
     <Text ID="109735" Value="Nur Lesen"/>
     <Text ID="109736" Value="Nur Start / Stop"/>

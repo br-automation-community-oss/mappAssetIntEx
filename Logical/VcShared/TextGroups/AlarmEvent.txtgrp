@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Texts for the event of an alarm - index  0-1 long, index 10-11 short"/>
   <Property Name="Index" Value="151"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="206815" Value="Gekommen"/>
     <Text ID="206816" Value="Gegangen"/>
     <Text ID="206817" Value="Gebrückt"/>

@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Textgroup for MpTweetCoreUI pages"/>
   <Property Name="Index" Value="2125"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="195433" Value="MpTweetCoreUI"/>
     <Text ID="195434" Value="Neuer Empfänger"/>
     <Text ID="195435" Value="Name"/>

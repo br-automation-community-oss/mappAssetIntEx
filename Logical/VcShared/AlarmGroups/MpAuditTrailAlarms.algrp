@@ -77,7 +77,7 @@
         <Property Name="Persistent" Value="True"/>
       </TextSnippet>
     </TextSnippets>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="2372" Value="Archive steht zum export bereit {AddInfo0}"/>
       <Text ID="2373" Value="Max. Anzahl von Archiven erreicht - Archivierung beendet {AddInfo1}"/>
       <Text ID="2104" Value=""/>

@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Status text for TeachUI"/>
   <Property Name="Index" Value="2003"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="138033" Value="IDLE"/>
     <Text ID="138034" Value="WARTE KONFIRMATION"/>
     <Text ID="138035" Value="ANFÜGEN"/>

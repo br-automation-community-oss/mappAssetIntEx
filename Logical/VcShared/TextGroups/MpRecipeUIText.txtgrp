@@ -45,7 +45,7 @@
       <Property Name="UnitText" Value="Abbreviation"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="111535" Value="Laden"/>
     <Text ID="111536" Value="Speichern"/>
     <Text ID="111537" Value="Kopieren"/>

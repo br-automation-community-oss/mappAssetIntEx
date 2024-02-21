@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Textgroup for converting code numbers to string"/>
   <Property Name="Index" Value="1213"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="141894" Value="&gt;"/>
     <Text ID="141895" Value="&gt;"/>
     <Text ID="141896" Value="&gt;"/>

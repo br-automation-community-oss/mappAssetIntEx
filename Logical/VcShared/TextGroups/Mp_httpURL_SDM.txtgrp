@@ -4,7 +4,7 @@
   <Property Name="Description" Value="URL Texts for SDM"/>
   <Property Name="Index" Value="999"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="94284" Value="http://localhost/sdm-vga/vga.cgi"/>
   </TextLayer>
   <IndexMap>

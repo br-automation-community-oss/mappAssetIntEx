@@ -4,7 +4,7 @@
   <Property Name="Description" Value="PackMLBasicUI state machine state names"/>
   <Property Name="Index" Value="1173"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="117696" Value="Undefined"/>
     <Text ID="117697" Value="Clearing"/>
     <Text ID="117698" Value="Stopped"/>

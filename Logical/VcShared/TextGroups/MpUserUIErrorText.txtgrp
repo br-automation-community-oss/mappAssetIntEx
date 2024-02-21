@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Error text for UserXUI"/>
   <Property Name="Index" Value="2111"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="169021" Value="Passwort nicht korrekt"/>
     <Text ID="169022" Value="Benutzer existiert nicht"/>
     <Text ID="169023" Value="Benutzer mit selbem Namen bereits registriert"/>

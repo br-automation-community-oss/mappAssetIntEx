@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Textgroup for MpTweet types"/>
   <Property Name="Index" Value="2128"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="199148" Value="nur Empfangen"/>
     <Text ID="199149" Value="Bestätigen der Nachricht"/>
   </TextLayer>

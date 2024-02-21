@@ -245,7 +245,7 @@
       <Property Name="MinChars" Value="None"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="128958" Value="{NameIndex_0} {UnitIndex_0}"/>
     <Text ID="128959" Value="{DescriptIndex_0}"/>
     <Text ID="135359" Value="{NameIndex_1} {UnitIndex_1}"/>

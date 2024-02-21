@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Text for move type drop down menu"/>
   <Property Name="Index" Value="2004"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="133756" Value="Direkt"/>
     <Text ID="133757" Value="Linear"/>
   </TextLayer>

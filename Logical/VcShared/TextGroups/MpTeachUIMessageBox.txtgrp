@@ -15,7 +15,7 @@
       <Property Name="TextIndexOffset" Value="0"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="146221" Value="{Error}"/>
     <Text ID="146222" Value="Möchten sie den Punkt wirklich löschen?"/>
   </TextLayer>

@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Message box text for FileManagerUI"/>
   <Property Name="Index" Value="1003"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="97155" Value=""/>
     <Text ID="97156" Value="Datei löschen"/>
     <Text ID="97157" Value="Datei überschreiben"/>

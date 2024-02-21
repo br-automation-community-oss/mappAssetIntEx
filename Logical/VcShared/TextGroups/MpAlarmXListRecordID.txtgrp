@@ -65,7 +65,7 @@
       <Property Name="UnitText" Value="Abbreviation"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="183054" Value="{RecordID_0} "/>
     <Text ID="183055" Value="{RecordID_1}"/>
     <Text ID="183056" Value="{RecordID_2}"/>

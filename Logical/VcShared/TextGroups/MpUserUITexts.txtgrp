@@ -39,7 +39,7 @@
       <Property Name="TextIndexOffset" Value="0"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="109739" Value="Anwendername"/>
     <Text ID="109740" Value="Benutzer"/>
     <Text ID="109741" Value="Passwort"/>

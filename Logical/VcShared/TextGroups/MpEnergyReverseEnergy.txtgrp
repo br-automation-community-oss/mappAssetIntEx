@@ -245,7 +245,7 @@
       <Property Name="UnitText" Value="Abbreviation"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="150515" Value="{RevEnergyIdx_0}"/>
     <Text ID="150516" Value="{RevEnergyIdx_1}"/>
     <Text ID="150517" Value="{RevEnergyIdx_2}"/>

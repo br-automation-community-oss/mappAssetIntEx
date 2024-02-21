@@ -98,7 +98,7 @@
         <Property Name="Persistent" Value="True"/>
       </TextSnippet>
     </TextSnippets>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="2425" Value="Übergang in diesem Zustand nicht möglich {AddInfo0}"/>
       <Text ID="2426" Value="Modeübergang nicht möglich {AddInfo1}"/>
       <Text ID="2427" Value="Ungültige Konfiguration {AddInfo2}"/>

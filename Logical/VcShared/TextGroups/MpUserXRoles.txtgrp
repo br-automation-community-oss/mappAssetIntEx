@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Role Text for MpUserX"/>
   <Property Name="Index" Value="2113"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="175556" Value="Rolle 1"/>
     <Text ID="175557" Value="Rolle 2"/>
     <Text ID="175558" Value="Rolle 3"/>

@@ -4,7 +4,7 @@
   <Property Name="Description" Value="General page text for OeeTimeLineUI"/>
   <Property Name="Index" Value="1181"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="121805" Value="MpOeeTimelineUI"/>
     <Text ID="121806" Value="Anfangszeit"/>
     <Text ID="121807" Value="Schicht ID"/>

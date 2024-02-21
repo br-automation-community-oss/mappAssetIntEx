@@ -4,7 +4,7 @@
   <Property Name="Description" Value="MpRecipe Audit Texts"/>
   <Property Name="Index" Value="2129"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="206683" Value="Laden des Rezepts wurde beendet"/>
     <Text ID="206684" Value="Rezept [%file] des Speichermediums [%dev] wurde gespeichert"/>
     <Text ID="206685" Value="Rezept wurde umbenannt"/>

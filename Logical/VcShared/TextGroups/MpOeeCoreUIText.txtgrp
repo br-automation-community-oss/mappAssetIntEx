@@ -4,7 +4,7 @@
   <Property Name="Description" Value="General page text for OeeCoreUI"/>
   <Property Name="Index" Value="1186"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="156645" Value="MpOeeCoreUI"/>
     <Text ID="156646" Value="Stücke"/>
     <Text ID="156647" Value="OEE"/>

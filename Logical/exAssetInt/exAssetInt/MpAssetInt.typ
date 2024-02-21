@@ -9,7 +9,7 @@ TYPE
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		TimeTotalStart : DATE_AND_TIME;
-		TimeJobStart : DATE_AND_TIME;
+		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
 		StatsRefresh : TON_10ms;
 		CreateDirStructure : CreateDirStructure;
@@ -39,6 +39,7 @@ TYPE
 		PieceCounter : UDINT;
 		RejectCounter : UDINT;
 		JobStart : DATE_AND_TIME;
+		DowntimeStart : DATE_AND_TIME;
 	END_STRUCT;
 END_TYPE
 

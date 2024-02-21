@@ -1481,7 +1481,7 @@
       <Property Name="UnitText" Value="Abbreviation"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="118577" Value="Gesamtzeit: {IdleHrs0}h {IdleMin0}m {IdleSec0}s"/>
     <Text ID="118578" Value="Aktuelle Zeit:      {IdleHrs1}h {IdleMin1}m {IdleSec1}s"/>
     <Text ID="118607" Value="{IdlePer}%"/>

@@ -245,7 +245,7 @@
       <Property Name="UnitText" Value="Abbreviation"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="140509" Value="{CodeIndex_0}"/>
     <Text ID="140510" Value="{CodeIndex_1}"/>
     <Text ID="140511" Value="{CodeIndex_2}"/>

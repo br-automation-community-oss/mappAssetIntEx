@@ -4,7 +4,7 @@
   <Property Name="Description" Value=""/>
   <Property Name="Index" Value="998"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="112759" Value=""/>
     <Text ID="112760" Value="MpAlarm"/>
     <Text ID="112761" Value="MpAudit"/>

@@ -4,7 +4,7 @@
   <Property Name="Description" Value="Message box text for RecipeUI"/>
   <Property Name="Index" Value="1020"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="110801" Value="Wollen Sie wirklich laden?"/>
     <Text ID="110802" Value="Wollen Sie wirklich speichern?"/>
     <Text ID="110803" Value="Wollen Sie wirklich anlegen?"/>

@@ -161,7 +161,7 @@
       <Property Name="UnitText" Value="Abbreviation"/>
     </TextSnippet>
   </TextSnippets>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="156658" Value="{ScheduledDowntime_Hours}:{ScheduledDowntime_Minutes}:{ScheduledDowntime_Seconds}"/>
     <Text ID="156659" Value="{TotalTime_Hours}:{TotalTime_Minutes}:{TotalTime_Seconds}"/>
     <Text ID="156660" Value="{UnscheduledDowntime_Hours}:{UnscheduledDowntime_Minutes}:{UnscheduledDowntime_Seconds}"/>

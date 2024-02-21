@@ -98,7 +98,7 @@
         <Property Name="Persistent" Value="True"/>
       </TextSnippet>
     </TextSnippets>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="481" Value="Vorgang fehlgeschlagen. Speichermedium (z.B. USB Stick) wurde nicht gefunden {AddInfo0}"/>
       <Text ID="482" Value="Vorgang fehlgeschlagen. Datei/Ordner existiert bereits (kein Überschreiben) {AddInfo1}"/>
       <Text ID="483" Value="Genereller Fehler im Dateisystem (soll alle anderen Ausnahmen decken) {AddInfo2}"/>

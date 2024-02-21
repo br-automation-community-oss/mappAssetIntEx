@@ -4,7 +4,7 @@
   <Property Name="Description" Value="UserXUI UserRight labels"/>
   <Property Name="Index" Value="2109"/>
   <TextSnippets/>
-  <TextLayer LanguageId="de">
+  <TextLayer LanguageId="en-US">
     <Text ID="169006" Value="UserRight#1"/>
     <Text ID="169007" Value="UserRight#2"/>
     <Text ID="169008" Value="UserRight#3"/>

@@ -128,7 +128,7 @@
         <Property Name="Persistent" Value="True"/>
       </TextSnippet>
     </TextSnippets>
-    <TextLayer LanguageId="de">
+    <TextLayer LanguageId="en-US">
       <Text ID="411" Value="Rezept speichern fehlgeschlagen {AddInfo0}"/>
       <Text ID="412" Value="Rezept speichern teilweise fehlgeschlagen. Teile des Rezepts konnten geschrieben werden {AddInfo1}"/>
       <Text ID="413" Value="Rezept laden fehlgeschlagen {AddInfo2}"/>
