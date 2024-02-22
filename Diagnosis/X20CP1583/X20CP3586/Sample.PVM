@@ -6,254 +6,254 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                         EnableFileBackup                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
                                   Shifts             exAssetIntShiftParType[0..4]    0 "                                                               *"    1   24    5    0    0    0         
                                Shifts[0]                   exAssetIntShiftParType    0 "                                                               *"    2   24    1    0    0    0         
-                                    Name                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
+                                    Name                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                                TotalTime                   exAssetIntTimeSlotType    0 "                                                               *"    3   24    1    0    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                        ScheduledDowntime    exAssetIntScheduledDowntimeType[0..9]    0 "                                                               *"    3   24   10    0    0    0         
                     ScheduledDowntime[0]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[1]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0        h
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[2]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[3]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[4]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[5]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[6]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[7]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[8]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[9]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                Shifts[1]                   exAssetIntShiftParType    0 "                                                               *"    2   24    1    0    0    0         
-                                    Name                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
+                                    Name                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                                TotalTime                   exAssetIntTimeSlotType    0 "                                                               *"    3   24    1    0    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                        ScheduledDowntime    exAssetIntScheduledDowntimeType[0..9]    0 "                                                               *"    3   24   10    0    0    0         
                     ScheduledDowntime[0]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[1]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[2]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[3]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[4]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[5]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[6]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[7]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[8]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[9]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                Shifts[2]                   exAssetIntShiftParType    0 "                                                               *"    2   24    1    0    0    0         
-                                    Name                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
+                                    Name                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                                TotalTime                   exAssetIntTimeSlotType    0 "                                                               *"    3   24    1    0    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                        ScheduledDowntime    exAssetIntScheduledDowntimeType[0..9]    0 "                                                               *"    3   24   10    0    0    0         
                     ScheduledDowntime[0]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[1]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0        h
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[2]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0        h
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[3]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[4]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[5]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0        h
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[6]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[7]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[8]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0        h
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[9]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0        h
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                Shifts[3]                   exAssetIntShiftParType    0 "                                                               *"    2   24    1    0    0    0         
-                                    Name                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
+                                    Name                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                                TotalTime                   exAssetIntTimeSlotType    0 "                                                               *"    3   24    1    0    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                        ScheduledDowntime    exAssetIntScheduledDowntimeType[0..9]    0 "                                                               *"    3   24   10    0    0    0         
                     ScheduledDowntime[0]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[1]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[2]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[3]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[4]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[5]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[6]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[7]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[8]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[9]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                Shifts[4]                   exAssetIntShiftParType    0 "                                                               *"    2   24    1    0    0    0         
-                                    Name                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
+                                    Name                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                                TotalTime                   exAssetIntTimeSlotType    0 "                                                               *"    3   24    1    0    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    4   16    1    1    0    0         
                        ScheduledDowntime    exAssetIntScheduledDowntimeType[0..9]    0 "                                                               *"    3   24   10    0    0    0         
                     ScheduledDowntime[0]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0        h
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[1]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[2]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[3]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[4]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[5]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[6]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[7]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[8]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0        h
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                     ScheduledDowntime[9]          exAssetIntScheduledDowntimeType    0 "                                                               *"    4   24    1    0    0    0         
-                                  Reason                               STRING[50]    0 "                                                               *"    5    9   51    1    0    0         
+                                  Reason                               STRING[50]    0 "                                                              ''"    5    9   51    1    0    0         
                                    Start                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                                      End                              TIME_OF_DAY    0 "                                                               *"    5   16    1    1    0    0         
                           exAssetIntLink                       exAssetIntLinkType    0 "                                                               *"    0   24    1    0    1    1         
-                                  Memory                                    UDINT    0 "                                                        99920168"    1    7    1   10    0    0         
-                            PieceCounter                                    UDINT    0 "                                                             177"    1    7    1   10    0    0         
-                           RejectCounter                                    UDINT    0 "                                                              17"    1    7    1   10    0    0         
-                                JobStart                            DATE_AND_TIME    0 "                                          DT#2024-02-22-10:32:37"    1   11    1    1    0    0         
+                                  Memory                                    UDINT    0 "                                                       224771904"    1    7    1   10    0    0         
+                            PieceCounter                                    UDINT    0 "                                                              25"    1    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               3"    1    7    1   10    0    0         
+                                JobStart                            DATE_AND_TIME    0 "                                          DT#2024-02-22-11:20:40"    1   11    1    1    0    0         
                            DowntimeStart                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    1   11    1    1    0    0         
                         exAssetIntCore_0                           exAssetIntCore    0 "                                                               *"    0   24    1    0    1    1         
-                                  exLink                                    UDINT    0 "                                                        97477856"    1    7    1   10    0    0         
+                                  exLink                                    UDINT    0 "                                                        97638304"    1    7    1   10    0    0         
                                   Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
                               ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                              Parameters                                    UDINT    0 "                                                        97461840"    1    7    1   10    0    0         
-                           Configuration                                    UDINT    0 "                                                        97474468"    1    7    1   10    0    0         
+                              Parameters                                    UDINT    0 "                                                        97622264"    1    7    1   10    0    0         
+                           Configuration                                    UDINT    0 "                                                        97634892"    1    7    1   10    0    0         
                                   Update                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                 Downtime                                     DINT    0 "                                                               0"    1    4    1   10    0    0 e,0,exAS
 
-                          DowntimeReason                                    UDINT    0 "                                                        94795774"    1    7    1   10    0    0         
-                            PieceCounter                                    UDINT    0 "                                                             178"    1    7    1   10    0    0         
-                           RejectCounter                                    UDINT    0 "                                                              17"    1    7    1   10    0    0         
-                              DeviceName                                    UDINT    0 "                                                        97446692"    1    7    1   10    0    0         
+                          DowntimeReason                                    UDINT    0 "                                                        95903390"    1    7    1   10    0    0         
+                            PieceCounter                                    UDINT    0 "                                                             102"    1    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                              10"    1    7    1   10    0    0         
+                              DeviceName                                    UDINT    0 "                                                        97607108"    1    7    1   10    0    0         
                                   Export                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                    Reset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                   Active                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
@@ -270,7 +270,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                               ExportDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                     Info                   exAssetIntCoreInfoType    0 "                                                               *"    1   24    1    0    0    1         
                            JobStatistics              exAssetIntJobStatisticsType    0 "                                                               *"    2   24    1    0    0    0         
-                                 JobName                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
+                                 JobName                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                                TotalTime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
@@ -303,30 +303,30 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                             RejectPieces                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                             BadPieceRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                    CurrentProductionRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
-                             CurrentUser                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          AdditionalData                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
+                             CurrentUser                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          AdditionalData                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
                                 Internal                   exCoreInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
                                   Logger                       STRING[100][0..50]    0 "                                                               *"    2    9  101    0    0    1         
-                               Logger[0]                              STRING[100]    0 "                          '22.02 10:32:37.560 created new event'"    3    9  101    1    0    0         
-                               Logger[1]                              STRING[100]    0 "          '22.02 10:32:37.560 closed event file events0/event21'"    3    9  101    1    0    0         
-                               Logger[2]                              STRING[100]    0 "           '22.02 10:32:37.540 wrote event file events0/event21'"    3    9  101    1    0    0         
-                               Logger[3]                              STRING[100]    0 "         '22.02 10:32:37.520 created event file events0/event21'"    3    9  101    1    0    0         
-                               Logger[4]                              STRING[100]    0 "                         '22.02 10:32:37.480 creating new event'"    3    9  101    1    0    0         
-                               Logger[5]                              STRING[100]    0 "                            '22.02 10:32:37.470 new job started'"    3    9  101    1    0    0         
-                               Logger[6]                              STRING[100]    0 "                          '22.02 10:32:02.250 created new event'"    3    9  101    1    0    0         
-                               Logger[7]                              STRING[100]    0 "          '22.02 10:32:02.250 closed event file events0/event20'"    3    9  101    1    0    0         
-                               Logger[8]                              STRING[100]    0 "           '22.02 10:32:02.230 wrote event file events0/event20'"    3    9  101    1    0    0         
-                               Logger[9]                              STRING[100]    0 "         '22.02 10:32:02.210 created event file events0/event20'"    3    9  101    1    0    0         
-                              Logger[10]                              STRING[100]    0 "                         '22.02 10:32:02.170 creating new event'"    3    9  101    1    0    0         
-                              Logger[11]                              STRING[100]    0 "                            '22.02 10:32:02.160 new job started'"    3    9  101    1    0    0         
-                              Logger[12]                              STRING[100]    0 "                      '22.02 10:25:01.510 reading stored events'"    3    9  101    1    0    0         
-                              Logger[13]                              STRING[100]    0 "                        '22.02 10:25:01.510 closed dir events10'"    3    9  101    1    0    0         
-                              Logger[14]                              STRING[100]    0 "              '22.02 10:25:01.490 finished reading dir events10'"    3    9  101    1    0    0         
-                              Logger[15]                              STRING[100]    0 "                        '22.02 10:25:01.430 opened dir events10'"    3    9  101    1    0    0         
-                              Logger[16]                              STRING[100]    0 "                         '22.02 10:18:14.504 closed dir events5'"    3    9  101    1    0    0         
-                              Logger[17]                              STRING[100]    0 "               '22.02 10:18:14.484 finished reading dir events5'"    3    9  101    1    0    0         
-                              Logger[18]                              STRING[100]    0 "                         '22.02 10:18:14.424 opened dir events5'"    3    9  101    1    0    0         
-                              Logger[19]                              STRING[100]    0 "                         '22.02 10:18:14.404 closed dir events4'"    3    9  101    1    0    0         
+                               Logger[0]                              STRING[100]    0 "                          '22.02 11:20:40.479 created new event'"    3    9  101    1    0    0         
+                               Logger[1]                              STRING[100]    0 "          '22.02 11:20:40.479 closed event file events0/event26'"    3    9  101    1    0    0         
+                               Logger[2]                              STRING[100]    0 "           '22.02 11:20:40.459 wrote event file events0/event26'"    3    9  101    1    0    0         
+                               Logger[3]                              STRING[100]    0 "         '22.02 11:20:40.439 created event file events0/event26'"    3    9  101    1    0    0         
+                               Logger[4]                              STRING[100]    0 "                         '22.02 11:20:40.399 creating new event'"    3    9  101    1    0    0         
+                               Logger[5]                              STRING[100]    0 "                            '22.02 11:20:40.389 new job started'"    3    9  101    1    0    0         
+                               Logger[6]                              STRING[100]    0 "                          '22.02 11:19:34.539 created new event'"    3    9  101    1    0    0         
+                               Logger[7]                              STRING[100]    0 "          '22.02 11:19:34.539 closed event file events0/event25'"    3    9  101    1    0    0         
+                               Logger[8]                              STRING[100]    0 "           '22.02 11:19:34.519 wrote event file events0/event25'"    3    9  101    1    0    0         
+                               Logger[9]                              STRING[100]    0 "         '22.02 11:19:34.499 created event file events0/event25'"    3    9  101    1    0    0         
+                              Logger[10]                              STRING[100]    0 "                         '22.02 11:19:34.459 creating new event'"    3    9  101    1    0    0         
+                              Logger[11]                              STRING[100]    0 "                            '22.02 11:19:34.449 new job started'"    3    9  101    1    0    0         
+                              Logger[12]                              STRING[100]    0 "                      '22.02 11:18:53.149 reading stored events'"    3    9  101    1    0    0         
+                              Logger[13]                              STRING[100]    0 "                        '22.02 11:18:53.149 closed dir events10'"    3    9  101    1    0    0         
+                              Logger[14]                              STRING[100]    0 "              '22.02 11:18:53.129 finished reading dir events10'"    3    9  101    1    0    0         
+                              Logger[15]                              STRING[100]    0 "                        '22.02 11:18:53.069 opened dir events10'"    3    9  101    1    0    0         
+                              Logger[16]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
+                              Logger[17]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
+                              Logger[18]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
+                              Logger[19]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
                               Logger[20]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
                               Logger[21]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
                               Logger[22]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         

@@ -22,6 +22,8 @@ FUNCTION_BLOCK exAssetIntCore
 				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN
 					Internal.RecordData.Job := Parameters.Job;
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
+					Internal.PieceCounterOld := PieceCounter;
+					Internal.RejectCounterOld := RejectCounter;
 				END_IF
 				
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
@@ -103,8 +105,21 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.StatsRefresh();
 			IF Internal.StatsRefresh.Q THEN
 				// Transfer data, reset timer
-				exLink.PieceCounter := PieceCounter;
-				exLink.RejectCounter := RejectCounter;
+				IF Internal.PieceCounterOld <= PieceCounter THEN					
+					exLink.PieceCounter := exLink.PieceCounter + (PieceCounter - Internal.PieceCounterOld);
+				ELSE
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'piece count overflow', ADR(Internal.Logger));
+					exLink.PieceCounter := exLink.PieceCounter + (16#FFFFFFFF - Internal.PieceCounterOld + PieceCounter);
+				END_IF
+				IF Internal.RejectCounterOld <= RejectCounter THEN					
+					exLink.RejectCounter := exLink.RejectCounter + (RejectCounter - Internal.RejectCounterOld);
+				ELSE
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'reject count overflow', ADR(Internal.Logger));
+					exLink.RejectCounter := exLink.RejectCounter + (16#FFFFFFFF - Internal.RejectCounterOld + RejectCounter);
+				END_IF
+				Internal.PieceCounterOld := PieceCounter;
+				Internal.RejectCounterOld := RejectCounter;
+
 				Internal.StatsRefresh.IN := FALSE;
 				Internal.StatsRefresh();
 	
@@ -131,9 +146,11 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.RecordData.Job := Parameters.Job;
 					UpdateDone := FALSE;
 					
-					// Reset and remember stats
+					// Reset stats and remember new start time
 					Internal.DTGetTime_0(enable := TRUE);
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
+					exLink.PieceCounter := 0;
+					exLink.RejectCounter := 0;
 					Internal.State := exASSETINT_STATE_STORE_EVENT_1;
 				END_IF
 			END_IF
