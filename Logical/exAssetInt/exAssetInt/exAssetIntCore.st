@@ -20,6 +20,7 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.DTGetTime_0(enable := TRUE);
 				Internal.TimeTotalStart := Internal.DTGetTime_0.DT1;
 				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN
+					Internal.RecordData.Job := Parameters.Job;
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
 				END_IF
 				
@@ -126,8 +127,9 @@ FUNCTION_BLOCK exAssetIntCore
 			IF EDGEPOS(Update) THEN
 				IF Parameters.Job <> Internal.RecordData.Job THEN
 					CreateLoggerEntry(exASSETINT_LOG_INFO, 'new job started', ADR(Internal.Logger));
-					// Transfer data
+					// Transfer data, set flags
 					Internal.RecordData.Job := Parameters.Job;
+					UpdateDone := FALSE;
 					
 					// Reset and remember stats
 					Internal.DTGetTime_0(enable := TRUE);
@@ -159,6 +161,7 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.RecordCount := Internal.RecordCount + 1;
 				END_IF
 				
+				UpdateDone := TRUE;
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
 			

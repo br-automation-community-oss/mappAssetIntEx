@@ -9,5 +9,6 @@
     <Object Type="Program" Language="IEC">AssetTest</Object>
     <Object Type="Package">exAssetInt</Object>
     <Object Type="DataObject" Language="Vc" Description="1600x1200">TestVis</Object>
+    <Object Type="DataObject" Language="Vc" Description="1920x1080">Vis</Object>
   </Objects>
 </Package>

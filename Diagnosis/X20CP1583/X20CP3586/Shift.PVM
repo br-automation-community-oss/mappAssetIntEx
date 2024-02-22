@@ -2,10 +2,10 @@ WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=Shift
 Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 Index=40 ASCIIString=0
                                     name                                     type force                                                            value level type len format place expand specs
                   MpAssetIntCoreConfig_0                     MpAssetIntCoreConfig    0 "                                                               *"    0   24    1    0    1    1         
-                                  MpLink                                    UDINT    0 "                                                        94582764"    1    7    1   10    0    0         
+                                  MpLink                                    UDINT    0 "                                                        96013276"    1    7    1   10    0    0         
                                   Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
                               ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                           Configuration                                    UDINT    0 "                                                        96391704"    1    7    1   10    0    0         
+                           Configuration                                    UDINT    0 "                                                        97811320"    1    7    1   10    0    0         
                                     Load                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                     Save                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                   Active                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
@@ -22,20 +22,20 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
 
                                     Code                                     UINT    0 "                                                               0"    4    6    1   10    0    0         
                                 Internal                    MpComInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
-                                 pObject                                    UDINT    0 "                                                       104526728"    2    7    1   10    0    0         
+                                 pObject                                    UDINT    0 "                                                       104207240"    2    7    1   10    0    0         
                                    State                                    UDINT    0 "                                                               1"    2    7    1   10    0    0         
                         MpAssetIntCore_0                           MpAssetIntCore    0 "                                                               *"    0   24    1    0    1    1         
-                                  MpLink                                    UDINT    0 "                                                        94582764"    1    7    1   10    0    0         
+                                  MpLink                                    UDINT    0 "                                                        96013276"    1    7    1   10    0    0         
                                   Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
                               ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                              Parameters                                    UDINT    0 "                                                        96391332"    1    7    1   10    0    0         
+                              Parameters                                    UDINT    0 "                                                        97810948"    1    7    1   10    0    0         
                                   Update                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                 Downtime                                     DINT    0 "                                                               0"    1    4    1   10    0    0 e,0,mpAS
 
-                          DowntimeReason                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
-                            PieceCounter                                    UDINT    0 "                                                              10"    1    7    1   10    0    0         
-                           RejectCounter                                    UDINT    0 "                                                               5"    1    7    1   10    0    0         
-                              DeviceName                                    UDINT    0 "                                                        96385683"    1    7    1   10    0    0         
+                          DowntimeReason                                    UDINT    0 "                                                        96013142"    1    7    1   10    0    0         
+                            PieceCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                              DeviceName                                    UDINT    0 "                                                        97805495"    1    7    1   10    0    0         
                                   Export                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                    Reset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                   Active                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
@@ -44,15 +44,15 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                               UpdateDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                              CommandBusy                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                              CommandDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                   CurrentProductionRate                                     REAL    0 "                                                        4.957096"    1    8    1   10    0    0         
+                   CurrentProductionRate                                     REAL    0 "                                                             0.0"    1    8    1   10    0    0         
                    ScheduledDowntimeRate                                     REAL    0 "                                                             0.0"    1    8    1   10    0    0         
-                 UnscheduledDowntimeRate                                     REAL    0 "                                                     0.175055623"    1    8    1   10    0    0         
-               NominalProductionTimeRate                                     REAL    0 "                                                   0.00137700723"    1    8    1   10    0    0         
-                            BadPieceRate                                     REAL    0 "                                                             0.5"    1    8    1   10    0    0         
-                              ExportDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                 UnscheduledDowntimeRate                                     REAL    0 "                                                             0.0"    1    8    1   10    0    0         
+               NominalProductionTimeRate                                     REAL    0 "                                                               *"    1    8    1   10    0    0         
+                            BadPieceRate                                     REAL    0 "                                                               *"    1    8    1   10    0    0         
+                              ExportDone                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
                                     Info                   MpAssetIntCoreInfoType    0 "                                                               *"    1   24    1    0    0    1         
                          ShiftStatistics            MpAssetIntShiftStatisticsType    0 "                                                               *"    2   24    1    0    0    1         
-                               ShiftName                               STRING[20]    0 "                                                        'Shift0'"    3    9   21    1    0    0         
+                               ShiftName                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                                TotalTime                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
@@ -77,20 +77,20 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
-                   ScheduledDowntimeRate                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 UnscheduledDowntimeRate                                     REAL    0 "                                                     0.193434522"    3    8    1   10    0    0         
-               NominalProductionTimeRate                                     REAL    0 "                                                    0.0168895125"    3    8    1   10    0    0         
-                            TargetPieces                                    UDINT    0 "                                                            7176"    3    7    1   10    0    0         
-                             TotalPieces                                    UDINT    0 "                                                             111"    3    7    1   10    0    0         
-                              GoodPieces                                    UDINT    0 "                                                             106"    3    7    1   10    0    0         
-                            RejectPieces                                    UDINT    0 "                                                               5"    3    7    1   10    0    0         
-                            BadPieceRate                                     REAL    0 "                                                    0.0450450443"    3    8    1   10    0    0         
-                   CurrentProductionRate                                     REAL    0 "                                                         60.8003"    3    8    1   10    0    0         
+                   ScheduledDowntimeRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 UnscheduledDowntimeRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionTimeRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                            TargetPieces                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                             TotalPieces                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                              GoodPieces                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                            RejectPieces                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                            BadPieceRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                   CurrentProductionRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                              CurrentUser                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
                           AdditionalData                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                     IdealProductionRate                                     REAL    0 "                                                    0.0168895125"    3    8    1   10    0    0         
+                     IdealProductionRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                            JobStatistics              MpAssetIntJobStatisticsType    0 "                                                               *"    2   24    1    0    0    0         
-                                 JobName                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
+                                 JobName                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                                TotalTime                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
@@ -123,8 +123,8 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                             RejectPieces                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                             BadPieceRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                    CurrentProductionRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
-                             CurrentUser                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          AdditionalData                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
+                             CurrentUser                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          AdditionalData                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
                                     Diag                       MpAssetIntDiagType    0 "                                                               *"    2   24    1    0    0    0         
                                 StatusID                   MpAssetIntStatusIDType    0 "                                                               *"    3   24    1    0    0    0         
                                       ID                                     DINT    0 "                                                               *"    4    4    1   10    0    0 e,0,mpAS
@@ -133,17 +133,17 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
 
                                     Code                                     UINT    0 "                                                               *"    4    6    1   10    0    0         
                                 Internal                    MpComInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
-                                 pObject                                    UDINT    0 "                                                       104516816"    2    7    1   10    0    0         
-                                   State                                    UDINT    0 "                                                               3"    2    7    1   10    0    0         
+                                 pObject                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                                   State                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
                              AssetIntPar                        MpAssetIntParType    0 "                                                               *"    0   24    1    0    1    1         
-                   NominalProductionRate                                     REAL    0 "                                                          3600.0"    1    8    1   10    0    0         
-                                     Job                               STRING[20]    0 "                                                          'Job1'"    1    9   21    1    0    0         
+                   NominalProductionRate                                     REAL    0 "                                                               *"    1    8    1   10    0    0         
+                                     Job                               STRING[20]    0 "                                                              ''"    1    9   21    1    0    0         
                              CurrentUser                               STRING[50]    0 "                                                              ''"    1    9   51    1    0    0         
-                          AdditionalData                              STRING[255]    0 "                                                               *"    1    9  256    1    0    0         
-                        JobListUIConnect           MpAssetIntJobListUIConnectType    0 "                                                               *"    0   24    1    0    1    0         
+                          AdditionalData                              STRING[255]    0 "                                                              ''"    1    9  256    1    0    0         
+                        JobListUIConnect           MpAssetIntJobListUIConnectType    0 "                                                               *"    0   24    1    0    1    1         
                                   Status                                     DINT    0 "                                                               *"    1    4    1   10    0    0 e,0,mpAS
 
-                                  Output            MpAssetIntUIJobListOutputType    0 "                                                               *"    1   24    1    0    0    0         
+                                  Output            MpAssetIntUIJobListOutputType    0 "                                                               *"    1   24    1    0    0    1         
                             JobStartTime                     DATE_AND_TIME[0..19]    0 "                                                               *"    2   11   20    0    0    0         
                          JobStartTime[0]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                          JobStartTime[1]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
@@ -186,7 +186,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                           JobEndTime[17]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                           JobEndTime[18]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                           JobEndTime[19]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
-                                 JobName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    0         
+                                 JobName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    1         
                               JobName[0]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                               JobName[1]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                               JobName[2]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
@@ -207,7 +207,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                              JobName[17]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                              JobName[18]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                              JobName[19]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                             CurrentUser                        STRING[50][0..19]    0 "                                                               *"    2    9   51    0    0    0         
+                             CurrentUser                        STRING[50][0..19]    0 "                                                               *"    2    9   51    0    0    1         
                           CurrentUser[0]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
                           CurrentUser[1]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
                           CurrentUser[2]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
@@ -228,7 +228,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                          CurrentUser[17]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
                          CurrentUser[18]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
                          CurrentUser[19]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          AdditionalData                       STRING[255][0..19]    0 "                                                               *"    2    9  256    0    0    0         
+                          AdditionalData                       STRING[255][0..19]    0 "                                                               *"    2    9  256    0    0    1         
                        AdditionalData[0]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
                        AdditionalData[1]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
                        AdditionalData[2]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
@@ -909,7 +909,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                                   StepUp                                     BOOL    0 "                                                               *"    2    1    1    2    0    0         
                                 StepDown                                     BOOL    0 "                                                               *"    2    1    1    2    0    0         
                                 PageDown                                     BOOL    0 "                                                               *"    2    1    1    2    0    0         
-                               ShiftName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    0         
+                               ShiftName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    1         
                             ShiftName[0]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                             ShiftName[1]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                             ShiftName[2]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
@@ -958,10 +958,10 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                                   Enable                                     BOOL    0 "                                                               *"    4    1    1    2    0    0         
                                 DateTime                            DATE_AND_TIME    0 "                                                               *"    4   11    1    1    0    0         
                       DefaultLayerStatus                                     UINT    0 "                                                               *"    2    6    1   10    0    0         
-                      ShiftListUIConnect         MpAssetIntShiftListUIConnectType    0 "                                                               *"    0   24    1    0    1    0         
+                      ShiftListUIConnect         MpAssetIntShiftListUIConnectType    0 "                                                               *"    0   24    1    0    1    1         
                                   Status                                     DINT    0 "                                                               *"    1    4    1   10    0    0 e,0,mpAS
 
-                                  Output          MpAssetIntUIShiftListOutputType    0 "                                                               *"    1   24    1    0    0    0         
+                                  Output          MpAssetIntUIShiftListOutputType    0 "                                                               *"    1   24    1    0    0    1         
                                StartTime                     DATE_AND_TIME[0..19]    0 "                                                               *"    2   11   20    0    0    0         
                             StartTime[0]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                             StartTime[1]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
@@ -1004,57 +1004,57 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                              EndTime[17]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                              EndTime[18]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                              EndTime[19]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
-                               ShiftName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    0         
-                            ShiftName[0]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[1]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[2]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[3]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[4]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[5]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[6]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[7]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[8]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                            ShiftName[9]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[10]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[11]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[12]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[13]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[14]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[15]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[16]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[17]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[18]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                           ShiftName[19]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
-                             CurrentUser                        STRING[50][0..19]    0 "                                                               *"    2    9   51    0    0    0         
-                          CurrentUser[0]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[1]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[2]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[3]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[4]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[5]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[6]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[7]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[8]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          CurrentUser[9]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[10]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[11]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[12]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[13]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[14]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[15]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[16]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[17]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[18]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                         CurrentUser[19]                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
-                          AdditionalData                       STRING[255][0..19]    0 "                                                               *"    2    9  256    0    0    0         
-                       AdditionalData[0]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
-                       AdditionalData[1]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
-                       AdditionalData[2]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
-                       AdditionalData[3]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
-                       AdditionalData[4]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
-                       AdditionalData[5]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
-                       AdditionalData[6]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
-                       AdditionalData[7]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
+                               ShiftName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    1         
+                            ShiftName[0]                               STRING[20]    0 "                                                        'Shift1'"    3    9   21    1    0    0         
+                            ShiftName[1]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[2]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[3]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[4]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[5]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[6]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[7]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[8]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[9]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[10]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[11]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[12]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[13]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[14]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[15]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[16]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[17]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[18]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                           ShiftName[19]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                             CurrentUser                        STRING[50][0..19]    0 "                                                               *"    2    9   51    0    0    1         
+                          CurrentUser[0]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[1]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[2]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[3]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[4]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[5]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[6]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[7]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[8]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[9]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[10]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[11]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[12]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[13]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[14]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[15]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[16]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[17]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[18]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                         CurrentUser[19]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          AdditionalData                       STRING[255][0..19]    0 "                                                               *"    2    9  256    0    0    1         
+                       AdditionalData[0]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[1]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
+                       AdditionalData[2]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
+                       AdditionalData[3]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
+                       AdditionalData[4]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
+                       AdditionalData[5]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
+                       AdditionalData[6]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
+                       AdditionalData[7]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
                        AdditionalData[8]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
                        AdditionalData[9]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
                       AdditionalData[10]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
@@ -1790,7 +1790,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=291 Scope=60 Force=60 I
                  IdealProductionRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                  IdealProductionRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                  IdealProductionRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
-                                 JobName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    0         
+                                 JobName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    1         
                               JobName[0]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                               JobName[1]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                               JobName[2]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         

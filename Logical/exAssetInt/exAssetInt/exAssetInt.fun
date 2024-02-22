@@ -256,6 +256,12 @@ FUNCTION CalcStatsJob : USINT
 		JobStatistics : REFERENCE TO exAssetIntJobStatisticsType; (*Log message*)
 	END_VAR
 	VAR
+		TotalTime : UDINT;
+		Uptime : UDINT;
+		NominalProductionTime : UDINT;
+		DowntimeScheduled : UDINT;
+		DowntimeUnscheduled : UDINT;
+		GoodProductionTime : UDINT;
 		DTGetTime_0 : DTGetTime;
 	END_VAR
 END_FUNCTION

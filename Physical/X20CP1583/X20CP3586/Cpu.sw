@@ -15,7 +15,7 @@
     <Task Name="Shift" Source="Shift.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <VcDataObjects>
-    <VcDataObject Name="Visu_R" Source="TestVis.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
+    <VcDataObject Name="Vis" Source="Vis.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
   </VcDataObjects>
   <Binaries>
     <BinaryObject Name="vcnet" Source="" Memory="UserROM" Language="Binary" />
