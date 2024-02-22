@@ -1,6 +1,3 @@
-VAR RETAIN
-	exAssetIntLink : exAssetIntLinkType;
-END_VAR
 (*Asset core*)
 VAR
 	exAssetIntCore_0 : exAssetIntCore;
@@ -10,4 +7,9 @@ END_VAR
 VAR
 	exAssetIntConfig_0 : exAssetIntCoreConfig;
 	AssetIntConfig : exAssetIntCoreConfigType;
+END_VAR
+(*Asset UI function blocks*)
+VAR
+	exAssetIntJobListUI_0 : exAssetIntJobListUI;
+	JobListUIConnect : exAssetIntJobListUIConnectType;
 END_VAR

@@ -42,6 +42,7 @@ FUNCTION_BLOCK CreateMemory
 				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
+				brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
 				Memory := DatObjCreate_0.pDatObjMem;
 				Status := ERR_OK;
 				State := 0;

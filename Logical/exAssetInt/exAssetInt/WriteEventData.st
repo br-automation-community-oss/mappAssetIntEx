@@ -17,11 +17,6 @@ FUNCTION_BLOCK WriteEventData
 			IF Enable THEN
 				RecordDataIntern := RecordData;
 				
-				// Get date and time
-				DTGetTime_0(enable := TRUE);
-				RecordDataIntern.TimeStart := DTGetTime_0.DT1;
-				RecordDataIntern.TimeEnd := DTGetTime_0.DT1;								  
-
 				// Reset function blocks
 				FileOpen_0.enable := FALSE;
 				FileOpen_0();

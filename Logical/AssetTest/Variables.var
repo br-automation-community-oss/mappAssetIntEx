@@ -1,3 +1,4 @@
 VAR
+	Memory : ARRAY[0..19] OF exCoreInternalRecordType;
 	AutoCountTime : TON_10ms;
 END_VAR

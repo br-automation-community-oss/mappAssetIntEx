@@ -20,11 +20,14 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.DTGetTime_0(enable := TRUE);
 				Internal.TimeTotalStart := Internal.DTGetTime_0.DT1;
 				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN
-					Internal.RecordData.Job := Parameters.Job;
+					Info.JobStatistics.JobName := Parameters.Job;
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
 					Internal.PieceCounterOld := PieceCounter;
 					Internal.RejectCounterOld := RejectCounter;
 				END_IF
+				
+				// Reset memory information
+				exLink.Memory := 0;
 				
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
 				Internal.State := exASSETINT_STATE_INIT_2;
@@ -43,7 +46,7 @@ FUNCTION_BLOCK exAssetIntCore
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created folder structure', ADR(Internal.Logger));
 				Internal.State := exASSETINT_STATE_INIT_3;
 			
-				// Error
+			// Error
 			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating folder structure', ADR(Internal.Logger));
@@ -64,7 +67,7 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.Memory := Internal.CreateMemory.Memory;
 				Internal.State := exASSETINT_STATE_INIT_4;
 			
-				// Error
+			// Error
 			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating internal memory', ADR(Internal.Logger));
@@ -84,12 +87,15 @@ FUNCTION_BLOCK exAssetIntCore
 			// Read events successful
 			IF Internal.ReadEventData.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'reading stored events', ADR(Internal.Logger));
-				Internal.RecordCount := Internal.ReadEventData.RecordCount;
+				exLink.RecordCount := Internal.ReadEventData.RecordCount;
 				Internal.RecordNext := Internal.ReadEventData.RecordCount;
+
+				// Refresh UI data, finish up
+				exLink.RefreshJobUI := TRUE;
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
 			
-				// Error
+			// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error reading stored events', ADR(Internal.Logger));
@@ -99,10 +105,14 @@ FUNCTION_BLOCK exAssetIntCore
 		// -------------------------------------------------------------------------------------------
 		// Wait for new event
 		exASSETINT_STATE_IDLE:
+			Internal.DTGetTime_0(enable := TRUE);
+
 			// Set stats timer
 			Internal.StatsRefresh.IN := TRUE;
 			Internal.StatsRefresh.PT := Configuration.CalculationTimeBase/10;	
 			Internal.StatsRefresh();
+			
+			// Calculate new stats
 			IF Internal.StatsRefresh.Q THEN
 				// Transfer data, reset timer
 				IF Internal.PieceCounterOld <= PieceCounter THEN					
@@ -111,6 +121,7 @@ FUNCTION_BLOCK exAssetIntCore
 					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'piece count overflow', ADR(Internal.Logger));
 					exLink.PieceCounter := exLink.PieceCounter + (16#FFFFFFFF - Internal.PieceCounterOld + PieceCounter);
 				END_IF
+				
 				IF Internal.RejectCounterOld <= RejectCounter THEN					
 					exLink.RejectCounter := exLink.RejectCounter + (RejectCounter - Internal.RejectCounterOld);
 				ELSE
@@ -131,7 +142,6 @@ FUNCTION_BLOCK exAssetIntCore
 			IF Downtime <> Internal.DowntimeOld THEN
 				// Remember downtime start
 				IF Downtime > exASSETINT_NO_DOWNTIME THEN
-					Internal.DTGetTime_0(enable := TRUE);
 					exLink.DowntimeStart := Internal.DTGetTime_0.DT1;
 				END_IF
 				
@@ -139,18 +149,46 @@ FUNCTION_BLOCK exAssetIntCore
 			END_IF
 
 			// Handle update command
-			IF EDGEPOS(Update) THEN
-				IF Parameters.Job <> Internal.RecordData.Job THEN
+			IF EDGEPOS(Update) THEN	
+				// Job has changed
+				IF Parameters.Job <> Info.JobStatistics.JobName THEN
 					CreateLoggerEntry(exASSETINT_LOG_INFO, 'new job started', ADR(Internal.Logger));
-					// Transfer data, set flags
-					Internal.RecordData.Job := Parameters.Job;
 					UpdateDone := FALSE;
+
+					// Transfer stats to recordvnc, make sure structures are allignent
+					brsmemset(ADR(Internal.RecordData), 0, SIZEOF(Internal.RecordData));
 					
+					// Collect data for record
+					Internal.RecordData.TimeStart := exLink.JobStart;
+					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
+					Internal.RecordData.CurrentUser := Parameters.CurrentUser;
+					Internal.RecordData.AdditionalData := Parameters.AdditionalData;
+					Internal.RecordData.ShiftName := Info.ShiftStatistics.ShiftName;
+					Internal.RecordData.JobName := Info.JobStatistics.JobName;				
+					Internal.RecordData.TotalPieces := Info.JobStatistics.TotalPieces;
+					Internal.RecordData.GoodPieces := Info.JobStatistics.GoodPieces;
+					Internal.RecordData.RejectPieces := Info.JobStatistics.RejectPieces;
+					Internal.RecordData.BadPieceRate := Info.JobStatistics.BadPieceRate;
+					Internal.RecordData.TotalTime := Info.JobStatistics.TotalTime;
+					Internal.RecordData.ScheduledDowntime := Info.JobStatistics.ScheduledDowntime;
+					Internal.RecordData.UnscheduledDowntime := Info.JobStatistics.UnscheduledDowntime;
+					Internal.RecordData.Uptime := Info.JobStatistics.Uptime;
+					Internal.RecordData.GoodProductionTime := Info.JobStatistics.GoodProductionTime;
+					Internal.RecordData.NominalProductionTime := Info.JobStatistics.NominalProductionTime;
+					Internal.RecordData.NominalProductionTimeRate := Info.JobStatistics.NominalProductionTimeRate;
+					Internal.RecordData.UnscheduledDowntimeRate := Info.JobStatistics.UnscheduledDowntimeRate;
+					Internal.RecordData.CurrentProductionRate := Info.JobStatistics.CurrentProductionRate;					
+				
 					// Reset stats and remember new start time
-					Internal.DTGetTime_0(enable := TRUE);
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
 					exLink.PieceCounter := 0;
 					exLink.RejectCounter := 0;
+
+					// Transfer data to job stats
+					Info.JobStatistics.JobName := Parameters.Job;
+					Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
+					Info.JobStatistics.AdditionalData := Parameters.AdditionalData;
+					
 					Internal.State := exASSETINT_STATE_STORE_EVENT_1;
 				END_IF
 			END_IF
@@ -174,10 +212,13 @@ FUNCTION_BLOCK exAssetIntCore
 				IF Internal.RecordNext > CORE_EVENT_NUM_MAX THEN
 					Internal.RecordNext := 0;
 				END_IF
-				IF Internal.RecordCount < CORE_EVENT_NUM_MAX THEN
-					Internal.RecordCount := Internal.RecordCount + 1;
+				brsmemcpy(exLink.Memory + SIZEOF(Internal.RecordData)*exLink.RecordCount, ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
+				IF exLink.RecordCount < CORE_EVENT_NUM_MAX THEN
+					exLink.RecordCount := exLink.RecordCount + 1;
 				END_IF
 				
+				// Refrehs UI data, finish up
+				exLink.RefreshJobUI := TRUE;
 				UpdateDone := TRUE;
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;

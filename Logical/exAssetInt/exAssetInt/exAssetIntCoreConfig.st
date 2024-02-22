@@ -1,6 +1,6 @@
 
 // -------------------------------------------------------------------------------------------
-// Core function block
+// Config function block
 FUNCTION_BLOCK exAssetIntCoreConfig
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false

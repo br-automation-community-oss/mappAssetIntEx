@@ -2,7 +2,6 @@
 
 TYPE
 	exCoreInternalDataType : 	STRUCT 
-		RecordCount : UINT;
 		RecordNext : UINT;
 		RecordData : exCoreInternalRecordType;
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
@@ -22,12 +21,24 @@ TYPE
 	exCoreInternalRecordType : 	STRUCT 
 		TimeStart : DATE_AND_TIME;
 		TimeEnd : DATE_AND_TIME;
-		NominalProductionRate : REAL;
-		PieceCounter : UDINT;
-		RejectCounter : UDINT;
-		Job : STRING[20];
-		CurrentUser : STRING[50];
-		AdditionalData : STRING[EVENT_ADDITONAL_DATA_LEN];
+		ShiftName : STRING[20]; (*Shift name*)
+		JobName : STRING[20]; (*Job name.*)
+		TotalTime : exAssetIntTimeType; (*Total time since this job started*)
+		ScheduledDowntime : exAssetIntTimeType; (*Scheduled downtime since this job started*)
+		UnscheduledDowntime : exAssetIntTimeType; (*Unsheduled downtime since this job started*)
+		Uptime : exAssetIntTimeType; (*Uptime since this job started*)
+		NominalProductionTime : exAssetIntTimeType; (*Time of production at nominal speed since this job started*)
+		GoodProductionTime : exAssetIntTimeType; (*Time of good production since this job started*)
+		ScheduledDowntimeRate : REAL; (*Percentage of scheduled downtime [%] since this job started*)
+		UnscheduledDowntimeRate : REAL; (*Percentage of unscheduled downtime [%] since this job started*)
+		NominalProductionTimeRate : REAL; (*Percentage of nominal speed running time[%] since this job started*)
+		TotalPieces : UDINT; (*Counter for total products since this job started*)
+		GoodPieces : UDINT; (*Counter for good products since this job started*)
+		RejectPieces : UDINT; (*Counter for reject products since this job started*)
+		BadPieceRate : REAL; (*Percentage of bad products [%] since this job started*)
+		CurrentProductionRate : REAL; (*Production rate since this job started [products / h]*)
+		CurrentUser : STRING[50]; (*Currently active user*)
+		AdditionalData : STRING[EVENT_ADDITONAL_DATA_LEN]; (*Additional data information*)
 	END_STRUCT;
 	exConfigInternalDataType : 	STRUCT 
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
@@ -36,8 +47,19 @@ TYPE
 		ReadConfiguration : ReadConfiguration;
 		WriteConfiguration : WriteConfiguration;
 	END_STRUCT;
+	exJobUIInternalDataType : 	STRUCT 
+		RecordStart : UDINT;
+		RecordNum : UDINT;
+		RecordData : exCoreInternalRecordType;
+		x : UDINT;
+		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
+		State : exAssetIntStateEnum;
+		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
+	END_STRUCT;
 	exAssetIntLinkType : 	STRUCT 
 		Memory : UDINT;
+		RecordCount : UDINT;
+		RefreshJobUI : BOOL;
 		PieceCounter : UDINT;
 		RejectCounter : UDINT;
 		JobStart : DATE_AND_TIME;
@@ -255,32 +277,32 @@ TYPE
 		Filter : exAssetIntUIFilterType; (*Output filter.*)
 	END_STRUCT;
 	exAssetIntUIJobListOutputType : 	STRUCT 
-		JobStartTime : ARRAY[0..19]OF DATE_AND_TIME; (*Job start time list*)
-		JobEndTime : ARRAY[0..19]OF DATE_AND_TIME; (*Job end time list*)
-		JobName : ARRAY[0..19]OF STRING[20]; (*Job name list*)
-		CurrentUser : ARRAY[0..19]OF STRING[50]; (*Currently active user*)
-		AdditionalData : ARRAY[0..19]OF STRING[255]; (*Additional data information*)
-		TotalPieces : ARRAY[0..19]OF UDINT; (*Total pieces list*)
-		GoodPieces : ARRAY[0..19]OF UDINT; (*Good pieces list*)
-		RejectPieces : ARRAY[0..19]OF UDINT; (*Reject pieces list*)
-		BadPieceRate : ARRAY[0..19]OF REAL; (*bad piece rate list*)
-		TotalTime : ARRAY[0..19]OF exAssetIntTimeType; (*Total time list*)
-		ScheduledDowntime : ARRAY[0..19]OF exAssetIntTimeType; (*Scheduled Downtime list*)
-		UnscheduledDowntime : ARRAY[0..19]OF exAssetIntTimeType; (*Unscheduled Downtime list*)
-		Uptime : ARRAY[0..19]OF exAssetIntTimeType; (*Uptime list*)
-		GoodProductionTime : ARRAY[0..19]OF exAssetIntTimeType; (*Good production time list*)
-		NominalProductionTime : ARRAY[0..19]OF exAssetIntTimeType; (*nominal production time list*)
-		NominalProductionRate : ARRAY[0..19]OF REAL; (*nominal production rate list*)
-		ScheduledDowntimeRate : ARRAY[0..19]OF REAL; (*scheduled downtime rate list*)
-		UnscheduledDowntimeRate : ARRAY[0..19]OF REAL; (*unscheduled downtime rate list*)
-		ProductionRate : ARRAY[0..19]OF REAL; (*current production rate list*)
+		JobStartTime : ARRAY[0..UI_JOB_LIST_IDX]OF DATE_AND_TIME; (*Job start time list*)
+		JobEndTime : ARRAY[0..UI_JOB_LIST_IDX]OF DATE_AND_TIME; (*Job end time list*)
+		JobName : ARRAY[0..UI_JOB_LIST_IDX]OF STRING[20]; (*Job name list*)
+		CurrentUser : ARRAY[0..UI_JOB_LIST_IDX]OF STRING[50]; (*Currently active user*)
+		AdditionalData : ARRAY[0..UI_JOB_LIST_IDX]OF STRING[255]; (*Additional data information*)
+		TotalPieces : ARRAY[0..UI_JOB_LIST_IDX]OF UDINT; (*Total pieces list*)
+		GoodPieces : ARRAY[0..UI_JOB_LIST_IDX]OF UDINT; (*Good pieces list*)
+		RejectPieces : ARRAY[0..UI_JOB_LIST_IDX]OF UDINT; (*Reject pieces list*)
+		BadPieceRate : ARRAY[0..UI_JOB_LIST_IDX]OF REAL; (*bad piece rate list*)
+		TotalTime : ARRAY[0..UI_JOB_LIST_IDX]OF exAssetIntTimeType; (*Total time list*)
+		ScheduledDowntime : ARRAY[0..UI_JOB_LIST_IDX]OF exAssetIntTimeType; (*Scheduled Downtime list*)
+		UnscheduledDowntime : ARRAY[0..UI_JOB_LIST_IDX]OF exAssetIntTimeType; (*Unscheduled Downtime list*)
+		Uptime : ARRAY[0..UI_JOB_LIST_IDX]OF exAssetIntTimeType; (*Uptime list*)
+		GoodProductionTime : ARRAY[0..UI_JOB_LIST_IDX]OF exAssetIntTimeType; (*Good production time list*)
+		NominalProductionTime : ARRAY[0..UI_JOB_LIST_IDX]OF exAssetIntTimeType; (*nominal production time list*)
+		NominalProductionRate : ARRAY[0..UI_JOB_LIST_IDX]OF REAL; (*nominal production rate list*)
+		ScheduledDowntimeRate : ARRAY[0..UI_JOB_LIST_IDX]OF REAL; (*scheduled downtime rate list*)
+		UnscheduledDowntimeRate : ARRAY[0..UI_JOB_LIST_IDX]OF REAL; (*unscheduled downtime rate list*)
+		ProductionRate : ARRAY[0..UI_JOB_LIST_IDX]OF REAL; (*current production rate list*)
 		RangeStart : REAL; (*Displayed range: Start %*)
 		RangeEnd : REAL; (*Displayed range: End %*)
 		PageUp : BOOL; (*Command: Page Up (Scroll Up)*)
 		StepUp : BOOL; (*Command: Line Up (Scroll Up)*)
 		StepDown : BOOL; (*Command: Line Down (Scroll Down)*)
 		PageDown : BOOL; (*Command: Page Down (Scroll Down)*)
-		ShiftName : ARRAY[0..19]OF STRING[20]; (*Shift ID list*)
+		ShiftName : ARRAY[0..UI_JOB_LIST_IDX]OF STRING[20]; (*Shift ID list*)
 	END_STRUCT;
 	exAssetIntJobListUISetupType : 	STRUCT 
 		OutputListSize : UINT := 10; (*Output list size*)
@@ -344,7 +366,7 @@ TYPE
 		BadPieceRate : REAL; (*Percentage of bad products [%] since this job started*)
 		CurrentProductionRate : REAL; (*Production rate since this job started [products / h]*)
 		CurrentUser : STRING[50]; (*Currently active user*)
-		AdditionalData : STRING[255]; (*Additional data information*)
+		AdditionalData : STRING[EVENT_ADDITONAL_DATA_LEN]; (*Additional data information*)
 	END_STRUCT;
 	exAssetIntShiftStatisticsType : 	STRUCT 
 		ShiftName : STRING[20]; (*Shift name.*)

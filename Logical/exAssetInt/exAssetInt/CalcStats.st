@@ -2,11 +2,7 @@
 // Calculate current job statistics
 FUNCTION CalcStatsJob
 	DTGetTime_0(enable := TRUE);
-	// Transfer parameter data
-	JobStatistics.JobName := Parameter.Job;
-	JobStatistics.CurrentUser := Parameter.CurrentUser;
-	JobStatistics.AdditionalData := Parameter.AdditionalData;
-	
+
 	// -------------------------------------------------------------------------------------------
 	// Calculate total time
 	TotalTime := DiffDT(DTGetTime_0.DT1, exLink.JobStart);

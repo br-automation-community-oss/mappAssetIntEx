@@ -23,7 +23,14 @@ PROGRAM _CYCLIC
 			END_IF
 		END_IF
 	END_IF
-	 
+	
+	// Copy internal memory buffer to structure for debugging
+//	IF exAssetIntLink.Memory <> 0 THEN
+//		brsmemcpy(ADR(Memory), exAssetIntLink.Memory, SIZEOF(Memory));
+//	ELSE
+//		brsmemset(ADR(Memory), 0, SIZEOF(Memory));		
+//	END_IF
+//	 
 END_PROGRAM
 
 PROGRAM _EXIT
