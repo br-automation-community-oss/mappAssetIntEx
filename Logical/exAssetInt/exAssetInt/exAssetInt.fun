@@ -257,24 +257,15 @@ FUNCTION CreateLoggerEntry : USINT
 	END_VAR
 END_FUNCTION
 
-FUNCTION CreateCoreErrorState : DINT
+FUNCTION CreateErrorState : DINT
 	VAR_INPUT
 		ErrorID : DINT;
-		Internal : REFERENCE TO exCoreInternalDataType;
-	END_VAR
-END_FUNCTION
-
-FUNCTION CreateConfigErrorState : DINT
-	VAR_INPUT
-		ErrorID : DINT;
-		Internal : REFERENCE TO exConfigInternalDataType;
-	END_VAR
-END_FUNCTION
-
-FUNCTION CreateJobUIErrorState : DINT
-	VAR_INPUT
-		ErrorID : DINT;
-		Internal : REFERENCE TO exJobUIInternalDataType;
+		ErrorMsg : STRING[LOG_LEN]; (*Log message*)
+		Logger : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
+		Severity : exComSeveritiesEnum;
+		StateError : REFERENCE TO exAssetIntStateEnum;
+		State : REFERENCE TO exAssetIntStateEnum;
+		DiagStatusID : REFERENCE TO exAssetIntStatusIDType;
 	END_VAR
 END_FUNCTION
 

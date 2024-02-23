@@ -62,6 +62,7 @@ TYPE
 		MemoryJob : UDINT;
 		MemoryShift : UDINT;
 		RecordCount : UDINT;
+		IsCoreActive : BOOL;
 		RefreshJobUI : BOOL;
 		PieceCounter : UDINT;
 		RejectCounter : UDINT;
@@ -116,6 +117,13 @@ TYPE
 		exASSETINT_NO_DOWNTIME := 0, (*No downtime active = uptime*)
 		exASSETINT_SCHEDULED_DOWNTIME := 1, (*Additional scheduled downtime (e.g. monthly maintenance)*)
 		exASSETINT_UNSCHEDULED_DOWNTIME := 2 (*Unscheduled downtime (e.g. machine fault)*)
+		);
+	exComSeveritiesEnum : 
+		(
+		exCOM_SEV_SUCCESS := 0, (*Success - no error*)
+		exCOM_SEV_INFORMATIONAL := 1, (*Severity: Informational*)
+		exCOM_SEV_WARNING := 2, (*Severity: Warning*)
+		exCOM_SEV_ERROR := 3 (*Severity: Error*)
 		);
 END_TYPE
 
@@ -405,7 +413,7 @@ TYPE
 	END_STRUCT;
 	exAssetIntStatusIDType : 	STRUCT 
 		ID : exAssetIntErrorEnum; (*StatusID as enumerator*)
-		Severity : MpComSeveritiesEnum; (*Severity of the error*)
+		Severity : exComSeveritiesEnum; (*Severity of the error*)
 		Code : UINT; (*Error code*)
 	END_STRUCT;
 END_TYPE

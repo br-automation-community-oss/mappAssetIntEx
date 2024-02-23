@@ -22,8 +22,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
-					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error exLink is 0', ADR(Internal.Logger));
-					StatusID := CreateCoreErrorState(ERR_ASSET_LINK, ADR(Internal));
+					StatusID := CreateErrorState(ERR_ASSET_LINK, 'error exLink is 0', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
 				// Remember start time
@@ -64,11 +63,10 @@ FUNCTION_BLOCK exAssetIntCore
 			// Error
 			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating folder structure', ADR(Internal.Logger));
-				StatusID := CreateCoreErrorState(Internal.CreateDirStructure.Status, ADR(Internal));
+				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, 'error creating folder structure', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
-		// -------------------------------------------------------------------------------------------
+			// -------------------------------------------------------------------------------------------
 		// Create internal memory
 		exASSETINT_STATE_INIT_3:
 			Internal.CreateMemory.Enable := TRUE;
@@ -87,11 +85,10 @@ FUNCTION_BLOCK exAssetIntCore
 			// Error
 			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating internal memory', ADR(Internal.Logger));
-				StatusID := CreateCoreErrorState(Internal.CreateMemory.Status, ADR(Internal));
+				StatusID := CreateErrorState(Internal.CreateMemory.Status, 'error creating internal memory', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
-		// -------------------------------------------------------------------------------------------
+			// -------------------------------------------------------------------------------------------
 		// Read event data
 		exASSETINT_STATE_INIT_4:
 			Internal.ReadEventData.Enable := TRUE;
@@ -110,19 +107,18 @@ FUNCTION_BLOCK exAssetIntCore
 				// Refresh UI data, finish up
 				exLink.RefreshJobUI := TRUE;
 				StatusID := ERR_OK;
-				Active := TRUE;
 				Internal.State := exASSETINT_STATE_IDLE;
 			
 			// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error reading stored events', ADR(Internal.Logger));
-				StatusID := CreateCoreErrorState(Internal.ReadEventData.Status, ADR(Internal));
+				StatusID := CreateErrorState(Internal.ReadEventData.Status, 'error reading stored events', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
-		// -------------------------------------------------------------------------------------------
-		// Wait for new event
+			// -------------------------------------------------------------------------------------------
+			// Wait for new event
 		exASSETINT_STATE_IDLE:
+			Active := TRUE;
 			Internal.DTGetTime_0(enable := TRUE);
 
 			// Set stats timer
@@ -241,11 +237,10 @@ FUNCTION_BLOCK exAssetIntCore
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
 			
-				// Error
+			// Error
 			ELSIF Internal.WriteEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating event', ADR(Internal.Logger));
-				StatusID := CreateCoreErrorState(Internal.WriteEventData.Status, ADR(Internal));
+				StatusID := CreateErrorState(Internal.WriteEventData.Status, 'error creating event', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 		// -------------------------------------------------------------------------------------------
@@ -265,13 +260,11 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.State := exASSETINT_STATE_INIT_1;
 			END_IF
 	END_CASE;
+	
+	// Transfer active state
+	exLink.IsCoreActive := Active;
+
 END_FUNCTION_BLOCK
 
 
-// -------------------------------------------------------------------------------------------
-// Handle error state
-FUNCTION CreateCoreErrorState
-	Internal.StateError := Internal.State;
-	Internal.State := exASSETINT_STATE_ERROR;
-	CreateCoreErrorState := ErrorID;
-END_FUNCTION
+
