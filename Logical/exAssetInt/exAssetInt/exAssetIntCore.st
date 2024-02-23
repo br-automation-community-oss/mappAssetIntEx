@@ -6,6 +6,7 @@ FUNCTION_BLOCK exAssetIntCore
 	// Reset everything when enable is false
 	IF NOT Enable THEN
 		StatusID := ERR_FUB_ENABLE_FALSE;
+		Active := FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
 		RETURN;
 	END_IF
@@ -16,6 +17,8 @@ FUNCTION_BLOCK exAssetIntCore
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
+
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
@@ -37,8 +40,7 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.MemoryDb := 0;
 				exLink.MemoryJob := 0;
 				exLink.MemoryShift := 0;
-				
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
+								
 				Internal.State := exASSETINT_STATE_INIT_2;
 			END_IF
 
@@ -104,6 +106,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Refresh UI data, finish up
 				exLink.RefreshJobUI := TRUE;
 				StatusID := ERR_OK;
+				Active := TRUE;
 				Internal.State := exASSETINT_STATE_IDLE;
 			
 			// Error

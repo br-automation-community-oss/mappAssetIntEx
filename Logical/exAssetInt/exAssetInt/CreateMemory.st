@@ -63,7 +63,7 @@ FUNCTION_BLOCK CreateMemory
 					TmpStr1 := 'AsSh_0';
 				ELSIF MemoryType = exASSETINT_MEM_SHIFT THEN
 					// Generate log entry
-					TmpStr2 := 'created job memory module ';
+					TmpStr2 := 'created shift memory module ';
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 

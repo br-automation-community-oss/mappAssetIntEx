@@ -24,7 +24,7 @@ PROGRAM _CYCLIC
 		AssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 1);
 	END_IF
 	
-	exAssetIntConfig_0.Enable := TRUE;
+	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
 	exAssetIntConfig_0.DeviceName := ADR('ARsim');
 	exAssetIntConfig_0.Configuration := ADR(AssetIntConfig);
@@ -37,7 +37,7 @@ PROGRAM _CYCLIC
 	exAssetIntPar.CurrentUser := gCurrentUser;
 	exAssetIntPar.Job := gJobName;
 
-	exAssetIntCore_0.Enable := TRUE;
+	//exAssetIntCore_0.Enable := TRUE;
 	exAssetIntCore_0.exLink := ADR(exAssetIntLink);
 	exAssetIntCore_0.Parameters := ADR(exAssetIntPar);
 	exAssetIntCore_0.Configuration := ADR(AssetIntConfig);
@@ -55,7 +55,7 @@ PROGRAM _CYCLIC
 	
 	// --------------------------------------------------------------------------------------------------------------------------
 	// UI function blocks
-	exAssetIntJobListUI_0.Enable := TRUE;
+	exAssetIntJobListUI_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntJobListUI_0.exLink := ADR(exAssetIntLink);
 	exAssetIntJobListUI_0.UIConnect := ADR(JobListUIConnect);
 	exAssetIntJobListUI_0();
