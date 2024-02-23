@@ -35,13 +35,17 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.PieceCounterOld := PieceCounter;
 					Internal.RejectCounterOld := RejectCounter;
 				END_IF
-				
-				// Reset memory information
-				exLink.MemoryDb := 0;
-				exLink.MemoryJob := 0;
-				exLink.MemoryShift := 0;
+							
+				// Reset error and status
+				Error := FALSE;
+				StatusID := ERR_OK;
 								
-				Internal.State := exASSETINT_STATE_INIT_2;
+				// Create folder structure and read event data only after boot
+				IF Internal.InitAfterBoot THEN
+					Internal.State := exASSETINT_STATE_IDLE;
+				ELSE
+					Internal.State := exASSETINT_STATE_INIT_2;
+				END_IF
 			END_IF
 
 		// -------------------------------------------------------------------------------------------

@@ -7,6 +7,7 @@ TYPE
 		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
+		InitAfterBoot : BOOL;
 		TimeTotalStart : DATE_AND_TIME;
 		PieceCounterOld : UDINT;
 		RejectCounterOld : UDINT;

@@ -16,6 +16,8 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
+
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
@@ -30,8 +32,11 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 					StatusID := CreateConfigErrorState(ERR_ASSET_TEMP_MEMORY, ADR(Internal));
 					RETURN;				
 				END_IF
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
+				
+				// Reset error and status
+				Error := FALSE;
 				StatusID := ERR_OK;
+
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
 

@@ -1,22 +1,25 @@
 WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=Sample 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101 Index=233 ASCIIString=0
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101 Index=13 ASCIIString=0
                                     name                                     type force                                                            value level type len format place expand specs
                           gCommandUpdate                                     BOOL    0 "                                                           FALSE"    0    1    1    2    0    0         
-                                gJobName                               STRING[20]    0 "                                                           '222'"    0    9   21    1    0    0         
+                                gJobName                               STRING[20]    0 "                                                       'Cookies'"    0    9   21    1    0    0         
                           exAssetIntLink                       exAssetIntLinkType    0 "                                                               *"    0   24    1    0    1    1         
-                                  Memory                                    UDINT    0 "                                                       222626008"    1    7    1   10    0    0         
+                                MemoryDb                                    UDINT    0 "                                                       225426288"    1    7    1   10    0    0         
+                               MemoryJob                                    UDINT    0 "                                                       225712720"    1    7    1   10    0    0         
+                             MemoryShift                                    UDINT    0 "                                                       225999152"    1    7    1   10    0    0         
+                             RecordCount                                    UDINT    0 "                                                               2"    1    7    1   10    0    0         
                             RefreshJobUI                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                            PieceCounter                                    UDINT    0 "                                                              13"    1    7    1   10    0    0         
-                           RejectCounter                                    UDINT    0 "                                                               2"    1    7    1   10    0    0         
-                                JobStart                            DATE_AND_TIME    0 "                                          DT#2024-02-22-16:50:56"    1   11    1    1    0    0         
+                            PieceCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                                JobStart                            DATE_AND_TIME    0 "                                          DT#2024-02-23-10:05:13"    1   11    1    1    0    0         
                            DowntimeStart                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    1   11    1    1    0    0         
                         exAssetIntCore_0                           exAssetIntCore    0 "                                                               *"    0   24    1    0    1    1         
                                   Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
                                   Update                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                            PieceCounter                                    UDINT    0 "                                                              21"    1    7    1   10    0    0         
-                           RejectCounter                                    UDINT    0 "                                                               2"    1    7    1   10    0    0         
+                            PieceCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
                                 StatusID                                     DINT    0 "                                                               0"    1    4    1   10    0    0         
-                              UpdateDone                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                              UpdateDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                              CommandBusy                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                              CommandDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                    CurrentProductionRate                                     REAL    0 "                                                             0.0"    1    8    1   10    0    0         
@@ -115,17 +118,17 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                               Logger[48]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
                               Logger[49]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
                               Logger[50]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
-                   exAssetIntJobListUI_0                      exAssetIntJobListUI    0 "                                                               *"    0   24    1    0    1    0         
-                                  exLink                                    UDINT    0 "                                                               *"    1    7    1   10    0    0         
-                                  Enable                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
-                              ErrorReset                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
+                   exAssetIntJobListUI_0                      exAssetIntJobListUI    0 "                                                               *"    0   24    1    0    1    1         
+                                  exLink                                    UDINT    0 "                                                        94227308"    1    7    1   10    0    0         
+                                  Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
+                              ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                  UISetup             exAssetIntJobListUISetupType    0 "                                                               *"    1   24    1    0    0    0         
                           OutputListSize                                     UINT    0 "                                                               *"    2    6    1   10    0    0         
                             ScrollWindow                                    USINT    0 "                                                               *"    2    5    1   10    0    0         
-                               UIConnect                                    UDINT    0 "                                                               *"    1    7    1   10    0    0         
-                                  Active                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
-                                   Error                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
-                                StatusID                                     DINT    0 "                                                               *"    1    4    1   10    0    0         
+                               UIConnect                                    UDINT    0 "                                                        96481732"    1    7    1   10    0    0         
+                                  Active                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                   Error                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                                StatusID                                     DINT    0 "                                                               0"    1    4    1   10    0    0         
                                     Info                       exAssetIntInfoType    0 "                                                               *"    1   24    1    0    0    0         
                                     Diag                       exAssetIntDiagType    0 "                                                               *"    2   24    1    0    0    0         
                                 StatusID                   exAssetIntStatusIDType    0 "                                                               *"    3   24    1    0    0    0         
@@ -134,9 +137,9 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                                 Severity                                     DINT    0 "                                                               *"    4    4    1   10    0    0 e,0,mpCO
 
                                     Code                                     UINT    0 "                                                               *"    4    6    1   10    0    0         
-                                Internal                  exJobUIInternalDataType    0 "                                                               *"    1   24    1    0    0    0         
-                             RecordStart                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
-                               RecordNum                                    UDINT    0 "                                                               *"    2    7    1   10    0    0         
+                                Internal                  exJobUIInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
+                             RecordStart                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                               RecordNum                                    UDINT    0 "                                                               2"    2    7    1   10    0    0         
                               RecordData                 exCoreInternalRecordType    0 "                                                               *"    2   24    1    0    0    0         
                                TimeStart                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                                  TimeEnd                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
@@ -227,20 +230,20 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                               Logger[48]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
                               Logger[49]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
                               Logger[50]                              STRING[100]    0 "                                                               *"    3    9  101    1    0    0         
-                                   State                                     DINT    0 "                                                               *"    2    4    1   10    0    0 e,1,exAS
+                                   State                                     DINT    0 "                                                              10"    2    4    1   10    0    0 e,1,exAS
 
-                              StateError                                     DINT    0 "                                                               *"    2    4    1   10    0    0 e,1,exAS
+                              StateError                                     DINT    0 "                                                              99"    2    4    1   10    0    0 e,1,exAS
 
-                             zzEdge00000                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
-                             zzEdge00001                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
-                             zzEdge00002                                     BOOL    0 "                                                               *"    1    1    1    2    0    0         
+                             zzEdge00000                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                             zzEdge00001                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
+                             zzEdge00002                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                         JobListUIConnect           exAssetIntJobListUIConnectType    0 "                                                               *"    0   24    1    0    1    1         
                                   Status                                     DINT    0 "                                                               0"    1    4    1   10    0    0 e,0,exAS
 
-                                  Output            exAssetIntUIJobListOutputType    0 "                                                               *"    1   24    1    0    0    1         
-                            JobStartTime                     DATE_AND_TIME[0..19]    0 "                                                               *"    2   11   20    0    0    1         
-                         JobStartTime[0]                            DATE_AND_TIME    0 "                                          DT#2024-02-22-16:50:08"    3   11    1    1    0    0         
-                         JobStartTime[1]                            DATE_AND_TIME    0 "                                          DT#2024-02-22-16:50:40"    3   11    1    1    0    0         
+                                  Output            exAssetIntUIJobListOutputType    0 "                                                               *"    1   24    1    0    0    0         
+                            JobStartTime                     DATE_AND_TIME[0..19]    0 "                                                               *"    2   11   20    0    0    0         
+                         JobStartTime[0]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
+                         JobStartTime[1]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
                          JobStartTime[2]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
                          JobStartTime[3]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
                          JobStartTime[4]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
@@ -260,26 +263,26 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                         JobStartTime[18]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
                         JobStartTime[19]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
                               JobEndTime                     DATE_AND_TIME[0..19]    0 "                                                               *"    2   11   20    0    0    0         
-                           JobEndTime[0]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[1]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[2]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[3]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[4]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[5]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[6]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[7]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[8]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           JobEndTime[9]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[10]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[11]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[12]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[13]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[14]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[15]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[16]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[17]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[18]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                          JobEndTime[19]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
+                           JobEndTime[0]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[1]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[2]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[3]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[4]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[5]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[6]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[7]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[8]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           JobEndTime[9]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[10]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[11]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[12]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[13]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[14]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[15]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[16]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[17]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[18]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                          JobEndTime[19]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                                  JobName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    0         
                               JobName[0]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                               JobName[1]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
@@ -344,47 +347,47 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                       AdditionalData[18]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
                       AdditionalData[19]                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
                              TotalPieces                             UDINT[0..19]    0 "                                                               *"    2    7   20    0    0    0         
-                          TotalPieces[0]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[1]                                    UDINT    0 "                                                            2366"    3    7    1   10    0    0         
-                          TotalPieces[2]                                    UDINT    0 "                                                           13631"    3    7    1   10    0    0         
-                          TotalPieces[3]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[4]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[5]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[6]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[7]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[8]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[9]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[10]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[11]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[12]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[13]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[14]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[15]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[16]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[17]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[18]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[19]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                          TotalPieces[0]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[1]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[2]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[3]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[4]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[5]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[6]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[7]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[8]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[9]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[10]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[11]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[12]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[13]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[14]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[15]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[16]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[17]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[18]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[19]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                               GoodPieces                             UDINT[0..19]    0 "                                                               *"    2    7   20    0    0    0         
-                           GoodPieces[0]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[1]                                    UDINT    0 "                                                            2304"    3    7    1   10    0    0         
-                           GoodPieces[2]                                    UDINT    0 "                                                           12032"    3    7    1   10    0    0         
-                           GoodPieces[3]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[4]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[5]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[6]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[7]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[8]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[9]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[10]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[11]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[12]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[13]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[14]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[15]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[16]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[17]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[18]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[19]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                           GoodPieces[0]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[1]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[2]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[3]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[4]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[5]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[6]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[7]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[8]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[9]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[10]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[11]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[12]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[13]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[14]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[15]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[16]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[17]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[18]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[19]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                             RejectPieces                             UDINT[0..19]    0 "                                                               *"    2    7   20    0    0    0         
                          RejectPieces[0]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                          RejectPieces[1]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
@@ -1021,12 +1024,12 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=255 Scope=135 Force=101
                       ProductionRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                       ProductionRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                       ProductionRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
-                              RangeStart                                     REAL    0 "                                                             0.0"    2    8    1   10    0    0         
-                                RangeEnd                                     REAL    0 "                                                             0.0"    2    8    1   10    0    0         
-                                  PageUp                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
-                                  StepUp                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
-                                StepDown                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
-                                PageDown                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                              RangeStart                                     REAL    0 "                                                               *"    2    8    1   10    0    0         
+                                RangeEnd                                     REAL    0 "                                                               *"    2    8    1   10    0    0         
+                                  PageUp                                     BOOL    0 "                                                               *"    2    1    1    2    0    0         
+                                  StepUp                                     BOOL    0 "                                                               *"    2    1    1    2    0    0         
+                                StepDown                                     BOOL    0 "                                                               *"    2    1    1    2    0    0         
+                                PageDown                                     BOOL    0 "                                                               *"    2    1    1    2    0    0         
                                ShiftName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    0         
                             ShiftName[0]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                             ShiftName[1]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         

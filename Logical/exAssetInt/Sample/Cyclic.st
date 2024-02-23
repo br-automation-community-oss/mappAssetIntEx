@@ -37,7 +37,7 @@ PROGRAM _CYCLIC
 	exAssetIntPar.CurrentUser := gCurrentUser;
 	exAssetIntPar.Job := gJobName;
 
-	//exAssetIntCore_0.Enable := TRUE;
+	exAssetIntCore_0.Enable := TRUE;
 	exAssetIntCore_0.exLink := ADR(exAssetIntLink);
 	exAssetIntCore_0.Parameters := ADR(exAssetIntPar);
 	exAssetIntCore_0.Configuration := ADR(AssetIntConfig);
