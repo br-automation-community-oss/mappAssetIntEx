@@ -16,6 +16,20 @@ FUNCTION_BLOCK exAssetIntJobListUI
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
+				// Make sure we have remanent buffer
+				IF ADR(exLink) = 0 THEN
+					// Set status, remember state, go to error state
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error exLink is 0', ADR(Internal.Logger));
+					StatusID := CreateJobUIErrorState(ERR_ASSET_LINK, ADR(Internal));
+					RETURN;				
+				END_IF
+				// Make sure we have temporary buffer
+				IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 OR exLink.MemoryJob = 0 THEN
+					// Set status, remember state, go to error state
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error no temp memory', ADR(Internal.Logger));
+					StatusID := CreateJobUIErrorState(ERR_ASSET_TEMP_MEMORY, ADR(Internal));
+					RETURN;				
+				END_IF
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
@@ -39,7 +53,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				END_IF
 				
 				FOR Internal.x := 0 TO Internal.RecordNum-1 DO
-					brsmemcpy(ADR(Internal.RecordData), exLink.Memory + (Internal.x+Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (Internal.x+Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
 	  				UIConnect.Output.JobStartTime[Internal.x] := Internal.RecordData.TimeStart;
 					UIConnect.Output.JobEndTime[Internal.x] := Internal.RecordData.TimeEnd;
 					UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
@@ -66,12 +80,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 			
 		// -------------------------------------------------------------------------------------------
 		// Error state
-		exASSETINT_STATE_ERROR:
-			//			Internal.WriteConfiguration.Enable := FALSE;
-			//			Internal.WriteConfiguration();
-			//			Internal.ReadConfiguration.Enable := FALSE;
-			//			Internal.ReadConfiguration();
-			
+		exASSETINT_STATE_ERROR:		
 			IF EDGEPOS(ErrorReset) THEN
 				Internal.StateError := exASSETINT_STATE_NONE;
 				Internal.State := exASSETINT_STATE_INIT_1;

@@ -16,6 +16,13 @@ FUNCTION_BLOCK exAssetIntCore
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
+				// Make sure we have remanent buffer
+				IF ADR(exLink) = 0 THEN
+					// Set status, remember state, go to error state
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error exLink is 0', ADR(Internal.Logger));
+					StatusID := CreateCoreErrorState(ERR_ASSET_LINK, ADR(Internal));
+					RETURN;				
+				END_IF
 				// Remember start time
 				Internal.DTGetTime_0(enable := TRUE);
 				Internal.TimeTotalStart := Internal.DTGetTime_0.DT1;
@@ -27,7 +34,9 @@ FUNCTION_BLOCK exAssetIntCore
 				END_IF
 				
 				// Reset memory information
-				exLink.Memory := 0;
+				exLink.MemoryDb := 0;
+				exLink.MemoryJob := 0;
+				exLink.MemoryShift := 0;
 				
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
 				Internal.State := exASSETINT_STATE_INIT_2;
@@ -50,7 +59,7 @@ FUNCTION_BLOCK exAssetIntCore
 			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating folder structure', ADR(Internal.Logger));
-				StatusID := CreateConfigErrorState(Internal.CreateDirStructure.Status, ADR(Internal));
+				StatusID := CreateCoreErrorState(Internal.CreateDirStructure.Status, ADR(Internal));
 			END_IF
 			
 		// -------------------------------------------------------------------------------------------
@@ -64,14 +73,16 @@ FUNCTION_BLOCK exAssetIntCore
 			// Memory structure successful created
 			IF Internal.CreateMemory.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created internal memory', ADR(Internal.Logger));
-				exLink.Memory := Internal.CreateMemory.Memory;
+				exLink.MemoryDb := Internal.CreateMemory.MemoryDb;
+				exLink.MemoryJob := Internal.CreateMemory.MemoryJob;
+				exLink.MemoryShift := Internal.CreateMemory.MemoryShift;
 				Internal.State := exASSETINT_STATE_INIT_4;
 			
 			// Error
 			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error creating internal memory', ADR(Internal.Logger));
-				StatusID := CreateConfigErrorState(Internal.CreateMemory.Status, ADR(Internal));
+				StatusID := CreateCoreErrorState(Internal.CreateMemory.Status, ADR(Internal));
 			END_IF
 			
 		// -------------------------------------------------------------------------------------------
@@ -79,7 +90,7 @@ FUNCTION_BLOCK exAssetIntCore
 		exASSETINT_STATE_INIT_4:
 			Internal.ReadEventData.Enable := TRUE;
 			Internal.ReadEventData.Device := DeviceName;
-			Internal.ReadEventData.Memory := exLink.Memory;
+			Internal.ReadEventData.Memory := exLink.MemoryDb;
 			Internal.ReadEventData.RecordSize := SIZEOF(Internal.RecordData);
 			Internal.ReadEventData.Logger := ADR(Internal.Logger);
 			Internal.ReadEventData();
@@ -212,7 +223,7 @@ FUNCTION_BLOCK exAssetIntCore
 				IF Internal.RecordNext > CORE_EVENT_NUM_MAX THEN
 					Internal.RecordNext := 0;
 				END_IF
-				brsmemcpy(exLink.Memory + SIZEOF(Internal.RecordData)*exLink.RecordCount, ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
+				brsmemcpy(exLink.MemoryDb + SIZEOF(Internal.RecordData)*exLink.RecordCount, ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
 				IF exLink.RecordCount < CORE_EVENT_NUM_MAX THEN
 					exLink.RecordCount := exLink.RecordCount + 1;
 				END_IF

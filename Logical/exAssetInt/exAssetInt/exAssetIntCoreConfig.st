@@ -16,6 +16,20 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
+				// Make sure we have remanent buffer
+				IF ADR(exLink) = 0 THEN
+					// Set status, remember state, go to error state
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error exLink is 0', ADR(Internal.Logger));
+					StatusID := CreateConfigErrorState(ERR_ASSET_LINK, ADR(Internal));
+					RETURN;				
+				END_IF
+				// Make sure we have temporary buffer
+				IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 OR exLink.MemoryJob = 0 THEN
+					// Set status, remember state, go to error state
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'error no temp memory', ADR(Internal.Logger));
+					StatusID := CreateConfigErrorState(ERR_ASSET_TEMP_MEMORY, ADR(Internal));
+					RETURN;				
+				END_IF
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;

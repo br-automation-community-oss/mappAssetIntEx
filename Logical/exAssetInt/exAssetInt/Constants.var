@@ -11,5 +11,7 @@ END_VAR
 (*Error codes*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR CONSTANT
-	ERR_READ_RECORD_SIZE : DINT := 100100; (*Record size is not correct during reading event data*)
+	ERR_ASSET_LINK : DINT := 100000; (*Input exLink ist 0*)
+	ERR_ASSET_TEMP_MEMORY : DINT := 100001; (*No temporary memory available, make sure core function block is enabled*)
+	ERR_ASSET_READ_RECORD_SIZE : DINT := 100100; (*Record size is not correct during reading event data*)
 END_VAR

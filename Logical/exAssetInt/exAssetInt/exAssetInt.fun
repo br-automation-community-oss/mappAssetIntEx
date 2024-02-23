@@ -112,11 +112,14 @@ FUNCTION_BLOCK CreateMemory
 		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
 	END_VAR
 	VAR_OUTPUT
-		Memory : UDINT;
+		MemoryDb : UDINT;
+		MemoryJob : UDINT;
+		MemoryShift : UDINT;
 		Status : UINT;
 	END_VAR
 	VAR
 		DatObjCreate_0 : DatObjCreate;
+		MemoryType : exAssetIntMemoryEnum;
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
 		Cnt : USINT;

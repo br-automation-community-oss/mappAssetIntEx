@@ -57,7 +57,9 @@ TYPE
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 	END_STRUCT;
 	exAssetIntLinkType : 	STRUCT 
-		Memory : UDINT;
+		MemoryDb : UDINT;
+		MemoryJob : UDINT;
+		MemoryShift : UDINT;
 		RecordCount : UDINT;
 		RefreshJobUI : BOOL;
 		PieceCounter : UDINT;
@@ -104,9 +106,9 @@ TYPE
 		);
 	exAssetIntMemoryEnum : 
 		(
-		exASSETINT_MEM_TEex := 0, (*Memory location: DRAM (teexorary)*)
-		exASSETINT_MEM_ROM := 1, (*Memory location: USER ROM (memory card)*)
-		exASSETINT_MEM_SRAM := 2 (*Memory location: SRAM (battery-backed)*)
+		exASSETINT_MEM_DB := 0, (*Database memory*)
+		exASSETINT_MEM_JOB := 1, (*Job working memory*)
+		exASSETINT_MEM_SHIFT := 2 (*Shift working memory*)
 		);
 	exAssetIntDowntimeEnum : 
 		(

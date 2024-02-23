@@ -8,6 +8,7 @@ FUNCTION_BLOCK CreateMemory
 		DatObjCreate_0.enable := FALSE;
 		DatObjCreate_0();
 
+		MemoryType := exASSETINT_MEM_DB;
 		Status := ERR_FUB_ENABLE_FALSE;
 		State := 0;		
 		RETURN;
@@ -19,7 +20,7 @@ FUNCTION_BLOCK CreateMemory
 		0:
 			IF Enable THEN
 				Cnt := 0;
-				TmpStr1 := 'AsMem_0';
+				TmpStr1 := 'AsDb_0';
 				Status := ERR_FUB_BUSY;
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'creating internal memory', Logger);
 				State := 1;
@@ -37,15 +38,44 @@ FUNCTION_BLOCK CreateMemory
 	
 			// Data module created successful 
 			IF DatObjCreate_0.status = ERR_OK THEN
-				// Generate log entry
-				TmpStr2 := 'created memory module ';
-				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
-				
-				brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
-				Memory := DatObjCreate_0.pDatObjMem;
-				Status := ERR_OK;
-				State := 0;
+				// Created working memory
+				IF MemoryType = exASSETINT_MEM_DB THEN
+					// Generate log entry
+					TmpStr2 := 'created db memory module ';
+					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+					
+					// Reset memory, set up next memory
+					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
+					MemoryDb := DatObjCreate_0.pDatObjMem;
+					MemoryType := exASSETINT_MEM_JOB;
+					TmpStr1 := 'AsWr_0';
+				ELSIF MemoryType = exASSETINT_MEM_JOB THEN
+					// Generate log entry
+					TmpStr2 := 'created job memory module ';
+					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+
+					// Reset memory, set up next memory
+					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
+					MemoryJob := DatObjCreate_0.pDatObjMem;
+					MemoryType := exASSETINT_MEM_SHIFT;
+					TmpStr1 := 'AsSh_0';
+				ELSIF MemoryType = exASSETINT_MEM_SHIFT THEN
+					// Generate log entry
+					TmpStr2 := 'created job memory module ';
+					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+
+					// Reset memory, finish up
+					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
+					MemoryShift := DatObjCreate_0.pDatObjMem;
+					Status := ERR_OK;
+					State := 0;
+				END_IF
+					
+				DatObjCreate_0.enable := FALSE;
+				DatObjCreate_0();
 								
 			// Data module already exists
 			ELSIF DatObjCreate_0.status = doERR_DUPOBJECT  THEN
@@ -54,12 +84,19 @@ FUNCTION_BLOCK CreateMemory
 				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
-				// Generate new module name
+				// Increase module number, generate new module name
 				Cnt := Cnt + 1;
-				TmpStr1 := 'AsMem_';
+				IF Cnt < 9 THEN
+					brsmemset(ADR(TmpStr1) + brsstrlen(ADR(TmpStr1)) - 1, 0, 1);
+				ELSE
+					brsmemset(ADR(TmpStr1) + brsstrlen(ADR(TmpStr1)) - 2, 0, 2);
+				END_IF
 				brsitoa(Cnt, ADR(TmpStr2));
 				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
-				
+
+				DatObjCreate_0.enable := FALSE;
+				DatObjCreate_0();
+
 			// Error
 			ELSIF DatObjCreate_0.status <> ERR_FUB_BUSY THEN
 				Status := DatObjCreate_0.status;
