@@ -6,6 +6,7 @@ FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset 
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
 		Parameters : REFERENCE TO exAssetIntParType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
 		Configuration : REFERENCE TO exAssetIntCoreConfigType;
+		Logger : UDINT;
 		Update : BOOL; (*Updates the parameters (mapp standard interface)*) (* *) (*#PAR#; *)
 		Downtime : exAssetIntDowntimeEnum; (*The machine is in down time*) (* *) (*#CMD#; *)
 		DowntimeReason : REFERENCE TO STRING[50]; (*The reason for down time*) (* *) (*#CMD#; *)
@@ -44,6 +45,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
 		DeviceName : REFERENCE TO STRING[50]; (*Address of the exported device name*) (* *) (*#CMD#; *)
 		Configuration : REFERENCE TO exAssetIntCoreConfigType;
+		Logger : UDINT;
 		Load : {REDUND_UNREPLICABLE} BOOL; (* *) (* *) (*#PAR#;*)
 		Save : BOOL; (* *) (* *) (*#PAR#;*)
 	END_VAR
@@ -69,6 +71,7 @@ FUNCTION_BLOCK exAssetIntJobListUI (*mapp function block which can be used for s
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
+		Logger : UDINT;
 		UISetup : exAssetIntJobListUISetupType; (*Setup UI connection - must be configured before enabling the FB*) (* *) (*#PAR#; *)
 		UIConnect : REFERENCE TO exAssetIntJobListUIConnectType; (*Connection structure for VC4 User interface*) (* *) (*#CMD#; *)
 	END_VAR
@@ -261,7 +264,7 @@ FUNCTION CreateErrorState : DINT
 	VAR_INPUT
 		ErrorID : DINT;
 		ErrorMsg : STRING[LOG_LEN]; (*Log message*)
-		Logger : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
+		Logger : UDINT;
 		Severity : exComSeveritiesEnum;
 		StateError : REFERENCE TO exAssetIntStateEnum;
 		State : REFERENCE TO exAssetIntStateEnum;

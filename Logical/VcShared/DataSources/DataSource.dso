@@ -7465,20 +7465,6 @@
               </Folder>
             </Folder>
           </Folder>
-          <Folder Name="Internal">
-            <Property Name="Description" Value=""/>
-            <Property Name="FolderType" Value="Struct"/>
-            <DataPoint Name="Logger">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING[0..50]"/>
-              <Property Name="StringLength" Value="100"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING[]"/>
-            </DataPoint>
-          </Folder>
         </Folder>
         <Folder Name="JobListUIConnect">
           <Property Name="Description" Value=""/>
@@ -7489,7 +7475,7 @@
             <DataPoint Name="JobStartTime">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME[0..20]"/>
+              <Property Name="PLCType" Value="DATE_AND_TIME[0..19]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -7542,7 +7528,7 @@
             <DataPoint Name="JobEndTime">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME[0..20]"/>
+              <Property Name="PLCType" Value="DATE_AND_TIME[0..19]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -7595,7 +7581,7 @@
             <DataPoint Name="JobName">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING[0..20]"/>
+              <Property Name="PLCType" Value="STRING[0..19]"/>
               <Property Name="StringLength" Value="20"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
@@ -7644,7 +7630,7 @@
             <DataPoint Name="CurrentUser">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING[0..20]"/>
+              <Property Name="PLCType" Value="STRING[0..19]"/>
               <Property Name="StringLength" Value="50"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
@@ -7703,7 +7689,7 @@
             <DataPoint Name="TotalPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..20]"/>
+              <Property Name="PLCType" Value="UDINT[0..19]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -7756,7 +7742,7 @@
             <DataPoint Name="GoodPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..20]"/>
+              <Property Name="PLCType" Value="UDINT[0..19]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -7809,7 +7795,7 @@
             <DataPoint Name="RejectPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..20]"/>
+              <Property Name="PLCType" Value="UDINT[0..19]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -7863,7 +7849,7 @@
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="DPLimit" Value="None"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL[0..20]"/>
+              <Property Name="PLCType" Value="REAL[0..19]"/>
               <Property Name="PLCUnit" Value="None"/>
               <Property Name="UnitGroup" Value="None"/>
               <Property Name="UpdateTime" Value="Default"/>
@@ -7932,7 +7918,7 @@
             </DataPoint>
             <Folder Name="Uptime">
               <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct[0..20]"/>
+              <Property Name="FolderType" Value="Struct[0..19]"/>
               <Folder Name="Uptime[0]">
                 <Property Name="Description" Value=""/>
                 <Property Name="FolderType" Value="Struct"/>
@@ -8091,6 +8077,16 @@
             </Folder>
           </Folder>
         </Folder>
+        <DataPoint Name="LoggerCore">
+          <Property Name="ConnectedBySharedResource" Value="False"/>
+          <Property Name="ConnectingVisus" Value="Vis"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="PLCType" Value="STRING[0..50]"/>
+          <Property Name="StringLength" Value="100"/>
+          <Property Name="UpdateTime" Value="Default"/>
+          <Property Name="UserID" Value="None"/>
+          <Property Name="VCType" Value="STRING[]"/>
+        </DataPoint>
       </Folder>
     </Folder>
     <Folder Name="MpTeachPointUIConnect">

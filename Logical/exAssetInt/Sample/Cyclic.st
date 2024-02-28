@@ -46,6 +46,7 @@ PROGRAM _CYCLIC
 	exAssetIntCore_0.Downtime := gDowntime;
 	exAssetIntCore_0.PieceCounter := gPieceCounter;
 	exAssetIntCore_0.RejectCounter := gRejectCounter;
+	exAssetIntCore_0.Logger := ADR(LoggerCore);
 	exAssetIntCore_0.Update := gCommandUpdate;
 	exAssetIntCore_0();
 	

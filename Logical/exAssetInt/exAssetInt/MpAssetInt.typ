@@ -4,7 +4,6 @@ TYPE
 	exCoreInternalDataType : 	STRUCT 
 		RecordNext : UINT;
 		RecordData : exCoreInternalRecordType;
-		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		InitAfterBoot : BOOL;
@@ -42,7 +41,6 @@ TYPE
 		AdditionalData : STRING[EVENT_ADDITONAL_DATA_LEN]; (*Additional data information*)
 	END_STRUCT;
 	exConfigInternalDataType : 	STRUCT 
-		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		ReadConfiguration : ReadConfiguration;
@@ -53,7 +51,6 @@ TYPE
 		RecordNum : UDINT;
 		RecordData : exCoreInternalRecordType;
 		x : UDINT;
-		Logger : ARRAY[0..LOG_NUM]OF STRING[LOG_LEN];
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 	END_STRUCT;

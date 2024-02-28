@@ -12,4 +12,5 @@ END_VAR
 VAR
 	exAssetIntJobListUI_0 : exAssetIntJobListUI;
 	JobListUIConnect : exAssetIntJobListUIConnectType;
+	LoggerCore : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
 END_VAR

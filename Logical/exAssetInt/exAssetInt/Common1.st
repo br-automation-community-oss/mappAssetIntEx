@@ -17,7 +17,7 @@ END_FUNCTION
 // Handle log buffer
 FUNCTION CreateLoggerEntry
 	// Make sure we dont flood Logger
-	IF LogMsg <> LastMsg AND LogLevel <= LOG_LEVEL THEN
+	IF LogMsg <> LastMsg AND LogLevel <= LOG_LEVEL AND LogBuffer <> 0 THEN
 		// Make sure log message fits
 		IF brsstrlen(ADR(LogMsg)) > LOG_LEN THEN
 			LogMsg := '*** log meassage exceeds maximum length ***';

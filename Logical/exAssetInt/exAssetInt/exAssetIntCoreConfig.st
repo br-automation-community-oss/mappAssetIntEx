@@ -16,24 +16,24 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Internal.Logger));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Logger));
 
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, 'error exLink is 0', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+					StatusID := CreateErrorState(ERR_ASSET_LINK, 'error exLink is 0', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
 				// Make sure we have temporary buffer
 				IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 OR exLink.MemoryJob = 0 THEN
 					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, 'error no temp memory', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+					StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, 'error no temp memory', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
 				// Make sure core function block is active
 				IF NOT exLink.IsCoreActive THEN
 					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(mpASSETINT_INF_WAIT_CORE_FB, 'error core is not active', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+					StatusID := CreateErrorState(mpASSETINT_INF_WAIT_CORE_FB, 'error core is not active', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
 				
@@ -49,13 +49,13 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exASSETINT_STATE_IDLE:		
 			// Handle configuration load command
 			IF EDGEPOS(Load) THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', ADR(Internal.Logger));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', ADR(Logger));
 				Internal.State := exASSETINT_STATE_LOAD_CFG;
 			END_IF
 
 			// Handle configuration save command
 			IF EDGEPOS(Save) THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', ADR(Internal.Logger));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', ADR(Logger));
 				Internal.State := exASSETINT_STATE_SAVE_CFG;
 			END_IF
 			
@@ -64,12 +64,12 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exASSETINT_STATE_LOAD_CFG:
 			Internal.ReadConfiguration.Enable := TRUE;
 			Internal.ReadConfiguration.Device := DeviceName;
-			Internal.ReadConfiguration.Logger := ADR(Internal.Logger);
+			Internal.ReadConfiguration.Logger := ADR(Logger);
 			Internal.ReadConfiguration();
 		
 			// Event successful created
 			IF Internal.ReadConfiguration.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'loaded configuration', ADR(Internal.Logger));				
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'loaded configuration', ADR(Logger));				
 				Configuration := Internal.ReadConfiguration.Configuration;
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
@@ -77,7 +77,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 			// Error
 			ELSIF Internal.ReadConfiguration.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.ReadConfiguration.Status, 'error loading configuration', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.ReadConfiguration.Status, 'error loading configuration', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
 			// -------------------------------------------------------------------------------------------
@@ -85,20 +85,20 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exASSETINT_STATE_SAVE_CFG:
 			Internal.WriteConfiguration.Enable := TRUE;
 			Internal.WriteConfiguration.Device := DeviceName;
-			Internal.WriteConfiguration.Logger := ADR(Internal.Logger);
+			Internal.WriteConfiguration.Logger := ADR(Logger);
 			Internal.WriteConfiguration.Configuration := Configuration;
 			Internal.WriteConfiguration();
 		
 			// Event successful created
 			IF Internal.WriteConfiguration.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'saved configuration', ADR(Internal.Logger));				
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'saved configuration', ADR(Logger));				
 				StatusID := ERR_OK;		
 				Internal.State := exASSETINT_STATE_IDLE;
 			
 			// Error
 			ELSIF Internal.WriteConfiguration.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.WriteConfiguration.Status, 'error saving configuration', Internal.Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.WriteConfiguration.Status, 'error saving configuration', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 		// -------------------------------------------------------------------------------------------
