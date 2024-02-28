@@ -29,12 +29,16 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.DTGetTime_0(enable := TRUE);
 				Internal.TimeTotalStart := Internal.DTGetTime_0.DT1;
 				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN
-					Info.JobStatistics.JobName := Parameters.Job;
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
-					Internal.PieceCounterOld := PieceCounter;
-					Internal.RejectCounterOld := RejectCounter;
 				END_IF
-							
+
+				// Transfer start values
+				Info.JobStatistics.JobName := Parameters.Job;
+				Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
+				Info.JobStatistics.AdditionalData := Parameters.AdditionalData;
+				Internal.PieceCounterOld := PieceCounter;
+				Internal.RejectCounterOld := RejectCounter;
+
 				// Reset error and status
 				Error := FALSE;
 				StatusID := ERR_OK;
@@ -166,7 +170,9 @@ FUNCTION_BLOCK exAssetIntCore
 			IF EDGEPOS(Update) THEN	
 				// Job has changed
 				IF Parameters.Job <> Info.JobStatistics.JobName THEN
-					CreateLoggerEntry(exASSETINT_LOG_INFO, 'new job started', Logger);
+					Internal.TmpStr := 'new job started ';
+					brsstrcat(ADR(Internal.TmpStr), ADR(Parameters.Job));
+					CreateLoggerEntry(exASSETINT_LOG_INFO, Internal.TmpStr, Logger);
 					UpdateDone := FALSE;
 
 					// Transfer stats to recordvnc, make sure structures are allignent
@@ -175,8 +181,8 @@ FUNCTION_BLOCK exAssetIntCore
 					// Collect data for record
 					Internal.RecordData.TimeStart := exLink.JobStart;
 					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
-					Internal.RecordData.CurrentUser := Parameters.CurrentUser;
-					Internal.RecordData.AdditionalData := Parameters.AdditionalData;
+					Internal.RecordData.CurrentUser := Info.JobStatistics.CurrentUser;
+					Internal.RecordData.AdditionalData := Info.JobStatistics.AdditionalData;
 					Internal.RecordData.ShiftName := Info.ShiftStatistics.ShiftName;
 					Internal.RecordData.JobName := Info.JobStatistics.JobName;				
 					Internal.RecordData.TotalPieces := Info.JobStatistics.TotalPieces;

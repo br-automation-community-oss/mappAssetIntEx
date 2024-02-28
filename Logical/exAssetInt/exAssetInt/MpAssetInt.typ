@@ -10,6 +10,7 @@ TYPE
 		TimeTotalStart : DATE_AND_TIME;
 		PieceCounterOld : UDINT;
 		RejectCounterOld : UDINT;
+		TmpStr : STRING[80];
 		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
 		StatsRefresh : TON_10ms;
@@ -47,9 +48,11 @@ TYPE
 		WriteConfiguration : WriteConfiguration;
 	END_STRUCT;
 	exJobUIInternalDataType : 	STRUCT 
-		RecordStart : UDINT;
-		RecordNum : UDINT;
+		RecordStart : UDINT; (*Visible list is starting from this index*)
+		RecordNum : UDINT; (*Number of items to display*)
+		RecordCountOld : UDINT; (*Old record number is required for DESC list*)
 		RecordData : exCoreInternalRecordType;
+		SortingStartTimeOld : exAssetIntUISortingEnum := exASSETINT_SORTING_ASC;
 		x : UDINT;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
@@ -315,7 +318,13 @@ TYPE
 	exAssetIntJobListUISetupType : 	STRUCT 
 		OutputListSize : UINT := 10; (*Output list size*)
 		ScrollWindow : USINT := 0; (*Scroll Window (overlap for PageUp/Down)*)
+		SortingStartTime : exAssetIntUISortingEnum := exASSETINT_SORTING_DESC;
 	END_STRUCT;
+	exAssetIntUISortingEnum : 
+		(
+		exASSETINT_SORTING_ASC := 0, (*Sorting ascending*)
+		exASSETINT_SORTING_DESC := 1 (*Sorting descending*)
+		);
 	exAssetIntUIProductionStateEnum : 
 		(
 		exASSETINT_STATE_NO_SHIFT_ACTIVE := 0, (*Inactive state*)
