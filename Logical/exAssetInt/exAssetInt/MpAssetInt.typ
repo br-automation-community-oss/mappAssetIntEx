@@ -20,8 +20,9 @@ TYPE
 		WriteEventData : WriteEventData;
 	END_STRUCT;
 	exCoreInternalRecordType : 	STRUCT 
-		TimeStart : DATE_AND_TIME;
-		TimeEnd : DATE_AND_TIME;
+		FileName : STRING[80]; (*ID of the event*)
+		TimeStart : DATE_AND_TIME; (*Event start*)
+		TimeEnd : DATE_AND_TIME; (*Event end*)
 		ShiftName : STRING[20]; (*Shift name*)
 		JobName : STRING[20]; (*Job name.*)
 		TotalTime : exAssetIntTimeType; (*Total time since this job started*)

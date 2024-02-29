@@ -224,6 +224,7 @@ FUNCTION_BLOCK WriteEventData
 		FileWrite_0 : FileWrite;
 		DTGetTime_0 : DTGetTime;
 		RecordDataIntern : exCoreInternalRecordType;
+		FileName : STRING[100];
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
 		Ident : UDINT;
@@ -287,5 +288,15 @@ FUNCTION CalcStatsJob : USINT
 		DowntimeUnscheduled : UDINT;
 		GoodProductionTime : UDINT;
 		DTGetTime_0 : DTGetTime;
+	END_VAR
+END_FUNCTION
+
+FUNCTION FindInstr : UDINT
+	VAR_INPUT
+		string1 : UDINT;
+		string2 : UDINT;
+	END_VAR
+	VAR
+		idx : UDINT;
 	END_VAR
 END_FUNCTION

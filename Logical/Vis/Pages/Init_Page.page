@@ -32,7 +32,7 @@
           <Text ID="209757" Value="User Name"/>
           <Text ID="209758" Value="Job Name"/>
           <Text ID="209828" Value="Piece Counter"/>
-          <Text ID="209829" Value="Reject Counter"/>
+          <Text ID="209829" Value="Record Count"/>
           <Text ID="209830" Value="Shift"/>
           <Text ID="209831" Value="Job"/>
           <Text ID="209834" Value="Current User"/>
@@ -89,6 +89,8 @@
           <Text ID="224200" Value=":"/>
           <Text ID="224201" Value=":"/>
           <Text ID="225849" Value="Auto Create Jobs"/>
+          <Text ID="229196" Value="Last File Name"/>
+          <Text ID="229197" Value="Next ID"/>
         </TextLayer>
         <IndexMap>
           <Index ID="206794" Value="8"/>
@@ -155,6 +157,8 @@
           <Index ID="224200" Value="98"/>
           <Index ID="224201" Value="99"/>
           <Index ID="225849" Value="100"/>
+          <Index ID="229196" Value="102"/>
+          <Index ID="229197" Value="103"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -635,14 +639,14 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="865"/>
+          <Property Name="Left" Value="1415"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="24"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="155"/>
+          <Property Name="Top" Value="1130"/>
           <Property Name="Width" Value="140"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_13">
@@ -672,7 +676,7 @@
           <Property Name="Height" Value="30"/>
           <Property Name="InputMinus" Value="Normal"/>
           <Property Name="InputNext" Value="Enter"/>
-          <Property Name="Left" Value="1005"/>
+          <Property Name="Left" Value="1555"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -680,8 +684,8 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="155"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gRejectCounter]"/>
+          <Property Name="Top" Value="1130"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetIntLink.RecordCount]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="110"/>
         </Control>
@@ -3438,9 +3442,9 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
-          <Property Name="Height" Value="1125"/>
+          <Property Name="Height" Value="1085"/>
           <Property Name="IndexDatapoint" Value="None"/>
-          <Property Name="Left" Value="1420"/>
+          <Property Name="Left" Value="1415"/>
           <Property Name="LeftBitmap" Value="None"/>
           <Property Name="LeftTextGroup" Value="None"/>
           <Property Name="MaxDatapoint" Value="None"/>
@@ -3455,7 +3459,7 @@
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.LoggerCore]"/>
           <Property Name="TextIndexOffset" Value="0"/>
           <Property Name="TextSource" Value="MultipleStrings"/>
-          <Property Name="Top" Value="60"/>
+          <Property Name="Top" Value="0"/>
           <Property Name="Width" Value="490"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_36">
@@ -5788,6 +5792,76 @@
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_7]"/>
           <Property Name="Width" Value="160"/>
         </Control>
+        <Control ClassId="0x00001004" Name="Text_62">
+          <Property Name="AlignmentHorizontal" Value="Right"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="1415"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="102"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="1160"/>
+          <Property Name="Width" Value="140"/>
+        </Control>
+        <Control ClassId="0x0000100B" Name="String_20">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="1555"/>
+          <Property Name="MaxChars" Value="20"/>
+          <Property Name="SimulationValue" Value="ABC"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
+          <Property Name="Top" Value="1160"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntCore_0.Internal.WriteEventData.FileName]"/>
+          <Property Name="Width" Value="180"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_63">
+          <Property Name="AlignmentHorizontal" Value="Right"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="Left" Value="1415"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="103"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="1100"/>
+          <Property Name="Width" Value="140"/>
+        </Control>
+        <Control ClassId="0x00001007" Name="Numeric_176">
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="30"/>
+          <Property Name="InputMinus" Value="Normal"/>
+          <Property Name="InputNext" Value="Enter"/>
+          <Property Name="Left" Value="1555"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxValue" Value="None"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinValue" Value="None"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
+          <Property Name="TeachDatapoint" Value="None"/>
+          <Property Name="Top" Value="1100"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntCore_0.Internal.RecordNext]"/>
+          <Property Name="ValueMode" Value="Standard"/>
+          <Property Name="Width" Value="110"/>
+        </Control>
       </Controls>
       <KeyMapping>
         <VirtualKey Name="%embVirtualKey_2">
@@ -5985,7 +6059,7 @@
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_5]"/>
       <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_5]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_13]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[String_5]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_19]"/>
@@ -5994,16 +6068,16 @@
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_4]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_13]">
-      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_4]"/>
       <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_5]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_15]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_14]">
-      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_4]"/>
-      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_5]"/>
-      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_13]"/>
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_20]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_12]"/>
+      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_20]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_176]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_15]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_13]"/>
@@ -6024,16 +6098,28 @@
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_18]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Listbox_1]">
-      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_15]"/>
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_176]"/>
       <Property Name="Left" Value="Source[embedded].Layer[Default].Control[ddbDowntime]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_1]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_12]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_20]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[String_19]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_18]"/>
       <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_5]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_5]"/>
+    </MovementEntry>
+    <MovementEntry Control="Source[embedded].Layer[Default].Control[String_20]">
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_12]"/>
+      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Numeric_3]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
+    </MovementEntry>
+    <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_176]">
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_12]"/>
+      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
     </MovementEntry>
   </MovementOrder>
   <TabSequence>
@@ -6233,5 +6319,7 @@
     <TabSeqItem Index="193" Value="Source[embedded].Layer[Default].Control[Numeric_173]"/>
     <TabSeqItem Index="194" Value="Source[embedded].Layer[Default].Control[Numeric_174]"/>
     <TabSeqItem Index="195" Value="Source[embedded].Layer[Default].Control[Numeric_175]"/>
+    <TabSeqItem Index="196" Value="Source[embedded].Layer[Default].Control[String_20]"/>
+    <TabSeqItem Index="197" Value="Source[embedded].Layer[Default].Control[Numeric_176]"/>
   </TabSequence>
 </Page>

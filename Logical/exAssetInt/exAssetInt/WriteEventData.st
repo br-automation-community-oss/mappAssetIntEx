@@ -28,12 +28,12 @@ FUNCTION_BLOCK WriteEventData
 				FileClose_0();
 
 				// Generate file name
-				TmpStr1 := 'events';
+				FileName := 'events';
 				brsitoa(RecordNext/CORE_EVENT_DIR_MAX, ADR(TmpStr2));
-				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
-				brsstrcat(ADR(TmpStr1), ADR('/event'));
+				brsstrcat(ADR(FileName), ADR(TmpStr2));
+				brsstrcat(ADR(FileName), ADR('/event#'));
 				brsitoa(RecordNext, ADR(TmpStr2));
-				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
+				brsstrcat(ADR(FileName), ADR(TmpStr2));
 				
 				Status := ERR_FUB_BUSY;
 				CreateLoggerEntry(exASSETINT_LOG_INFO, 'creating new event', Logger);
@@ -45,7 +45,7 @@ FUNCTION_BLOCK WriteEventData
 		1:
 			FileOpen_0.enable := TRUE;
 			FileOpen_0.pDevice := ADR(Device);
-			FileOpen_0.pFile := ADR(TmpStr1);
+			FileOpen_0.pFile := ADR(FileName);
 			FileOpen_0.mode := fiREAD_WRITE;
 			FileOpen_0();
 	
@@ -53,7 +53,7 @@ FUNCTION_BLOCK WriteEventData
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
 				TmpStr2 := 'opened event file ';
-				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+				brsstrcat(ADR(TmpStr2), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
 				// Remember ident go to next step
@@ -75,14 +75,14 @@ FUNCTION_BLOCK WriteEventData
 		2:
 			FileCreate_0.enable := TRUE;
 			FileCreate_0.pDevice := ADR(Device);
-			FileCreate_0.pFile := ADR(TmpStr1);
+			FileCreate_0.pFile := ADR(FileName);
 			FileCreate_0();
 	
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
 				TmpStr2 := 'created event file ';
-				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+				brsstrcat(ADR(TmpStr2), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
 				// Remember ident go to next step
@@ -98,7 +98,10 @@ FUNCTION_BLOCK WriteEventData
 		
 			// -------------------------------------------------------------------------------------------
 			// Write data
-		3:			
+		3:
+			// Add file name to record
+			RecordDataIntern.FileName := FileName;
+			
 			FileWrite_0.enable := TRUE;
 			FileWrite_0.ident := Ident;
 			FileWrite_0.pSrc := ADR(RecordDataIntern);

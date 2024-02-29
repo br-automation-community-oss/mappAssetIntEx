@@ -91,15 +91,6 @@
         <Property Name="VCType" Value="BOOL[]"/>
       </DataPoint>
     </Folder>
-    <DataPoint Name="gRejectCounter">
-      <Property Name="ConnectedBySharedResource" Value="False"/>
-      <Property Name="ConnectingVisus" Value="Vis"/>
-      <Property Name="Description" Value=""/>
-      <Property Name="PLCType" Value="UDINT"/>
-      <Property Name="UpdateTime" Value="Default"/>
-      <Property Name="UserID" Value="None"/>
-      <Property Name="VCType" Value="INTEGER"/>
-    </DataPoint>
     <DataPoint Name="gDowntimeReason">
       <Property Name="ConnectedBySharedResource" Value="False"/>
       <Property Name="ConnectingVisus" Value="Vis"/>
@@ -7663,6 +7654,33 @@
               </Folder>
             </Folder>
           </Folder>
+          <Folder Name="Internal">
+            <Property Name="Description" Value=""/>
+            <Property Name="FolderType" Value="Struct"/>
+            <DataPoint Name="RecordNext">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="UINT"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+            <Folder Name="WriteEventData">
+              <Property Name="Description" Value=""/>
+              <Property Name="FolderType" Value="FunctionBlock"/>
+              <DataPoint Name="FileName">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="100"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+            </Folder>
+          </Folder>
         </Folder>
         <Folder Name="JobListUIConnect">
           <Property Name="Description" Value=""/>
@@ -10465,6 +10483,19 @@
         <Property Name="UpdateTime" Value="Default"/>
         <Property Name="UserID" Value="None"/>
         <Property Name="VCType" Value="BOOL"/>
+      </DataPoint>
+    </Folder>
+    <Folder Name="exAssetIntLink">
+      <Property Name="Description" Value=""/>
+      <Property Name="FolderType" Value="Struct"/>
+      <DataPoint Name="RecordCount">
+        <Property Name="ConnectedBySharedResource" Value="False"/>
+        <Property Name="ConnectingVisus" Value="Vis"/>
+        <Property Name="Description" Value=""/>
+        <Property Name="PLCType" Value="UDINT"/>
+        <Property Name="UpdateTime" Value="Default"/>
+        <Property Name="UserID" Value="None"/>
+        <Property Name="VCType" Value="INTEGER"/>
       </DataPoint>
     </Folder>
   </DataPoints>
