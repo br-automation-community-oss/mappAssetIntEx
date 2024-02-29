@@ -1,7 +1,8 @@
 (*General constants*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR CONSTANT
-	CORE_EVENT_NUM_MAX : UINT := 1000; (*Maximum number of events*)
+	CORE_EVENT_NUM_MAX : UINT := 50; (*Maximum number of events*)
+	CORE_EVENT_DIR_MAX : UINT := 10; (*Maximum number of events in one directory*)
 	EVENT_ADDITONAL_DATA_LEN : UINT := 100; (*Length of the event comment*)
 	UI_JOB_LIST_IDX : UINT := 19; (*Max index for list box entries*)
 	LOG_LEN : UINT := 100; (*Length of the one log entry*)

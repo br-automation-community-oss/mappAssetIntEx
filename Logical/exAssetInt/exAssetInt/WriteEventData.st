@@ -29,7 +29,7 @@ FUNCTION_BLOCK WriteEventData
 
 				// Generate file name
 				TmpStr1 := 'events';
-				brsitoa(RecordNext/100, ADR(TmpStr2));
+				brsitoa(RecordNext/CORE_EVENT_DIR_MAX, ADR(TmpStr2));
 				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
 				brsstrcat(ADR(TmpStr1), ADR('/event'));
 				brsitoa(RecordNext, ADR(TmpStr2));

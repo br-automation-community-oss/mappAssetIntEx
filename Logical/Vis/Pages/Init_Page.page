@@ -88,6 +88,7 @@
           <Text ID="224195" Value=":"/>
           <Text ID="224200" Value=":"/>
           <Text ID="224201" Value=":"/>
+          <Text ID="225849" Value="Auto Create Jobs"/>
         </TextLayer>
         <IndexMap>
           <Index ID="206794" Value="8"/>
@@ -153,6 +154,7 @@
           <Index ID="224195" Value="93"/>
           <Index ID="224200" Value="98"/>
           <Index ID="224201" Value="99"/>
+          <Index ID="225849" Value="100"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -1200,7 +1202,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1205"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[BasicButton]"/>
@@ -1209,7 +1211,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="120"/>
+          <Property Name="Top" Value="515"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_6]"/>
           <Property Name="Width" Value="160"/>
         </Control>
@@ -5762,6 +5764,30 @@
           <Property Name="Top" Value="850"/>
           <Property Name="Width" Value="20"/>
         </Control>
+        <Control ClassId="0x00001002" Name="Button_5">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="BitmapAlignmentHorizontal" Value="Center"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_7]"/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="50"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="1205"/>
+          <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[BasicButton]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="100"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="575"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_7]"/>
+          <Property Name="Width" Value="160"/>
+        </Control>
       </Controls>
       <KeyMapping>
         <VirtualKey Name="%embVirtualKey_2">
@@ -5817,7 +5843,7 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gAutoCount]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.AssetTest.AutoCount]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -5842,6 +5868,22 @@
               <Property Name="Name" Value="Action_1"/>
               <Property Name="SetValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="None"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="%embVirtualKey_7">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016A">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.AssetTest.AutoCreateJobs]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

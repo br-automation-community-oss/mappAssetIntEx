@@ -16,7 +16,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', ADR(Logger));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', Logger);
 
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
@@ -49,13 +49,13 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exASSETINT_STATE_IDLE:		
 			// Handle configuration load command
 			IF EDGEPOS(Load) THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', ADR(Logger));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', Logger);
 				Internal.State := exASSETINT_STATE_LOAD_CFG;
 			END_IF
 
 			// Handle configuration save command
 			IF EDGEPOS(Save) THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', ADR(Logger));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', Logger);
 				Internal.State := exASSETINT_STATE_SAVE_CFG;
 			END_IF
 			
@@ -64,12 +64,12 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exASSETINT_STATE_LOAD_CFG:
 			Internal.ReadConfiguration.Enable := TRUE;
 			Internal.ReadConfiguration.Device := DeviceName;
-			Internal.ReadConfiguration.Logger := ADR(Logger);
+			Internal.ReadConfiguration.Logger := Logger;
 			Internal.ReadConfiguration();
 		
 			// Event successful created
 			IF Internal.ReadConfiguration.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'loaded configuration', ADR(Logger));				
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'loaded configuration', Logger);				
 				Configuration := Internal.ReadConfiguration.Configuration;
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
@@ -85,13 +85,13 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exASSETINT_STATE_SAVE_CFG:
 			Internal.WriteConfiguration.Enable := TRUE;
 			Internal.WriteConfiguration.Device := DeviceName;
-			Internal.WriteConfiguration.Logger := ADR(Logger);
+			Internal.WriteConfiguration.Logger := Logger;
 			Internal.WriteConfiguration.Configuration := Configuration;
 			Internal.WriteConfiguration();
 		
 			// Event successful created
 			IF Internal.WriteConfiguration.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'saved configuration', ADR(Logger));				
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'saved configuration', Logger);				
 				StatusID := ERR_OK;		
 				Internal.State := exASSETINT_STATE_IDLE;
 			

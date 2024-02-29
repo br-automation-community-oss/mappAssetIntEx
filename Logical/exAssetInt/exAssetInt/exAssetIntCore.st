@@ -104,7 +104,7 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Read events successful
 			IF Internal.ReadEventData.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'reading stored events', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'read stored events', Logger);
 				exLink.RecordCount := Internal.ReadEventData.RecordCount;
 				Internal.RecordNext := Internal.ReadEventData.RecordCount;
 

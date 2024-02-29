@@ -1,4 +1,25 @@
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR
 	Memory : ARRAY[0..19] OF exCoreInternalRecordType;
+	TmpStr1 : STRING[80];
+	TmpStr2 : STRING[80];
+END_VAR
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	AutoCount : BOOL; (*Start auto count*)
+END_VAR
+VAR CONSTANT
+	AutoCountCycle : UINT := 1000; (*Auto count cycle in ms*)
+END_VAR
+VAR
 	AutoCountTime : TON_10ms;
+END_VAR
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	AutoCreateJobs : BOOL; (*Auto create jobs*)
+	AutoCreatePieceCnt : UDINT; (*Job piece counter*)
+	AutoCreateJobsCnt : UDINT; (*Job name counter*)
+END_VAR
+VAR CONSTANT
+	AutoCreateJobsNum : UDINT := 30; (*Pieces per job auto create*)
 END_VAR

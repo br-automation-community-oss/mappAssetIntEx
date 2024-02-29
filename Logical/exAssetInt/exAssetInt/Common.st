@@ -1,7 +1,7 @@
 // -------------------------------------------------------------------------------------------
 // Handle error state
 FUNCTION CreateErrorState
-	CreateLoggerEntry(exASSETINT_LOG_ERROR, ErrorMsg, ADR(Logger));
+	CreateLoggerEntry(exASSETINT_LOG_ERROR, ErrorMsg, Logger);
 
 	StateError := State;
 	State := exASSETINT_STATE_ERROR;

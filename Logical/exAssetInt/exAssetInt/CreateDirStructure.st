@@ -42,7 +42,7 @@ FUNCTION_BLOCK CreateDirStructure
 				
 				// Create folders for 100 events each, finish when all folders are created
 				DirCount := DirCount + 1;
-				IF DirCount > CORE_EVENT_NUM_MAX / 100 THEN
+				IF DirCount >= CORE_EVENT_NUM_MAX / CORE_EVENT_DIR_MAX THEN
 					Status := ERR_OK;
 					State := 0;
 					
