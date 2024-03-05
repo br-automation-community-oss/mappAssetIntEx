@@ -3442,7 +3442,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
-          <Property Name="Height" Value="1085"/>
+          <Property Name="Height" Value="1020"/>
           <Property Name="IndexDatapoint" Value="None"/>
           <Property Name="Left" Value="1415"/>
           <Property Name="LeftBitmap" Value="None"/>
@@ -3459,7 +3459,7 @@
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.LoggerCore]"/>
           <Property Name="TextIndexOffset" Value="0"/>
           <Property Name="TextSource" Value="MultipleStrings"/>
-          <Property Name="Top" Value="0"/>
+          <Property Name="Top" Value="65"/>
           <Property Name="Width" Value="490"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_36">
