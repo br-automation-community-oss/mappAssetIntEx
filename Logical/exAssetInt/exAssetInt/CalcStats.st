@@ -42,7 +42,7 @@ FUNCTION CalcStatsJob
 		JobStatistics.RejectPieces := exLink.PieceCounter;		
 	END_IF	
 	IF JobStatistics.TotalPieces > 0 THEN
-		JobStatistics.BadPieceRate := UDINT_TO_REAL(exLink.RejectCounter/JobStatistics.TotalPieces);
+		JobStatistics.BadPieceRate := UDINT_TO_REAL(exLink.RejectCounter)/UDINT_TO_REAL(JobStatistics.TotalPieces);
 	END_IF
 
 	// -------------------------------------------------------------------------------------------
