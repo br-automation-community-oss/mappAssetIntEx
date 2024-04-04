@@ -50,7 +50,7 @@ FUNCTION_BLOCK ReadEventData
 			// File created successful
 			IF DirOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr1 := 'opened dir ';
+				TmpStr1 := 'open dir -> ';
 				brsstrcat(ADR(TmpStr1), ADR(DirName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
 				
@@ -64,20 +64,20 @@ FUNCTION_BLOCK ReadEventData
 			END_IF
 			
 		// -------------------------------------------------------------------------------------------
-		// Read next file ebtry
+		// Read next file name
 		2:
 			DirReadEx_0.enable := TRUE;
 			DirReadEx_0.ident := DirOpen_0.ident;
-			DirReadEx_0.pData := ADR(FileInfo);
-			DirReadEx_0.data_len := SIZEOF(FileInfo);
+			DirReadEx_0.pData := ADR(FileInfo_0);
+			DirReadEx_0.data_len := SIZEOF(FileInfo_0);
 			DirReadEx_0();
 	
 			// New file found
 			IF DirReadEx_0.status = ERR_OK THEN
-				IF brsstrcmp(ADR(FileInfo.Filename), ADR('.')) <> 0 AND brsstrcmp(ADR(FileInfo.Filename), ADR('..')) <> 0 THEN			
+				IF brsstrcmp(ADR(FileInfo_0.Filename), ADR('.')) <> 0 AND brsstrcmp(ADR(FileInfo_0.Filename), ADR('..')) <> 0 THEN			
 					// Generate log entry
-					TmpStr1 := 'found file ';
-					brsstrcat(ADR(TmpStr1), ADR(FileInfo.Filename));
+					TmpStr1 := 'found file -> ';
+					brsstrcat(ADR(TmpStr1), ADR(FileInfo_0.Filename));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
 	
 					State := 4;
@@ -86,7 +86,7 @@ FUNCTION_BLOCK ReadEventData
 			// No more entries
 			ELSIF DirReadEx_0.status = fiERR_NO_MORE_ENTRIES THEN
 				// Generate log entry
-				TmpStr1 := 'finished reading dir ';
+				TmpStr1 := 'read all events ok ';
 				brsstrcat(ADR(TmpStr1), ADR(DirName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
 
@@ -108,7 +108,7 @@ FUNCTION_BLOCK ReadEventData
 			// Directory closed successful
 			IF DirClose_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr1 := 'closed dir ';
+				TmpStr1 := 'close dir ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(DirName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
 				
@@ -138,7 +138,7 @@ FUNCTION_BLOCK ReadEventData
 			// Generate file name
 			FileName := DirName;
 			brsstrcat(ADR(FileName), ADR('/'));
-			brsstrcat(ADR(FileName), ADR(FileInfo.Filename));
+			brsstrcat(ADR(FileName), ADR(FileInfo_0.Filename));
 			
 			// Open file
 			FileOpen_0.enable := TRUE;
@@ -150,7 +150,7 @@ FUNCTION_BLOCK ReadEventData
 			// File opened successful
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr1 := 'opened event file ';
+				TmpStr1 := 'open event file ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
 				
@@ -175,7 +175,7 @@ FUNCTION_BLOCK ReadEventData
 			// File read successful
 			IF FileRead_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr1 := 'read event file ';
+				TmpStr1 := 'read event file ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_INFO, TmpStr1, Logger);
 				
@@ -202,7 +202,7 @@ FUNCTION_BLOCK ReadEventData
 			// File closed successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr1 := 'closed event file ';
+				TmpStr1 := 'close event file ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
 				
@@ -245,7 +245,7 @@ FUNCTION InsertEventData
 		// New range is lower or higher than current
 		IF sort <> 16#FFFFFFFF THEN
 			x := x + y;
-			IF x > RecordCount THEN
+			IF x > UINT_TO_INT(RecordCount) THEN
 				x := UINT_TO_INT(RecordCount);
 			END_IF
 		ELSE
@@ -260,7 +260,7 @@ FUNCTION InsertEventData
 	RecordMemory ACCESS Memory + x*SIZEOF(RecordData);
 	sort := DiffDT(RecordData.TimeEnd, RecordMemory.TimeEnd);
 
-	IF sort > 0 AND x <> RecordCount THEN
+	IF sort > 0 AND x <> UINT_TO_INT(RecordCount) THEN
 		x := x + 1;
 	ELSIF x > 0 THEN
 		RecordMemory ACCESS Memory + (x - 1)*SIZEOF(RecordData);
@@ -274,5 +274,6 @@ FUNCTION InsertEventData
 	brsmemmove(Memory + (x + 1)*SIZEOF(RecordData), Memory + x*SIZEOF(RecordData), (RecordCount - x)*SIZEOF(RecordData));
 	brsmemcpy(Memory + x*SIZEOF(RecordData), ADR(RecordData), SIZEOF(RecordData));
 
+	InsertEventData := TRUE;
 END_FUNCTION
 

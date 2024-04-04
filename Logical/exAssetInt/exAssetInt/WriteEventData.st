@@ -52,7 +52,7 @@ FUNCTION_BLOCK WriteEventData
 			// File opened successful
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr2 := 'opened event file ';
+				TmpStr2 := 'open event file ok -> ';
 				brsstrcat(ADR(TmpStr2), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
@@ -81,7 +81,7 @@ FUNCTION_BLOCK WriteEventData
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr2 := 'created event file ';
+				TmpStr2 := 'create event file -> ';
 				brsstrcat(ADR(TmpStr2), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
@@ -111,7 +111,7 @@ FUNCTION_BLOCK WriteEventData
 			// File created successful
 			IF FileWrite_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr2 := 'wrote event file ';
+				TmpStr2 := 'write event file ok -> ';
 				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				
@@ -134,7 +134,7 @@ FUNCTION_BLOCK WriteEventData
 			// File created successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr2 := 'closed event file ';
+				TmpStr2 := 'close event file ok -> ';
 				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
 				

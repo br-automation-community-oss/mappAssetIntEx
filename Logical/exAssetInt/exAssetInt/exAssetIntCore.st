@@ -61,13 +61,13 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Folder structure successful created
 			IF Internal.CreateDirStructure.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created folder structure', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'create folder structure ok', Logger);
 				Internal.State := exASSETINT_STATE_INIT_3;
 			
 				// Error
 			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, 'error creating folder structure', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, 'create folder structure error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Memory structure successful created
 			IF Internal.CreateMemory.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created internal memory', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'create internal memory ok', Logger);
 				exLink.MemoryDb := Internal.CreateMemory.MemoryDb;
 				exLink.MemoryJob := Internal.CreateMemory.MemoryJob;
 				exLink.MemoryShift := Internal.CreateMemory.MemoryShift;
@@ -89,7 +89,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateMemory.Status, 'error creating internal memory', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.CreateMemory.Status, 'create internal memory error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Read events successful
 			IF Internal.ReadEventData.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'read stored events', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'read stored events ok', Logger);
 				
 				// Get record count, calculate next entry
 				exLink.RecordCount := Internal.ReadEventData.RecordCount;
@@ -126,7 +126,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.ReadEventData.Status, 'error reading stored events', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.ReadEventData.Status, 'read stored events error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
 			// -------------------------------------------------------------------------------------------
@@ -235,7 +235,7 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Event successful created
 			IF Internal.WriteEventData.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'created new event', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'create new event ok', Logger);
 				
 				// Calculate new last record and record count
 				Internal.RecordNext := Internal.RecordNext + 1;
@@ -259,7 +259,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.WriteEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.WriteEventData.Status, 'error creating event', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.WriteEventData.Status, 'create new event error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------

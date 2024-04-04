@@ -84,8 +84,6 @@ FUNCTION_BLOCK exAssetIntJobListUI (*mapp function block which can be used for s
 	VAR
 		Internal : {REDUND_UNREPLICABLE} exJobUIInternalDataType; (*Internal data*)
 		zzEdge00000 : BOOL;
-		zzEdge00001 : BOOL;
-		zzEdge00002 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -104,7 +102,6 @@ FUNCTION_BLOCK CreateDirStructure
 		TmpStr2 : STRING[100];
 		DirCount : USINT;
 		State : USINT;
-		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -127,8 +124,6 @@ FUNCTION_BLOCK CreateMemory
 		TmpStr2 : STRING[100];
 		Cnt : USINT;
 		State : USINT;
-		zzEdge00000 : BOOL;
-		zzEdge1 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -147,7 +142,6 @@ FUNCTION_BLOCK ReadConfiguration
 		FileClose_0 : FileClose;
 		FileRead_0 : FileRead;
 		State : USINT;
-		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -168,7 +162,6 @@ FUNCTION_BLOCK WriteConfiguration
 		FileWrite_0 : FileWrite;
 		Ident : UDINT;
 		State : USINT;
-		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -194,15 +187,12 @@ FUNCTION_BLOCK ReadEventData
 		FileClose_0 : FileClose;
 		FileRead_0 : FileRead;
 		FileName : STRING[100];
-		FileInfo : fiDIR_READ_EX_DATA;
+		FileInfo_0 : fiDIR_READ_EX_DATA;
 		RecordData : exCoreInternalRecordType;
 		TimeFirst : DATE_AND_TIME;
-		TimeDiff : UDINT;
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
-		x : UINT;
 		State : USINT;
-		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -222,15 +212,12 @@ FUNCTION_BLOCK WriteEventData
 		FileOpen_0 : FileOpen;
 		FileClose_0 : FileClose;
 		FileWrite_0 : FileWrite;
-		DTGetTime_0 : DTGetTime;
 		RecordDataIntern : exCoreInternalRecordType;
 		FileName : STRING[100];
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
 		Ident : UDINT;
-		Cnt : USINT;
 		State : USINT;
-		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 

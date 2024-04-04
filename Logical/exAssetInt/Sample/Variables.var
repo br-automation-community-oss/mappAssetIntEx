@@ -2,15 +2,16 @@
 VAR
 	exAssetIntCore_0 : exAssetIntCore;
 	exAssetIntPar : exAssetIntParType;
+	LoggerCore : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
 END_VAR
 (*Asset configuration*)
 VAR
 	exAssetIntConfig_0 : exAssetIntCoreConfig;
-	AssetIntConfig : exAssetIntCoreConfigType;
+	exAssetIntConfig : exAssetIntCoreConfigType;
+	LoggerConfig : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
 END_VAR
 (*Asset UI function blocks*)
 VAR
 	exAssetIntJobListUI_0 : exAssetIntJobListUI;
 	JobListUIConnect : exAssetIntJobListUIConnectType;
-	LoggerCore : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
 END_VAR

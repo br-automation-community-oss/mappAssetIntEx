@@ -84,4 +84,5 @@ FUNCTION CreateLoggerEntry
 	END_IF
 	LastMsg := LogMsg;
 
+	CreateLoggerEntry := TRUE;
 END_FUNCTION

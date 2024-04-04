@@ -24,7 +24,7 @@ FUNCTION_BLOCK ReadConfiguration
 				FileClose_0();
 			
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'raeding configuration', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'reading configuration', Logger);
 				State := 1;
 			END_IF
 		

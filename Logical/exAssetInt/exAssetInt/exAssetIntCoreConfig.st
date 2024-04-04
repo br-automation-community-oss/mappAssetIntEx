@@ -49,7 +49,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exASSETINT_STATE_IDLE:		
 			// Handle configuration load command
 			IF EDGEPOS(Load) THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command save configuration', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'command load configuration', Logger);
 				Internal.State := exASSETINT_STATE_LOAD_CFG;
 			END_IF
 
@@ -69,7 +69,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		
 			// Event successful created
 			IF Internal.ReadConfiguration.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'loaded configuration', Logger);				
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'load configuration ok', Logger);				
 				Configuration := Internal.ReadConfiguration.Configuration;
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
@@ -77,7 +77,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 			// Error
 			ELSIF Internal.ReadConfiguration.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.ReadConfiguration.Status, 'error loading configuration', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.ReadConfiguration.Status, 'load configuration error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
 			// -------------------------------------------------------------------------------------------
@@ -91,14 +91,14 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		
 			// Event successful created
 			IF Internal.WriteConfiguration.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'saved configuration', Logger);				
+				CreateLoggerEntry(exASSETINT_LOG_INFO, 'save configuration ok', Logger);				
 				StatusID := ERR_OK;		
 				Internal.State := exASSETINT_STATE_IDLE;
 			
 			// Error
 			ELSIF Internal.WriteConfiguration.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.WriteConfiguration.Status, 'error saving configuration', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.WriteConfiguration.Status, 'save configuration error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 		// -------------------------------------------------------------------------------------------

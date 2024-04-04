@@ -47,26 +47,28 @@ FUNCTION CalcStatsJob
 
 	// -------------------------------------------------------------------------------------------
 	// Additional times and rates
-	NominalProductionTime := REAL_TO_UDINT(JobStatistics.TotalPieces*(3600/Parameter.NominalProductionRate));
+	NominalProductionTime := REAL_TO_UDINT(UDINT_TO_REAL(JobStatistics.TotalPieces)*(3600/Parameter.NominalProductionRate));
 	JobStatistics.NominalProductionTime.Hours := NominalProductionTime/3600;
 	JobStatistics.NominalProductionTime.Minutes := UDINT_TO_USINT((NominalProductionTime - JobStatistics.NominalProductionTime.Hours*3600)/60);
 	JobStatistics.NominalProductionTime.Seconds := UDINT_TO_USINT(NominalProductionTime - JobStatistics.NominalProductionTime.Hours*3600 - JobStatistics.NominalProductionTime.Minutes*60);
 	
-	GoodProductionTime := REAL_TO_UDINT(JobStatistics.GoodPieces*(3600/Parameter.NominalProductionRate));
+	GoodProductionTime := REAL_TO_UDINT(UDINT_TO_REAL(JobStatistics.GoodPieces)*(3600/Parameter.NominalProductionRate));
 	JobStatistics.GoodProductionTime.Hours := GoodProductionTime/3600;
 	JobStatistics.GoodProductionTime.Minutes := UDINT_TO_USINT((GoodProductionTime - JobStatistics.GoodProductionTime.Hours*3600)/60);
 	JobStatistics.GoodProductionTime.Seconds := UDINT_TO_USINT(GoodProductionTime - JobStatistics.GoodProductionTime.Hours*3600 - JobStatistics.GoodProductionTime.Minutes*60);
 	
 	IF DowntimeScheduled > 0 THEN
-		JobStatistics.ScheduledDowntimeRate := UDINT_TO_REAL(DowntimeScheduled)/TotalTime;
+		JobStatistics.ScheduledDowntimeRate := UDINT_TO_REAL(DowntimeScheduled)/UDINT_TO_REAL(TotalTime);
 	END_IF
 	IF DowntimeUnscheduled > 0 THEN
-		JobStatistics.UnscheduledDowntimeRate := UDINT_TO_REAL(DowntimeUnscheduled)/TotalTime;
+		JobStatistics.UnscheduledDowntimeRate := UDINT_TO_REAL(DowntimeUnscheduled)/UDINT_TO_REAL(TotalTime);
 	END_IF
 	IF Uptime > 0 THEN
-		JobStatistics.NominalProductionTimeRate := UDINT_TO_REAL(NominalProductionTime)/Uptime;
+		JobStatistics.NominalProductionTimeRate := UDINT_TO_REAL(NominalProductionTime)/UDINT_TO_REAL(Uptime);
 	END_IF
 	IF TotalTime > 0 THEN
-		JobStatistics.CurrentProductionRate := UDINT_TO_REAL(JobStatistics.TotalPieces)/TotalTime;
+		JobStatistics.CurrentProductionRate := UDINT_TO_REAL(JobStatistics.TotalPieces)/UDINT_TO_REAL(TotalTime);
 	END_IF
+	
+	CalcStatsJob := TRUE;
 END_FUNCTION
