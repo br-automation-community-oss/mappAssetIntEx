@@ -10,7 +10,7 @@ TYPE
 		TimeTotalStart : DATE_AND_TIME;
 		PieceCounterOld : UDINT;
 		RejectCounterOld : UDINT;
-		TmpStr : STRING[80];
+		TmpStr : STRING[500];
 		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
 		StatsRefresh : TON_10ms;

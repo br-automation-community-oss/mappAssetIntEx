@@ -17,12 +17,12 @@ FUNCTION_BLOCK exAssetIntCore
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, 'error exLink is 0', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('error exLink is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
 				// Remember start time
@@ -61,13 +61,13 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Folder structure successful created
 			IF Internal.CreateDirStructure.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'create folder structure ok', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create folder structure ok'), Logger);
 				Internal.State := exASSETINT_STATE_INIT_3;
 			
 				// Error
 			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, 'create folder structure error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, ADR('create folder structure error'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Memory structure successful created
 			IF Internal.CreateMemory.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'create internal memory ok', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create internal memory ok'), Logger);
 				exLink.MemoryDb := Internal.CreateMemory.MemoryDb;
 				exLink.MemoryJob := Internal.CreateMemory.MemoryJob;
 				exLink.MemoryShift := Internal.CreateMemory.MemoryShift;
@@ -89,7 +89,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateMemory.Status, 'create internal memory error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.CreateMemory.Status, ADR('create internal memory error'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -104,7 +104,7 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Read events successful
 			IF Internal.ReadEventData.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'read stored events ok', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('read stored events ok'), Logger);
 				
 				// Get record count, calculate next entry
 				exLink.RecordCount := Internal.ReadEventData.RecordCount;
@@ -126,7 +126,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.ReadEventData.Status, 'read stored events error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.ReadEventData.Status, ADR('read stored events error'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
 			// -------------------------------------------------------------------------------------------
@@ -146,14 +146,14 @@ FUNCTION_BLOCK exAssetIntCore
 				IF Internal.PieceCounterOld <= PieceCounter THEN					
 					exLink.PieceCounter := exLink.PieceCounter + (PieceCounter - Internal.PieceCounterOld);
 				ELSE
-					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'piece count overflow', Logger);
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('piece count overflow'), Logger);
 					exLink.PieceCounter := exLink.PieceCounter + (16#FFFFFFFF - Internal.PieceCounterOld + PieceCounter);
 				END_IF
 				
 				IF Internal.RejectCounterOld <= RejectCounter THEN					
 					exLink.RejectCounter := exLink.RejectCounter + (RejectCounter - Internal.RejectCounterOld);
 				ELSE
-					CreateLoggerEntry(exASSETINT_LOG_ERROR, 'reject count overflow', Logger);
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('reject count overflow'), Logger);
 					exLink.RejectCounter := exLink.RejectCounter + (16#FFFFFFFF - Internal.RejectCounterOld + RejectCounter);
 				END_IF
 				Internal.PieceCounterOld := PieceCounter;
@@ -168,6 +168,25 @@ FUNCTION_BLOCK exAssetIntCore
 					
 			// Handle downtime changes
 			IF Downtime <> Internal.DowntimeOld THEN
+				// Create log message
+				Internal.TmpStr := 'downtime changed from ';
+				IF Internal.DowntimeOld = exASSETINT_NO_DOWNTIME THEN
+					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime to '));
+				ELSIF Internal.DowntimeOld = exASSETINT_SCHEDULED_DOWNTIME THEN
+					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled to '));
+				ELSE
+					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled to '));
+				END_IF
+				IF Downtime = exASSETINT_NO_DOWNTIME THEN
+					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime with reason '));
+				ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
+					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled with reason '));
+				ELSE
+					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled with reason '));
+				END_IF
+				brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
+				
 				// Remember downtime start
 				IF Downtime > exASSETINT_NO_DOWNTIME THEN
 					exLink.DowntimeStart := Internal.DTGetTime_0.DT1;
@@ -182,7 +201,7 @@ FUNCTION_BLOCK exAssetIntCore
 				IF Parameters.Job <> Info.JobStatistics.JobName THEN
 					Internal.TmpStr := 'new job started ';
 					brsstrcat(ADR(Internal.TmpStr), ADR(Parameters.Job));
-					CreateLoggerEntry(exASSETINT_LOG_INFO, Internal.TmpStr, Logger);
+					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
 					UpdateDone := FALSE;
 
 					// Transfer stats to recordvnc, make sure structures are allignent
@@ -235,7 +254,7 @@ FUNCTION_BLOCK exAssetIntCore
 		
 			// Event successful created
 			IF Internal.WriteEventData.Status = ERR_OK THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'create new event ok', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create new event ok'), Logger);
 				
 				// Calculate new last record and record count
 				Internal.RecordNext := Internal.RecordNext + 1;
@@ -259,7 +278,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.WriteEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.WriteEventData.Status, 'create new event error', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.WriteEventData.Status, ADR('create new event error'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------

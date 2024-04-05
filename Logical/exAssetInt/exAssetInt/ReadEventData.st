@@ -35,7 +35,7 @@ FUNCTION_BLOCK ReadEventData
 				DirName := 'events0';
 				
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'raeding all events', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('raeding all events'), Logger);
 				State := 1;
 			END_IF
 
@@ -52,7 +52,7 @@ FUNCTION_BLOCK ReadEventData
 				// Generate log entry
 				TmpStr1 := 'open dir -> ';
 				brsstrcat(ADR(TmpStr1), ADR(DirName));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
 				// Go to next step
 				State := 2;
@@ -78,7 +78,7 @@ FUNCTION_BLOCK ReadEventData
 					// Generate log entry
 					TmpStr1 := 'found file -> ';
 					brsstrcat(ADR(TmpStr1), ADR(FileInfo_0.Filename));
-					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
+					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 	
 					State := 4;
 				END_IF
@@ -88,7 +88,7 @@ FUNCTION_BLOCK ReadEventData
 				// Generate log entry
 				TmpStr1 := 'read all events ok ';
 				brsstrcat(ADR(TmpStr1), ADR(DirName));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 
 				State := 3;
 				
@@ -110,7 +110,7 @@ FUNCTION_BLOCK ReadEventData
 				// Generate log entry
 				TmpStr1 := 'close dir ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(DirName));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
 				// Open next directory, finish when all folders are created
 				DirCount := DirCount + 1;
@@ -152,12 +152,21 @@ FUNCTION_BLOCK ReadEventData
 				// Generate log entry
 				TmpStr1 := 'open event file ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
-				// Go to next step
-				State := 5;
-
-			// Error
+				// Make sure data has correct size
+				IF FileOpen_0.filelen <> SIZEOF(RecordData) THEN
+					TmpStr1 := 'data in event file has wrong size -> ';
+					brsstrcat(ADR(TmpStr1), ADR(FileName));
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR(TmpStr1), Logger);
+					Status := ERR_ASSET_READ_RECORD_SIZE;
+					
+					State := 6;
+				ELSE
+					State := 5;
+				END_IF
+				
+				// Error
 			ELSIF FileOpen_0.status <> ERR_FUB_BUSY THEN
 				Status := FileOpen_0.status;
 				State := 0;
@@ -177,7 +186,7 @@ FUNCTION_BLOCK ReadEventData
 				// Generate log entry
 				TmpStr1 := 'read event file ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
-				CreateLoggerEntry(exASSETINT_LOG_INFO, TmpStr1, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(TmpStr1), Logger);
 				
 				// Check if record is newest
 				InsertEventData(Memory, RecordCount, RecordData);
@@ -189,7 +198,7 @@ FUNCTION_BLOCK ReadEventData
 			// Error
 			ELSIF FileRead_0.status <> ERR_FUB_BUSY THEN
 				Status := FileRead_0.status;
-				State := 0;
+				State := 6;
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
@@ -204,10 +213,14 @@ FUNCTION_BLOCK ReadEventData
 				// Generate log entry
 				TmpStr1 := 'close event file ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr1, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
-				// Go to next step
-				State := 2;
+				// Abort if there was a previous error, else proceed with next file
+				IF Status <> 0 THEN
+					State := 0;
+				ELSE
+					State := 2;
+				END_IF
 				
 			// Error
 			ELSIF FileClose_0.status <> ERR_FUB_BUSY THEN

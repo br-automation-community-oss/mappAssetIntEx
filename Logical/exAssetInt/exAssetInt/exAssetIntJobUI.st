@@ -16,24 +16,24 @@ FUNCTION_BLOCK exAssetIntJobListUI
 		// Wait for enable
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'function block enabled', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, 'error exLink is 0', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('error exLink is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
 				// Make sure we have temporary buffer
 				IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 OR exLink.MemoryJob = 0 THEN
 					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, 'error no temp memory', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+					StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, ADR('error no temp memory'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
 				// Make sure core function block is active
 				IF NOT exLink.IsCoreActive THEN
 					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(mpASSETINT_INF_WAIT_CORE_FB, 'error core is not active', Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+					StatusID := CreateErrorState(mpASSETINT_INF_WAIT_CORE_FB, ADR('error core is not active'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
 
@@ -60,7 +60,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				
 			// Wait for core task to call update command
 			IF exLink.RefreshJobUI AND exLink.RecordCount > 0 THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'refresh job data', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh job data'), Logger);
 				
 				// Make correction for DESC sorting when record count changes
 				IF UISetup.SortingStartTime = exASSETINT_SORTING_DESC AND Internal.RecordStart + exLink.RecordCount - Internal.RecordCountOld <= exLink.RecordCount THEN

@@ -22,7 +22,7 @@ FUNCTION_BLOCK CreateMemory
 				Cnt := 0;
 				TmpStr1 := 'AsDb_0';
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'creating internal memory', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('creating internal memory'), Logger);
 				State := 1;
 			END_IF
 
@@ -43,7 +43,7 @@ FUNCTION_BLOCK CreateMemory
 					// Generate log entry
 					TmpStr2 := 'create db memory module ok -> ';
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
 					
 					// Reset memory, set up next memory
 					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
@@ -54,7 +54,7 @@ FUNCTION_BLOCK CreateMemory
 					// Generate log entry
 					TmpStr2 := 'create job memory module ok -> ';
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
 
 					// Reset memory, set up next memory
 					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
@@ -65,7 +65,7 @@ FUNCTION_BLOCK CreateMemory
 					// Generate log entry
 					TmpStr2 := 'create shift memory module ok -> ';
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-					CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
 
 					// Reset memory, finish up
 					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
@@ -82,7 +82,7 @@ FUNCTION_BLOCK CreateMemory
 				// Generate log entry
 				TmpStr2 := 'module already exists -> ';
 				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
 				
 				// Increase module number, generate new module name
 				Cnt := Cnt + 1;

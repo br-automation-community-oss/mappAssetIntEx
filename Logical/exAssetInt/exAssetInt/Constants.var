@@ -5,15 +5,15 @@ VAR CONSTANT
 	CORE_EVENT_DIR_MAX : UINT := 10; (*Maximum number of events in one directory*)
 	EVENT_ADDITONAL_DATA_LEN : UINT := 100; (*Length of the event comment*)
 	UI_JOB_LIST_IDX : UINT := 19; (*Max index for list box entries*)
-	LOG_LEN : UINT := 100; (*Length of the one log entry*)
+	LOG_LEN : UINT := 100; (*Length of one log entry (minimum size is 50)*)
 	LOG_NUM : UINT := 50; (*Number of log entries*)
 	LOG_LEVEL : exAssetIntLogLevelEnum := exASSETINT_LOG_ALL;
 END_VAR
 (*Error codes*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR CONSTANT
-	ERR_ASSET_LINK : DINT := 100000; (*Input exLink ist 0*)
-	ERR_ASSET_TEMP_MEMORY : DINT := 100001; (*No temporary memory available, make sure core function block is enabled*)
+	ERR_ASSET_LINK : DINT := -1064239102; (*Input exLink ist 0*)
+	ERR_ASSET_TEMP_MEMORY : DINT := -1064136704; (*No temporary memory available, make sure core function block is enabled*)
 	ERR_ASSET_INF_WAIT_CORE_FB : DINT := 1083346949; (*This component can only become active if MpAssetIntCore is active.*)
-	ERR_ASSET_READ_RECORD_SIZE : DINT := 100100; (*Record size is not correct during reading event data*)
+	ERR_ASSET_READ_RECORD_SIZE : DINT := -2138009590; (*Record size is not correct during reading event data*)
 END_VAR

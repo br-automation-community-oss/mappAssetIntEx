@@ -175,7 +175,7 @@ FUNCTION_BLOCK ReadEventData
 	END_VAR
 	VAR_OUTPUT
 		RecordCount : UINT;
-		Status : UINT;
+		Status : DINT;
 	END_VAR
 	VAR
 		DirOpen_0 : DirOpen;
@@ -205,7 +205,7 @@ FUNCTION_BLOCK WriteEventData
 		RecordNext : UINT;
 	END_VAR
 	VAR_OUTPUT
-		Status : UINT;
+		Status : DINT;
 	END_VAR
 	VAR
 		FileCreate_0 : FileCreate;
@@ -238,7 +238,7 @@ END_FUNCTION
 FUNCTION CreateLoggerEntry : USINT
 	VAR_INPUT
 		LogLevel : exAssetIntLogLevelEnum; (*Log Level*)
-		LogMsg : STRING[LOG_LEN]; (*Log message*)
+		LogMsg : UDINT; (*Log message*)
 		LogBuffer : UDINT; (*Address of log buffer*)
 	END_VAR
 	VAR
@@ -251,7 +251,7 @@ END_FUNCTION
 FUNCTION CreateErrorState : DINT
 	VAR_INPUT
 		ErrorID : DINT;
-		ErrorMsg : STRING[LOG_LEN]; (*Log message*)
+		ErrorMsg : UDINT; (*Log message*)
 		Logger : UDINT;
 		Severity : exComSeveritiesEnum;
 		StateError : REFERENCE TO exAssetIntStateEnum;

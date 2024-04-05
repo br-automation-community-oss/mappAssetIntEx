@@ -26,7 +26,7 @@ FUNCTION_BLOCK WriteConfiguration
 				FileClose_0();
 			
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'save configuration', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('save configuration'), Logger);
 				State := 1;
 			END_IF
 
@@ -42,7 +42,7 @@ FUNCTION_BLOCK WriteConfiguration
 			// File opened successful
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, 'opened configuration file', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('opened configuration file'), Logger);
 				
 				// Remember ident go to next step
 				Ident := FileOpen_0.ident;
@@ -69,7 +69,7 @@ FUNCTION_BLOCK WriteConfiguration
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, 'created configuration file', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('created configuration file'), Logger);
 				
 				// Remember ident go to next step
 				Ident := FileCreate_0.ident;
@@ -94,7 +94,7 @@ FUNCTION_BLOCK WriteConfiguration
 			// File created successful
 			IF FileWrite_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, 'wrote configuration file', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('wrote configuration file'), Logger);
 				
 				// Go to next step
 				State := 4;
@@ -115,7 +115,7 @@ FUNCTION_BLOCK WriteConfiguration
 			// File created successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, 'closed configuration file', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('closed configuration file'), Logger);
 				
 				// Finish up
 				Status := ERR_OK;

@@ -24,7 +24,7 @@ FUNCTION_BLOCK ReadConfiguration
 				FileClose_0();
 			
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'reading configuration', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('reading configuration'), Logger);
 				State := 1;
 			END_IF
 		
@@ -41,7 +41,7 @@ FUNCTION_BLOCK ReadConfiguration
 			// File opened successful
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, 'opened event configuration', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('opened event configuration'), Logger);
 				
 				// Go to next step
 				State := 5;
@@ -64,7 +64,7 @@ FUNCTION_BLOCK ReadConfiguration
 			// File read successful
 			IF FileRead_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, 'read event configuration', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('read event configuration'), Logger);
 
 				State := 6;
 				
@@ -84,7 +84,7 @@ FUNCTION_BLOCK ReadConfiguration
 			// File closed successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, 'closed event configuration', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('closed event configuration'), Logger);
 				
 				// Go to next step
 				Status := ERR_OK;

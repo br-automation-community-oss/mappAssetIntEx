@@ -29,12 +29,13 @@ END_FUNCTION
 // -------------------------------------------------------------------------------------------
 // Handle log buffer
 FUNCTION CreateLoggerEntry
+	// Make sure log message fits
+	IF brsstrlen(LogMsg) > LOG_LEN - 20 THEN
+		brsstrcpy(LogMsg, ADR('*** log meassage exceeds maximum length ***'));
+	END_IF
+
 	// Make sure we dont flood Logger
-	IF LogMsg <> LastMsg AND LogLevel <= LOG_LEVEL AND LogBuffer <> 0 THEN
-		// Make sure log message fits
-		IF brsstrlen(ADR(LogMsg)) > LOG_LEN THEN
-			LogMsg := '*** log meassage exceeds maximum length ***';
-		END_IF
+	IF brsstrcmp(LogMsg, ADR(LastMsg)) <> 0 AND LogLevel <= LOG_LEVEL AND LogBuffer <> 0 THEN
 		// Move ring buffer around
 		brsmemmove(LogBuffer+LOG_LEN+1, LogBuffer, LOG_LEN*(LOG_NUM-1));
 		brsstrcpy(LogBuffer, ADR(''));
@@ -80,9 +81,9 @@ FUNCTION CreateLoggerEntry
 		brsstrcat(LogBuffer, ADR(TmpStr));
 		// Add log message
 		brsstrcat(LogBuffer, ADR(' '));
-		brsstrcat(LogBuffer, ADR(LogMsg));
+		brsstrcat(LogBuffer, LogMsg);
 	END_IF
-	LastMsg := LogMsg;
+	brsstrcpy(ADR(LastMsg), LogMsg);
 
 	CreateLoggerEntry := TRUE;
 END_FUNCTION

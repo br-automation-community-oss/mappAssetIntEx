@@ -21,7 +21,7 @@ FUNCTION_BLOCK CreateDirStructure
 				DirCount := 0;
 				TmpStr1 := 'events0';
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, 'creating folder structure', Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('creating folder structure'), Logger);
 				State := 1;
 			END_IF
 
@@ -38,7 +38,7 @@ FUNCTION_BLOCK CreateDirStructure
 				// Generate log entry
 				TmpStr2 := 'created folder ';
 				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, TmpStr2, Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
 				
 				// Create folders for 100 events each, finish when all folders are created
 				DirCount := DirCount + 1;
