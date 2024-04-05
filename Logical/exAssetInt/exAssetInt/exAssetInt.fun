@@ -102,6 +102,7 @@ FUNCTION_BLOCK CreateDirStructure
 		TmpStr2 : STRING[100];
 		DirCount : USINT;
 		State : USINT;
+		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -193,6 +194,7 @@ FUNCTION_BLOCK ReadEventData
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
 		State : USINT;
+		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -218,6 +220,7 @@ FUNCTION_BLOCK WriteEventData
 		TmpStr2 : STRING[100];
 		Ident : UDINT;
 		State : USINT;
+		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 

@@ -7,14 +7,13 @@ FUNCTION_BLOCK ReadEventData
 	IF NOT Enable THEN
 		Status := ERR_FUB_ENABLE_FALSE;
 		State := 0;		
-		RETURN;
 	END_IF
 	
 	CASE State OF
 		// -------------------------------------------------------------------------------------------
 		// Wait for enable
 		0:
-			IF Enable THEN
+			IF EDGEPOS(Enable) THEN
 				// Reset function blocks
 				DirOpen_0.enable := FALSE;
 				DirOpen_0();
@@ -216,7 +215,7 @@ FUNCTION_BLOCK ReadEventData
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
 				// Abort if there was a previous error, else proceed with next file
-				IF Status <> 0 THEN
+				IF Status <> ERR_FUB_BUSY THEN
 					State := 0;
 				ELSE
 					State := 2;
@@ -227,6 +226,7 @@ FUNCTION_BLOCK ReadEventData
 				Status := FileClose_0.status;
 				State := 0;
 			END_IF
+		
 	END_CASE;
 
 END_FUNCTION_BLOCK

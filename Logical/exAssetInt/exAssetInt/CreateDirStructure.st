@@ -7,14 +7,13 @@ FUNCTION_BLOCK CreateDirStructure
 	IF NOT Enable THEN
 		Status := ERR_FUB_ENABLE_FALSE;
 		State := 0;		
-		RETURN;
 	END_IF
 	
 	CASE State OF
 		// -------------------------------------------------------------------------------------------
 		// Wait for enable
 		0:
-			IF Enable THEN
+			IF EDGEPOS(Enable) THEN
 				DirCreate_0.enable := FALSE;
 				DirCreate_0();
 

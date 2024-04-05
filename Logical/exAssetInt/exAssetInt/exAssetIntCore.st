@@ -39,9 +39,13 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.PieceCounterOld := PieceCounter;
 				Internal.RejectCounterOld := RejectCounter;
 
-				// Reset error and status
+				// Reset error, status and function and internal blocks
 				Error := FALSE;
 				StatusID := ERR_OK;
+				Internal.CreateDirStructure(Enable := FALSE);
+				Internal.CreateMemory(Enable := FALSE);
+				Internal.ReadEventData(Enable := FALSE);
+				Internal.WriteEventData(Enable := FALSE);
 								
 				// Create folder structure and read event data only after boot
 				IF Internal.InitAfterBoot THEN
@@ -284,14 +288,6 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 			// Error state
 		exASSETINT_STATE_ERROR:
-			Internal.CreateDirStructure.Enable := FALSE;
-			Internal.CreateDirStructure();
-			Internal.CreateMemory.Enable := FALSE;
-			Internal.CreateMemory();
-			Internal.WriteEventData.Enable := FALSE;
-			Internal.WriteEventData();
-			Internal.ReadEventData.Enable := FALSE;
-			Internal.ReadEventData();
 			
 			IF EDGEPOS(ErrorReset) THEN
 				Internal.StateError := exASSETINT_STATE_NONE;
