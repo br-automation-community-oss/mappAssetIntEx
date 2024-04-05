@@ -169,7 +169,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Create job and shift statistics
 				CalcStatsJob(exLink, Downtime, Parameters, ADR(Info.JobStatistics));
 			END_IF
-					
+			
 			// Handle downtime changes
 			IF Downtime <> Internal.DowntimeOld THEN
 				// Create log message
@@ -199,6 +199,16 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.DowntimeOld := Downtime;
 			END_IF
 
+			// Handle reset command
+			IF EDGEPOS(Reset) THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('reset command triggered'), Logger);
+				
+				// Reset stats and remember new start time
+				exLink.JobStart := Internal.DTGetTime_0.DT1;
+				exLink.PieceCounter := 0;
+				exLink.RejectCounter := 0;
+			END_IF
+			
 			// Handle update command
 			IF EDGEPOS(Update) THEN	
 				// Job has changed

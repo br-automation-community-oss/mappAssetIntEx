@@ -11913,5 +11913,14 @@
         <Property Name="VCType" Value="INTEGER"/>
       </DataPoint>
     </Folder>
+    <DataPoint Name="gCommandReset">
+      <Property Name="ConnectedBySharedResource" Value="False"/>
+      <Property Name="ConnectingVisus" Value="Vis"/>
+      <Property Name="Description" Value=""/>
+      <Property Name="PLCType" Value="BOOL"/>
+      <Property Name="UpdateTime" Value="Default"/>
+      <Property Name="UserID" Value="None"/>
+      <Property Name="VCType" Value="BOOL"/>
+    </DataPoint>
   </DataPoints>
 </DataSource>

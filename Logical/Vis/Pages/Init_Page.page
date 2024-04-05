@@ -91,6 +91,7 @@
           <Text ID="225849" Value="Auto Create Jobs"/>
           <Text ID="229196" Value="Last File Name"/>
           <Text ID="229197" Value="Next ID"/>
+          <Text ID="231048" Value="Reset"/>
         </TextLayer>
         <IndexMap>
           <Index ID="206794" Value="8"/>
@@ -159,6 +160,7 @@
           <Index ID="225849" Value="100"/>
           <Index ID="229196" Value="102"/>
           <Index ID="229197" Value="103"/>
+          <Index ID="231048" Value="104"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -1206,7 +1208,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1205"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[BasicButton]"/>
@@ -3444,7 +3446,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="1020"/>
           <Property Name="IndexDatapoint" Value="None"/>
-          <Property Name="Left" Value="1415"/>
+          <Property Name="Left" Value="1365"/>
           <Property Name="LeftBitmap" Value="None"/>
           <Property Name="LeftTextGroup" Value="None"/>
           <Property Name="MaxDatapoint" Value="None"/>
@@ -3460,7 +3462,7 @@
           <Property Name="TextIndexOffset" Value="0"/>
           <Property Name="TextSource" Value="MultipleStrings"/>
           <Property Name="Top" Value="65"/>
-          <Property Name="Width" Value="490"/>
+          <Property Name="Width" Value="540"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_36">
           <Property Name="AlignmentHorizontal" Value="Right"/>
@@ -3538,7 +3540,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="35"/>
-          <Property Name="Left" Value="1420"/>
+          <Property Name="Left" Value="1365"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3546,7 +3548,7 @@
           <Property Name="TextIndexOffset" Value="42"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="25"/>
-          <Property Name="Width" Value="490"/>
+          <Property Name="Width" Value="540"/>
         </Control>
         <Control ClassId="0x00001001" Name="Shape_1">
           <Property Name="BackColor" Value="250"/>
@@ -5779,7 +5781,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="50"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1205"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[BasicButton]"/>
@@ -5861,6 +5863,29 @@
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntCore_0.Internal.RecordNext]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="110"/>
+        </Control>
+        <Control ClassId="0x00001002" Name="Button_6">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_8]"/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="50"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="1195"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[BasicButton]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="104"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="240"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_8]"/>
+          <Property Name="Width" Value="160"/>
         </Control>
       </Controls>
       <KeyMapping>
@@ -5958,6 +5983,22 @@
               <Property Name="ResetValue" Value="0"/>
               <Property Name="SetValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.AssetTest.AutoCreateJobs]"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="%embVirtualKey_8">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016B">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gCommandReset]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

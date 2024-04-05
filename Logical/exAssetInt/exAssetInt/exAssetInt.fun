@@ -35,6 +35,7 @@ FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset 
 		Internal : {REDUND_UNREPLICABLE} exCoreInternalDataType; (*Internal data*)
 		zzEdge00000 : BOOL;
 		zzEdge00001 : BOOL;
+		zzEdge00002 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 

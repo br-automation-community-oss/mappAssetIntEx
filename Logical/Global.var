@@ -15,4 +15,5 @@ VAR
 	gDowntimeReason : STRING[50] := 'Winder is broken';
 	gDowntime : exAssetIntDowntimeEnum;
 	gCommandUpdate : BOOL;
+	gCommandReset : BOOL;
 END_VAR

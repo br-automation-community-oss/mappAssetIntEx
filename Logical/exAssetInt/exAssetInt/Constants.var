@@ -7,7 +7,7 @@ VAR CONSTANT
 	UI_JOB_LIST_IDX : UINT := 19; (*Max index for list box entries*)
 	LOG_LEN : UINT := 100; (*Length of one log entry (minimum size is 50)*)
 	LOG_NUM : UINT := 50; (*Number of log entries*)
-	LOG_LEVEL : exAssetIntLogLevelEnum := exASSETINT_LOG_ALL;
+	LOG_LEVEL : exAssetIntLogLevelEnum := exASSETINT_LOG_ALL; (*Define log level details*)
 END_VAR
 (*Error codes*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
