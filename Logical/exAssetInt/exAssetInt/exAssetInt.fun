@@ -36,6 +36,7 @@ FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset 
 		zzEdge00000 : BOOL;
 		zzEdge00001 : BOOL;
 		zzEdge00002 : BOOL;
+		zzEdge00003 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -267,9 +268,28 @@ END_FUNCTION
 FUNCTION CalcStatsJob : USINT
 	VAR_INPUT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		DiffToCore : DINT;
 		Downtime : exAssetIntDowntimeEnum;
 		Parameter : exAssetIntParType; (*Log Level*)
 		JobStatistics : REFERENCE TO exAssetIntJobStatisticsType; (*Log message*)
+	END_VAR
+	VAR
+		Uptime : UDINT;
+		NominalProductionTime : UDINT;
+		DowntimeScheduled : UDINT;
+		DowntimeUnscheduled : UDINT;
+		GoodProductionTime : UDINT;
+		DTGetTime_0 : DTGetTime;
+	END_VAR
+END_FUNCTION
+
+FUNCTION CalcStatsShift : USINT
+	VAR_INPUT
+		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		Downtime : exAssetIntDowntimeEnum;
+		Parameter : exAssetIntParType; (*Log Level*)
+		Configuration : exAssetIntCoreConfigType; (*Log Level*)
+		ShiftStatistics : REFERENCE TO exAssetIntShiftStatisticsType; (*Log message*)
 	END_VAR
 	VAR
 		TotalTime : UDINT;
@@ -278,7 +298,9 @@ FUNCTION CalcStatsJob : USINT
 		DowntimeScheduled : UDINT;
 		DowntimeUnscheduled : UDINT;
 		GoodProductionTime : UDINT;
-		DTGetTime_0 : DTGetTime;
+		x : USINT;
+		StartTime : TIME_OF_DAY;
+		EndTime : TIME_OF_DAY;
 	END_VAR
 END_FUNCTION
 

@@ -22,16 +22,20 @@ FUNCTION_BLOCK exAssetIntCore
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('error exLink is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
+				
 				// Remember start time
 				Internal.DTGetTime_0(enable := TRUE);
-				Internal.TimeTotalStart := Internal.DTGetTime_0.DT1;
-				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN
-					exLink.JobStart := Internal.DTGetTime_0.DT1;
+				exLink.CoreStartTime := Internal.DTGetTime_0.DT1;
+				Internal.JobDiffToCore := exLink.JobTotalTime;
+				Internal.ShiftTotalTimeStart := exLink.ShiftTotalTime;
+				
+				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN 
+					exLink.JobStart := Internal.DTGetTime_0.DT1; 
 				END_IF
-
+				
 				// Transfer start values
 				Info.JobStatistics.JobName := Parameters.Job;
 				Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
@@ -71,7 +75,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, ADR('create folder structure error'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, ADR('ERR: create folder structure'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -93,7 +97,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateMemory.Status, ADR('create internal memory error'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.CreateMemory.Status, ADR('ERR: create internal memory'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -121,7 +125,7 @@ FUNCTION_BLOCK exAssetIntCore
 						Internal.RecordNext := 0;
 					END_IF
 				END_IF
-
+				
 				// Refresh UI data, finish up
 				exLink.RefreshJobUI := TRUE;
 				StatusID := ERR_OK;
@@ -130,19 +134,91 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.ReadEventData.Status, ADR('read stored events error'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.ReadEventData.Status, ADR('ERR: read stored events'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
 			// -------------------------------------------------------------------------------------------
 			// Wait for new event
 		exASSETINT_STATE_IDLE:
+			// Set core active, get time values
 			Active := TRUE;
 			Internal.DTGetTime_0(enable := TRUE);
-
+			DT_TO_DTStructure(Internal.DTGetTime_0.DT1, ADR(Internal.DT_TO_DTStructure_0));          
+			Internal.TimeOfDay := UDINT_TO_TOD((USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.hour) * 3600000) + (USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.minute) * 60000));
+			
 			// Set stats timer
 			Internal.StatsRefresh.IN := TRUE;
 			Internal.StatsRefresh.PT := Configuration.CalculationTimeBase/10;	
 			Internal.StatsRefresh();
+			
+			// Track current shift
+			Info.ShiftStatistics.ShiftName := '';
+			FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) DO
+				// Shift ends on same day
+				IF Configuration.Shifts[Internal.x].TotalTime.Start < Configuration.Shifts[Internal.x].TotalTime.End THEN
+					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start AND Internal.TimeOfDay <= Configuration.Shifts[Internal.x].TotalTime.End THEN
+						Info.ShiftStatistics.ShiftName := Configuration.Shifts[Internal.x].Name;
+						EXIT;
+					END_IF
+				// Shift ends next day
+				ELSE
+					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start OR Internal.TimeOfDay <= Configuration.Shifts[Internal.x].TotalTime.End THEN
+						Info.ShiftStatistics.ShiftName := Configuration.Shifts[Internal.x].Name;
+						EXIT;
+					END_IF
+				END_IF
+			END_FOR;
+			// Make sure we found a shift name
+			IF Info.ShiftStatistics.ShiftName = '' THEN
+				CreateLoggerEntry(ERR_ASSET_SHIFT_CALC, ADR('ERR: no shift name found'), Logger);
+				RETURN;
+			END_IF
+			
+			// Handle shift change
+			IF Info.ShiftStatistics.ShiftName <> exLink.ShiftName THEN	
+				Internal.TmpStr := 'new shift started ';
+				brsstrcat(ADR(Internal.TmpStr), ADR(Info.ShiftStatistics.ShiftName));
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
+				UpdateDone := FALSE;
+
+//				// Transfer stats to recordvnc, make sure structures are allignent
+//				brsmemset(ADR(Internal.RecordData), 0, SIZEOF(Internal.RecordData));
+//				
+//				// Collect data for record
+//				Internal.RecordData.TimeStart := exLink.JobStart;
+//				Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
+//				Internal.RecordData.CurrentUser := Info.JobStatistics.CurrentUser;
+//				Internal.RecordData.AdditionalData := Info.JobStatistics.AdditionalData;
+//				Internal.RecordData.ShiftName := Info.ShiftStatistics.ShiftName;
+//				Internal.RecordData.JobName := Info.JobStatistics.JobName;				
+//				Internal.RecordData.TotalPieces := Info.JobStatistics.TotalPieces;
+//				Internal.RecordData.GoodPieces := Info.JobStatistics.GoodPieces;
+//				Internal.RecordData.RejectPieces := Info.JobStatistics.RejectPieces;
+//				Internal.RecordData.BadPieceRate := Info.JobStatistics.BadPieceRate;
+//				Internal.RecordData.TotalTime := Info.JobStatistics.TotalTime;
+//				Internal.RecordData.ScheduledDowntime := Info.JobStatistics.ScheduledDowntime;
+//				Internal.RecordData.UnscheduledDowntime := Info.JobStatistics.UnscheduledDowntime;
+//				Internal.RecordData.Uptime := Info.JobStatistics.Uptime;
+//				Internal.RecordData.GoodProductionTime := Info.JobStatistics.GoodProductionTime;
+//				Internal.RecordData.NominalProductionTime := Info.JobStatistics.NominalProductionTime;
+//				Internal.RecordData.NominalProductionTimeRate := Info.JobStatistics.NominalProductionTimeRate;
+//				Internal.RecordData.UnscheduledDowntimeRate := Info.JobStatistics.UnscheduledDowntimeRate;
+//				Internal.RecordData.CurrentProductionRate := Info.JobStatistics.CurrentProductionRate;					
+//			
+//				// Reset stats and remember new start time
+//				exLink.JobStart := Internal.DTGetTime_0.DT1;
+//				exLink.PieceCounter := 0;
+//				exLink.RejectCounter := 0;
+//
+//				// Transfer data to job stats
+//				Info.JobStatistics.JobName := Parameters.Job;
+//				Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
+//				Info.JobStatistics.AdditionalData := Parameters.AdditionalData;
+//				
+//				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+				exLink.ShiftName := Info.ShiftStatistics.ShiftName;				
+				
+			END_IF
 			
 			// Calculate new stats
 			IF Internal.StatsRefresh.Q THEN
@@ -167,7 +243,7 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.StatsRefresh();
 	
 				// Create job and shift statistics
-				CalcStatsJob(exLink, Downtime, Parameters, ADR(Info.JobStatistics));
+				CalcStatsJob(exLink, Internal.JobDiffToCore, Downtime, Parameters, ADR(Info.JobStatistics));
 			END_IF
 			
 			// Handle downtime changes
@@ -205,6 +281,7 @@ FUNCTION_BLOCK exAssetIntCore
 				
 				// Reset stats and remember new start time
 				exLink.JobStart := Internal.DTGetTime_0.DT1;
+				exLink.JobTotalTime := 0;
 				exLink.PieceCounter := 0;
 				exLink.RejectCounter := 0;
 			END_IF
@@ -248,6 +325,7 @@ FUNCTION_BLOCK exAssetIntCore
 					exLink.RejectCounter := 0;
 
 					// Transfer data to job stats
+					Internal.JobDiffToCore := -DiffDT(Internal.DTGetTime_0.DT1, exLink.CoreStartTime);
 					Info.JobStatistics.JobName := Parameters.Job;
 					Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
 					Info.JobStatistics.AdditionalData := Parameters.AdditionalData;
@@ -292,7 +370,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.WriteEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.WriteEventData.Status, ADR('create new event error'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.WriteEventData.Status, ADR('ERR: create new event'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------

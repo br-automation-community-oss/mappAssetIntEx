@@ -1,12 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio Version=4.12.5.95 FileVersion="4.9"?>
 <Hardware xmlns="http://br-automation.co.at/AS/Hardware">
-  <Module Name="X20CP3586" Type="X20CP3586" Version="1.10.0.0">
+  <Module Name="X20CP3687X" Type="X20CP3687X" Version="1.8.0.0">
     <Connector Name="IF2">
       <Parameter ID="ActivateDevice" Value="1" />
-      <Parameter ID="Mode" Value="Manual" />
-      <Parameter ID="InternetAddress" Value="10.49.40.208" />
-      <Parameter ID="SubnetMask" Value="255.255.255.0" />
       <Group ID="Vnc1" />
       <Parameter ID="VncVcObjectName1" Value="Vis" />
       <Parameter ID="VncKeyMappingFile1" Value="VC\PS2-Keyboard.dis" />
@@ -15,15 +12,23 @@
     </Connector>
     <Connector Name="IF3">
       <Parameter ID="DNAConfiguration" Value="manual" />
+      <Parameter ID="CycleTime" Value="2000" />
     </Connector>
     <Parameter ID="ConfigurationID" Value="MappAssetInt_X20CP1583" />
-    <Parameter ID="UserPartitionSize" Value="0" />
-    <Parameter ID="Simulation" Value="1" />
+    <Parameter ID="UserPartitionSize" Value="16" />
     <Parameter ID="UserRamSize" Value="731936" />
     <Parameter ID="RemMemSize" Value="300000" />
     <Parameter ID="Cyclic8Stack" Value="20000" />
     <Group ID="FileDevice1" />
     <Parameter ID="FileDeviceName1" Value="ARsim" />
     <Parameter ID="FileDevicePath1" Value="c:\Temp\AssetInt" />
+    <Group ID="FileDevice2" />
+    <Parameter ID="FileDeviceName2" Value="USER_HD" />
+    <Parameter ID="FileDevicePath2" Value="f:\" />
+    <Group ID="FtpUser1" />
+    <Parameter ID="FtpUsername1" Value="admin" />
+    <Parameter ID="FtpUserPassword1" Value="WA9hSMBXiqkZliudaf2dLB8I5WaEURjKd6F9iexMfBQ=" />
+    <Parameter ID="FtpUserSalt1" Value="wS51ak4d" />
+    <Parameter ID="FTPAccessRight1" Value="0" />
   </Module>
 </Hardware>

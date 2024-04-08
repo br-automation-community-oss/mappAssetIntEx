@@ -2,7 +2,7 @@
 
 TYPE
 	exCoreInternalDataType : 	STRUCT 
-		RecordNext : UINT;
+		RecordNext : UINT; (*Next record ID*)
 		RecordData : exCoreInternalRecordType;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
@@ -13,11 +13,16 @@ TYPE
 		TmpStr : STRING[500];
 		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
+		DT_TO_DTStructure_0 : DTStructure;
+		TimeOfDay : TIME_OF_DAY;
+		JobDiffToCore : DINT;
+		ShiftTotalTimeStart : UDINT;
 		StatsRefresh : TON_10ms;
 		CreateDirStructure : CreateDirStructure;
 		CreateMemory : CreateMemory;
 		ReadEventData : ReadEventData;
 		WriteEventData : WriteEventData;
+		x : UINT;
 	END_STRUCT;
 	exCoreInternalRecordType : 	STRUCT 
 		FileName : STRING[80]; (*ID of the event*)
@@ -59,15 +64,21 @@ TYPE
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 	END_STRUCT;
 	exAssetIntLinkType : 	STRUCT 
-		MemoryDb : UDINT;
-		MemoryJob : UDINT;
-		MemoryShift : UDINT;
-		RecordCount : UDINT;
-		IsCoreActive : BOOL;
-		RefreshJobUI : BOOL;
-		PieceCounter : UDINT;
-		RejectCounter : UDINT;
-		JobStart : DATE_AND_TIME;
+		MemoryDb : UDINT; (*Database memory*)
+		MemoryJob : UDINT; (*Job data memory*)
+		MemoryShift : UDINT; (*Shift data memory*)
+		Configuration : REFERENCE TO exAssetIntCoreConfigType; (*Configuration structure*)
+		RecordCount : UDINT; (*Number of total records*)
+		IsCoreActive : BOOL; (*Core function block is ready*)
+		RefreshJobUI : BOOL; (*Update job stats in UI*)
+		PieceCounter : UDINT; (*Total piece counter*)
+		RejectCounter : UDINT; (*Total reject counter*)
+		CoreStartTime : DATE_AND_TIME; (*Time when the function block started*)
+		JobStart : DATE_AND_TIME; (*Time when the job started*)
+		JobTotalTime : UDINT; (*Seconds the job is running*)
+		ShiftStart : DATE_AND_TIME; (*Time when shift started*)
+		ShiftName : STRING[20]; (*Shift name*)
+		ShiftTotalTime : UDINT; (*Seconds the shift is running*)
 		DowntimeStart : DATE_AND_TIME;
 	END_STRUCT;
 END_TYPE

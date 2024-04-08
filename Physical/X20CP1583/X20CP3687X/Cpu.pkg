@@ -17,7 +17,7 @@
     <Object Type="Package">mappCockpit</Object>
     <Object Type="Package">VC</Object>
   </Objects>
-  <Configuration ModuleId="X20CP3586">
+  <Configuration ModuleId="X20CP3687X">
     <AutomationRuntime Version="I4.93" />
     <Build GccVersion="4.1.2" />
     <DefaultTargetMemory Tasks="UserROM" />

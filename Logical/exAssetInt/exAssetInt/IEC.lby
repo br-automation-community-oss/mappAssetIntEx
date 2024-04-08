@@ -14,6 +14,7 @@
     <File>CreateMemory.st</File>
     <File>WriteEventData.st</File>
     <File>ReadEventData.st</File>
+    <File>ExportEventData.st</File>
     <File>ReadConfiguration.st</File>
     <File>WriteConfiguration.st</File>
     <File>CalcStats.st</File>
