@@ -48,8 +48,6 @@ FUNCTION_BLOCK exAssetIntCore
 				StatusID := ERR_OK;
 				Internal.CreateDirStructure(Enable := FALSE);
 				Internal.CreateMemory(Enable := FALSE);
-				Internal.ReadEventData(Enable := FALSE);
-				Internal.WriteEventData(Enable := FALSE);
 								
 				// Create folder structure and read event data only after boot
 				IF Internal.InitAfterBoot THEN
@@ -140,8 +138,13 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 			// Wait for new event
 		exASSETINT_STATE_IDLE:
-			// Set core active, get time values
+			// Set core active, reset read write function blocks
 			Active := TRUE;
+			
+			Internal.ReadEventData(Enable := FALSE);
+			Internal.WriteEventData(Enable := FALSE);
+			
+			// Update time information
 			Internal.DTGetTime_0(enable := TRUE);
 			DT_TO_DTStructure(Internal.DTGetTime_0.DT1, ADR(Internal.DT_TO_DTStructure_0));          
 			Internal.TimeOfDay := UDINT_TO_TOD((USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.hour) * 3600000) + (USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.minute) * 60000));
