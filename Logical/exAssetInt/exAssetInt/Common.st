@@ -12,6 +12,15 @@ FUNCTION FindInstr
 END_FUNCTION
 
 // -------------------------------------------------------------------------------------------
+// Generate crc																	
+FUNCTION CalcCrc
+	FOR idx:=0 TO length DO
+		brsmemcpy(ADR(byte), data+idx, 1);
+		CalcCrc := CalcCrc + byte;
+	END_FOR;
+END_FUNCTION
+
+// -------------------------------------------------------------------------------------------
 // Handle error state
 FUNCTION CreateErrorState
 	CreateLoggerEntry(exASSETINT_LOG_ERROR, ErrorMsg, Logger);

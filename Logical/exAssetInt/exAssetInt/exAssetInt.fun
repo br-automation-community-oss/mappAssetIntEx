@@ -205,7 +205,7 @@ FUNCTION_BLOCK WriteEventData
 		Enable : BOOL;
 		Device : STRING[50];
 		Logger : UDINT; (*Address of log buffer*)
-		RecordData : exCoreInternalRecordType;
+		RecordData : UDINT;
 		RecordNext : UINT;
 	END_VAR
 	VAR_OUTPUT
@@ -301,6 +301,17 @@ FUNCTION CalcStatsShift : USINT
 		x : USINT;
 		StartTime : TIME_OF_DAY;
 		EndTime : TIME_OF_DAY;
+	END_VAR
+END_FUNCTION
+
+FUNCTION CalcCrc : USINT
+	VAR_INPUT
+		data : UDINT;
+		length : UINT;
+	END_VAR
+	VAR
+		idx : UINT;
+		byte : USINT;
 	END_VAR
 END_FUNCTION
 

@@ -26,6 +26,8 @@ TYPE
 	END_STRUCT;
 	exCoreInternalRecordType : 	STRUCT 
 		FileName : STRING[80]; (*ID of the event*)
+		EventType : exCoreInternalRecordEnum;
+		CRC : USINT;
 		TimeStart : DATE_AND_TIME; (*Event start*)
 		TimeEnd : DATE_AND_TIME; (*Event end*)
 		ShiftName : STRING[20]; (*Shift name*)
@@ -47,6 +49,11 @@ TYPE
 		CurrentUser : STRING[50]; (*Currently active user*)
 		AdditionalData : STRING[EVENT_ADDITONAL_DATA_LEN]; (*Additional data information*)
 	END_STRUCT;
+	exCoreInternalRecordEnum : 
+		(
+		RecordTypeJob,
+		RecordTypeShift
+		);
 	exConfigInternalDataType : 	STRUCT 
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;

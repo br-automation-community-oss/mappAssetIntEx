@@ -1,37 +1,32 @@
 WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=Sample 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=31 ASCIIString=0
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=143 Scope=60 Force=60 Index=20 ASCIIString=0
                                     name                                     type force                                                            value level type len format place expand specs
                           exAssetIntLink                       exAssetIntLinkType    0 "                                                               *"    0   24    1    0    0    1         
-                                MemoryDb                                    UDINT    0 "                                                        94246024"    1    7    1   10    0    0         
-                               MemoryJob                                    UDINT    0 "                                                        94266744"    1    7    1   10    0    0         
-                             MemoryShift                                    UDINT    0 "                                                        94285576"    1    7    1   10    0    0         
-                           Configuration                                    UDINT    0 "                                                       138863108"    1    7    1   10    0    0         
                              RecordCount                                    UDINT    0 "                                                              50"    1    7    1   10    0    0         
                             IsCoreActive                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
                             RefreshJobUI                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                            PieceCounter                                    UDINT    0 "                                                              21"    1    7    1   10    0    0         
-                           RejectCounter                                    UDINT    0 "                                                               2"    1    7    1   10    0    0         
-                           CoreStartTime                            DATE_AND_TIME    0 "                                          DT#2024-04-08-10:13:00"    1   11    1    1    0    0         
-                                JobStart                            DATE_AND_TIME    0 "                                          DT#2024-04-08-10:12:25"    1   11    1    1    0    0         
-                            JobTotalTime                                    UDINT    0 "                                                             178"    1    7    1   10    0    0         
+                            PieceCounter                                    UDINT    0 "                                                              44"    1    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
+                           CoreStartTime                            DATE_AND_TIME    0 "                                          DT#2024-04-16-06:46:13"    1   11    1    1    0    0         
+                                JobStart                            DATE_AND_TIME    0 "                                          DT#2024-04-16-07:08:21"    1   11    1    1    0    0         
+                            JobTotalTime                                    UDINT    0 "                                                             450"    1    7    1   10    0    0         
                               ShiftStart                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    1   11    1    1    0    0         
                                ShiftName                               STRING[20]    0 "                                                       'Morning'"    1    9   21    1    0    0         
                           ShiftTotalTime                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
                            DowntimeStart                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    1   11    1    1    0    0         
                         exAssetIntCore_0                           exAssetIntCore    0 "                                                               *"    0   24    1    0    1    1         
-                                  exLink                                    UDINT    0 "                                                       134131756"    1    7    1   10    0    0         
+                                  exLink                                    UDINT    0 "                                                       134135852"    1    7    1   10    0    0         
                                   Enable                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
                               ErrorReset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                              Parameters                                    UDINT    0 "                                                       138850476"    1    7    1   10    0    0         
-                           Configuration                                    UDINT    0 "                                                       138851876"    1    7    1   10    0    0         
-                                  Logger                                    UDINT    0 "                                                       138839576"    1    7    1   10    0    0         
+                              Parameters                                    UDINT    0 "                                                       142888604"    1    7    1   10    0    0         
+                           Configuration                                    UDINT    0 "                                                       142901236"    1    7    1   10    0    0         
+                                  Logger                                    UDINT    0 "                                                       142888936"    1    7    1   10    0    0         
                                   Update                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                 Downtime                                     DINT    0 "                                                               0"    1    4    1   10    0    0 e,0,exAS
 
                           DowntimeReason                                    UDINT    0 "                                                       134436452"    1    7    1   10    0    0         
-                            PieceCounter                                    UDINT    0 "                                                            2036"    1    7    1   10    0    0         
-                           RejectCounter                                    UDINT    0 "                                                             203"    1    7    1   10    0    0         
-                              DeviceName                                    UDINT    0 "                                                       138831329"    1    7    1   10    0    0         
+                            PieceCounter                                    UDINT    0 "                                                              99"    1    7    1   10    0    0         
+                           RejectCounter                                    UDINT    0 "                                                               0"    1    7    1   10    0    0         
                                   Export                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                    Reset                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
                                   Active                                     BOOL    0 "                                                            TRUE"    1    1    1    2    0    0         
@@ -46,7 +41,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                NominalProductionTimeRate                                     REAL    0 "                                                             0.0"    1    8    1   10    0    0         
                             BadPieceRate                                     REAL    0 "                                                             0.0"    1    8    1   10    0    0         
                               ExportDone                                     BOOL    0 "                                                           FALSE"    1    1    1    2    0    0         
-                                    Info                   exAssetIntCoreInfoType    0 "                                                               *"    1   24    1    0    0    0         
+                                    Info                   exAssetIntCoreInfoType    0 "                                                               *"    1   24    1    0    0    1         
                          ShiftStatistics            exAssetIntShiftStatisticsType    0 "                                                               *"    2   24    1    0    0    0         
                                ShiftName                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
                                TotalTime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
@@ -85,12 +80,12 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                              CurrentUser                               STRING[50]    0 "                                                               *"    3    9   51    1    0    0         
                           AdditionalData                              STRING[255]    0 "                                                               *"    3    9  256    1    0    0         
                      IdealProductionRate                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
-                           JobStatistics              exAssetIntJobStatisticsType    0 "                                                               *"    2   24    1    0    0    0         
-                                 JobName                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                           JobStatistics              exAssetIntJobStatisticsType    0 "                                                               *"    2   24    1    0    0    1         
+                                 JobName                               STRING[20]    0 "                                                           'uuu'"    3    9   21    1    0    0         
                                TotalTime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               1"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                              28"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                        ScheduledDowntime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
@@ -100,25 +95,25 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                   Uptime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
-                   NominalProductionTime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
-                      GoodProductionTime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               6"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                              57"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               6"    4    5    1   10    0    0         
+                   NominalProductionTime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    1         
+                                   Hours                                    UDINT    0 "                                                         1193046"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                              27"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                              19"    4    5    1   10    0    0         
+                      GoodProductionTime                       exAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    1         
+                                   Hours                                    UDINT    0 "                                                         1193046"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                              27"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                              19"    4    5    1   10    0    0         
                    ScheduledDowntimeRate                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
                  UnscheduledDowntimeRate                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionTimeRate                                     REAL    0 "                                                      0.23863636"    3    8    1   10    0    0         
-                             TotalPieces                                    UDINT    0 "                                                              21"    3    7    1   10    0    0         
-                              GoodPieces                                    UDINT    0 "                                                              19"    3    7    1   10    0    0         
-                            RejectPieces                                    UDINT    0 "                                                               2"    3    7    1   10    0    0         
-                            BadPieceRate                                     REAL    0 "                                                       0.0952381"    3    8    1   10    0    0         
-                   CurrentProductionRate                                     REAL    0 "                                                      0.23863636"    3    8    1   10    0    0         
+               NominalProductionTimeRate                                     REAL    0 "                                                      169246.453"    3    8    1   10    0    0         
+                             TotalPieces                                    UDINT    0 "                                                      4294967239"    3    7    1   10    0    0         
+                              GoodPieces                                    UDINT    0 "                                                      4294967239"    3    7    1   10    0    0         
+                            RejectPieces                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                            BadPieceRate                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
+                   CurrentProductionRate                                     REAL    0 "                                                      169246.453"    3    8    1   10    0    0         
                              CurrentUser                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
                           AdditionalData                              STRING[100]    0 "                                                      'Choclate'"    3    9  101    1    0    0         
                                     Diag                       exAssetIntDiagType    0 "                                                               *"    2   24    1    0    0    0         
@@ -129,7 +124,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
 
                                     Code                                     UINT    0 "                                                               *"    4    6    1   10    0    0         
                                 Internal                   exCoreInternalDataType    0 "                                                               *"    1   24    1    0    0    1         
-                              RecordNext                                     UINT    0 "                                                              31"    2    6    1   10    0    0         
+                              RecordNext                                     UINT    0 "                                                              42"    2    6    1   10    0    0         
                               RecordData                 exCoreInternalRecordType    0 "                                                               *"    2   24    1    0    0    0         
                                 FileName                               STRING[80]    0 "                                                               *"    3    9   81    1    0    0         
                                TimeStart                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
@@ -176,9 +171,9 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
 
                            InitAfterBoot                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
                           TimeTotalStart                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    2   11    1    1    0    0         
-                         PieceCounterOld                                    UDINT    0 "                                                            2036"    2    7    1   10    0    0         
-                        RejectCounterOld                                    UDINT    0 "                                                             203"    2    7    1   10    0    0         
-                                  TmpStr                              STRING[500]    0 "                                         'new job started Job65'"    2    9  501    1    0    0         
+                         PieceCounterOld                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                        RejectCounterOld                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
+                                  TmpStr                              STRING[500]    0 "                                                            '41'"    2    9  501    1    0    0         
                              DowntimeOld                                     DINT    0 "                                                               0"    2    4    1   10    0    0 e,0,exAS
 
                              DTGetTime_0                                DTGetTime    0 "                                                               *"    2   24    1    0    0    0         
@@ -195,7 +190,7 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                                   second                                    USINT    0 "                                                               *"    3    5    1   10    0    0         
                                 millisec                                     UINT    0 "                                                               *"    3    6    1   10    0    0         
                                 microsec                                     UINT    0 "                                                               *"    3    6    1   10    0    0         
-                               TimeOfDay                              TIME_OF_DAY    0 "                                                    TOD#10:52:00"    2   16    1    1    0    0         
+                               TimeOfDay                              TIME_OF_DAY    0 "                                                    TOD#06:40:00"    2   16    1    1    0    0         
                      ShiftTotalTimeStart                                    UDINT    0 "                                                               0"    2    7    1   10    0    0         
                             StatsRefresh                                 TON_10ms    0 "                                                               *"    2   24    1    0    0    0         
                                       IN                                     BOOL    0 "                                                               *"    3    1    1    2    0    0         

@@ -14,7 +14,7 @@ FUNCTION_BLOCK WriteEventData
 		// Wait for enable
 		0:
 			IF EDGEPOS(Enable) THEN
-				RecordDataIntern := RecordData;
+				brsmemcpy(ADR(RecordDataIntern), RecordData, SIZEOF(RecordDataIntern));				
 				
 				// Reset function blocks
 				FileOpen_0.enable := FALSE;

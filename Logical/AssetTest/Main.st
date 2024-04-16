@@ -23,6 +23,9 @@ PROGRAM _CYCLIC
 			END_IF
 		END_IF
 	END_IF
+	IF gPieceCounter = 10 THEN
+		gPieceCounter := 0;
+	END_IF
 	
 	// Create new jobs
 	IF AutoCreateJobs THEN

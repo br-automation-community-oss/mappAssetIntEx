@@ -212,7 +212,8 @@ FUNCTION_BLOCK exAssetIntCore
 //				exLink.JobStart := Internal.DTGetTime_0.DT1;
 //				exLink.PieceCounter := 0;
 //				exLink.RejectCounter := 0;
-//
+//					brsmemset(ADR(Info.JobStatistics), 0, SIZEOF(Info.JobStatistics));
+
 //				// Transfer data to job stats
 //				Info.JobStatistics.JobName := Parameters.Job;
 //				Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
@@ -298,10 +299,11 @@ FUNCTION_BLOCK exAssetIntCore
 					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
 					UpdateDone := FALSE;
 
-					// Transfer stats to recordvnc, make sure structures are allignent
+					// Transfer stats to record, make sure structures are allignent
 					brsmemset(ADR(Internal.RecordData), 0, SIZEOF(Internal.RecordData));
 					
 					// Collect data for record
+					Internal.RecordData.EventType := RecordTypeJob;
 					Internal.RecordData.TimeStart := exLink.JobStart;
 					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
 					Internal.RecordData.CurrentUser := Info.JobStatistics.CurrentUser;
@@ -320,15 +322,17 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.RecordData.NominalProductionTime := Info.JobStatistics.NominalProductionTime;
 					Internal.RecordData.NominalProductionTimeRate := Info.JobStatistics.NominalProductionTimeRate;
 					Internal.RecordData.UnscheduledDowntimeRate := Info.JobStatistics.UnscheduledDowntimeRate;
-					Internal.RecordData.CurrentProductionRate := Info.JobStatistics.CurrentProductionRate;					
+					Internal.RecordData.CurrentProductionRate := Info.JobStatistics.CurrentProductionRate;
+					Internal.RecordData.CRC := CalcCrc(ADR(Internal.RecordData), SIZEOF(Internal.RecordData));					
 				
 					// Reset stats and remember new start time
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
 					exLink.PieceCounter := 0;
 					exLink.RejectCounter := 0;
+					brsmemset(ADR(Info.JobStatistics), 0, SIZEOF(Info.JobStatistics));
 
 					// Transfer data to job stats
-					Internal.JobDiffToCore := -DiffDT(Internal.DTGetTime_0.DT1, exLink.CoreStartTime);
+					Internal.JobDiffToCore := -DiffDT(Internal.DTGetTime_0.DT1, exLink.CoreStartTime);					
 					Info.JobStatistics.JobName := Parameters.Job;
 					Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
 					Info.JobStatistics.AdditionalData := Parameters.AdditionalData;
