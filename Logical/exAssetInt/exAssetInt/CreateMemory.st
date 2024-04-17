@@ -47,6 +47,7 @@ FUNCTION_BLOCK CreateMemory
 					
 					// Reset memory, set up next memory
 					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
+					Cnt := 0;
 					MemoryDb := DatObjCreate_0.pDatObjMem;
 					MemoryType := exASSETINT_MEM_JOB;
 					TmpStr1 := 'AsWr_0';
@@ -58,6 +59,7 @@ FUNCTION_BLOCK CreateMemory
 
 					// Reset memory, set up next memory
 					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
+					Cnt := 0;
 					MemoryJob := DatObjCreate_0.pDatObjMem;
 					MemoryType := exASSETINT_MEM_SHIFT;
 					TmpStr1 := 'AsSh_0';

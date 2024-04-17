@@ -9076,6 +9076,15 @@
               </DataPoint>
             </Folder>
           </Folder>
+          <DataPoint Name="StatusID">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="DINT"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="INTEGER"/>
+          </DataPoint>
         </Folder>
         <Folder Name="JobListUIConnect">
           <Property Name="Description" Value=""/>

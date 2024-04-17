@@ -48,6 +48,10 @@ FUNCTION_BLOCK exAssetIntCore
 				StatusID := ERR_OK;
 				Internal.CreateDirStructure(Enable := FALSE);
 				Internal.CreateMemory(Enable := FALSE);
+				Internal.ReadEventData(Enable := FALSE);
+				Internal.WriteEventData(Enable := FALSE);
+				Internal.ReadEventData(Enable := FALSE);
+				Internal.WriteEventData(Enable := FALSE);
 								
 				// Create folder structure and read event data only after boot
 				IF Internal.InitAfterBoot THEN
@@ -104,7 +108,6 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.ReadEventData.Enable := TRUE;
 			Internal.ReadEventData.Device := DeviceName;
 			Internal.ReadEventData.Memory := exLink.MemoryDb;
-			Internal.ReadEventData.RecordSize := SIZEOF(Internal.RecordData);
 			Internal.ReadEventData.Logger := Logger;
 			Internal.ReadEventData();
 		
@@ -322,8 +325,7 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.RecordData.NominalProductionTime := Info.JobStatistics.NominalProductionTime;
 					Internal.RecordData.NominalProductionTimeRate := Info.JobStatistics.NominalProductionTimeRate;
 					Internal.RecordData.UnscheduledDowntimeRate := Info.JobStatistics.UnscheduledDowntimeRate;
-					Internal.RecordData.CurrentProductionRate := Info.JobStatistics.CurrentProductionRate;
-					Internal.RecordData.CRC := CalcCrc(ADR(Internal.RecordData), SIZEOF(Internal.RecordData));					
+					Internal.RecordData.CurrentProductionRate := Info.JobStatistics.CurrentProductionRate;								
 				
 					// Reset stats and remember new start time
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
@@ -347,7 +349,7 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.WriteEventData.Enable := TRUE;
 			Internal.WriteEventData.Device := DeviceName;
 			Internal.WriteEventData.Logger := Logger;
-			Internal.WriteEventData.RecordData := Internal.RecordData;
+			Internal.WriteEventData.RecordData := ADR(Internal.RecordData);
 			Internal.WriteEventData.RecordNext := Internal.RecordNext;
 			Internal.WriteEventData();
 		

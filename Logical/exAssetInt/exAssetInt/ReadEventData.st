@@ -152,7 +152,7 @@ FUNCTION_BLOCK ReadEventData
 				TmpStr1 := 'open event file ok -> ';
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
-				
+								
 				// Make sure data has correct size
 				IF FileOpen_0.filelen <> SIZEOF(RecordData) THEN
 					TmpStr1 := 'data in event file has wrong size -> ';
@@ -187,14 +187,23 @@ FUNCTION_BLOCK ReadEventData
 				brsstrcat(ADR(TmpStr1), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(TmpStr1), Logger);
 				
-				// Check if record is newest
-				InsertEventData(Memory, RecordCount, RecordData);
+				// Check CRC
+				CRC := CalcCrc(ADR(RecordData), SIZEOF(RecordData));
+				IF CRC <> RecordData.CRC THEN
+					// Generate log entry
+					TmpStr1 := 'read event file CRC error -> ';
+					brsstrcat(ADR(TmpStr1), ADR(FileName));
+					CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR(TmpStr1), Logger);
+					Status := ERR_ASSET_READ_CRC;
+				ELSE
+					// Insert record
+					InsertEventData(Memory, RecordCount, RecordData);
+					RecordCount := RecordCount + 1;
+				END_IF
 				
-				// Increase record count, go to next step
-				RecordCount := RecordCount + 1;
 				State := 6;
 				
-			// Error
+				// Error
 			ELSIF FileRead_0.status <> ERR_FUB_BUSY THEN
 				Status := FileRead_0.status;
 				State := 6;

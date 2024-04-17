@@ -14,7 +14,7 @@ END_FUNCTION
 // -------------------------------------------------------------------------------------------
 // Generate crc																	
 FUNCTION CalcCrc
-	FOR idx:=0 TO length DO
+	FOR idx:=1 TO length - 1 DO
 		brsmemcpy(ADR(byte), data+idx, 1);
 		CalcCrc := CalcCrc + byte;
 	END_FOR;

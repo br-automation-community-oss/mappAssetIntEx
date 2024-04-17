@@ -25,9 +25,9 @@ TYPE
 		x : UINT;
 	END_STRUCT;
 	exCoreInternalRecordType : 	STRUCT 
+		CRC : USINT;
 		FileName : STRING[80]; (*ID of the event*)
 		EventType : exCoreInternalRecordEnum;
-		CRC : USINT;
 		TimeStart : DATE_AND_TIME; (*Event start*)
 		TimeEnd : DATE_AND_TIME; (*Event end*)
 		ShiftName : STRING[20]; (*Shift name*)

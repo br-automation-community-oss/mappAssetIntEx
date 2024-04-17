@@ -174,7 +174,6 @@ FUNCTION_BLOCK ReadEventData
 		Device : STRING[50];
 		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
 		Memory : UDINT;
-		RecordSize : UDINT;
 	END_VAR
 	VAR_OUTPUT
 		RecordCount : UINT;
@@ -196,6 +195,7 @@ FUNCTION_BLOCK ReadEventData
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
 		State : USINT;
+		CRC : USINT;
 		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
@@ -218,8 +218,7 @@ FUNCTION_BLOCK WriteEventData
 		FileWrite_0 : FileWrite;
 		RecordDataIntern : exCoreInternalRecordType;
 		FileName : STRING[100];
-		TmpStr1 : STRING[100];
-		TmpStr2 : STRING[100];
+		TmpStr : STRING[100];
 		Ident : UDINT;
 		State : USINT;
 		zzEdge00000 : BOOL;
@@ -311,6 +310,7 @@ FUNCTION CalcCrc : USINT
 	END_VAR
 	VAR
 		idx : UINT;
+		crc : USINT;
 		byte : USINT;
 	END_VAR
 END_FUNCTION
