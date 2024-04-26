@@ -251,6 +251,7 @@ FUNCTION_BLOCK exAssetIntCore
 	
 				// Create job and shift statistics
 				CalcStatsJob(exLink, Internal.JobDiffToCore, Downtime, Parameters, ADR(Info.JobStatistics));
+				CalcStatsShift(exLink, Internal.ShiftDiffToCore, Downtime, Parameters, ADR(Info.ShiftStatistics));
 			END_IF
 			
 			// Handle downtime changes

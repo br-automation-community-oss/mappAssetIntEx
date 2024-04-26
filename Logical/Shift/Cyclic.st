@@ -1,4 +1,11 @@
 PROGRAM _CYCLIC
+		// Funktion zum erkennen ob ARSim aktiv ist
+	IF DiagCpuIsARsim() THEN
+		DeviceName := 'ARsim';
+	ELSE
+		DeviceName := 'USER_HD';
+	END_IF
+	
 	AssetIntPar.NominalProductionRate := gNominalProductionRate;
 	AssetIntPar.AdditionalData := gAdditionalData;
 	AssetIntPar.CurrentUser := gCurrentUser;
@@ -10,7 +17,7 @@ PROGRAM _CYCLIC
     MpAssetIntCore_0.MpLink := ADR(gAssetIntCore);
     MpAssetIntCore_0.Enable := 1;
     MpAssetIntCore_0.Parameters := ADR(AssetIntPar);
-	MpAssetIntCore_0.DeviceName := ADR('ARsim');
+	MpAssetIntCore_0.DeviceName := ADR(DeviceName);
 	MpAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
 	MpAssetIntCore_0.Downtime := UDINT_TO_UINT(gDowntime);
 	MpAssetIntCore_0.Update := gCommandUpdate;

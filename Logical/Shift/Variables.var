@@ -9,4 +9,5 @@ VAR
 	ShiftListUIConnect : MpAssetIntShiftListUIConnectType;
 	SizeShift : UDINT;
 	ActShiftName : STRING[20];
+	DeviceName : STRING[20];
 END_VAR

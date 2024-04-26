@@ -46,6 +46,7 @@
     <Source File="Fonts\Arial10pxBold.fninfo"/>
     <Source File="Fonts\Arial12px.fninfo"/>
     <Source File="Fonts\Arial9pxValue.fninfo"/>
+    <Source File="Fonts\Arial14pxBold.fninfo"/>
     <Source File="Bitmaps\AlphaPadQVGA1.bminfo"/>
     <Source File="Bitmaps\AlphaPadQVGA2.bminfo"/>
     <Source File="Bitmaps\AlphaPadQVGA3.bminfo"/>

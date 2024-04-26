@@ -285,18 +285,18 @@ END_FUNCTION
 FUNCTION CalcStatsShift : USINT
 	VAR_INPUT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		DiffToCore : DINT;
 		Downtime : exAssetIntDowntimeEnum;
 		Parameter : exAssetIntParType; (*Log Level*)
-		Configuration : exAssetIntCoreConfigType; (*Log Level*)
 		ShiftStatistics : REFERENCE TO exAssetIntShiftStatisticsType; (*Log message*)
 	END_VAR
 	VAR
-		TotalTime : UDINT;
 		Uptime : UDINT;
 		NominalProductionTime : UDINT;
 		DowntimeScheduled : UDINT;
 		DowntimeUnscheduled : UDINT;
 		GoodProductionTime : UDINT;
+		DTGetTime_0 : DTGetTime;
 		x : USINT;
 		StartTime : TIME_OF_DAY;
 		EndTime : TIME_OF_DAY;

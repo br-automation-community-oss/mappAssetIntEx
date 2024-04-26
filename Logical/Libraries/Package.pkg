@@ -16,5 +16,6 @@
     <Object Type="Library" Language="Binary" Description="Core library for mapp components">MpBase</Object>
     <Object Type="Library" Language="Binary" Description="Asset intensity measurement">MpAssetInt</Object>
     <Object Type="Library" Language="Binary" Description="Data recording and archiving">MpData</Object>
+    <Object Type="Library" Language="binary" Description="The AsIODiag library provides functions for creating and evaluating I/O module information.">AsIODiag</Object>
   </Objects>
 </Package>

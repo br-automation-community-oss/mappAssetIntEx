@@ -16,6 +16,7 @@ TYPE
 		DT_TO_DTStructure_0 : DTStructure;
 		TimeOfDay : TIME_OF_DAY;
 		JobDiffToCore : DINT;
+		ShiftDiffToCore : DINT;
 		ShiftTotalTimeStart : UDINT;
 		StatsRefresh : TON_10ms;
 		CreateDirStructure : CreateDirStructure;
