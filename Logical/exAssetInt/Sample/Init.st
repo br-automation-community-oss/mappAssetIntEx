@@ -22,5 +22,12 @@ PROGRAM _INIT
 	IF (exAssetIntConfig.Shifts[0].TotalTime.Start = exAssetIntConfig.Shifts[2].TotalTime.End) THEN
 		exAssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 1);
 	END_IF
-		 
+
+	
+	// Check if we are running in simuulation
+	IF DiagCpuIsARsim() THEN
+		gDeviceName := 'ARsim';
+	ELSE
+		gDeviceName := 'USER_HD';
+	END_IF
 END_PROGRAM

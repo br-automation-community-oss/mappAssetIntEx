@@ -6,6 +6,7 @@ VAR
 	gShift : ARRAY[0..3] OF SHIFT_typ := [(Start:=(Hour:=6,Minutes:=0),End:=(Hour:=14,Minutes:=0),Name:='Morning'),(Start:=(Hour:=14,Minutes:=0),End:=(Hour:=22,Minutes:=0),Name:='Afternoon'),(Start:=(Hour:=22,Minutes:=0),End:=(Hour:=6,Minutes:=0),Name:='Night'),(0)];
 	gAdditionalData : STRING[255] := 'Choclate';
 	gNominalProductionRate : REAL := 3600;
+	gDeviceName : STRING[50];
 	gPieceCounterJob : UDINT;
 	gPieceCounter : UDINT;
 	gRejectCounter : UDINT;

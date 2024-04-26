@@ -26,8 +26,7 @@ PROGRAM _CYCLIC
 	
 	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
-	exAssetIntConfig_0.DeviceName := ADR('ARsim');
-	//exAssetIntConfig_0.DeviceName := ADR('USER_HD');
+	exAssetIntConfig_0.DeviceName := ADR(gDeviceName);
 	exAssetIntConfig_0.Configuration := ADR(exAssetIntConfig);
 	exAssetIntConfig_0.Logger := ADR(LoggerConfig);
 	exAssetIntConfig_0();
@@ -43,8 +42,7 @@ PROGRAM _CYCLIC
 	exAssetIntCore_0.exLink := ADR(exAssetIntLink);
 	exAssetIntCore_0.Parameters := ADR(exAssetIntPar);
 	exAssetIntCore_0.Configuration := ADR(exAssetIntConfig);
-	exAssetIntCore_0.DeviceName := ADR('ARsim');
-	//exAssetIntCore_0.DeviceName := ADR('USER_HD');
+	exAssetIntCore_0.DeviceName := ADR(gDeviceName);
 	exAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
 	exAssetIntCore_0.Downtime := gDowntime;
 	exAssetIntCore_0.PieceCounter := gPieceCounter;
@@ -64,5 +62,10 @@ PROGRAM _CYCLIC
 	exAssetIntJobListUI_0.exLink := ADR(exAssetIntLink);
 	exAssetIntJobListUI_0.UIConnect := ADR(JobListUIConnect);
 	exAssetIntJobListUI_0();
-	 
+
+	exAssetIntShiftListUI_0.Enable := exAssetIntCore_0.Active;
+	exAssetIntShiftListUI_0.exLink := ADR(exAssetIntLink);
+	exAssetIntShiftListUI_0.UIConnect := ADR(ShiftListUIConnect);
+	exAssetIntShiftListUI_0();
+
 END_PROGRAM

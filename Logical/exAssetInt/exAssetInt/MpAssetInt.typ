@@ -8,8 +8,10 @@ TYPE
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		InitAfterBoot : BOOL;
 		TimeTotalStart : DATE_AND_TIME;
-		PieceCounterOld : UDINT;
-		RejectCounterOld : UDINT;
+		JobPieceCounterOld : UDINT;
+		JobRejectCounterOld : UDINT;
+		ShiftPieceCounterOld : UDINT;
+		ShiftRejectCounterOld : UDINT;
 		TmpStr : STRING[500];
 		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
@@ -42,6 +44,7 @@ TYPE
 		ScheduledDowntimeRate : REAL; (*Percentage of scheduled downtime [%] since this job started*)
 		UnscheduledDowntimeRate : REAL; (*Percentage of unscheduled downtime [%] since this job started*)
 		NominalProductionTimeRate : REAL; (*Percentage of nominal speed running time[%] since this job started*)
+		TargetPieces : UDINT; (*Specifies the target quantity of products to be produced by the machine at nominal speed*)
 		TotalPieces : UDINT; (*Counter for total products since this job started*)
 		GoodPieces : UDINT; (*Counter for good products since this job started*)
 		RejectPieces : UDINT; (*Counter for reject products since this job started*)
@@ -61,13 +64,14 @@ TYPE
 		ReadConfiguration : ReadConfiguration;
 		WriteConfiguration : WriteConfiguration;
 	END_STRUCT;
-	exJobUIInternalDataType : 	STRUCT 
+	exUIInternalDataType : 	STRUCT 
 		RecordStart : UDINT; (*Visible list is starting from this index*)
 		RecordNum : UDINT; (*Number of items to display*)
 		RecordCountOld : UDINT; (*Old record number is required for DESC list*)
 		RecordData : exCoreInternalRecordType;
 		SortingStartTimeOld : exAssetIntUISortingEnum := exASSETINT_SORTING_ASC;
 		x : UDINT;
+		y : UDINT;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 	END_STRUCT;
@@ -79,8 +83,11 @@ TYPE
 		RecordCount : UDINT; (*Number of total records*)
 		IsCoreActive : BOOL; (*Core function block is ready*)
 		RefreshJobUI : BOOL; (*Update job stats in UI*)
-		PieceCounter : UDINT; (*Total piece counter*)
-		RejectCounter : UDINT; (*Total reject counter*)
+		RefreshShiftUI : BOOL; (*Update shift stats in UI*)
+		ShiftPieceCounter : UDINT; (*Total piece counter*)
+		ShiftRejectCounter : UDINT; (*Total reject counter*)
+		JobPieceCounter : UDINT; (*Total piece counter*)
+		JobRejectCounter : UDINT; (*Total reject counter*)
 		CoreStartTime : DATE_AND_TIME; (*Time when the function block started*)
 		JobStart : DATE_AND_TIME; (*Time when the job started*)
 		JobTotalTime : UDINT; (*Seconds the job is running*)
@@ -301,6 +308,7 @@ TYPE
 	exAssetIntShiftListUISetupType : 	STRUCT 
 		OutputListSize : UINT := 10; (*Output list size*)
 		ScrollWindow : USINT := 0; (*Scroll Window (overlap for PageUp/Down)*)
+		SortingStartTime : exAssetIntUISortingEnum := exASSETINT_SORTING_DESC;
 	END_STRUCT;
 	exAssetIntJobListUIConnectType : 	STRUCT 
 		Status : exAssetIntUIStatusEnum; (*Status of UI function block*)

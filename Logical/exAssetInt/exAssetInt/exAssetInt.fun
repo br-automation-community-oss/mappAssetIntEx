@@ -68,7 +68,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK exAssetIntJobListUI (*mapp function block which can be used for showing shift statistics in a list *)
+FUNCTION_BLOCK exAssetIntJobListUI (*mapp function block which can be used for showing job statistics in a list *)
 	VAR_INPUT
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
@@ -84,7 +84,29 @@ FUNCTION_BLOCK exAssetIntJobListUI (*mapp function block which can be used for s
 		Info : exAssetIntInfoType; (*Provide any further useful information as function block output.(mapp standard interface)*) (* *) (*#CMD#; *)
 	END_VAR
 	VAR
-		Internal : {REDUND_UNREPLICABLE} exJobUIInternalDataType; (*Internal data*)
+		Internal : {REDUND_UNREPLICABLE} exUIInternalDataType; (*Internal data*)
+		zzEdge00000 : BOOL;
+		zzEdge00001 : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK exAssetIntShiftListUI (*mapp function block which can be used for showing shift statistics in a list *)
+	VAR_INPUT
+		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
+		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
+		Logger : UDINT;
+		UISetup : exAssetIntShiftListUISetupType; (*Setup UI connection - must be configured before enabling the FB*) (* *) (*#PAR#; *)
+		UIConnect : REFERENCE TO exAssetIntShiftListUIConnectType; (*Connection structure for VC4 User interface*) (* *) (*#CMD#; *)
+	END_VAR
+	VAR_OUTPUT
+		Active : BOOL; (*Function block is active (mapp standard interface)*) (* *) (*#PAR#;*)
+		Error : BOOL; (*Indicates an error (mapp standard interface)*) (* *) (*#PAR#;*)
+		StatusID : DINT; (*Error/Status information (mapp standard interface)*) (* *) (*#PAR#; *)
+		Info : exAssetIntInfoType; (*Provide any further useful information as function block output.(mapp standard interface)*) (* *) (*#CMD#; *)
+	END_VAR
+	VAR
+		Internal : {REDUND_UNREPLICABLE} exUIInternalDataType; (*Internal data*)
 		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK

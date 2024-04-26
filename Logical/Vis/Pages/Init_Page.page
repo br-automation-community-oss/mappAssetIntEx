@@ -124,7 +124,8 @@
           <Text ID="234638" Value=":"/>
           <Text ID="234639" Value=":"/>
           <Text ID="234640" Value="Schicht"/>
-          <Text ID="234644" Value="Shift Org"/>
+          <Text ID="234644" Value="Shift New"/>
+          <Text ID="234645" Value="Target Piece Rate"/>
         </TextLayer>
         <IndexMap>
           <Index ID="206794" Value="8"/>
@@ -227,6 +228,7 @@
           <Index ID="234639" Value="167"/>
           <Index ID="234640" Value="168"/>
           <Index ID="234644" Value="172"/>
+          <Index ID="234645" Value="173"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -6909,7 +6911,7 @@
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="1055"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.StartTime[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.StartTime[0]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_19">
@@ -6926,7 +6928,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job IBN"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.JobName[0]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.JobName[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1055"/>
           <Property Name="Width" Value="120"/>
@@ -6944,7 +6946,7 @@
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="1075"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.EndTime[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.EndTime[0]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_29">
@@ -6961,7 +6963,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.CurrentUser[0]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.CurrentUser[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1055"/>
           <Property Name="Width" Value="120"/>
@@ -6982,7 +6984,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1055"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.TotalPieces[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.TotalPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7002,7 +7004,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1055"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.GoodPieces[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.GoodPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7022,7 +7024,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1055"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.RejectPieces[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.RejectPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7043,7 +7045,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1055"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.BadPieceRate[0]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.BadPieceRate[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7065,7 +7067,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1055"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[0].Hours]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[0].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7087,7 +7089,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1055"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[0].Minutes]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[0].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7109,7 +7111,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1055"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[0].Seconds]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[0].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7157,7 +7159,7 @@
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="1095"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.StartTime[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.StartTime[1]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_33">
@@ -7174,7 +7176,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job IBN"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.JobName[1]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.JobName[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1095"/>
           <Property Name="Width" Value="120"/>
@@ -7191,7 +7193,7 @@
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="1115"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.EndTime[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.EndTime[1]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_34">
@@ -7208,7 +7210,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.CurrentUser[1]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.CurrentUser[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1095"/>
           <Property Name="Width" Value="120"/>
@@ -7228,7 +7230,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1095"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.TotalPieces[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.TotalPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7247,7 +7249,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1095"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.GoodPieces[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.GoodPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7266,7 +7268,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1095"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.RejectPieces[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.RejectPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7286,7 +7288,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1095"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.BadPieceRate[1]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.BadPieceRate[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7307,7 +7309,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1095"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[1].Hours]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[1].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7328,7 +7330,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1095"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[1].Minutes]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[1].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7365,7 +7367,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1095"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[1].Seconds]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[1].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7398,7 +7400,7 @@
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="1135"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.StartTime[2]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.StartTime[2]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_35">
@@ -7415,7 +7417,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job IBN"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.JobName[2]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.JobName[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1135"/>
           <Property Name="Width" Value="120"/>
@@ -7433,7 +7435,7 @@
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="1155"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.EndTime[2]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.EndTime[2]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_36">
@@ -7450,7 +7452,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.CurrentUser[2]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.CurrentUser[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1135"/>
           <Property Name="Width" Value="120"/>
@@ -7471,7 +7473,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1135"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.TotalPieces[2]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.TotalPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7491,7 +7493,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1135"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.GoodPieces[2]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.GoodPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7511,7 +7513,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1135"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.RejectPieces[2]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.RejectPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7532,7 +7534,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1135"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.BadPieceRate[2]]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.BadPieceRate[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
         </Control>
@@ -7554,7 +7556,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1135"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[2].Hours]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[2].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7576,7 +7578,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1135"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[2].Minutes]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[2].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7598,7 +7600,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
           <Property Name="Top" Value="1135"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.Uptime[2].Seconds]"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[2].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
         </Control>
@@ -7676,7 +7678,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job IBN"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.ShiftName[0]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.ShiftName[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1055"/>
           <Property Name="Width" Value="120"/>
@@ -7695,7 +7697,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job IBN"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.ShiftName[1]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.ShiftName[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1095"/>
           <Property Name="Width" Value="120"/>
@@ -7714,7 +7716,7 @@
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job IBN"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.ShiftName[2]]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.ShiftName[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
           <Property Name="Top" Value="1135"/>
           <Property Name="Width" Value="120"/>
@@ -7736,6 +7738,64 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="985"/>
           <Property Name="Width" Value="910"/>
+        </Control>
+        <Control ClassId="0x00001007" Name="Numeric_207">
+          <Property Name="AddFractionDigits" Value="2"/>
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="25"/>
+          <Property Name="Left" Value="690"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxValue" Value="None"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinValue" Value="None"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
+          <Property Name="TeachDatapoint" Value="None"/>
+          <Property Name="Top" Value="480"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntCore_0.Info.ShiftStatistics.TargetPieces]"/>
+          <Property Name="ValueMode" Value="Standard"/>
+          <Property Name="Width" Value="145"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_95">
+          <Property Name="AlignmentHorizontal" Value="Right"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="25"/>
+          <Property Name="Left" Value="5"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="173"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="480"/>
+          <Property Name="Width" Value="210"/>
+        </Control>
+        <Control ClassId="0x00001007" Name="Numeric_209">
+          <Property Name="AddFractionDigits" Value="2"/>
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="25"/>
+          <Property Name="Left" Value="365"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxValue" Value="None"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinValue" Value="None"/>
+          <Property Name="SimulationValue" Value="0"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
+          <Property Name="TeachDatapoint" Value="None"/>
+          <Property Name="Top" Value="480"/>
+          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.MpAssetIntCore_0.Info.ShiftStatistics.TargetPieces]"/>
+          <Property Name="ValueMode" Value="Standard"/>
+          <Property Name="Width" Value="145"/>
         </Control>
       </Controls>
       <KeyMapping>
@@ -8247,5 +8307,7 @@
     <TabSeqItem Index="224" Value="Source[embedded].Layer[Default].Control[Numeric_203]"/>
     <TabSeqItem Index="225" Value="Source[embedded].Layer[Default].Control[Numeric_204]"/>
     <TabSeqItem Index="226" Value="Source[embedded].Layer[Default].Control[Numeric_205]"/>
+    <TabSeqItem Index="227" Value="Source[embedded].Layer[Default].Control[Numeric_207]"/>
+    <TabSeqItem Index="228" Value="Source[embedded].Layer[Default].Control[Numeric_209]"/>
   </TabSequence>
 </Page>
