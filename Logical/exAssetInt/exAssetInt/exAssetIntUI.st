@@ -6,6 +6,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 	// Reset everything when enable is false
 	IF NOT Enable THEN
 		StatusID := ERR_FUB_ENABLE_FALSE;
+		Active := FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
 		RETURN;
 	END_IF
@@ -123,6 +124,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 								
 			END_IF
 			exLink.RefreshJobUI := FALSE;
+			Active := FALSE;
 			
 			// -------------------------------------------------------------------------------------------
 			// Error state
@@ -142,6 +144,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 	// Reset everything when enable is false
 	IF NOT Enable THEN
 		StatusID := ERR_FUB_ENABLE_FALSE;
+		Active := FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
 		RETURN;
 	END_IF
@@ -259,7 +262,8 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 								
 			END_IF
 			exLink.RefreshShiftUI := FALSE;
-			
+			Active := FALSE;
+
 			// -------------------------------------------------------------------------------------------
 			// Error state
 		exASSETINT_STATE_ERROR:		

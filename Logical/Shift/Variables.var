@@ -7,6 +7,4 @@ VAR
 	MpAssetIntJobListUI_0 : MpAssetIntJobListUI;
 	JobListUIConnect : MpAssetIntJobListUIConnectType;
 	ShiftListUIConnect : MpAssetIntShiftListUIConnectType;
-	SizeShift : UDINT;
-	ActShiftName : STRING[20];
 END_VAR

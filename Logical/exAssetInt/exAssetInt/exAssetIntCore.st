@@ -180,12 +180,7 @@ FUNCTION_BLOCK exAssetIntCore
 					END_IF
 				END_IF
 			END_FOR;
-			// Make sure we found a shift name
-			IF Info.ShiftStatistics.ShiftName = '' THEN
-				CreateLoggerEntry(ERR_ASSET_SHIFT_CALC, ADR('no shift active'), Logger);
-				RETURN;
-			END_IF
-			
+						
 			// Handle shift change
 			IF Info.ShiftStatistics.ShiftName <> exLink.ShiftName THEN	
 				Internal.TmpStr := 'new shift started ';
@@ -196,42 +191,50 @@ FUNCTION_BLOCK exAssetIntCore
 				// Transfer stats to record, make sure structures are allignent
 				brsmemset(ADR(Internal.RecordData), 0, SIZEOF(Internal.RecordData));
 				
-				// Collect data for record
-				Internal.RecordData.EventType := RecordTypeShift;
-				Internal.RecordData.TimeStart := exLink.ShiftStart;
-				Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
-				Internal.RecordData.CurrentUser := Info.ShiftStatistics.CurrentUser;
-				Internal.RecordData.AdditionalData := Info.ShiftStatistics.AdditionalData;
-				Internal.RecordData.ShiftName := Info.ShiftStatistics.ShiftName;
-				Internal.RecordData.JobName := Info.JobStatistics.JobName;
-				Internal.RecordData.TotalPieces := Info.ShiftStatistics.TotalPieces;
-				Internal.RecordData.GoodPieces := Info.ShiftStatistics.GoodPieces;
-				Internal.RecordData.RejectPieces := Info.ShiftStatistics.RejectPieces;
-				Internal.RecordData.BadPieceRate := Info.ShiftStatistics.BadPieceRate;
-				Internal.RecordData.TargetPieces := Info.ShiftStatistics.TargetPieces;
-				Internal.RecordData.TotalTime := Info.ShiftStatistics.TotalTime;
-				Internal.RecordData.ScheduledDowntime := Info.ShiftStatistics.ScheduledDowntime;
-				Internal.RecordData.UnscheduledDowntime := Info.ShiftStatistics.UnscheduledDowntime;
-				Internal.RecordData.Uptime := Info.ShiftStatistics.Uptime;
-				Internal.RecordData.GoodProductionTime := Info.ShiftStatistics.GoodProductionTime;
-				Internal.RecordData.NominalProductionTime := Info.ShiftStatistics.NominalProductionTime;
-				Internal.RecordData.NominalProductionTimeRate := Info.ShiftStatistics.NominalProductionTimeRate;
-				Internal.RecordData.UnscheduledDowntimeRate := Info.ShiftStatistics.UnscheduledDowntimeRate;
-				Internal.RecordData.CurrentProductionRate := Info.ShiftStatistics.CurrentProductionRate;					
-			
+				// Only store data when shift name was not empty
+				IF exLink.ShiftName <> '' THEN
+					// Collect data for record
+					Internal.RecordData.EventType := RecordTypeShift;
+					Internal.RecordData.TimeStart := exLink.ShiftStart;
+					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
+					Internal.RecordData.CurrentUser := Info.ShiftStatistics.CurrentUser;
+					Internal.RecordData.AdditionalData := Info.ShiftStatistics.AdditionalData;
+					Internal.RecordData.ShiftName := exLink.ShiftName;
+					Internal.RecordData.JobName := Info.JobStatistics.JobName;
+					Internal.RecordData.TotalPieces := Info.ShiftStatistics.TotalPieces;
+					Internal.RecordData.GoodPieces := Info.ShiftStatistics.GoodPieces;
+					Internal.RecordData.RejectPieces := Info.ShiftStatistics.RejectPieces;
+					Internal.RecordData.BadPieceRate := Info.ShiftStatistics.BadPieceRate;
+					Internal.RecordData.TargetPieces := Info.ShiftStatistics.TargetPieces;
+					Internal.RecordData.TotalTime := Info.ShiftStatistics.TotalTime;
+					Internal.RecordData.ScheduledDowntime := Info.ShiftStatistics.ScheduledDowntime;
+					Internal.RecordData.UnscheduledDowntime := Info.ShiftStatistics.UnscheduledDowntime;
+					Internal.RecordData.Uptime := Info.ShiftStatistics.Uptime;
+					Internal.RecordData.GoodProductionTime := Info.ShiftStatistics.GoodProductionTime;
+					Internal.RecordData.NominalProductionTime := Info.ShiftStatistics.NominalProductionTime;
+					Internal.RecordData.NominalProductionTimeRate := Info.ShiftStatistics.NominalProductionTimeRate;
+					Internal.RecordData.UnscheduledDowntimeRate := Info.ShiftStatistics.UnscheduledDowntimeRate;
+					Internal.RecordData.CurrentProductionRate := Info.ShiftStatistics.CurrentProductionRate;					
+					
+					Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+				END_IF
+				
+				// No shift running
+				IF Info.ShiftStatistics.ShiftName = '' THEN
+					CreateLoggerEntry(ERR_ASSET_SHIFT_CALC, ADR('no shift active'), Logger);
+				END_IF
+				
 				// Reset stats and remember new start time
 				exLink.ShiftStart := Internal.DTGetTime_0.DT1;
 				exLink.ShiftName := Info.ShiftStatistics.ShiftName;				
 				exLink.ShiftPieceCounter := 0;
 				exLink.ShiftRejectCounter := 0;
 				brsmemset(ADR(Info.ShiftStatistics), 0, SIZEOF(Info.ShiftStatistics));
-
+	
 				// Transfer data to shift stats
 				Info.ShiftStatistics.CurrentUser := Parameters.CurrentUser;
 				Info.ShiftStatistics.AdditionalData := Parameters.AdditionalData;
-				
-				Internal.State := exASSETINT_STATE_STORE_EVENT_1;
-				
+
 			END_IF
 			
 			// Calculate new stats
@@ -271,6 +274,11 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.ShiftPieceCounterOld := PieceCounter;
 				Internal.ShiftRejectCounterOld := RejectCounter;
 				CalcStatsShift(exLink, Internal.ShiftDiffToCore, Downtime, Parameters, ADR(Info.ShiftStatistics));
+				
+				// Transfer shift data to main function block
+				CurrentProductionRate := Info.ShiftStatistics.CurrentProductionRate;
+				NominalProductionTimeRate := Info.ShiftStatistics.NominalProductionTimeRate;
+				BadPieceRate := Info.ShiftStatistics.BadPieceRate;
 
 				Internal.StatsRefresh.IN := FALSE;
 				Internal.StatsRefresh();
