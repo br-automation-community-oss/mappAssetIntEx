@@ -319,7 +319,6 @@ FUNCTION CalcStatsShift : USINT
 		DowntimeUnscheduled : UDINT;
 		GoodProductionTime : UDINT;
 		DTGetTime_0 : DTGetTime;
-		x : USINT;
 		StartTime : TIME_OF_DAY;
 		EndTime : TIME_OF_DAY;
 	END_VAR
@@ -332,8 +331,7 @@ FUNCTION CalcCrc : USINT
 	END_VAR
 	VAR
 		idx : UINT;
-		crc : USINT;
-		byte : USINT;
+		_byte : USINT;
 	END_VAR
 END_FUNCTION
 

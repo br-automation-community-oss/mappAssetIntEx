@@ -182,7 +182,7 @@ FUNCTION_BLOCK exAssetIntCore
 			END_FOR;
 			// Make sure we found a shift name
 			IF Info.ShiftStatistics.ShiftName = '' THEN
-				CreateLoggerEntry(ERR_ASSET_SHIFT_CALC, ADR('ERR: no shift name found'), Logger);
+				CreateLoggerEntry(ERR_ASSET_SHIFT_CALC, ADR('no shift active'), Logger);
 				RETURN;
 			END_IF
 			
@@ -203,6 +203,7 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.RecordData.CurrentUser := Info.ShiftStatistics.CurrentUser;
 				Internal.RecordData.AdditionalData := Info.ShiftStatistics.AdditionalData;
 				Internal.RecordData.ShiftName := Info.ShiftStatistics.ShiftName;
+				Internal.RecordData.JobName := Info.JobStatistics.JobName;
 				Internal.RecordData.TotalPieces := Info.ShiftStatistics.TotalPieces;
 				Internal.RecordData.GoodPieces := Info.ShiftStatistics.GoodPieces;
 				Internal.RecordData.RejectPieces := Info.ShiftStatistics.RejectPieces;
@@ -234,7 +235,7 @@ FUNCTION_BLOCK exAssetIntCore
 			END_IF
 			
 			// Calculate new stats
-			IF Internal.StatsRefresh.Q THEN
+			IF Internal.StatsRefresh.Q AND Info.ShiftStatistics.ShiftName <> '' THEN
 				// Transfer job counter data, reset timer
 				IF Internal.JobPieceCounterOld <= PieceCounter THEN					
 					exLink.JobPieceCounter := exLink.JobPieceCounter + (PieceCounter - Internal.JobPieceCounterOld);

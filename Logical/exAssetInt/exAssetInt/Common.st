@@ -15,8 +15,8 @@ END_FUNCTION
 // Generate crc																	
 FUNCTION CalcCrc
 	FOR idx:=1 TO length - 1 DO
-		brsmemcpy(ADR(byte), data+idx, 1);
-		CalcCrc := CalcCrc + byte;
+		brsmemcpy(ADR(_byte), data+idx, 1);
+		CalcCrc := CalcCrc + _byte;
 	END_FOR;
 END_FUNCTION
 
@@ -38,9 +38,17 @@ END_FUNCTION
 // -------------------------------------------------------------------------------------------
 // Handle log buffer
 FUNCTION CreateLoggerEntry
+	IF LogBuffer = 0 THEN
+		RETURN;		
+	END_IF	
 	// Make sure log message fits
 	IF brsstrlen(LogMsg) > LOG_LEN - 20 THEN
 		brsstrcpy(LogMsg, ADR('*** log meassage exceeds maximum length ***'));
+		RETURN;
+	END_IF
+	// Check previous message
+	IF brsstrlen(LogBuffer) > 19 THEN
+		brsstrcpy(ADR(LastMsg), LogBuffer + 19);
 	END_IF
 
 	// Make sure we dont flood Logger
@@ -92,7 +100,6 @@ FUNCTION CreateLoggerEntry
 		brsstrcat(LogBuffer, ADR(' '));
 		brsstrcat(LogBuffer, LogMsg);
 	END_IF
-	brsstrcpy(ADR(LastMsg), LogMsg);
 
 	CreateLoggerEntry := TRUE;
 END_FUNCTION
