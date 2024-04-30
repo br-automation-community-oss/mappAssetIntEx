@@ -317,6 +317,9 @@ FUNCTION_BLOCK exAssetIntCore
 			// Handle reset command
 			IF EDGEPOS(Reset) THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('reset command triggered'), Logger);
+
+				CommandBusy := TRUE;
+				CommandDone := FALSE;
 				
 				// Reset stats and remember new start time
 				exLink.JobStart := Internal.DTGetTime_0.DT1;
@@ -328,15 +331,22 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.ShiftTotalTime := 0;
 				exLink.ShiftPieceCounter := 0;
 				exLink.ShiftRejectCounter := 0;
+
+				CommandBusy := FALSE;
+				CommandDone := TRUE;
 			END_IF
 			
 			// Handle update command
 			IF EDGEPOS(Update) THEN	
+
 				// Job has changed
 				IF Parameters.Job <> Info.JobStatistics.JobName THEN
 					Internal.TmpStr := 'new job started ';
 					brsstrcat(ADR(Internal.TmpStr), ADR(Parameters.Job));
 					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
+
+					CommandBusy := TRUE;
+					CommandDone := FALSE;
 					UpdateDone := FALSE;
 
 					// Transfer stats to record, make sure structures are allignent
@@ -410,7 +420,11 @@ FUNCTION_BLOCK exAssetIntCore
 				// Refrehs UI data, finish up
 				exLink.RefreshJobUI := TRUE;
 				exLink.RefreshShiftUI := TRUE;
+
 				UpdateDone := TRUE;
+				CommandBusy := FALSE;
+				CommandDone := TRUE;
+
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
 			
