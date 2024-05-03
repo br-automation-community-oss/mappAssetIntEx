@@ -80,7 +80,7 @@ FUNCTION_BLOCK WriteEventData
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr := 'create event file -> ';
+				TmpStr := 'create event file ok -> ';
 				brsstrcat(ADR(TmpStr), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr), Logger);
 				

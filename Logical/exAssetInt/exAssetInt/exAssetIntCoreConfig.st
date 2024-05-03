@@ -5,6 +5,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
 	IF NOT Enable THEN
+		Active := FALSE;
 		StatusID := ERR_FUB_ENABLE_FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
 		RETURN;
@@ -41,6 +42,8 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 				exLink.Configuration := ADR(Configuration);
 				
 				// Reset error and status
+				CommandBusy := FALSE;
+				CommandDone := FALSE;
 				Error := FALSE;
 				StatusID := ERR_OK;
 
@@ -49,16 +52,24 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 
 		// -------------------------------------------------------------------------------------------
 		// Wait for new event
-		exASSETINT_STATE_IDLE:		
+		exASSETINT_STATE_IDLE:
+			Active := TRUE;
+			
 			// Handle configuration load command
 			IF EDGEPOS(Load) THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('command load configuration'), Logger);
+				CommandBusy := TRUE;
+				CommandDone := FALSE;
+				
 				Internal.State := exASSETINT_STATE_LOAD_CFG;
 			END_IF
 
 			// Handle configuration save command
 			IF EDGEPOS(Save) THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('command save configuration'), Logger);
+				CommandBusy := TRUE;
+				CommandDone := FALSE;
+
 				Internal.State := exASSETINT_STATE_SAVE_CFG;
 			END_IF
 			
@@ -74,7 +85,11 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 			IF Internal.ReadConfiguration.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('load configuration ok'), Logger);				
 				Configuration := Internal.ReadConfiguration.Configuration;
+				
+				CommandBusy := FALSE;
+				CommandDone := TRUE;
 				StatusID := ERR_OK;
+
 				Internal.State := exASSETINT_STATE_IDLE;
 			
 			// Error
@@ -95,7 +110,11 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 			// Event successful created
 			IF Internal.WriteConfiguration.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('save configuration ok'), Logger);				
+
+				CommandBusy := FALSE;
+				CommandDone := TRUE;
 				StatusID := ERR_OK;		
+
 				Internal.State := exASSETINT_STATE_IDLE;
 			
 			// Error

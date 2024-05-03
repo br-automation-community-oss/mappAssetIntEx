@@ -25,6 +25,7 @@ TYPE
 		CreateMemory : CreateMemory;
 		ReadEventData : ReadEventData;
 		WriteEventData : WriteEventData;
+		ExportEventData : ExportEventData;
 		x : UINT;
 	END_STRUCT;
 	exCoreInternalRecordType : 	STRUCT 
@@ -56,7 +57,15 @@ TYPE
 	exCoreInternalRecordEnum : 
 		(
 		RecordTypeJob,
-		RecordTypeShift
+		RecordTypeShift,
+		RecordTypeDowntimeScheduled,
+		RecordTypeDowntimeUnscheduled
+		);
+	exCoreInternalExportEnum : 
+		(
+		ExportTypeJob,
+		ExportTypeShift,
+		ExportTypeTimeline
 		);
 	exConfigInternalDataType : 	STRUCT 
 		State : exAssetIntStateEnum;
@@ -108,12 +117,11 @@ TYPE
 		exASSETINT_STATE_INIT_3 := 3, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_INIT_4 := 4, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_IDLE := 10, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_STORE_EVENT_1 := 21, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_STORE_EVENT_2 := 22, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_STORE_EVENT_3 := 23, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_SAVE_CFG := 25, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_LOAD_CFG := 26, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_ERROR := 50, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_STORE_EVENT := 20, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_EXPORT_EVENTS := 30, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_SAVE_CFG := 40, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_LOAD_CFG := 50, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_ERROR := 60, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_NONE := 99 (*Status: Idle, Waiting for command*)
 		);
 	exAssetIntLogLevelEnum : 

@@ -5,8 +5,8 @@ FUNCTION_BLOCK exAssetIntCore
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
 	IF NOT Enable THEN
-		StatusID := ERR_FUB_ENABLE_FALSE;
 		Active := FALSE;
+		StatusID := ERR_FUB_ENABLE_FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
 		RETURN;
 	END_IF
@@ -15,10 +15,12 @@ FUNCTION_BLOCK exAssetIntCore
 
 		// -------------------------------------------------------------------------------------------
 		// Wait for enable
+		// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 
+				// -------------------------------------------------------------------------------------------
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
@@ -26,6 +28,7 @@ FUNCTION_BLOCK exAssetIntCore
 					RETURN;				
 				END_IF
 				
+				// -------------------------------------------------------------------------------------------
 				// Remember start time
 				Internal.DTGetTime_0(enable := TRUE);
 				exLink.CoreStartTime := Internal.DTGetTime_0.DT1;
@@ -36,6 +39,7 @@ FUNCTION_BLOCK exAssetIntCore
 					exLink.JobStart := Internal.DTGetTime_0.DT1; 
 				END_IF
 				
+				// -------------------------------------------------------------------------------------------
 				// Transfer start values
 				Info.JobStatistics.JobName := Parameters.Job;
 				Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
@@ -48,6 +52,7 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.ShiftPieceCounterOld := PieceCounter;
 				Internal.ShiftRejectCounterOld := RejectCounter;
 
+				// -------------------------------------------------------------------------------------------
 				// Reset error, status and function and internal blocks
 				Error := FALSE;
 				StatusID := ERR_OK;
@@ -58,6 +63,7 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.ReadEventData(Enable := FALSE);
 				Internal.WriteEventData(Enable := FALSE);
 								
+				// -------------------------------------------------------------------------------------------
 				// Create folder structure and read event data only after boot
 				IF Internal.InitAfterBoot THEN
 					Internal.State := exASSETINT_STATE_IDLE;
@@ -66,33 +72,37 @@ FUNCTION_BLOCK exAssetIntCore
 				END_IF
 			END_IF
 
-			// -------------------------------------------------------------------------------------------
-			// Create folder structure
+		// -------------------------------------------------------------------------------------------
+		// Create folder structure
+		// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_2:
 			Internal.CreateDirStructure.Enable := TRUE;
 			Internal.CreateDirStructure.Device := DeviceName;
 			Internal.CreateDirStructure.Logger := Logger;
 			Internal.CreateDirStructure();
 		
+			// -------------------------------------------------------------------------------------------
 			// Folder structure successful created
 			IF Internal.CreateDirStructure.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create folder structure ok'), Logger);
 				Internal.State := exASSETINT_STATE_INIT_3;
 			
-				// Error
+			// Error
 			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, ADR('ERR: create folder structure'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
-			// -------------------------------------------------------------------------------------------
-			// Create internal memory
+		// -------------------------------------------------------------------------------------------
+		// Create internal memory
+		// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_3:
 			Internal.CreateMemory.Enable := TRUE;
 			Internal.CreateMemory.Size := CORE_EVENT_NUM_MAX*SIZEOF(Internal.RecordData);
 			Internal.CreateMemory.Logger := Logger;
 			Internal.CreateMemory();
 		
+			// -------------------------------------------------------------------------------------------
 			// Memory structure successful created
 			IF Internal.CreateMemory.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create internal memory ok'), Logger);
@@ -101,14 +111,15 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.MemoryShift := Internal.CreateMemory.MemoryShift;
 				Internal.State := exASSETINT_STATE_INIT_4;
 			
-				// Error
+			// Error
 			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				StatusID := CreateErrorState(Internal.CreateMemory.Status, ADR('ERR: create internal memory'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
-			// -------------------------------------------------------------------------------------------
-			// Read event data
+		// -------------------------------------------------------------------------------------------
+		// Read event data
+		// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_4:
 			Internal.ReadEventData.Enable := TRUE;
 			Internal.ReadEventData.Device := DeviceName;
@@ -120,6 +131,7 @@ FUNCTION_BLOCK exAssetIntCore
 			IF Internal.ReadEventData.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('read stored events ok'), Logger);
 				
+				// -------------------------------------------------------------------------------------------
 				// Get record count, calculate next entry
 				exLink.RecordCount := Internal.ReadEventData.RecordCount;
 				IF exLink.RecordCount > 0 THEN
@@ -132,21 +144,23 @@ FUNCTION_BLOCK exAssetIntCore
 					END_IF
 				END_IF
 				
+				// -------------------------------------------------------------------------------------------
 				// Refresh UI data, finish up
 				exLink.RefreshJobUI := TRUE;
 				exLink.RefreshShiftUI := TRUE;
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
 			
-				// Error
+			// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				StatusID := CreateErrorState(Internal.ReadEventData.Status, ADR('ERR: read stored events'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
-			// -------------------------------------------------------------------------------------------
-			// Wait for new event
-		exASSETINT_STATE_IDLE:
+		// -------------------------------------------------------------------------------------------
+		// Wait for new event
+		// -------------------------------------------------------------------------------------------
+ 		exASSETINT_STATE_IDLE:
 			// Set core active, reset read write function blocks
 			Active := TRUE;
 			
@@ -163,6 +177,7 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.StatsRefresh.PT := Configuration.CalculationTimeBase/10;	
 			Internal.StatsRefresh();
 			
+			// -------------------------------------------------------------------------------------------
 			// Track current shift
 			Info.ShiftStatistics.ShiftName := '';
 			FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) DO
@@ -216,7 +231,7 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.RecordData.UnscheduledDowntimeRate := Info.ShiftStatistics.UnscheduledDowntimeRate;
 					Internal.RecordData.CurrentProductionRate := Info.ShiftStatistics.CurrentProductionRate;					
 					
-					Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+					Internal.State := exASSETINT_STATE_STORE_EVENT;
 				END_IF
 				
 				// No shift running
@@ -237,6 +252,7 @@ FUNCTION_BLOCK exAssetIntCore
 
 			END_IF
 			
+			// -------------------------------------------------------------------------------------------
 			// Calculate new stats
 			IF Internal.StatsRefresh.Q AND Info.ShiftStatistics.ShiftName <> '' THEN
 				// Transfer job counter data, reset timer
@@ -279,16 +295,20 @@ FUNCTION_BLOCK exAssetIntCore
 				CurrentProductionRate := Info.ShiftStatistics.CurrentProductionRate;
 				NominalProductionTimeRate := Info.ShiftStatistics.NominalProductionTimeRate;
 				BadPieceRate := Info.ShiftStatistics.BadPieceRate;
+				ScheduledDowntimeRate := Info.ShiftStatistics.ScheduledDowntimeRate;
+				UnscheduledDowntimeRate := Info.ShiftStatistics.UnscheduledDowntimeRate;
 
 				Internal.StatsRefresh.IN := FALSE;
 				Internal.StatsRefresh();
 	
 			END_IF
 			
+			// -------------------------------------------------------------------------------------------
 			// Handle downtime changes
 			IF Downtime <> Internal.DowntimeOld THEN
 				// Create log message
 				Internal.TmpStr := 'downtime changed from ';
+
 				IF Internal.DowntimeOld = exASSETINT_NO_DOWNTIME THEN
 					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime to '));
 				ELSIF Internal.DowntimeOld = exASSETINT_SCHEDULED_DOWNTIME THEN
@@ -296,24 +316,39 @@ FUNCTION_BLOCK exAssetIntCore
 				ELSE
 					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled to '));
 				END_IF
+
 				IF Downtime = exASSETINT_NO_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime with reason '));
+					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime'));
 				ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
 					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled with reason '));
 				ELSE
 					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled with reason '));
 				END_IF
-				brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
-				
-				// Remember downtime start
+							
+				// Only record scheduled and unscheduled downtime
+				IF Internal.DowntimeOld <> exASSETINT_NO_DOWNTIME THEN
+					// Collect data for record
+					brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
+					Internal.RecordData.EventType := UDINT_TO_UINT(Internal.DowntimeOld) + 2;
+					Internal.RecordData.TimeStart := exLink.DowntimeStart;
+					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
+					Internal.RecordData.ShiftName := exLink.ShiftName;
+					Internal.RecordData.JobName := Info.JobStatistics.JobName;
+					Internal.RecordData.AdditionalData := DowntimeReason;
+						
+					Internal.State := exASSETINT_STATE_STORE_EVENT;
+				END_IF
+
+				// Remember downtime start and old state
 				IF Downtime > exASSETINT_NO_DOWNTIME THEN
 					exLink.DowntimeStart := Internal.DTGetTime_0.DT1;
 				END_IF
-				
 				Internal.DowntimeOld := Downtime;
+				
 			END_IF
 
+			// -------------------------------------------------------------------------------------------
 			// Handle reset command
 			IF EDGEPOS(Reset) THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('reset command triggered'), Logger);
@@ -336,6 +371,7 @@ FUNCTION_BLOCK exAssetIntCore
 				CommandDone := TRUE;
 			END_IF
 			
+			// -------------------------------------------------------------------------------------------
 			// Handle update command
 			IF EDGEPOS(Update) THEN	
 
@@ -347,6 +383,7 @@ FUNCTION_BLOCK exAssetIntCore
 
 					CommandBusy := TRUE;
 					CommandDone := FALSE;
+					ExportDone := FALSE;
 					UpdateDone := FALSE;
 
 					// Transfer stats to record, make sure structures are allignent
@@ -386,13 +423,25 @@ FUNCTION_BLOCK exAssetIntCore
 					Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
 					Info.JobStatistics.AdditionalData := Parameters.AdditionalData;
 					
-					Internal.State := exASSETINT_STATE_STORE_EVENT_1;
+					Internal.State := exASSETINT_STATE_STORE_EVENT;
 				END_IF
 			END_IF
-
+			
 			// -------------------------------------------------------------------------------------------
-			// Store new event
-		exASSETINT_STATE_STORE_EVENT_1:
+			// Handle export command
+			IF EDGEPOS(Export) THEN	
+
+				CommandBusy := TRUE;
+				CommandDone := FALSE;
+				UpdateDone := FALSE;
+	
+				Internal.State := exASSETINT_STATE_EXPORT_EVENTS;
+			END_IF
+
+		// -------------------------------------------------------------------------------------------
+		// Store new event
+		// -------------------------------------------------------------------------------------------
+		exASSETINT_STATE_STORE_EVENT:
 			Internal.WriteEventData.Enable := TRUE;
 			Internal.WriteEventData.Device := DeviceName;
 			Internal.WriteEventData.Logger := Logger;
@@ -400,6 +449,7 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.WriteEventData.RecordNext := Internal.RecordNext;
 			Internal.WriteEventData();
 		
+			// -------------------------------------------------------------------------------------------
 			// Event successful created
 			IF Internal.WriteEventData.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create new event ok'), Logger);
@@ -428,16 +478,48 @@ FUNCTION_BLOCK exAssetIntCore
 				StatusID := ERR_OK;
 				Internal.State := exASSETINT_STATE_IDLE;
 			
-				// Error
+			// Error
 			ELSIF Internal.WriteEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				StatusID := CreateErrorState(Internal.WriteEventData.Status, ADR('ERR: create new event'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
+		// -------------------------------------------------------------------------------------------
+		// Export all events
+		// -------------------------------------------------------------------------------------------
+		exASSETINT_STATE_EXPORT_EVENTS:
+			Internal.ExportEventData.Enable := TRUE;
+			Internal.ExportEventData.Device := DeviceName;
+			Internal.ExportEventData.Logger := Logger;
+			Internal.ExportEventData.RecordCount := exLink.RecordCount;
+			Internal.ExportEventData.Memory := exLink.MemoryDb;
+			Internal.ExportEventData.Configuration := Configuration.Export;
+			Internal.ExportEventData();
+		
 			// -------------------------------------------------------------------------------------------
-			// Error state
+			// Event successful created
+			IF Internal.ExportEventData.Status = ERR_OK THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('export events ok'), Logger);
+				
+				ExportDone := TRUE;
+				CommandBusy := FALSE;
+				CommandDone := TRUE;
+
+				StatusID := ERR_OK;
+				Internal.State := exASSETINT_STATE_IDLE;
+			
+			// Error
+			ELSIF Internal.ExportEventData.Status <> ERR_FUB_BUSY THEN
+				// Set status, remember state, go to error state
+				StatusID := CreateErrorState(Internal.ExportEventData.Status, ADR('ERR: export events'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
+			END_IF
+			
+		// -------------------------------------------------------------------------------------------
+		// Error state
+		// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_ERROR:
 			
+			// Reset error state
 			IF EDGEPOS(ErrorReset) THEN
 				Internal.StateError := exASSETINT_STATE_NONE;
 				Internal.State := exASSETINT_STATE_INIT_1;

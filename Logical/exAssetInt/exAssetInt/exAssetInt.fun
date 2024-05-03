@@ -55,7 +55,6 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		Active : BOOL; (*Function block is active (mapp standard interface)*) (* *) (*#PAR#;*)
 		Error : BOOL; (*Indicates an error (mapp standard interface)*) (* *) (*#PAR#;*)
 		StatusID : DINT; (*Error/Status information (mapp standard interface)*) (* *) (*#PAR#; *)
-		UpdateDone : BOOL; (*Update of parameters done (mapp standard interface)*) (* *) (*#PAR#; *)
 		CommandBusy : BOOL; (*Function block is busy processing a command*) (* *) (*#CMD#OPT#;*)
 		CommandDone : BOOL; (*True if a command finshed successfully.*) (* *) (*#CMD#OPT#;*)
 		Info : exAssetIntInfoType; (*Provide any further useful information as function block output.(mapp standard interface)*) (* *) (*#CMD#; *)
@@ -247,6 +246,39 @@ FUNCTION_BLOCK WriteEventData
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK ExportEventData
+	VAR_INPUT
+		Enable : BOOL;
+		Device : STRING[50];
+		Logger : UDINT; (*Address of log buffer*)
+		RecordCount : UDINT;
+		Memory : UDINT;
+		Configuration : exAssetIntExportType;
+	END_VAR
+	VAR_OUTPUT
+		Status : DINT;
+	END_VAR
+	VAR
+		ExportType : exCoreInternalExportEnum;
+		FileDelete_0 : FileDelete;
+		FileCreate_0 : FileCreate;
+		FileClose_0 : FileClose;
+		FileWrite_0 : FileWrite;
+		RtcGettime : {REDUND_UNREPLICABLE} RTCtime_typ;
+		RecordDataIntern : exCoreInternalRecordType;
+		DTStructure : DTStructure;
+		DiffTime : UDINT;
+		FileName : STRING[50];
+		TmpStr : STRING[50];
+		lrealStr : {REDUND_UNREPLICABLE} LREAL;
+		Buffer : STRING[EXPORT_BUFFER];
+		Offset : UDINT;
+		idx : UDINT;
+		State : USINT;
+		zzEdge00000 : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION InsertEventData : USINT
 	VAR_INPUT
 		Memory : UDINT;
@@ -342,5 +374,37 @@ FUNCTION FindInstr : UDINT
 	END_VAR
 	VAR
 		idx : UDINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION ReplaceString : USINT
+	VAR_INPUT
+		dataSTR : UDINT;
+		searchSTR : UDINT;
+		replaceSTR : UDINT;
+	END_VAR
+	VAR
+		idx : UDINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION ReplaceDateTime : USINT
+	VAR_INPUT
+		dataSTR : UDINT;
+		searchSTR : UDINT;
+		value : UINT;
+	END_VAR
+	VAR
+		lrealStr : LREAL;
+	END_VAR
+END_FUNCTION
+
+FUNCTION NormalizeDateTime : LREAL
+	VAR_INPUT
+		value : UDINT;
+	END_VAR
+	VAR
+		TmpStr1 : STRING[6] := '';
+		TmpStr2 : STRING[6] := '';
 	END_VAR
 END_FUNCTION
