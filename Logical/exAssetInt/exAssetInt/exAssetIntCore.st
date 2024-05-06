@@ -32,12 +32,6 @@ FUNCTION_BLOCK exAssetIntCore
 				// Remember start time
 				Internal.DTGetTime_0(enable := TRUE);
 				exLink.CoreStartTime := Internal.DTGetTime_0.DT1;
-				Internal.JobDiffToCore := exLink.JobTotalTime;
-				Internal.ShiftTotalTimeStart := exLink.ShiftTotalTime;
-				
-				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN 
-					exLink.JobStart := Internal.DTGetTime_0.DT1; 
-				END_IF
 				
 				// -------------------------------------------------------------------------------------------
 				// Transfer start values
@@ -144,6 +138,9 @@ FUNCTION_BLOCK exAssetIntCore
 					END_IF
 				END_IF
 				
+				// Remember start called time
+				Internal.TimeLastCall := clock_ms();
+				
 				// -------------------------------------------------------------------------------------------
 				// Refresh UI data, finish up
 				exLink.RefreshJobUI := TRUE;
@@ -171,33 +168,32 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.DTGetTime_0(enable := TRUE);
 			DT_TO_DTStructure(Internal.DTGetTime_0.DT1, ADR(Internal.DT_TO_DTStructure_0));          
 			Internal.TimeOfDay := UDINT_TO_TOD((USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.hour) * 3600000) + (USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.minute) * 60000));
-			
-			// Set stats timer
-			Internal.StatsRefresh.IN := TRUE;
-			Internal.StatsRefresh.PT := Configuration.CalculationTimeBase/10;	
-			Internal.StatsRefresh();
-			
+					
 			// -------------------------------------------------------------------------------------------
 			// Track current shift
 			Info.ShiftStatistics.ShiftName := '';
+			Internal.ShiftId := -1;
 			FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) DO
 				// Shift ends on same day
 				IF Configuration.Shifts[Internal.x].TotalTime.Start < Configuration.Shifts[Internal.x].TotalTime.End THEN
-					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start AND Internal.TimeOfDay <= Configuration.Shifts[Internal.x].TotalTime.End THEN
+					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start AND Internal.TimeOfDay < Configuration.Shifts[Internal.x].TotalTime.End THEN
 						Info.ShiftStatistics.ShiftName := Configuration.Shifts[Internal.x].Name;
+						Internal.ShiftId := UINT_TO_SINT(Internal.x);
 						EXIT;
 					END_IF
 				// Shift ends next day
 				ELSE
-					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start OR Internal.TimeOfDay <= Configuration.Shifts[Internal.x].TotalTime.End THEN
+					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start OR Internal.TimeOfDay < Configuration.Shifts[Internal.x].TotalTime.End THEN
 						Info.ShiftStatistics.ShiftName := Configuration.Shifts[Internal.x].Name;
+						Internal.ShiftId := UINT_TO_SINT(Internal.x);
 						EXIT;
 					END_IF
 				END_IF
 			END_FOR;
-						
+					
+			// -------------------------------------------------------------------------------------------
 			// Handle shift change
-			IF Info.ShiftStatistics.ShiftName <> exLink.ShiftName THEN	
+			IF Info.ShiftStatistics.ShiftName <> exLink.ShiftName THEN
 				Internal.TmpStr := 'new shift started ';
 				brsstrcat(ADR(Internal.TmpStr), ADR(Info.ShiftStatistics.ShiftName));
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
@@ -210,8 +206,12 @@ FUNCTION_BLOCK exAssetIntCore
 				IF exLink.ShiftName <> '' THEN
 					// Collect data for record
 					Internal.RecordData.EventType := RecordTypeShift;
-					Internal.RecordData.TimeStart := exLink.ShiftStart;
-					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
+					Internal.DT_TO_DTStructure_0.hour := UDINT_TO_USINT(TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.Start)/3600000);
+					Internal.DT_TO_DTStructure_0.minute := UDINT_TO_USINT((TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.Start) - Internal.DT_TO_DTStructure_0.hour*3600000)/60000);
+					Internal.RecordData.TimeStart := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
+					Internal.DT_TO_DTStructure_0.hour := UDINT_TO_USINT(TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.End)/3600000);
+					Internal.DT_TO_DTStructure_0.minute := UDINT_TO_USINT((TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.End) - Internal.DT_TO_DTStructure_0.hour*3600000)/60000);
+					Internal.RecordData.TimeEnd := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
 					Internal.RecordData.CurrentUser := Info.ShiftStatistics.CurrentUser;
 					Internal.RecordData.AdditionalData := Info.ShiftStatistics.AdditionalData;
 					Internal.RecordData.ShiftName := exLink.ShiftName;
@@ -239,9 +239,15 @@ FUNCTION_BLOCK exAssetIntCore
 					CreateLoggerEntry(ERR_ASSET_SHIFT_CALC, ADR('no shift active'), Logger);
 				END_IF
 				
+				// Remember job start time
+				IF exLink.JobStart = DT#1970-01-01-00:00:00 THEN 
+					exLink.JobStart := Internal.DTGetTime_0.DT1; 
+				END_IF
+				
 				// Reset stats and remember new start time
 				exLink.ShiftStart := Internal.DTGetTime_0.DT1;
-				exLink.ShiftName := Info.ShiftStatistics.ShiftName;				
+				exLink.ShiftName := Info.ShiftStatistics.ShiftName;
+				exLink.ShiftId := Internal.ShiftId;
 				exLink.ShiftPieceCounter := 0;
 				exLink.ShiftRejectCounter := 0;
 				brsmemset(ADR(Info.ShiftStatistics), 0, SIZEOF(Info.ShiftStatistics));
@@ -253,54 +259,72 @@ FUNCTION_BLOCK exAssetIntCore
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
-			// Calculate new stats
-			IF Internal.StatsRefresh.Q AND Info.ShiftStatistics.ShiftName <> '' THEN
-				// Transfer job counter data, reset timer
-				IF Internal.JobPieceCounterOld <= PieceCounter THEN					
-					exLink.JobPieceCounter := exLink.JobPieceCounter + (PieceCounter - Internal.JobPieceCounterOld);
-				ELSE
-					CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('job piece count overflow'), Logger);
-					exLink.JobPieceCounter := exLink.JobPieceCounter + (16#FFFFFFFF - Internal.JobPieceCounterOld + PieceCounter);
-				END_IF
-				
-				IF Internal.JobRejectCounterOld <= RejectCounter THEN					
-					exLink.JobRejectCounter := exLink.JobRejectCounter + (RejectCounter - Internal.JobRejectCounterOld);
-				ELSE
-					CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('job reject count overflow'), Logger);
-					exLink.JobRejectCounter := exLink.JobRejectCounter + (16#FFFFFFFF - Internal.JobRejectCounterOld + RejectCounter);
-				END_IF
-				Internal.JobPieceCounterOld := PieceCounter;
-				Internal.JobRejectCounterOld := RejectCounter;
-				CalcStatsJob(exLink, Internal.JobDiffToCore, Downtime, Parameters, ADR(Info.JobStatistics));
-				
-				// Transfer shift counter data, reset timer
-				IF Internal.ShiftPieceCounterOld <= PieceCounter THEN					
-					exLink.ShiftPieceCounter := exLink.ShiftPieceCounter + (PieceCounter - Internal.ShiftPieceCounterOld);
-				ELSE
-					CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('shift piece count overflow'), Logger);
-					exLink.ShiftPieceCounter := exLink.ShiftPieceCounter + (16#FFFFFFFF - Internal.ShiftPieceCounterOld + PieceCounter);
-				END_IF
-				
-				IF Internal.ShiftRejectCounterOld <= RejectCounter THEN					
-					exLink.ShiftRejectCounter := exLink.ShiftRejectCounter + (RejectCounter - Internal.ShiftRejectCounterOld);
-				ELSE
-					CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('shift reject count overflow'), Logger);
-					exLink.ShiftRejectCounter := exLink.ShiftRejectCounter + (16#FFFFFFFF - Internal.ShiftRejectCounterOld + RejectCounter);
-				END_IF
-				Internal.ShiftPieceCounterOld := PieceCounter;
-				Internal.ShiftRejectCounterOld := RejectCounter;
-				CalcStatsShift(exLink, Internal.ShiftDiffToCore, Downtime, Parameters, ADR(Info.ShiftStatistics));
-				
-				// Transfer shift data to main function block
-				CurrentProductionRate := Info.ShiftStatistics.CurrentProductionRate;
-				NominalProductionTimeRate := Info.ShiftStatistics.NominalProductionTimeRate;
-				BadPieceRate := Info.ShiftStatistics.BadPieceRate;
-				ScheduledDowntimeRate := Info.ShiftStatistics.ScheduledDowntimeRate;
-				UnscheduledDowntimeRate := Info.ShiftStatistics.UnscheduledDowntimeRate;
-
-				Internal.StatsRefresh.IN := FALSE;
+			// Dont calculate stats when there is no shift
+			IF Info.ShiftStatistics.ShiftName <> '' THEN
+			
+				// Set stats timer
+				Internal.StatsRefresh.IN := TRUE;
+				Internal.StatsRefresh.PT := Configuration.CalculationTimeBase/10;	
 				Internal.StatsRefresh();
-	
+
+				// Calculate new stats
+				IF Internal.StatsRefresh.Q AND Info.ShiftStatistics.ShiftName <> '' THEN
+					// Get time difference between calls
+					Internal.DiffLastCall := DiffT(clock_ms(), Internal.TimeLastCall);
+					Internal.TimeLastCall := clock_ms();
+					IF Internal.DiffLastCall = 16#FFFFFFFF THEN
+						Internal.TimeLastCall := clock_ms();
+					END_IF
+
+					// Transfer job counter data, reset timer
+					IF Internal.JobPieceCounterOld <= PieceCounter THEN					
+						exLink.JobPieceCounter := exLink.JobPieceCounter + (PieceCounter - Internal.JobPieceCounterOld);
+					ELSE
+						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('job piece count overflow'), Logger);
+						exLink.JobPieceCounter := exLink.JobPieceCounter + (16#FFFFFFFF - Internal.JobPieceCounterOld + PieceCounter);
+					END_IF
+					
+					IF Internal.JobRejectCounterOld <= RejectCounter THEN					
+						exLink.JobRejectCounter := exLink.JobRejectCounter + (RejectCounter - Internal.JobRejectCounterOld);
+					ELSE
+						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('job reject count overflow'), Logger);
+						exLink.JobRejectCounter := exLink.JobRejectCounter + (16#FFFFFFFF - Internal.JobRejectCounterOld + RejectCounter);
+					END_IF
+					Internal.JobPieceCounterOld := PieceCounter;
+					Internal.JobRejectCounterOld := RejectCounter;
+					CalcStatsJob(exLink, Internal.DiffLastCall, Downtime, Parameters, ADR(Info.JobStatistics));
+					
+					// Transfer shift counter data, reset timer
+					IF Internal.ShiftPieceCounterOld <= PieceCounter THEN					
+						exLink.ShiftPieceCounter := exLink.ShiftPieceCounter + (PieceCounter - Internal.ShiftPieceCounterOld);
+					ELSE
+						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('shift piece count overflow'), Logger);
+						exLink.ShiftPieceCounter := exLink.ShiftPieceCounter + (16#FFFFFFFF - Internal.ShiftPieceCounterOld + PieceCounter);
+					END_IF
+					
+					IF Internal.ShiftRejectCounterOld <= RejectCounter THEN					
+						exLink.ShiftRejectCounter := exLink.ShiftRejectCounter + (RejectCounter - Internal.ShiftRejectCounterOld);
+					ELSE
+						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('shift reject count overflow'), Logger);
+						exLink.ShiftRejectCounter := exLink.ShiftRejectCounter + (16#FFFFFFFF - Internal.ShiftRejectCounterOld + RejectCounter);
+					END_IF
+					Internal.ShiftPieceCounterOld := PieceCounter;
+					Internal.ShiftRejectCounterOld := RejectCounter;
+					//CalcStatsShift(exLink, Internal.ShiftDiffToCore, Downtime, Parameters, ADR(Info.ShiftStatistics));
+					
+					// Transfer shift data to main function block
+					CurrentProductionRate := Info.ShiftStatistics.CurrentProductionRate;
+					NominalProductionTimeRate := Info.ShiftStatistics.NominalProductionTimeRate;
+					BadPieceRate := Info.ShiftStatistics.BadPieceRate;
+					ScheduledDowntimeRate := Info.ShiftStatistics.ScheduledDowntimeRate;
+					UnscheduledDowntimeRate := Info.ShiftStatistics.UnscheduledDowntimeRate;
+						
+					Internal.StatsRefresh.IN := FALSE;
+					Internal.StatsRefresh();
+		
+				END_IF
+			ELSE
+				Internal.TimeLastCall := clock_ms();
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -418,7 +442,6 @@ FUNCTION_BLOCK exAssetIntCore
 					brsmemset(ADR(Info.JobStatistics), 0, SIZEOF(Info.JobStatistics));
 
 					// Transfer data to job stats
-					Internal.JobDiffToCore := -DiffDT(Internal.DTGetTime_0.DT1, exLink.CoreStartTime);					
 					Info.JobStatistics.JobName := Parameters.Job;
 					Info.JobStatistics.CurrentUser := Parameters.CurrentUser;
 					Info.JobStatistics.AdditionalData := Parameters.AdditionalData;

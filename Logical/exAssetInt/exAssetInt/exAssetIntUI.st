@@ -124,7 +124,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 								
 			END_IF
 			exLink.RefreshJobUI := FALSE;
-			Active := FALSE;
+			Active := TRUE;
 			
 			// -------------------------------------------------------------------------------------------
 			// Error state
@@ -262,7 +262,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 								
 			END_IF
 			exLink.RefreshShiftUI := FALSE;
-			Active := FALSE;
+			Active := TRUE;
 
 			// -------------------------------------------------------------------------------------------
 			// Error state

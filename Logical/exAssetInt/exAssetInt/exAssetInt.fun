@@ -321,7 +321,7 @@ END_FUNCTION
 FUNCTION CalcStatsJob : USINT
 	VAR_INPUT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
-		DiffToCore : DINT;
+		DiffLastCall : UDINT;
 		Downtime : exAssetIntDowntimeEnum;
 		Parameter : exAssetIntParType; (*Log Level*)
 		JobStatistics : REFERENCE TO exAssetIntJobStatisticsType; (*Log message*)

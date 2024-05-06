@@ -5,6 +5,18 @@ PROGRAM _INIT
 END_PROGRAM
 
 PROGRAM _CYCLIC
+	// Get current date and time
+	IF GetDateTime THEN
+		RTC_gettime(ADR(RTCtime_struct));
+		GetDateTime := FALSE;
+	END_IF
+
+	// Set current date and time
+	IF SetDateTime THEN
+		RTC_settime(ADR(RTCtime_struct));
+		SetDateTime := FALSE;
+	END_IF
+
 	// Auto count pieces
 	IF AutoCount THEN
 		AutoCountTime.IN := TRUE;
@@ -49,11 +61,8 @@ PROGRAM _CYCLIC
 //	ELSE
 //		brsmemset(ADR(Memory), 0, SIZEOF(Memory));		
 //	END_IF
-//	 
-END_PROGRAM
 
-PROGRAM _EXIT
-	(* Insert code here *)
-	 
+	
+	TestCase1;
 END_PROGRAM
 

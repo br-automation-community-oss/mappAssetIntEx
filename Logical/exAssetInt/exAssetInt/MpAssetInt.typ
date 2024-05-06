@@ -8,17 +8,18 @@ TYPE
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		InitAfterBoot : BOOL;
 		TimeTotalStart : DATE_AND_TIME;
+		TimeLastCall : TIME;
+		DiffLastCall : UDINT;
 		JobPieceCounterOld : UDINT;
 		JobRejectCounterOld : UDINT;
 		ShiftPieceCounterOld : UDINT;
 		ShiftRejectCounterOld : UDINT;
+		ShiftId : SINT;
 		TmpStr : STRING[500];
 		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
 		DT_TO_DTStructure_0 : DTStructure;
 		TimeOfDay : TIME_OF_DAY;
-		JobDiffToCore : DINT;
-		ShiftDiffToCore : DINT;
 		ShiftTotalTimeStart : UDINT;
 		StatsRefresh : TON_10ms;
 		CreateDirStructure : CreateDirStructure;
@@ -99,8 +100,11 @@ TYPE
 		JobRejectCounter : UDINT; (*Total reject counter*)
 		CoreStartTime : DATE_AND_TIME; (*Time when the function block started*)
 		JobStart : DATE_AND_TIME; (*Time when the job started*)
-		JobTotalTime : UDINT; (*Seconds the job is running*)
+		JobTotalTime : UDINT; (*Milliseconds the job is running*)
+		JobDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
+		JobDowntimeUnscheduled : UDINT; (*Milliseconds of unscheduled downtime*)
 		ShiftStart : DATE_AND_TIME; (*Time when shift started*)
+		ShiftId : SINT := -1; (*Index of shift configuration*)
 		ShiftName : STRING[20]; (*Shift name*)
 		ShiftTotalTime : UDINT; (*Seconds the shift is running*)
 		DowntimeStart : DATE_AND_TIME;

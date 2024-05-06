@@ -5,30 +5,30 @@ FUNCTION CalcStatsJob
 
 	// -------------------------------------------------------------------------------------------
 	// Calculate total time
-	exLink.JobTotalTime := DiffDT(DTGetTime_0.DT1, exLink.CoreStartTime) + DiffToCore;
-	JobStatistics.TotalTime.Hours := exLink.JobTotalTime/3600;
-	JobStatistics.TotalTime.Minutes := UDINT_TO_USINT((exLink.JobTotalTime - JobStatistics.TotalTime.Hours*3600)/60);
-	JobStatistics.TotalTime.Seconds := UDINT_TO_USINT(exLink.JobTotalTime - JobStatistics.TotalTime.Hours*3600 - JobStatistics.TotalTime.Minutes*60);
+	exLink.JobTotalTime := exLink.JobTotalTime + DiffLastCall;
+	JobStatistics.TotalTime.Hours := exLink.JobTotalTime/3600000;
+	JobStatistics.TotalTime.Minutes := UDINT_TO_USINT((exLink.JobTotalTime - JobStatistics.TotalTime.Hours*3600000)/60000);
+	JobStatistics.TotalTime.Seconds := UDINT_TO_USINT((exLink.JobTotalTime - JobStatistics.TotalTime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000)/1000);
 	
 	// Calculate scheduled downtime
 	IF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
-		DowntimeScheduled := DiffDT(DTGetTime_0.DT1, exLink.DowntimeStart);
-		JobStatistics.ScheduledDowntime.Hours := DowntimeScheduled/3600;
-		JobStatistics.ScheduledDowntime.Minutes := UDINT_TO_USINT((DowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600)/60);
-		JobStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT(DowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600 - JobStatistics.ScheduledDowntime.Minutes*60);
+		exLink.JobDowntimeScheduled := exLink.JobDowntimeScheduled + DiffLastCall;
+		JobStatistics.ScheduledDowntime.Hours := exLink.JobDowntimeScheduled/3600000;
+		JobStatistics.ScheduledDowntime.Minutes := UDINT_TO_USINT((exLink.JobDowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600000)/60000);
+		JobStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000)/1000);
 	END_IF
-	
-	// Calculate undscheduled downtime
+
+	// Calculate scheduled downtime
 	IF Downtime = exASSETINT_UNSCHEDULED_DOWNTIME THEN
-		DowntimeUnscheduled := DiffDT(DTGetTime_0.DT1, exLink.DowntimeStart);
-		JobStatistics.UnscheduledDowntime.Hours := DowntimeUnscheduled/3600;
-		JobStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((DowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600)/60);
-		JobStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT(DowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600 - JobStatistics.UnscheduledDowntime.Minutes*60);
+		exLink.JobDowntimeUnscheduled := exLink.JobDowntimeUnscheduled + DiffLastCall;
+		JobStatistics.UnscheduledDowntime.Hours := exLink.JobDowntimeUnscheduled/3600000;
+		JobStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600000)/60000);
+		JobStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000)/1000);
 	END_IF
 	
 	// Calculate uptime
 	IF Downtime = exASSETINT_NO_DOWNTIME THEN
-		Uptime := exLink.JobTotalTime - DowntimeScheduled - DowntimeUnscheduled;
+		Uptime := exLink.JobTotalTime/1000 - DowntimeScheduled - DowntimeUnscheduled;
 		JobStatistics.Uptime.Hours := Uptime/3600;
 		JobStatistics.Uptime.Minutes := UDINT_TO_USINT((Uptime - JobStatistics.Uptime.Hours*3600)/60);
 		JobStatistics.Uptime.Seconds := UDINT_TO_USINT(Uptime - JobStatistics.Uptime.Hours*3600 - JobStatistics.Uptime.Minutes*60);
