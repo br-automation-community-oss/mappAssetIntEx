@@ -64,5 +64,6 @@ PROGRAM _CYCLIC
 
 	
 	TestCase1;
+	TestCase2;
 END_PROGRAM
 

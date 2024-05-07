@@ -28,13 +28,18 @@ PROGRAM _CYCLIC
     brsstrcpy(ADR(AssetIntConfig.Export.ShiftStatisticsFileNamePattern), ADR('1234ShiftStatistics_%Y_%m_%d_%H_%M.csv'));
     brsstrcpy(ADR(AssetIntConfig.Export.TimelineFileNamePattern), ADR('1234Timeline_%Y_%m_%d_%H_%M.csv'));
     
-	AssetIntConfig.Shifts[0].Name := gShift[0].Name; 
+	AssetIntConfig.Shifts[0].Name := gShift[0].Name;
+	AssetIntConfig.Shifts[0].ScheduledDowntime := gShift[0].ScheduledDowntime;
 	AssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000));
 	AssetIntConfig.Shifts[0].TotalTime.End := UDINT_TO_TOD((gShift[0].End.Hour * 3600000) + (gShift[0].End.Minutes * 60000));
+	
 	AssetIntConfig.Shifts[1].Name := gShift[1].Name; 
+	AssetIntConfig.Shifts[1].ScheduledDowntime := gShift[1].ScheduledDowntime;
 	AssetIntConfig.Shifts[1].TotalTime.Start := UDINT_TO_TOD((gShift[1].Start.Hour * 3600000) + (gShift[1].Start.Minutes * 60000));
 	AssetIntConfig.Shifts[1].TotalTime.End := UDINT_TO_TOD((gShift[1].End.Hour * 3600000) + (gShift[1].End.Minutes * 60000));
+
 	AssetIntConfig.Shifts[2].Name := gShift[2].Name; 
+	AssetIntConfig.Shifts[1].ScheduledDowntime := gShift[2].ScheduledDowntime;
 	AssetIntConfig.Shifts[2].TotalTime.Start := UDINT_TO_TOD((gShift[2].Start.Hour * 3600000) + (gShift[2].Start.Minutes * 60000));
 	AssetIntConfig.Shifts[2].TotalTime.End := UDINT_TO_TOD((gShift[2].End.Hour * 3600000) + (gShift[2].End.Minutes * 60000));
    

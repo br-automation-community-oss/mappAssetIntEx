@@ -7,7 +7,7 @@
 // 6. Wait 5 minutes for shift to change
 // 
 // What is this test case testing?
-// Make sure shift changeover is handelt correct
+// Make sure shift changeover is handled correct
 // Make sure gaps in shifts are handled correct
 //
 // What should be the preset?

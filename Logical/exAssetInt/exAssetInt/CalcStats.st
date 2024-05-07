@@ -15,7 +15,7 @@ FUNCTION CalcStatsJob
 		exLink.JobDowntimeScheduled := exLink.JobDowntimeScheduled + DiffLastCall;
 		JobStatistics.ScheduledDowntime.Hours := exLink.JobDowntimeScheduled/3600000;
 		JobStatistics.ScheduledDowntime.Minutes := UDINT_TO_USINT((exLink.JobDowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600000)/60000);
-		JobStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT(exLink.JobDowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000);
+		JobStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600000 - JobStatistics.ScheduledDowntime.Minutes*60000)/1000);
 	END_IF
 
 	// Calculate scheduled downtime
@@ -23,7 +23,7 @@ FUNCTION CalcStatsJob
 		exLink.JobDowntimeUnscheduled := exLink.JobDowntimeUnscheduled + DiffLastCall;
 		JobStatistics.UnscheduledDowntime.Hours := exLink.JobDowntimeUnscheduled/3600000;
 		JobStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600000)/60000);
-		JobStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT(exLink.JobDowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000);
+		JobStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600000 - JobStatistics.ScheduledDowntime.Minutes*60000)/1000);
 	END_IF
 	
 	// Calculate uptime
@@ -93,7 +93,7 @@ FUNCTION CalcStatsShift
 		exLink.ShiftDowntimeScheduled := exLink.ShiftDowntimeScheduled + DiffLastCall;
 		ShiftStatistics.ScheduledDowntime.Hours := exLink.ShiftDowntimeScheduled/3600000;
 		ShiftStatistics.ScheduledDowntime.Minutes := UDINT_TO_USINT((exLink.ShiftDowntimeScheduled - ShiftStatistics.ScheduledDowntime.Hours*3600000)/60000);
-		ShiftStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT(exLink.ShiftDowntimeScheduled - ShiftStatistics.ScheduledDowntime.Hours*3600000 - ShiftStatistics.TotalTime.Minutes*60000);
+		ShiftStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT((exLink.ShiftDowntimeScheduled - ShiftStatistics.ScheduledDowntime.Hours*3600000 - ShiftStatistics.ScheduledDowntime.Minutes*60000)/1000);
 	END_IF
 
 	// Calculate scheduled downtime
@@ -101,7 +101,7 @@ FUNCTION CalcStatsShift
 		exLink.ShiftDowntimeUnscheduled := exLink.ShiftDowntimeUnscheduled + DiffLastCall;
 		ShiftStatistics.UnscheduledDowntime.Hours := exLink.ShiftDowntimeUnscheduled/3600000;
 		ShiftStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((exLink.ShiftDowntimeUnscheduled - ShiftStatistics.UnscheduledDowntime.Hours*3600000)/60000);
-		ShiftStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT(exLink.ShiftDowntimeUnscheduled - ShiftStatistics.UnscheduledDowntime.Hours*3600000 - ShiftStatistics.TotalTime.Minutes*60000);
+		ShiftStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT((exLink.ShiftDowntimeUnscheduled - ShiftStatistics.UnscheduledDowntime.Hours*3600000 - ShiftStatistics.ScheduledDowntime.Minutes*60000)/1000);
 	END_IF
 	
 	// Calculate uptime

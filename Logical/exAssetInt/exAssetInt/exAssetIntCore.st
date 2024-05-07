@@ -154,8 +154,7 @@ FUNCTION_BLOCK exAssetIntCore
 		// -------------------------------------------------------------------------------------------
  		exASSETINT_STATE_IDLE:
 			// Set core active, reset read write function blocks
-			Active := TRUE;
-			
+			Active := TRUE;			
 			Internal.ReadEventData(Enable := FALSE);
 			Internal.WriteEventData(Enable := FALSE);
 			
@@ -171,20 +170,88 @@ FUNCTION_BLOCK exAssetIntCore
 			FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) DO
 				// Shift ends on same day
 				IF Configuration.Shifts[Internal.x].TotalTime.Start < Configuration.Shifts[Internal.x].TotalTime.End THEN
-					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start AND Internal.TimeOfDay < Configuration.Shifts[Internal.x].TotalTime.End THEN
+					IF TOD_TO_UDINT(Internal.TimeOfDay)/1000 >= TOD_TO_UDINT(Configuration.Shifts[Internal.x].TotalTime.Start)/1000 AND TOD_TO_UDINT(Internal.TimeOfDay)/1000 < TOD_TO_UDINT(Configuration.Shifts[Internal.x].TotalTime.End)/1000 THEN
 						Info.ShiftStatistics.ShiftName := Configuration.Shifts[Internal.x].Name;
 						Internal.ShiftId := UINT_TO_SINT(Internal.x);
 						EXIT;
 					END_IF
 				// Shift ends next day
 				ELSE
-					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start OR Internal.TimeOfDay < Configuration.Shifts[Internal.x].TotalTime.End THEN
+					IF TOD_TO_UDINT(Internal.TimeOfDay)/1000 >= TOD_TO_UDINT(Configuration.Shifts[Internal.x].TotalTime.Start)/1000 OR TOD_TO_UDINT(Internal.TimeOfDay)/1000 < TOD_TO_UDINT(Configuration.Shifts[Internal.x].TotalTime.End)/1000 THEN
 						Info.ShiftStatistics.ShiftName := Configuration.Shifts[Internal.x].Name;
 						Internal.ShiftId := UINT_TO_SINT(Internal.x);
 						EXIT;
 					END_IF
 				END_IF
 			END_FOR;
+			
+			// -------------------------------------------------------------------------------------------
+			// Track current shift scheduled downtime
+			FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime)/SIZEOF(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[0]) DO
+				// Make sure we have a valid configuration
+				IF TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[exLink.ShiftId].Start) <> 0 OR TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[exLink.ShiftId].End) <> 0 THEN
+					// Scheduled downtime ends on same day
+					IF Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[exLink.ShiftId].Start < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[exLink.ShiftId].End THEN
+						IF TOD_TO_UDINT(Internal.TimeOfDay)/1000 >= TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start)/1000 AND TOD_TO_UDINT(Internal.TimeOfDay)/1000 < TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End)/1000 THEN
+							Downtime := exASSETINT_SCHEDULED_DOWNTIME;
+							DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+							EXIT;
+						END_IF
+						// Scheduled downtime ends next day
+					ELSE
+						IF TOD_TO_UDINT(Internal.TimeOfDay)/1000 >= TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start)/1000 OR TOD_TO_UDINT(Internal.TimeOfDay)/1000 < TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End)/1000 THEN
+							Downtime := exASSETINT_SCHEDULED_DOWNTIME;
+							DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+							EXIT;
+						END_IF
+					END_IF
+				END_IF
+			END_FOR;
+			
+			// -------------------------------------------------------------------------------------------
+			// Handle downtime change
+			IF Downtime <> Internal.DowntimeOld THEN
+				// Create log message
+				Internal.TmpStr := 'downtime changed from ';
+
+				IF Internal.DowntimeOld = exASSETINT_NO_DOWNTIME THEN
+					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime to '));
+				ELSIF Internal.DowntimeOld = exASSETINT_SCHEDULED_DOWNTIME THEN
+					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled to '));
+				ELSE
+					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled to '));
+				END_IF
+
+				IF Downtime = exASSETINT_NO_DOWNTIME THEN
+					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime'));
+				ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
+					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled with reason '));
+				ELSE
+					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled with reason '));
+				END_IF
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
+							
+				// Only record scheduled and unscheduled downtime
+				IF Internal.DowntimeOld <> exASSETINT_NO_DOWNTIME THEN
+					// Collect data for record
+					brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
+					Internal.RecordData.EventType := UDINT_TO_UINT(Internal.DowntimeOld) + 2;
+					Internal.RecordData.TimeStart := exLink.DowntimeStart;
+					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
+					Internal.RecordData.ShiftName := exLink.ShiftName;
+					Internal.RecordData.JobName := Info.JobStatistics.JobName;
+					Internal.RecordData.AdditionalData := DowntimeReason;
+						
+					Internal.State := exASSETINT_STATE_STORE_EVENT;
+				END_IF
+
+				// Remember downtime start and old state
+				IF Downtime > exASSETINT_NO_DOWNTIME THEN
+					exLink.DowntimeStart := Internal.DTGetTime_0.DT1;
+				END_IF
+				Internal.DowntimeOld := Downtime;
+				
+			END_IF
 					
 			// -------------------------------------------------------------------------------------------
 			// Handle shift change
@@ -242,13 +309,14 @@ FUNCTION_BLOCK exAssetIntCore
 				// Reset stats and remember new start time
 				exLink.ShiftStart := Internal.DTGetTime_0.DT1;
 				exLink.ShiftName := Info.ShiftStatistics.ShiftName;
+				
 				exLink.ShiftId := Internal.ShiftId;
 				exLink.ShiftPieceCounter := 0;
 				exLink.ShiftRejectCounter := 0;				
 				exLink.ShiftDowntimeScheduled := 0;
 				exLink.ShiftDowntimeUnscheduled := 0;
 				exLink.ShiftTotalTime := 0;
-				
+								
 				brsmemset(ADR(Info.ShiftStatistics), 0, SIZEOF(Info.ShiftStatistics));
 	
 				// Transfer data to shift stats
@@ -275,37 +343,43 @@ FUNCTION_BLOCK exAssetIntCore
 						Internal.TimeLastCall := clock_ms();
 					END_IF
 
-					// Transfer job counter data, reset timer
-					IF Internal.JobPieceCounterOld <= PieceCounter THEN					
-						exLink.JobPieceCounter := exLink.JobPieceCounter + (PieceCounter - Internal.JobPieceCounterOld);
-					ELSE
-						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('job piece count overflow'), Logger);
-						exLink.JobPieceCounter := exLink.JobPieceCounter + (16#FFFFFFFF - Internal.JobPieceCounterOld + PieceCounter);
-					END_IF
-					
-					IF Internal.JobRejectCounterOld <= RejectCounter THEN					
-						exLink.JobRejectCounter := exLink.JobRejectCounter + (RejectCounter - Internal.JobRejectCounterOld);
-					ELSE
-						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('job reject count overflow'), Logger);
-						exLink.JobRejectCounter := exLink.JobRejectCounter + (16#FFFFFFFF - Internal.JobRejectCounterOld + RejectCounter);
+					// Do not count when downtime is active
+					IF Downtime = exASSETINT_NO_DOWNTIME THEN
+						// Transfer job counter data
+						IF Internal.JobPieceCounterOld <= PieceCounter THEN					
+							exLink.JobPieceCounter := exLink.JobPieceCounter + (PieceCounter - Internal.JobPieceCounterOld);
+						ELSE
+							CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('job piece count overflow'), Logger);
+							exLink.JobPieceCounter := exLink.JobPieceCounter + (16#FFFFFFFF - Internal.JobPieceCounterOld + PieceCounter);
+						END_IF
+						
+						IF Internal.JobRejectCounterOld <= RejectCounter THEN					
+							exLink.JobRejectCounter := exLink.JobRejectCounter + (RejectCounter - Internal.JobRejectCounterOld);
+						ELSE
+							CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('job reject count overflow'), Logger);
+							exLink.JobRejectCounter := exLink.JobRejectCounter + (16#FFFFFFFF - Internal.JobRejectCounterOld + RejectCounter);
+						END_IF
 					END_IF
 					Internal.JobPieceCounterOld := PieceCounter;
 					Internal.JobRejectCounterOld := RejectCounter;
 					CalcStatsJob(exLink, Internal.DiffLastCall, Downtime, Parameters, ADR(Info.JobStatistics));
 					
-					// Transfer shift counter data, reset timer
-					IF Internal.ShiftPieceCounterOld <= PieceCounter THEN					
-						exLink.ShiftPieceCounter := exLink.ShiftPieceCounter + (PieceCounter - Internal.ShiftPieceCounterOld);
-					ELSE
-						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('shift piece count overflow'), Logger);
-						exLink.ShiftPieceCounter := exLink.ShiftPieceCounter + (16#FFFFFFFF - Internal.ShiftPieceCounterOld + PieceCounter);
-					END_IF
-					
-					IF Internal.ShiftRejectCounterOld <= RejectCounter THEN					
-						exLink.ShiftRejectCounter := exLink.ShiftRejectCounter + (RejectCounter - Internal.ShiftRejectCounterOld);
-					ELSE
-						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('shift reject count overflow'), Logger);
-						exLink.ShiftRejectCounter := exLink.ShiftRejectCounter + (16#FFFFFFFF - Internal.ShiftRejectCounterOld + RejectCounter);
+					// Do not count when downtime is active
+					IF Downtime = exASSETINT_NO_DOWNTIME THEN
+						// Transfer shift counter data
+						IF Internal.ShiftPieceCounterOld <= PieceCounter THEN					
+							exLink.ShiftPieceCounter := exLink.ShiftPieceCounter + (PieceCounter - Internal.ShiftPieceCounterOld);
+						ELSE
+							CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('shift piece count overflow'), Logger);
+							exLink.ShiftPieceCounter := exLink.ShiftPieceCounter + (16#FFFFFFFF - Internal.ShiftPieceCounterOld + PieceCounter);
+						END_IF
+						
+						IF Internal.ShiftRejectCounterOld <= RejectCounter THEN					
+							exLink.ShiftRejectCounter := exLink.ShiftRejectCounter + (RejectCounter - Internal.ShiftRejectCounterOld);
+						ELSE
+							CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR('shift reject count overflow'), Logger);
+							exLink.ShiftRejectCounter := exLink.ShiftRejectCounter + (16#FFFFFFFF - Internal.ShiftRejectCounterOld + RejectCounter);
+						END_IF
 					END_IF
 					Internal.ShiftPieceCounterOld := PieceCounter;
 					Internal.ShiftRejectCounterOld := RejectCounter;
@@ -322,53 +396,16 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.StatsRefresh();
 		
 				END_IF
-			ELSE
-				Internal.TimeLastCall := clock_ms();
-			END_IF
-			
-			// -------------------------------------------------------------------------------------------
-			// Handle downtime changes
-			IF Downtime <> Internal.DowntimeOld THEN
-				// Create log message
-				Internal.TmpStr := 'downtime changed from ';
-
-				IF Internal.DowntimeOld = exASSETINT_NO_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime to '));
-				ELSIF Internal.DowntimeOld = exASSETINT_SCHEDULED_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled to '));
-				ELSE
-					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled to '));
-				END_IF
-
-				IF Downtime = exASSETINT_NO_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime'));
-				ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled with reason '));
-				ELSE
-					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled with reason '));
-				END_IF
-				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
-							
-				// Only record scheduled and unscheduled downtime
-				IF Internal.DowntimeOld <> exASSETINT_NO_DOWNTIME THEN
-					// Collect data for record
-					brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
-					Internal.RecordData.EventType := UDINT_TO_UINT(Internal.DowntimeOld) + 2;
-					Internal.RecordData.TimeStart := exLink.DowntimeStart;
-					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
-					Internal.RecordData.ShiftName := exLink.ShiftName;
-					Internal.RecordData.JobName := Info.JobStatistics.JobName;
-					Internal.RecordData.AdditionalData := DowntimeReason;
-						
-					Internal.State := exASSETINT_STATE_STORE_EVENT;
-				END_IF
-
-				// Remember downtime start and old state
-				IF Downtime > exASSETINT_NO_DOWNTIME THEN
-					exLink.DowntimeStart := Internal.DTGetTime_0.DT1;
-				END_IF
-				Internal.DowntimeOld := Downtime;
 				
+			// When no shift is active
+			ELSE
+				// Dont count when no shift is active, reset last call
+				Internal.ShiftPieceCounterOld := PieceCounter;
+				Internal.ShiftRejectCounterOld := RejectCounter;
+				Internal.JobPieceCounterOld := PieceCounter;
+				Internal.JobRejectCounterOld := RejectCounter;
+
+				Internal.TimeLastCall := clock_ms();
 			END_IF
 
 			// -------------------------------------------------------------------------------------------
