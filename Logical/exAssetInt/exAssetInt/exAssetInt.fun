@@ -327,30 +327,26 @@ FUNCTION CalcStatsJob : USINT
 		JobStatistics : REFERENCE TO exAssetIntJobStatisticsType; (*Log message*)
 	END_VAR
 	VAR
-		Uptime : UDINT;
+		JobTotalTime : UDINT;
+		Uptime : UDINT; (*Uptime in seconds*)
 		NominalProductionTime : UDINT;
-		DowntimeScheduled : UDINT;
-		DowntimeUnscheduled : UDINT;
 		GoodProductionTime : UDINT;
-		DTGetTime_0 : DTGetTime;
 	END_VAR
 END_FUNCTION
 
 FUNCTION CalcStatsShift : USINT
 	VAR_INPUT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
-		DiffToCore : DINT;
+		DiffLastCall : UDINT;
 		Downtime : exAssetIntDowntimeEnum;
 		Parameter : exAssetIntParType; (*Log Level*)
 		ShiftStatistics : REFERENCE TO exAssetIntShiftStatisticsType; (*Log message*)
 	END_VAR
 	VAR
-		Uptime : UDINT;
+		ShiftTotalTime : UDINT;
+		Uptime : UDINT; (*Uptime in seconds*)
 		NominalProductionTime : UDINT;
-		DowntimeScheduled : UDINT;
-		DowntimeUnscheduled : UDINT;
 		GoodProductionTime : UDINT;
-		DTGetTime_0 : DTGetTime;
 		StartTime : TIME_OF_DAY;
 		EndTime : TIME_OF_DAY;
 	END_VAR

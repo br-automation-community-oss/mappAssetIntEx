@@ -27,12 +27,7 @@ FUNCTION_BLOCK exAssetIntCore
 					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
-				
-				// -------------------------------------------------------------------------------------------
-				// Remember start time
-				Internal.DTGetTime_0(enable := TRUE);
-				exLink.CoreStartTime := Internal.DTGetTime_0.DT1;
-				
+							
 				// -------------------------------------------------------------------------------------------
 				// Transfer start values
 				Info.JobStatistics.JobName := Parameters.Job;
@@ -249,7 +244,11 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.ShiftName := Info.ShiftStatistics.ShiftName;
 				exLink.ShiftId := Internal.ShiftId;
 				exLink.ShiftPieceCounter := 0;
-				exLink.ShiftRejectCounter := 0;
+				exLink.ShiftRejectCounter := 0;				
+				exLink.ShiftDowntimeScheduled := 0;
+				exLink.ShiftDowntimeUnscheduled := 0;
+				exLink.ShiftTotalTime := 0;
+				
 				brsmemset(ADR(Info.ShiftStatistics), 0, SIZEOF(Info.ShiftStatistics));
 	
 				// Transfer data to shift stats
@@ -310,7 +309,7 @@ FUNCTION_BLOCK exAssetIntCore
 					END_IF
 					Internal.ShiftPieceCounterOld := PieceCounter;
 					Internal.ShiftRejectCounterOld := RejectCounter;
-					//CalcStatsShift(exLink, Internal.ShiftDiffToCore, Downtime, Parameters, ADR(Info.ShiftStatistics));
+					CalcStatsShift(exLink, Internal.DiffLastCall, Downtime, Parameters, ADR(Info.ShiftStatistics));
 					
 					// Transfer shift data to main function block
 					CurrentProductionRate := Info.ShiftStatistics.CurrentProductionRate;
@@ -382,14 +381,18 @@ FUNCTION_BLOCK exAssetIntCore
 				
 				// Reset stats and remember new start time
 				exLink.JobStart := Internal.DTGetTime_0.DT1;
-				exLink.JobTotalTime := 0;
 				exLink.JobPieceCounter := 0;
 				exLink.JobRejectCounter := 0;
+				exLink.JobDowntimeScheduled := 0;
+				exLink.JobDowntimeUnscheduled := 0;
+				exLink.JobTotalTime := 0;
 
 				exLink.ShiftStart := Internal.DTGetTime_0.DT1;
-				exLink.ShiftTotalTime := 0;
 				exLink.ShiftPieceCounter := 0;
-				exLink.ShiftRejectCounter := 0;
+				exLink.ShiftRejectCounter := 0;				
+				exLink.ShiftDowntimeScheduled := 0;
+				exLink.ShiftDowntimeUnscheduled := 0;
+				exLink.ShiftTotalTime := 0;
 
 				CommandBusy := FALSE;
 				CommandDone := TRUE;
@@ -439,6 +442,10 @@ FUNCTION_BLOCK exAssetIntCore
 					exLink.JobStart := Internal.DTGetTime_0.DT1;
 					exLink.JobPieceCounter := 0;
 					exLink.JobRejectCounter := 0;
+					exLink.JobDowntimeScheduled := 0;
+					exLink.JobDowntimeUnscheduled := 0;
+					exLink.JobTotalTime := 0;
+					
 					brsmemset(ADR(Info.JobStatistics), 0, SIZEOF(Info.JobStatistics));
 
 					// Transfer data to job stats

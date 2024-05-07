@@ -1,21 +1,21 @@
 // -------------------------------------------------------------------------------------------
 // Calculate current job statistics
 FUNCTION CalcStatsJob
-	DTGetTime_0(enable := TRUE);
-
 	// -------------------------------------------------------------------------------------------
-	// Calculate total time
+	// Calculate total time, remember total time in milliseconds for accuaracy but convert to seconds for local calculations
 	exLink.JobTotalTime := exLink.JobTotalTime + DiffLastCall;
-	JobStatistics.TotalTime.Hours := exLink.JobTotalTime/3600000;
-	JobStatistics.TotalTime.Minutes := UDINT_TO_USINT((exLink.JobTotalTime - JobStatistics.TotalTime.Hours*3600000)/60000);
-	JobStatistics.TotalTime.Seconds := UDINT_TO_USINT((exLink.JobTotalTime - JobStatistics.TotalTime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000)/1000);
+	JobTotalTime := LREAL_TO_UDINT(exLink.JobTotalTime/1000);
+
+	JobStatistics.TotalTime.Hours := JobTotalTime/3600;
+	JobStatistics.TotalTime.Minutes := UDINT_TO_USINT((JobTotalTime - JobStatistics.TotalTime.Hours*3600)/60);
+	JobStatistics.TotalTime.Seconds := UDINT_TO_USINT(JobTotalTime - JobStatistics.TotalTime.Hours*3600 - JobStatistics.TotalTime.Minutes*60);
 	
 	// Calculate scheduled downtime
 	IF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
 		exLink.JobDowntimeScheduled := exLink.JobDowntimeScheduled + DiffLastCall;
 		JobStatistics.ScheduledDowntime.Hours := exLink.JobDowntimeScheduled/3600000;
 		JobStatistics.ScheduledDowntime.Minutes := UDINT_TO_USINT((exLink.JobDowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600000)/60000);
-		JobStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000)/1000);
+		JobStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT(exLink.JobDowntimeScheduled - JobStatistics.ScheduledDowntime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000);
 	END_IF
 
 	// Calculate scheduled downtime
@@ -23,12 +23,12 @@ FUNCTION CalcStatsJob
 		exLink.JobDowntimeUnscheduled := exLink.JobDowntimeUnscheduled + DiffLastCall;
 		JobStatistics.UnscheduledDowntime.Hours := exLink.JobDowntimeUnscheduled/3600000;
 		JobStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600000)/60000);
-		JobStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000)/1000);
+		JobStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT(exLink.JobDowntimeUnscheduled - JobStatistics.UnscheduledDowntime.Hours*3600000 - JobStatistics.TotalTime.Minutes*60000);
 	END_IF
 	
 	// Calculate uptime
 	IF Downtime = exASSETINT_NO_DOWNTIME THEN
-		Uptime := exLink.JobTotalTime/1000 - DowntimeScheduled - DowntimeUnscheduled;
+		Uptime := JobTotalTime - exLink.JobDowntimeScheduled - exLink.JobDowntimeUnscheduled;
 		JobStatistics.Uptime.Hours := Uptime/3600;
 		JobStatistics.Uptime.Minutes := UDINT_TO_USINT((Uptime - JobStatistics.Uptime.Hours*3600)/60);
 		JobStatistics.Uptime.Seconds := UDINT_TO_USINT(Uptime - JobStatistics.Uptime.Hours*3600 - JobStatistics.Uptime.Minutes*60);
@@ -60,17 +60,17 @@ FUNCTION CalcStatsJob
 	JobStatistics.GoodProductionTime.Minutes := UDINT_TO_USINT((GoodProductionTime - JobStatistics.GoodProductionTime.Hours*3600)/60);
 	JobStatistics.GoodProductionTime.Seconds := UDINT_TO_USINT(GoodProductionTime - JobStatistics.GoodProductionTime.Hours*3600 - JobStatistics.GoodProductionTime.Minutes*60);
 	
-	IF DowntimeScheduled > 0 THEN
-		JobStatistics.ScheduledDowntimeRate := UDINT_TO_REAL(DowntimeScheduled)/UDINT_TO_REAL(exLink.JobTotalTime);
+	IF exLink.JobDowntimeScheduled > 0 THEN
+		JobStatistics.ScheduledDowntimeRate := UDINT_TO_REAL(exLink.JobDowntimeScheduled/JobTotalTime);
 	END_IF
-	IF DowntimeUnscheduled > 0 THEN
-		JobStatistics.UnscheduledDowntimeRate := UDINT_TO_REAL(DowntimeUnscheduled)/UDINT_TO_REAL(exLink.JobTotalTime);
+	IF exLink.JobDowntimeUnscheduled > 0 THEN
+		JobStatistics.UnscheduledDowntimeRate := UDINT_TO_REAL(exLink.JobDowntimeUnscheduled/JobTotalTime);
 	END_IF
 	IF Uptime > 0 THEN
 		JobStatistics.NominalProductionTimeRate := UDINT_TO_REAL(NominalProductionTime)/UDINT_TO_REAL(Uptime);
 	END_IF
-	IF exLink.JobTotalTime > 0 THEN
-		JobStatistics.CurrentProductionRate := UDINT_TO_REAL(JobStatistics.TotalPieces)/UDINT_TO_REAL(exLink.JobTotalTime)*3600;
+	IF JobTotalTime > 0 THEN
+		JobStatistics.CurrentProductionRate := JobStatistics.TotalPieces/UDINT_TO_REAL(JobTotalTime)*3600;
 	END_IF
 	
 	CalcStatsJob := TRUE;
@@ -79,32 +79,34 @@ END_FUNCTION
 // -------------------------------------------------------------------------------------------
 // Calculate current shift statistics
 FUNCTION CalcStatsShift
-	DTGetTime_0(enable := TRUE);
-	
 	// -------------------------------------------------------------------------------------------
-	// Calculate total time
-	exLink.ShiftTotalTime := DiffDT(DTGetTime_0.DT1, exLink.CoreStartTime) + DiffToCore;
-	ShiftStatistics.TotalTime.Hours := exLink.ShiftTotalTime/3600;
-	ShiftStatistics.TotalTime.Minutes := UDINT_TO_USINT((exLink.ShiftTotalTime - ShiftStatistics.TotalTime.Hours*3600)/60);
-	ShiftStatistics.TotalTime.Seconds := UDINT_TO_USINT(exLink.ShiftTotalTime - ShiftStatistics.TotalTime.Hours*3600 - ShiftStatistics.TotalTime.Minutes*60);
+	// Calculate total time, remember total time in milliseconds for accuaracy but convert to seconds for local calculations
+	exLink.ShiftTotalTime := exLink.ShiftTotalTime + DiffLastCall;
+	ShiftTotalTime := LREAL_TO_UDINT(exLink.ShiftTotalTime/1000);
 	
+	ShiftStatistics.TotalTime.Hours := ShiftTotalTime/3600;
+	ShiftStatistics.TotalTime.Minutes := UDINT_TO_USINT((ShiftTotalTime - ShiftStatistics.TotalTime.Hours*3600)/60);
+	ShiftStatistics.TotalTime.Seconds := UDINT_TO_USINT(ShiftTotalTime - ShiftStatistics.TotalTime.Hours*3600 - ShiftStatistics.TotalTime.Minutes*60);
+
 	// Calculate scheduled downtime
 	IF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
-		DowntimeScheduled := DiffDT(DTGetTime_0.DT1, exLink.DowntimeStart);
-		ShiftStatistics.ScheduledDowntime.Hours := DowntimeScheduled/3600;
-		ShiftStatistics.ScheduledDowntime.Minutes := UDINT_TO_USINT((DowntimeScheduled - ShiftStatistics.ScheduledDowntime.Hours*3600)/60);
-		ShiftStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT(DowntimeScheduled - ShiftStatistics.ScheduledDowntime.Hours*3600 - ShiftStatistics.ScheduledDowntime.Minutes*60);
+		exLink.ShiftDowntimeScheduled := exLink.ShiftDowntimeScheduled + DiffLastCall;
+		ShiftStatistics.ScheduledDowntime.Hours := exLink.ShiftDowntimeScheduled/3600000;
+		ShiftStatistics.ScheduledDowntime.Minutes := UDINT_TO_USINT((exLink.ShiftDowntimeScheduled - ShiftStatistics.ScheduledDowntime.Hours*3600000)/60000);
+		ShiftStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT(exLink.ShiftDowntimeScheduled - ShiftStatistics.ScheduledDowntime.Hours*3600000 - ShiftStatistics.TotalTime.Minutes*60000);
 	END_IF
-	// Calculate undscheduled downtime
+
+	// Calculate scheduled downtime
 	IF Downtime = exASSETINT_UNSCHEDULED_DOWNTIME THEN
-		DowntimeUnscheduled := DiffDT(DTGetTime_0.DT1, exLink.DowntimeStart);
-		ShiftStatistics.UnscheduledDowntime.Hours := DowntimeUnscheduled/3600;
-		ShiftStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((DowntimeUnscheduled - ShiftStatistics.UnscheduledDowntime.Hours*3600)/60);
-		ShiftStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT(DowntimeUnscheduled - ShiftStatistics.UnscheduledDowntime.Hours*3600 - ShiftStatistics.UnscheduledDowntime.Minutes*60);
+		exLink.ShiftDowntimeUnscheduled := exLink.ShiftDowntimeUnscheduled + DiffLastCall;
+		ShiftStatistics.UnscheduledDowntime.Hours := exLink.ShiftDowntimeUnscheduled/3600000;
+		ShiftStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((exLink.ShiftDowntimeUnscheduled - ShiftStatistics.UnscheduledDowntime.Hours*3600000)/60000);
+		ShiftStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT(exLink.ShiftDowntimeUnscheduled - ShiftStatistics.UnscheduledDowntime.Hours*3600000 - ShiftStatistics.TotalTime.Minutes*60000);
 	END_IF
+	
 	// Calculate uptime
 	IF Downtime = exASSETINT_NO_DOWNTIME THEN
-		Uptime := exLink.ShiftTotalTime - DowntimeScheduled - DowntimeUnscheduled;
+		Uptime := ShiftTotalTime - exLink.ShiftDowntimeScheduled - exLink.ShiftDowntimeUnscheduled;
 		ShiftStatistics.Uptime.Hours := Uptime/3600;
 		ShiftStatistics.Uptime.Minutes := UDINT_TO_USINT((Uptime - ShiftStatistics.Uptime.Hours*3600)/60);
 		ShiftStatistics.Uptime.Seconds := UDINT_TO_USINT(Uptime - ShiftStatistics.Uptime.Hours*3600 - ShiftStatistics.Uptime.Minutes*60);
@@ -113,10 +115,10 @@ FUNCTION CalcStatsShift
 	// -------------------------------------------------------------------------------------------
 	// Calculate counters
 	ShiftStatistics.TotalPieces := exLink.ShiftPieceCounter;
-	ShiftStatistics.TargetPieces := REAL_TO_UDINT(UDINT_TO_REAL(exLink.ShiftTotalTime)/3600*Parameter.NominalProductionRate);
+	ShiftStatistics.TargetPieces := LREAL_TO_UDINT(ShiftTotalTime/3600*Parameter.NominalProductionRate);
 	ShiftStatistics.RejectPieces := exLink.ShiftRejectCounter;
-	IF exLink.ShiftPieceCounter > exLink.JobRejectCounter THEN
-		ShiftStatistics.GoodPieces := exLink.ShiftPieceCounter - exLink.JobRejectCounter;
+	IF exLink.ShiftPieceCounter > exLink.ShiftRejectCounter THEN
+		ShiftStatistics.GoodPieces := exLink.ShiftPieceCounter - exLink.ShiftRejectCounter;
 	ELSE
 		ShiftStatistics.GoodPieces := 0;
 		ShiftStatistics.RejectPieces := exLink.ShiftPieceCounter;		
@@ -137,17 +139,17 @@ FUNCTION CalcStatsShift
 	ShiftStatistics.GoodProductionTime.Minutes := UDINT_TO_USINT((GoodProductionTime - ShiftStatistics.GoodProductionTime.Hours*3600)/60);
 	ShiftStatistics.GoodProductionTime.Seconds := UDINT_TO_USINT(GoodProductionTime - ShiftStatistics.GoodProductionTime.Hours*3600 - ShiftStatistics.GoodProductionTime.Minutes*60);
 	
-	IF DowntimeScheduled > 0 THEN
-		ShiftStatistics.ScheduledDowntimeRate := UDINT_TO_REAL(DowntimeScheduled)/UDINT_TO_REAL(exLink.ShiftTotalTime);
+	IF exLink.ShiftDowntimeScheduled > 0 THEN
+		ShiftStatistics.ScheduledDowntimeRate := UDINT_TO_REAL(exLink.ShiftDowntimeScheduled/ShiftTotalTime);
 	END_IF
-	IF DowntimeUnscheduled > 0 THEN
-		ShiftStatistics.UnscheduledDowntimeRate := UDINT_TO_REAL(DowntimeUnscheduled)/UDINT_TO_REAL(exLink.ShiftTotalTime);
+	IF exLink.ShiftDowntimeUnscheduled > 0 THEN
+		ShiftStatistics.UnscheduledDowntimeRate := UDINT_TO_REAL(exLink.ShiftDowntimeUnscheduled/ShiftTotalTime);
 	END_IF
 	IF Uptime > 0 THEN
 		ShiftStatistics.NominalProductionTimeRate := UDINT_TO_REAL(NominalProductionTime)/UDINT_TO_REAL(Uptime);
 	END_IF
-	IF exLink.ShiftTotalTime > 0 THEN
-		ShiftStatistics.CurrentProductionRate := UDINT_TO_REAL(ShiftStatistics.TotalPieces)/UDINT_TO_REAL(exLink.ShiftTotalTime)*3600;
+	IF ShiftTotalTime > 0 THEN
+		ShiftStatistics.CurrentProductionRate := UDINT_TO_REAL(ShiftStatistics.TotalPieces)/UDINT_TO_REAL(ShiftTotalTime)*3600;
 	END_IF
 	
 	CalcStatsShift := TRUE;

@@ -98,15 +98,16 @@ TYPE
 		ShiftRejectCounter : UDINT; (*Total reject counter*)
 		JobPieceCounter : UDINT; (*Total piece counter*)
 		JobRejectCounter : UDINT; (*Total reject counter*)
-		CoreStartTime : DATE_AND_TIME; (*Time when the function block started*)
 		JobStart : DATE_AND_TIME; (*Time when the job started*)
-		JobTotalTime : UDINT; (*Milliseconds the job is running*)
+		JobTotalTime : LREAL; (*Milliseconds the job is running*)
 		JobDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
 		JobDowntimeUnscheduled : UDINT; (*Milliseconds of unscheduled downtime*)
-		ShiftStart : DATE_AND_TIME; (*Time when shift started*)
 		ShiftId : SINT := -1; (*Index of shift configuration*)
 		ShiftName : STRING[20]; (*Shift name*)
-		ShiftTotalTime : UDINT; (*Seconds the shift is running*)
+		ShiftStart : DATE_AND_TIME; (*Time when shift started*)
+		ShiftTotalTime : LREAL; (*Milliseconds the shift is running*)
+		ShiftDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
+		ShiftDowntimeUnscheduled : UDINT; (*Milliseconds of unscheduled downtime*)
 		DowntimeStart : DATE_AND_TIME;
 	END_STRUCT;
 END_TYPE
