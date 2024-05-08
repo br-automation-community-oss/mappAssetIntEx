@@ -137,13 +137,10 @@ FUNCTION_BLOCK CreateMemory
 	END_VAR
 	VAR_OUTPUT
 		MemoryDb : UDINT;
-		MemoryJob : UDINT;
-		MemoryShift : UDINT;
 		Status : UINT;
 	END_VAR
 	VAR
 		DatObjCreate_0 : DatObjCreate;
-		MemoryType : exAssetIntMemoryEnum;
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
 		Cnt : USINT;

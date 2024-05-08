@@ -146,12 +146,6 @@ TYPE
 		exASSETINT_UI_STATUS_UPDATE := 1, (*Status: Updating UIConnect structer*)
 		exASSETINT_UI_STATUS_FILTER := 2 (*Status: Showing filter-dialog*)
 		);
-	exAssetIntMemoryEnum : 
-		(
-		exASSETINT_MEM_DB := 0, (*Database memory*)
-		exASSETINT_MEM_JOB := 1, (*Job working memory*)
-		exASSETINT_MEM_SHIFT := 2 (*Shift working memory*)
-		);
 	exAssetIntDowntimeEnum : 
 		(
 		exASSETINT_NO_DOWNTIME := 0, (*No downtime active = uptime*)

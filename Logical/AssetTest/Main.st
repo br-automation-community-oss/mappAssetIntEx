@@ -1,6 +1,7 @@
 
 PROGRAM _INIT
-	(* Insert code here *)
+	PV_xgetadr(ADR('Sample:exAssetIntCore_0'), ADR(exAssetIntCoreAdr), ADR(exAssetIntCoreLen));
+	exAssetIntCore_0 ACCESS exAssetIntCoreAdr;
 	 
 END_PROGRAM
 

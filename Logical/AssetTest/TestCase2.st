@@ -10,16 +10,18 @@
 // At least 1 shift
 
 ACTION TestCase2: 
-	IF TestCase[2] THEN
-		CASE TestState[2] OF
+	TesMyId := 2;
+	IF TestCase[TesMyId] THEN
+		CASE TestState[TesMyId] OF
 			0:
+				TestResult[TesMyId] := TestResultRunning;
 				AutoCount := TRUE;
 				RTC_gettime(ADR(RTCtime_struct));
-				TestIdle[2] := 0;
+				TestIdle[TesMyId] := 0;
 				
-				TestState[2] := TestState[2] + 1;
+				TestState[TesMyId] := TestState[TesMyId] + 1;
 			1:
-				gShift[0].ScheduledDowntime[0].Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 60000*2);
+				gShift[0].ScheduledDowntime[0].Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 60000*3);
 				gShift[0].ScheduledDowntime[0].End := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 60000*5);
 				gShift[0].ScheduledDowntime[0].Reason := 'Test Reason 1';
 
@@ -35,16 +37,15 @@ ACTION TestCase2:
 				RTCtime_struct.minute := UDINT_TO_USINT(gShift[0].Start.Minutes);
 				RTC_settime(ADR(RTCtime_struct));
 
-				TestState[2] := TestState[2] + 1;
+				TestState[TesMyId] := TestState[TesMyId] + 1;
 			2:
-				TestIdle[2] := TestIdle[2] + 1;
-				IF TestIdle[2] > 100*60*20 THEN
-					TestIdle[2] := 0;
-					TestState[2] := TestState[2] + 1;
-				END_IF					
-			6:
-				TestCase[2] := FALSE;
-				TestState[2] := 0;
+				TestCase[TesMyId] := FALSE;
+				TestState[TesMyId] := 0;
+				IF exAssetIntCore_0.Info.ShiftStatistics.ScheduledDowntime.Minutes = 6 THEN
+					TestResult[TesMyId] := TestResultPassed;
+				ELSE
+					TestResult[TesMyId] := TestResultFailed;
+				END_IF
 		END_CASE;
 	END_IF
 END_ACTION

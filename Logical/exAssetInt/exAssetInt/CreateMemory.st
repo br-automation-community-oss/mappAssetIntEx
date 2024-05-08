@@ -8,7 +8,6 @@ FUNCTION_BLOCK CreateMemory
 		DatObjCreate_0.enable := FALSE;
 		DatObjCreate_0();
 
-		MemoryType := exASSETINT_MEM_DB;
 		Status := ERR_FUB_ENABLE_FALSE;
 		State := 0;		
 		RETURN;
@@ -39,45 +38,17 @@ FUNCTION_BLOCK CreateMemory
 			// Data module created successful 
 			IF DatObjCreate_0.status = ERR_OK THEN
 				// Created working memory
-				IF MemoryType = exASSETINT_MEM_DB THEN
-					// Generate log entry
-					TmpStr2 := 'create db memory module ok -> ';
-					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
+				// Generate log entry
+				TmpStr2 := 'create db memory module ok -> ';
+				brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
 					
-					// Reset memory, set up next memory
-					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
-					Cnt := 0;
-					MemoryDb := DatObjCreate_0.pDatObjMem;
-					MemoryType := exASSETINT_MEM_JOB;
-					TmpStr1 := 'AsWr_0';
-				ELSIF MemoryType = exASSETINT_MEM_JOB THEN
-					// Generate log entry
-					TmpStr2 := 'create job memory module ok -> ';
-					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
+				// Reset memory, set up next memory
+				brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
+				MemoryDb := DatObjCreate_0.pDatObjMem;
 
-					// Reset memory, set up next memory
-					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
-					Cnt := 0;
-					MemoryJob := DatObjCreate_0.pDatObjMem;
-					MemoryType := exASSETINT_MEM_SHIFT;
-					TmpStr1 := 'AsSh_0';
-				ELSIF MemoryType = exASSETINT_MEM_SHIFT THEN
-					// Generate log entry
-					TmpStr2 := 'create shift memory module ok -> ';
-					brsstrcat(ADR(TmpStr2), ADR(TmpStr1));
-					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger);
-
-					// Reset memory, finish up
-					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size);
-					MemoryShift := DatObjCreate_0.pDatObjMem;
-					Status := ERR_OK;
-					State := 0;
-				END_IF
-					
-				DatObjCreate_0.enable := FALSE;
-				DatObjCreate_0();
+				Status := ERR_OK;
+				State := 0;
 								
 			// Data module already exists
 			ELSIF DatObjCreate_0.status = doERR_DUPOBJECT  THEN

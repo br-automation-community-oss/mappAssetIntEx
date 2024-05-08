@@ -96,8 +96,6 @@ FUNCTION_BLOCK exAssetIntCore
 			IF Internal.CreateMemory.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create internal memory ok'), Logger);
 				exLink.MemoryDb := Internal.CreateMemory.MemoryDb;
-				exLink.MemoryJob := Internal.CreateMemory.MemoryJob;
-				exLink.MemoryShift := Internal.CreateMemory.MemoryShift;
 				Internal.State := exASSETINT_STATE_INIT_4;
 			
 			// Error
@@ -212,29 +210,29 @@ FUNCTION_BLOCK exAssetIntCore
 			// Handle downtime change
 			IF Downtime <> Internal.DowntimeOld THEN
 				// Create log message
-				Internal.TmpStr := 'downtime changed from ';
+				Internal.TmpStr := 'downtime changed -> ';
 
 				IF Internal.DowntimeOld = exASSETINT_NO_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime to '));
+					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime -> '));
 				ELSIF Internal.DowntimeOld = exASSETINT_SCHEDULED_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled to '));
+					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled -> '));
 				ELSE
-					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled to '));
+					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled -> '));
 				END_IF
 
 				IF Downtime = exASSETINT_NO_DOWNTIME THEN
 					brsstrcat(ADR(Internal.TmpStr), ADR('no downtime'));
 				ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled with reason '));
+					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled -> '));
 				ELSE
-					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled with reason '));
+					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled -> '));
 				END_IF
+				brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
 							
 				// Only record scheduled and unscheduled downtime
 				IF Internal.DowntimeOld <> exASSETINT_NO_DOWNTIME THEN
 					// Collect data for record
-					brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
 					Internal.RecordData.EventType := UDINT_TO_UINT(Internal.DowntimeOld) + 2;
 					Internal.RecordData.TimeStart := exLink.DowntimeStart;
 					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;

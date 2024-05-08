@@ -72,7 +72,7 @@ PROGRAM _CYCLIC
     END_IF
     
     MpAssetIntCoreConfig_0.MpLink :=  ADR(gAssetIntCore);
-    MpAssetIntCoreConfig_0.Enable := MpAssetIntCore_0.Active;
+    MpAssetIntCoreConfig_0.Enable := MpAssetIntCore_0.Active AND NOT DisableConfig;
     MpAssetIntCoreConfig_0.Configuration := ADR(AssetIntConfig);
     MpAssetIntCoreConfig_0();
     

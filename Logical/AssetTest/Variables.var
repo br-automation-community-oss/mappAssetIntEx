@@ -31,7 +31,15 @@ VAR
 END_VAR
 (*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR
+	TestResult : ARRAY[1..9] OF TestResultEnum;
 	TestCase : ARRAY[1..9] OF BOOL;
 	TestState : ARRAY[1..9] OF USINT;
 	TestIdle : ARRAY[1..9] OF UDINT;
+	TesMyId : USINT;
+END_VAR
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	exAssetIntCoreAdr : {REDUND_UNREPLICABLE} UDINT;
+	exAssetIntCoreLen : {REDUND_UNREPLICABLE} UDINT;
+	exAssetIntCore_0 : REFERENCE TO exAssetIntCore;
 END_VAR

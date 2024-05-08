@@ -14,14 +14,15 @@
 // At least 3 shifts, a gap between one shift end and the next shift start
 
 ACTION TestCase1: 
+	TesMyId := 1;
 	IF TestCase[1] THEN
-		CASE TestState[1] OF
+		CASE TestState[TesMyId] OF
 			0:
 				AutoCount := TRUE;
 				RTC_gettime(ADR(RTCtime_struct));
-				TestIdle[1] := 0;
+				TestIdle[TesMyId] := 0;
 				
-				TestState[1] := TestState[1] + 1;
+				TestState[TesMyId] := TestState[TesMyId] + 1;
 			1:
 				IF gShift[0].End.Minutes > 5 THEN
 					RTCtime_struct.hour := UDINT_TO_USINT(gShift[0].End.Hour);
@@ -32,12 +33,12 @@ ACTION TestCase1:
 				END_IF
 				RTC_settime(ADR(RTCtime_struct));
 
-				TestState[1] := TestState[1] + 1;
+				TestState[TesMyId] := TestState[TesMyId] + 1;
 			2:
-				TestIdle[1] := TestIdle[1] + 1;
-				IF TestIdle[1] > 100*60*5 THEN
-					TestIdle[1] := 0;
-					TestState[1] := TestState[1] + 1;
+				TestIdle[TesMyId] := TestIdle[TesMyId] + 1;
+				IF TestIdle[TesMyId] > 100*60*5 THEN
+					TestIdle[TesMyId] := 0;
+					TestState[TesMyId] := TestState[TesMyId] + 1;
 				END_IF					
 			3:
 				IF gShift[1].End.Minutes > 5 THEN
@@ -49,12 +50,12 @@ ACTION TestCase1:
 				END_IF
 				RTC_settime(ADR(RTCtime_struct));
 
-				TestState[1] := TestState[1] + 1;
+				TestState[TesMyId] := TestState[TesMyId] + 1;
 			4:
-				TestIdle[1] := TestIdle[1] + 1;
-				IF TestIdle[1] > 100*60*5 THEN
-					TestIdle[1] := 0;
-					TestState[1] := TestState[1] + 1;
+				TestIdle[TesMyId] := TestIdle[TesMyId] + 1;
+				IF TestIdle[TesMyId] > 100*60*5 THEN
+					TestIdle[TesMyId] := 0;
+					TestState[TesMyId] := TestState[TesMyId] + 1;
 				END_IF					
 			5:
 				IF gShift[2].End.Minutes > 5 THEN
@@ -66,12 +67,12 @@ ACTION TestCase1:
 				END_IF
 				RTC_settime(ADR(RTCtime_struct));
 
-				TestState[1] := TestState[1] + 1;
+				TestState[TesMyId] := TestState[TesMyId] + 1;
 			6:
-				TestIdle[1] := TestIdle[1] + 1;
-				IF TestIdle[1] > 100*60*5 THEN
-					TestCase[1] := FALSE;
-					TestState[1] := 0;
+				TestIdle[TesMyId] := TestIdle[TesMyId] + 1;
+				IF TestIdle[TesMyId] > 100*60*5 THEN
+					TestCase[TesMyId] := FALSE;
+					TestState[TesMyId] := 0;
 				END_IF					
 		END_CASE;
 	END_IF

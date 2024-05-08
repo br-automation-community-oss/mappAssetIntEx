@@ -28,7 +28,7 @@ FUNCTION CalcStatsJob
 	
 	// Calculate uptime
 	IF Downtime = exASSETINT_NO_DOWNTIME THEN
-		Uptime := JobTotalTime - exLink.JobDowntimeScheduled - exLink.JobDowntimeUnscheduled;
+		Uptime := JobTotalTime - exLink.JobDowntimeScheduled/1000 - exLink.JobDowntimeUnscheduled/1000;
 		JobStatistics.Uptime.Hours := Uptime/3600;
 		JobStatistics.Uptime.Minutes := UDINT_TO_USINT((Uptime - JobStatistics.Uptime.Hours*3600)/60);
 		JobStatistics.Uptime.Seconds := UDINT_TO_USINT(Uptime - JobStatistics.Uptime.Hours*3600 - JobStatistics.Uptime.Minutes*60);
@@ -106,7 +106,7 @@ FUNCTION CalcStatsShift
 	
 	// Calculate uptime
 	IF Downtime = exASSETINT_NO_DOWNTIME THEN
-		Uptime := ShiftTotalTime - exLink.ShiftDowntimeScheduled - exLink.ShiftDowntimeUnscheduled;
+		Uptime := ShiftTotalTime - exLink.ShiftDowntimeScheduled/1000 - exLink.ShiftDowntimeUnscheduled/1000;
 		ShiftStatistics.Uptime.Hours := Uptime/3600;
 		ShiftStatistics.Uptime.Minutes := UDINT_TO_USINT((Uptime - ShiftStatistics.Uptime.Hours*3600)/60);
 		ShiftStatistics.Uptime.Seconds := UDINT_TO_USINT(Uptime - ShiftStatistics.Uptime.Hours*3600 - ShiftStatistics.Uptime.Minutes*60);

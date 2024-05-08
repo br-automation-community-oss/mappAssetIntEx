@@ -13,8 +13,8 @@
           <Group ID="ScheduledDowntime">
             <Group ID="[0]">
               <Property ID="Reason" Value="Lunch" />
-              <Property ID="Start" Value="39600000" />
-              <Property ID="End" Value="41400000" />
+              <Property ID="Start" Value="21780000" />
+              <Property ID="End" Value="21900000" />
             </Group>
           </Group>
         </Group>

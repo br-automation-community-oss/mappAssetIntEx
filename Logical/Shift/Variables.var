@@ -7,4 +7,5 @@ VAR
 	MpAssetIntJobListUI_0 : MpAssetIntJobListUI;
 	JobListUIConnect : MpAssetIntJobListUIConnectType;
 	ShiftListUIConnect : MpAssetIntShiftListUIConnectType;
+	DisableConfig : BOOL;
 END_VAR
