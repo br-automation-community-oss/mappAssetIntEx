@@ -8,4 +8,5 @@ VAR
 	JobListUIConnect : MpAssetIntJobListUIConnectType;
 	ShiftListUIConnect : MpAssetIntShiftListUIConnectType;
 	DisableConfig : BOOL;
+	JobListUISetup : MpAssetIntJobListUISetupType := (OutputListSize:=8,ScrollWindow:=2);
 END_VAR

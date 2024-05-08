@@ -39,6 +39,12 @@ ACTION TestCase2:
 
 				TestState[TesMyId] := TestState[TesMyId] + 1;
 			2:
+				TestIdle[TesMyId] := TestIdle[TesMyId] + 1;
+				IF TestIdle[TesMyId] > 100*60*17 THEN
+					TestIdle[TesMyId] := 0;
+					TestState[TesMyId] := TestState[TesMyId] + 1;
+				END_IF					
+			3:
 				TestCase[TesMyId] := FALSE;
 				TestState[TesMyId] := 0;
 				IF exAssetIntCore_0.Info.ShiftStatistics.ScheduledDowntime.Minutes = 6 THEN

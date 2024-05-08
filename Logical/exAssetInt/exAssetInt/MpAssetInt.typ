@@ -75,8 +75,8 @@ TYPE
 		WriteConfiguration : WriteConfiguration;
 	END_STRUCT;
 	exUIInternalDataType : 	STRUCT 
-		RecordStart : UDINT; (*Visible list is starting from this index*)
-		RecordNum : UDINT; (*Number of items to display*)
+		RecordStart : DINT; (*Visible list is starting from this index*)
+		RecordCount : UDINT; (*Total number of items*)
 		RecordCountOld : UDINT; (*Old record number is required for DESC list*)
 		RecordData : exCoreInternalRecordType;
 		SortingStartTimeOld : exAssetIntUISortingEnum := exASSETINT_SORTING_ASC;
@@ -123,10 +123,12 @@ TYPE
 		exASSETINT_STATE_INIT_4 := 4, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_IDLE := 10, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_STORE_EVENT := 20, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_EXPORT_EVENTS := 30, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_EXPORT_EVENTS := 21, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_UI_BUFFER := 30, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_UI_DATA := 31, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_SAVE_CFG := 40, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_LOAD_CFG := 50, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_ERROR := 60, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_LOAD_CFG := 41, (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_ERROR := 90, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_NONE := 99 (*Status: Idle, Waiting for command*)
 		);
 	exAssetIntLogLevelEnum : 
@@ -145,6 +147,12 @@ TYPE
 		exASSETINT_UI_STATUS_IDLE := 0, (*Status: Idle, Waiting for command*)
 		exASSETINT_UI_STATUS_UPDATE := 1, (*Status: Updating UIConnect structer*)
 		exASSETINT_UI_STATUS_FILTER := 2 (*Status: Showing filter-dialog*)
+		);
+	exAssetIntMemoryEnum : 
+		(
+		exASSETINT_MEM_DB := 0, (*Database memory*)
+		exASSETINT_MEM_JOB := 1, (*Job working memory*)
+		exASSETINT_MEM_SHIFT := 2 (*Shift working memory*)
 		);
 	exAssetIntDowntimeEnum : 
 		(
@@ -279,35 +287,35 @@ TYPE
 		Filter : exAssetIntUIFilterType; (*Output filter.*)
 	END_STRUCT;
 	exAssetIntUIShiftListOutputType : 	STRUCT 
-		StartTime : ARRAY[0..19]OF DATE_AND_TIME; (*Start time list*)
-		EndTime : ARRAY[0..19]OF DATE_AND_TIME; (*End time list*)
-		ShiftName : ARRAY[0..19]OF STRING[20]; (*Shift ID list*)
-		CurrentUser : ARRAY[0..19]OF STRING[50]; (*Currently active user*)
-		AdditionalData : ARRAY[0..19]OF STRING[255]; (*Additional data information*)
-		TargetPieces : ARRAY[0..19]OF UDINT; (*Target pieces list*)
-		TotalPieces : ARRAY[0..19]OF UDINT; (*Total pieces list*)
-		GoodPieces : ARRAY[0..19]OF UDINT; (*Good pieces list*)
-		RejectPieces : ARRAY[0..19]OF UDINT; (*Reject pieces list*)
-		BadPieceRate : ARRAY[0..19]OF REAL; (*bad piece rate list*)
-		TotalTime : ARRAY[0..19]OF exAssetIntTimeType; (*Total time list*)
-		ScheduledDowntime : ARRAY[0..19]OF exAssetIntTimeType; (*Scheduled Downtime list*)
-		UnscheduledDowntime : ARRAY[0..19]OF exAssetIntTimeType; (*Unscheduled Downtime list*)
-		Uptime : ARRAY[0..19]OF exAssetIntTimeType; (*Uptime list*)
-		GoodProductionTime : ARRAY[0..19]OF exAssetIntTimeType; (*Good production time list*)
-		NominalProductionTime : ARRAY[0..19]OF exAssetIntTimeType; (*nominal production time list*)
-		NominalProductionRate : ARRAY[0..19]OF REAL; (*nominal production rate list*)
-		ShiftProductionRate : ARRAY[0..19]OF REAL; (*Shift production rate list*)
-		ScheduledDowntimeRate : ARRAY[0..19]OF REAL; (*scheduled downtime rate list*)
-		UnscheduledDowntimeRate : ARRAY[0..19]OF REAL; (*unscheduled downtime rate list*)
-		ProductionRate : ARRAY[0..19]OF REAL; (*current production rate list*)
+		StartTime : ARRAY[0..UI_SHIFT_LIST_IDX]OF DATE_AND_TIME; (*Start time list*)
+		EndTime : ARRAY[0..UI_SHIFT_LIST_IDX]OF DATE_AND_TIME; (*End time list*)
+		ShiftName : ARRAY[0..UI_SHIFT_LIST_IDX]OF STRING[20]; (*Shift ID list*)
+		CurrentUser : ARRAY[0..UI_SHIFT_LIST_IDX]OF STRING[50]; (*Currently active user*)
+		AdditionalData : ARRAY[0..UI_SHIFT_LIST_IDX]OF STRING[255]; (*Additional data information*)
+		TargetPieces : ARRAY[0..UI_SHIFT_LIST_IDX]OF UDINT; (*Target pieces list*)
+		TotalPieces : ARRAY[0..UI_SHIFT_LIST_IDX]OF UDINT; (*Total pieces list*)
+		GoodPieces : ARRAY[0..UI_SHIFT_LIST_IDX]OF UDINT; (*Good pieces list*)
+		RejectPieces : ARRAY[0..UI_SHIFT_LIST_IDX]OF UDINT; (*Reject pieces list*)
+		BadPieceRate : ARRAY[0..UI_SHIFT_LIST_IDX]OF REAL; (*bad piece rate list*)
+		TotalTime : ARRAY[0..UI_SHIFT_LIST_IDX]OF exAssetIntTimeType; (*Total time list*)
+		ScheduledDowntime : ARRAY[0..UI_SHIFT_LIST_IDX]OF exAssetIntTimeType; (*Scheduled Downtime list*)
+		UnscheduledDowntime : ARRAY[0..UI_SHIFT_LIST_IDX]OF exAssetIntTimeType; (*Unscheduled Downtime list*)
+		Uptime : ARRAY[0..UI_SHIFT_LIST_IDX]OF exAssetIntTimeType; (*Uptime list*)
+		GoodProductionTime : ARRAY[0..UI_SHIFT_LIST_IDX]OF exAssetIntTimeType; (*Good production time list*)
+		NominalProductionTime : ARRAY[0..UI_SHIFT_LIST_IDX]OF exAssetIntTimeType; (*nominal production time list*)
+		NominalProductionRate : ARRAY[0..UI_SHIFT_LIST_IDX]OF REAL; (*nominal production rate list*)
+		ShiftProductionRate : ARRAY[0..UI_SHIFT_LIST_IDX]OF REAL; (*Shift production rate list*)
+		ScheduledDowntimeRate : ARRAY[0..UI_SHIFT_LIST_IDX]OF REAL; (*scheduled downtime rate list*)
+		UnscheduledDowntimeRate : ARRAY[0..UI_SHIFT_LIST_IDX]OF REAL; (*unscheduled downtime rate list*)
+		ProductionRate : ARRAY[0..UI_SHIFT_LIST_IDX]OF REAL; (*current production rate list*)
 		RangeStart : REAL; (*Displayed range: Start %*)
 		RangeEnd : REAL; (*Displayed range: End %*)
 		PageUp : BOOL; (*Command: Page Up (Scroll Up)*)
 		StepUp : BOOL; (*Command: Line Up (Scroll Up)*)
 		StepDown : BOOL; (*Command: Line Down (Scroll Down)*)
 		PageDown : BOOL; (*Command: Page Down (Scroll Down)*)
-		IdealProductionRate : ARRAY[0..19]OF REAL; (*ideal production rate list*)
-		JobName : ARRAY[0..19]OF STRING[20]; (*Job name list*)
+		IdealProductionRate : ARRAY[0..UI_SHIFT_LIST_IDX]OF REAL; (*ideal production rate list*)
+		JobName : ARRAY[0..UI_SHIFT_LIST_IDX] OF STRING[20]; (*Job name list*)
 	END_STRUCT;
 	exAssetIntUIShiftListJobType : 	STRUCT  (*Jobs within one shift*)
 		Name : ARRAY[0..9]OF STRING[20]; (*Name of the job*)

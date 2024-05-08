@@ -96,6 +96,8 @@ FUNCTION_BLOCK exAssetIntCore
 			IF Internal.CreateMemory.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create internal memory ok'), Logger);
 				exLink.MemoryDb := Internal.CreateMemory.MemoryDb;
+				exLink.MemoryJob := Internal.CreateMemory.MemoryJob; 
+				exLink.MemoryShift := Internal.CreateMemory.MemoryShift; 
 				Internal.State := exASSETINT_STATE_INIT_4;
 			
 			// Error

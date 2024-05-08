@@ -26,7 +26,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 					RETURN;				
 				END_IF
 				// Make sure we have temporary buffer
-				IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 OR exLink.MemoryJob = 0 THEN
+				IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 THEN
 					// Set status, remember state, go to error state
 					StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, ADR('ERR: no temp memory'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
@@ -42,6 +42,8 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				Error := FALSE;
 				StatusID := ERR_OK;
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
+				
+				UISetup.OutputListSize := UI_JOB_LIST_IDX;
 
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
@@ -49,85 +51,123 @@ FUNCTION_BLOCK exAssetIntJobListUI
 		// -------------------------------------------------------------------------------------------
 		// Wait for new event
 		exASSETINT_STATE_IDLE:		
-			// Reset record start when sorting direction changed
-			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld THEN
-				IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC THEN
-					Internal.RecordStart := 0;
-				ELSE
-					Internal.RecordStart := exLink.RecordCount;
-				END_IF
+			// Handle sorting direction change
+			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
+				Internal.State := exASSETINT_STATE_UI_BUFFER;
 			END_IF
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
-				
-			// Wait for core task to call update command
-			IF exLink.RefreshJobUI AND exLink.RecordCount > 0 THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh job data'), Logger);
-				
-				// Make correction for DESC sorting when record count changes
-				IF UISetup.SortingStartTime = exASSETINT_SORTING_DESC AND Internal.RecordStart + exLink.RecordCount - Internal.RecordCountOld <= exLink.RecordCount THEN
-					Internal.RecordStart := Internal.RecordStart + exLink.RecordCount - Internal.RecordCountOld;
-				END_IF
-				Internal.RecordCountOld := exLink.RecordCount;
-				
-				// Clear array and copy new data
-				brsmemset(ADR(UIConnect.Output), 0, SIZEOF(UIConnect.Output));
-				
-				// Check how much data is left for ascending
-				IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC AND Internal.RecordStart + UI_JOB_LIST_IDX > exLink.RecordCount  THEN
-					Internal.RecordNum := exLink.RecordCount - Internal.RecordStart - 1;
-				// Check how much data is left for descending
-				ELSIF UISetup.SortingStartTime = exASSETINT_SORTING_DESC AND Internal.RecordStart <= UI_JOB_LIST_IDX THEN
-					Internal.RecordNum := Internal.RecordStart;
-				ELSE
-					Internal.RecordNum := UI_JOB_LIST_IDX;
-				END_IF
-						
-				Internal.x := 0;
-				Internal.y := 0;
-				REPEAT
-					// Check sorting direction
-					IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC THEN
-						brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (Internal.y + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-					ELSE
-						brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (Internal.RecordStart - Internal.y - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-					END_IF
-					
-					// Only transfer job data
-					IF Internal.RecordData.EventType = RecordTypeJob THEN
-						UIConnect.Output.JobStartTime[Internal.x] := Internal.RecordData.TimeStart;
-						UIConnect.Output.JobEndTime[Internal.x] := Internal.RecordData.TimeEnd;
-						UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
-						UIConnect.Output.CurrentUser[Internal.x] := Internal.RecordData.CurrentUser;
-						UIConnect.Output.AdditionalData[Internal.x] := Internal.RecordData.AdditionalData;
-						UIConnect.Output.TotalPieces[Internal.x] := Internal.RecordData.TotalPieces;
-						UIConnect.Output.GoodPieces[Internal.x] := Internal.RecordData.GoodPieces;
-						UIConnect.Output.RejectPieces[Internal.x] := Internal.RecordData.RejectPieces;
-						UIConnect.Output.BadPieceRate[Internal.x] := Internal.RecordData.BadPieceRate;
-						UIConnect.Output.TotalTime[Internal.x] := Internal.RecordData.TotalTime;
-						UIConnect.Output.ScheduledDowntime[Internal.x] := Internal.RecordData.ScheduledDowntime;
-						UIConnect.Output.UnscheduledDowntime[Internal.x] := Internal.RecordData.UnscheduledDowntime;
-						UIConnect.Output.Uptime[Internal.x] := Internal.RecordData.Uptime;
-						UIConnect.Output.GoodProductionTime[Internal.x] := Internal.RecordData.GoodProductionTime;
-						UIConnect.Output.NominalProductionTime[Internal.x] := Internal.RecordData.NominalProductionTime;
-						UIConnect.Output.NominalProductionRate[Internal.x] := Internal.RecordData.NominalProductionTimeRate;
-						UIConnect.Output.UnscheduledDowntimeRate[Internal.x] := Internal.RecordData.UnscheduledDowntimeRate;
-						UIConnect.Output.ProductionRate[Internal.x] := Internal.RecordData.CurrentProductionRate;
-						UIConnect.Output.ShiftName[Internal.x] := Internal.RecordData.ShiftName;
-
-						Internal.x := Internal.x + 1;
-					END_IF
-	  
-					Internal.y := Internal.y + 1;
-					
-					UNTIL (Internal.y = Internal.RecordNum)
-				END_REPEAT;
-								
-			END_IF
-			exLink.RefreshJobUI := FALSE;
-			Active := TRUE;
 			
-			// -------------------------------------------------------------------------------------------
-			// Error state
+			// Handle page up and down
+			IF UIConnect.Output.PageUp THEN
+				Internal.RecordStart := Internal.RecordStart - UI_JOB_LIST_IDX;
+				Internal.State := exASSETINT_STATE_UI_DATA;					
+			END_IF
+			IF UIConnect.Output.PageDown THEN
+				Internal.RecordStart := Internal.RecordStart + UI_JOB_LIST_IDX;					
+				Internal.State := exASSETINT_STATE_UI_DATA;					
+			END_IF
+			
+			// Handle step up and down
+			IF UIConnect.Output.StepUp THEN
+				Internal.RecordStart := Internal.RecordStart - 1;
+				Internal.State := exASSETINT_STATE_UI_DATA;					
+			END_IF
+			IF UIConnect.Output.StepDown THEN
+				Internal.RecordStart := Internal.RecordStart + 1;					
+				Internal.State := exASSETINT_STATE_UI_DATA;					
+			END_IF
+			
+			// Correction for step/page up/down
+			IF Internal.RecordStart + UI_JOB_LIST_IDX > Internal.RecordCount THEN
+				Internal.RecordStart := Internal.RecordCount - UI_JOB_LIST_IDX;
+			END_IF
+			IF Internal.RecordStart < 0 THEN
+				Internal.RecordStart := 0;
+			END_IF
+
+			// Wait for core task to call update command
+			IF exLink.RefreshJobUI AND exLink.RecordCount > 0 THEN			
+				Internal.State := exASSETINT_STATE_UI_BUFFER;					
+			END_IF
+			
+			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
+			Active := TRUE;
+
+		// -------------------------------------------------------------------------------------------
+		// Copy job data from global buffer to job buffer
+		exASSETINT_STATE_UI_BUFFER:
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh job data'), Logger);
+			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
+
+			brsmemset(exLink.MemoryJob, 0, CORE_EVENT_NUM_MAX*SIZEOF(Internal.RecordData));
+			
+			Internal.RecordCount := 0;
+			Internal.y := 0;
+			REPEAT
+				// Check sorting direction
+				IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC THEN
+					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + Internal.y*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+				ELSE
+					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (exLink.RecordCount - Internal.y - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+				END_IF
+					
+				// Only transfer job data
+				IF Internal.RecordData.EventType = RecordTypeJob THEN
+					brsmemcpy(exLink.MemoryJob + Internal.RecordCount*SIZEOF(Internal.RecordData), ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
+
+					Internal.RecordCount := Internal.RecordCount + 1;
+				END_IF
+	  
+				Internal.y := Internal.y + 1;
+					
+				UNTIL (Internal.y = exLink.RecordCount)
+			END_REPEAT;
+			
+			Internal.State := exASSETINT_STATE_UI_DATA;	
+
+		// -------------------------------------------------------------------------------------------
+		// Transfer data from buffer to list array
+		exASSETINT_STATE_UI_DATA:			
+						
+			Internal.x := 0;
+			REPEAT
+				brsmemcpy(ADR(Internal.RecordData), exLink.MemoryJob + (Internal.x + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+				
+				UIConnect.Output.JobStartTime[Internal.x] := Internal.RecordData.TimeStart;
+				UIConnect.Output.JobEndTime[Internal.x] := Internal.RecordData.TimeEnd;
+				UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
+				UIConnect.Output.CurrentUser[Internal.x] := Internal.RecordData.CurrentUser;
+				UIConnect.Output.AdditionalData[Internal.x] := Internal.RecordData.AdditionalData;
+				UIConnect.Output.TotalPieces[Internal.x] := Internal.RecordData.TotalPieces;
+				UIConnect.Output.GoodPieces[Internal.x] := Internal.RecordData.GoodPieces;
+				UIConnect.Output.RejectPieces[Internal.x] := Internal.RecordData.RejectPieces;
+				UIConnect.Output.BadPieceRate[Internal.x] := Internal.RecordData.BadPieceRate;
+				UIConnect.Output.TotalTime[Internal.x] := Internal.RecordData.TotalTime;
+				UIConnect.Output.ScheduledDowntime[Internal.x] := Internal.RecordData.ScheduledDowntime;
+				UIConnect.Output.UnscheduledDowntime[Internal.x] := Internal.RecordData.UnscheduledDowntime;
+				UIConnect.Output.Uptime[Internal.x] := Internal.RecordData.Uptime;
+				UIConnect.Output.GoodProductionTime[Internal.x] := Internal.RecordData.GoodProductionTime;
+				UIConnect.Output.NominalProductionTime[Internal.x] := Internal.RecordData.NominalProductionTime;
+				UIConnect.Output.NominalProductionRate[Internal.x] := Internal.RecordData.NominalProductionTimeRate;
+				UIConnect.Output.UnscheduledDowntimeRate[Internal.x] := Internal.RecordData.UnscheduledDowntimeRate;
+				UIConnect.Output.ProductionRate[Internal.x] := Internal.RecordData.CurrentProductionRate;
+				UIConnect.Output.ShiftName[Internal.x] := Internal.RecordData.ShiftName;
+
+				Internal.x := Internal.x + 1;
+				
+				UNTIL (Internal.x = UI_JOB_LIST_IDX) OR (Internal.x + Internal.RecordStart > Internal.RecordCount)
+			END_REPEAT;
+											
+			exLink.RefreshJobUI := FALSE;
+			UIConnect.Output.PageUp := FALSE;
+			UIConnect.Output.PageDown := FALSE;
+			UIConnect.Output.StepUp := FALSE;
+			UIConnect.Output.StepDown := FALSE;
+
+			Internal.State := exASSETINT_STATE_IDLE;	
+			
+		// -------------------------------------------------------------------------------------------
+		// Error state
 		exASSETINT_STATE_ERROR:		
 			IF EDGEPOS(ErrorReset) THEN
 				Internal.StateError := exASSETINT_STATE_NONE;
@@ -135,7 +175,6 @@ FUNCTION_BLOCK exAssetIntJobListUI
 			END_IF
 	END_CASE;
 END_FUNCTION_BLOCK
-
 
 // -------------------------------------------------------------------------------------------
 // Shift UI function block
@@ -164,7 +203,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 					RETURN;				
 				END_IF
 				// Make sure we have temporary buffer
-				IF exLink.MemoryDb = 0 OR exLink.MemoryShift = 0 OR exLink.MemoryShift = 0 THEN
+				IF exLink.MemoryDb = 0 OR exLink.MemoryShift = 0 THEN
 					// Set status, remember state, go to error state
 					StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, ADR('ERR: no temp memory'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
@@ -180,6 +219,8 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 				Error := FALSE;
 				StatusID := ERR_OK;
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
+				
+				UISetup.OutputListSize := UI_SHIFT_LIST_IDX;
 
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
@@ -187,83 +228,122 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			// -------------------------------------------------------------------------------------------
 			// Wait for new event
 		exASSETINT_STATE_IDLE:		
-			// Reset record start when sorting direction changed
-			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld THEN
-				IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC THEN
-					Internal.RecordStart := 0;
-				ELSE
-					Internal.RecordStart := exLink.RecordCount;
-				END_IF
+			// Handle sorting direction change
+			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
+				Internal.State := exASSETINT_STATE_UI_BUFFER;
 			END_IF
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
+			
+			// Handle page up and down
+			IF UIConnect.Output.PageUp THEN
+				Internal.RecordStart := Internal.RecordStart - UI_SHIFT_LIST_IDX;
+				Internal.State := exASSETINT_STATE_UI_DATA;					
+			END_IF
+			IF UIConnect.Output.PageDown THEN
+				Internal.RecordStart := Internal.RecordStart + UI_SHIFT_LIST_IDX;					
+				Internal.State := exASSETINT_STATE_UI_DATA;					
+			END_IF
+			
+			// Handle step up and down
+			IF UIConnect.Output.StepUp THEN
+				Internal.RecordStart := Internal.RecordStart - 1;
+				Internal.State := exASSETINT_STATE_UI_DATA;					
+			END_IF
+			IF UIConnect.Output.StepDown THEN
+				Internal.RecordStart := Internal.RecordStart + 1;					
+				Internal.State := exASSETINT_STATE_UI_DATA;					
+			END_IF
+			
+			// Correction for step/page up/down
+			IF Internal.RecordStart + UI_SHIFT_LIST_IDX > Internal.RecordCount THEN
+				Internal.RecordStart := Internal.RecordCount - UI_SHIFT_LIST_IDX;
+			END_IF
+			IF Internal.RecordStart < 0 THEN
+				Internal.RecordStart := 0;
+			END_IF
 				
 			// Wait for core task to call update command
-			IF exLink.RefreshShiftUI AND exLink.RecordCount > 0 THEN
-				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh shift data'), Logger);
-				
-				// Make correction for DESC sorting when record count changes
-				IF UISetup.SortingStartTime = exASSETINT_SORTING_DESC AND Internal.RecordStart + exLink.RecordCount - Internal.RecordCountOld <= exLink.RecordCount THEN
-					Internal.RecordStart := Internal.RecordStart + exLink.RecordCount - Internal.RecordCountOld;
-				END_IF
-				Internal.RecordCountOld := exLink.RecordCount;
-				
-				// Clear array and copy new data
-				brsmemset(ADR(UIConnect.Output), 0, SIZEOF(UIConnect.Output));
-				
-				// Check how much data is left for ascending
-				IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC AND Internal.RecordStart + UI_SHIFT_LIST_IDX > exLink.RecordCount  THEN
-					Internal.RecordNum := exLink.RecordCount - Internal.RecordStart - 1;
-				// Check how much data is left for descending
-				ELSIF UISetup.SortingStartTime = exASSETINT_SORTING_DESC AND Internal.RecordStart <= UI_SHIFT_LIST_IDX THEN
-					Internal.RecordNum := Internal.RecordStart;
-				ELSE
-					Internal.RecordNum := UI_SHIFT_LIST_IDX;
-				END_IF
-						
-				Internal.x := 0;
-				Internal.y := 0;
-				REPEAT
-					IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC THEN
-						brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (Internal.y + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-					ELSE
-						brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (Internal.RecordStart - Internal.y - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-					END_IF
-					
-					// Only transfer job data
-					IF Internal.RecordData.EventType = RecordTypeShift THEN
-						UIConnect.Output.StartTime[Internal.x] := Internal.RecordData.TimeStart;
-						UIConnect.Output.EndTime[Internal.x] := Internal.RecordData.TimeEnd;
-						UIConnect.Output.ShiftName[Internal.x] := Internal.RecordData.ShiftName;
-						UIConnect.Output.CurrentUser[Internal.x] := Internal.RecordData.CurrentUser;
-						UIConnect.Output.AdditionalData[Internal.x] := Internal.RecordData.AdditionalData;
-						UIConnect.Output.TargetPieces[Internal.x] := Internal.RecordData.TargetPieces;
-						UIConnect.Output.TotalPieces[Internal.x] := Internal.RecordData.TotalPieces;
-						UIConnect.Output.GoodPieces[Internal.x] := Internal.RecordData.GoodPieces;
-						UIConnect.Output.RejectPieces[Internal.x] := Internal.RecordData.RejectPieces;
-						UIConnect.Output.BadPieceRate[Internal.x] := Internal.RecordData.BadPieceRate;
-						UIConnect.Output.TotalTime[Internal.x] := Internal.RecordData.TotalTime;
-						UIConnect.Output.ScheduledDowntime[Internal.x] := Internal.RecordData.ScheduledDowntime;
-						UIConnect.Output.UnscheduledDowntime[Internal.x] := Internal.RecordData.UnscheduledDowntime;
-						UIConnect.Output.Uptime[Internal.x] := Internal.RecordData.Uptime;
-						UIConnect.Output.GoodProductionTime[Internal.x] := Internal.RecordData.GoodProductionTime;
-						UIConnect.Output.NominalProductionTime[Internal.x] := Internal.RecordData.NominalProductionTime;
-						UIConnect.Output.NominalProductionRate[Internal.x] := Internal.RecordData.NominalProductionTimeRate;
-						UIConnect.Output.UnscheduledDowntimeRate[Internal.x] := Internal.RecordData.UnscheduledDowntimeRate;
-						UIConnect.Output.ProductionRate[Internal.x] := Internal.RecordData.CurrentProductionRate;
-						UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
-
-						Internal.x := Internal.x + 1;
-					END_IF
-					
-					Internal.y := Internal.y + 1;
-					
-					UNTIL (Internal.y = Internal.RecordNum)
-				END_REPEAT;
-								
+			IF exLink.RefreshShiftUI AND exLink.RecordCount > 0 THEN			
+				Internal.State := exASSETINT_STATE_UI_BUFFER;					
 			END_IF
-			exLink.RefreshShiftUI := FALSE;
+			
+			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
 			Active := TRUE;
 
+			// -------------------------------------------------------------------------------------------
+			// Copy shift data from global buffer to shift buffer
+		exASSETINT_STATE_UI_BUFFER:
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh shift data'), Logger);
+			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
+
+			brsmemset(exLink.MemoryShift, 0, CORE_EVENT_NUM_MAX*SIZEOF(Internal.RecordData));
+			
+			Internal.RecordCount := 0;
+			Internal.y := 0;
+			REPEAT
+				// Check sorting direction
+				IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC THEN
+					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + Internal.y*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+				ELSE
+					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (exLink.RecordCount - Internal.y - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+				END_IF
+					
+				// Only transfer shift data
+				IF Internal.RecordData.EventType = RecordTypeShift THEN
+					brsmemcpy(exLink.MemoryShift + Internal.RecordCount*SIZEOF(Internal.RecordData), ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
+
+					Internal.RecordCount := Internal.RecordCount + 1;
+				END_IF
+	  
+				Internal.y := Internal.y + 1;
+					
+				UNTIL (Internal.y = exLink.RecordCount)
+			END_REPEAT;
+			
+			Internal.State := exASSETINT_STATE_UI_DATA;	
+
+			// -------------------------------------------------------------------------------------------
+			// Transfer data from buffer to list array
+		exASSETINT_STATE_UI_DATA:	
+						
+			Internal.x := 0;
+			REPEAT
+				brsmemcpy(ADR(Internal.RecordData), exLink.MemoryShift + (Internal.x + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+				
+				UIConnect.Output.StartTime[Internal.x] := Internal.RecordData.TimeStart;
+				UIConnect.Output.EndTime[Internal.x] := Internal.RecordData.TimeEnd;
+				UIConnect.Output.ShiftName[Internal.x] := Internal.RecordData.ShiftName;
+				UIConnect.Output.CurrentUser[Internal.x] := Internal.RecordData.CurrentUser;
+				UIConnect.Output.AdditionalData[Internal.x] := Internal.RecordData.AdditionalData;
+				UIConnect.Output.TargetPieces[Internal.x] := Internal.RecordData.TargetPieces;
+				UIConnect.Output.TotalPieces[Internal.x] := Internal.RecordData.TotalPieces;
+				UIConnect.Output.GoodPieces[Internal.x] := Internal.RecordData.GoodPieces;
+				UIConnect.Output.RejectPieces[Internal.x] := Internal.RecordData.RejectPieces;
+				UIConnect.Output.BadPieceRate[Internal.x] := Internal.RecordData.BadPieceRate;
+				UIConnect.Output.TotalTime[Internal.x] := Internal.RecordData.TotalTime;
+				UIConnect.Output.ScheduledDowntime[Internal.x] := Internal.RecordData.ScheduledDowntime;
+				UIConnect.Output.UnscheduledDowntime[Internal.x] := Internal.RecordData.UnscheduledDowntime;
+				UIConnect.Output.Uptime[Internal.x] := Internal.RecordData.Uptime;
+				UIConnect.Output.GoodProductionTime[Internal.x] := Internal.RecordData.GoodProductionTime;
+				UIConnect.Output.NominalProductionTime[Internal.x] := Internal.RecordData.NominalProductionTime;
+				UIConnect.Output.NominalProductionRate[Internal.x] := Internal.RecordData.NominalProductionTimeRate;
+				UIConnect.Output.UnscheduledDowntimeRate[Internal.x] := Internal.RecordData.UnscheduledDowntimeRate;
+				UIConnect.Output.ProductionRate[Internal.x] := Internal.RecordData.CurrentProductionRate;
+				UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
+
+				Internal.x := Internal.x + 1;
+				
+				UNTIL (Internal.x = UI_SHIFT_LIST_IDX) OR (Internal.x + Internal.RecordStart > Internal.RecordCount)
+			END_REPEAT;
+											
+			exLink.RefreshShiftUI := FALSE;
+			UIConnect.Output.PageUp := FALSE;
+			UIConnect.Output.PageDown := FALSE;
+			UIConnect.Output.StepUp := FALSE;
+			UIConnect.Output.StepDown := FALSE;
+			
+			Internal.State := exASSETINT_STATE_IDLE;	
+			
 			// -------------------------------------------------------------------------------------------
 			// Error state
 		exASSETINT_STATE_ERROR:		
@@ -273,4 +353,5 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			END_IF
 	END_CASE;
 END_FUNCTION_BLOCK
+
 

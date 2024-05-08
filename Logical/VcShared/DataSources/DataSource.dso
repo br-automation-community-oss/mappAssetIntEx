@@ -1650,114 +1650,6 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="RejectPieces[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[10]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[11]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[12]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[13]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[14]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[15]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[16]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[17]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[18]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[19]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
           </DataPoint>
           <DataPoint Name="TotalPieces">
             <Property Name="ConnectedBySharedResource" Value="False"/>
@@ -1803,15 +1695,6 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="TotalPieces[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
             <DataPoint Name="TotalPieces[1]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
@@ -1840,105 +1723,6 @@
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
             <DataPoint Name="TotalPieces[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[10]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[11]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[12]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[13]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[14]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[15]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[16]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[17]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[18]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="TotalPieces[19]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -2037,126 +1821,6 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="STRING"/>
             </DataPoint>
-            <DataPoint Name="CurrentUser[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[10]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[11]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[12]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[13]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[14]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[15]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[16]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[17]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[18]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[19]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
           </DataPoint>
           <DataPoint Name="JobStartTime">
             <Property Name="ConnectedBySharedResource" Value="False"/>
@@ -2221,114 +1885,6 @@
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
             <DataPoint Name="JobStartTime[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[10]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[11]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[12]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[13]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[14]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[15]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[16]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[17]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[18]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobStartTime[19]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -2434,150 +1990,6 @@
               <Property Name="VCType" Value="SCALED"/>
             </DataPoint>
             <DataPoint Name="BadPieceRate[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[10]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[11]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[12]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[13]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[14]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[15]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[16]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[17]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[18]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[19]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="DPLimit" Value="None"/>
@@ -2811,378 +2223,6 @@
               </DataPoint>
             </Folder>
             <Folder Name="Uptime[7]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[8]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[9]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[10]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[11]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[12]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[13]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[14]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[15]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[16]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[17]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[18]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[19]">
               <Property Name="Description" Value=""/>
               <Property Name="FolderType" Value="Struct"/>
               <DataPoint Name="Hours">
@@ -3285,114 +2325,6 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="JobEndTime[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[10]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[11]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[12]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[13]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[14]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[15]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[16]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[17]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[18]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="JobEndTime[19]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
           </DataPoint>
           <DataPoint Name="GoodPieces">
             <Property Name="ConnectedBySharedResource" Value="False"/>
@@ -3466,114 +2398,6 @@
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
             <DataPoint Name="GoodPieces[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[10]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[11]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[12]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[13]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[14]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[15]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[16]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[17]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[18]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[19]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -3672,126 +2496,42 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="STRING"/>
             </DataPoint>
-            <DataPoint Name="JobName[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[10]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[11]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[12]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[13]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[14]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[15]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[16]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[17]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[18]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[19]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
+          </DataPoint>
+          <DataPoint Name="PageUp">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="BOOL"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="BOOL"/>
+          </DataPoint>
+          <DataPoint Name="PageDown">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="BOOL"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="BOOL"/>
+          </DataPoint>
+          <DataPoint Name="StepUp">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="BOOL"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="BOOL"/>
+          </DataPoint>
+          <DataPoint Name="StepDown">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="BOOL"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="BOOL"/>
           </DataPoint>
         </Folder>
       </Folder>
@@ -3804,37 +2544,6 @@
           <Folder Name="Uptime">
             <Property Name="Description" Value=""/>
             <Property Name="FolderType" Value="Struct[0..19]"/>
-            <Folder Name="Uptime[7]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
             <Folder Name="Uptime[0]">
               <Property Name="Description" Value=""/>
               <Property Name="FolderType" Value="Struct"/>
@@ -3866,37 +2575,6 @@
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
             </Folder>
-            <Folder Name="Uptime[4]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
             <Folder Name="Uptime[1]">
               <Property Name="Description" Value=""/>
               <Property Name="FolderType" Value="Struct"/>
@@ -3919,6 +2597,99 @@
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
               <DataPoint Name="Minutes">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="USINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+            </Folder>
+            <Folder Name="Uptime[2]">
+              <Property Name="Description" Value=""/>
+              <Property Name="FolderType" Value="Struct"/>
+              <DataPoint Name="Minutes">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="USINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="Seconds">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="USINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="Hours">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+            </Folder>
+            <Folder Name="Uptime[3]">
+              <Property Name="Description" Value=""/>
+              <Property Name="FolderType" Value="Struct"/>
+              <DataPoint Name="Hours">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="Minutes">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="USINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="Seconds">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="USINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+            </Folder>
+            <Folder Name="Uptime[4]">
+              <Property Name="Description" Value=""/>
+              <Property Name="FolderType" Value="Struct"/>
+              <DataPoint Name="Hours">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="Minutes">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="USINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="Seconds">
                 <Property Name="ConnectedBySharedResource" Value="False"/>
                 <Property Name="ConnectingVisus" Value="Vis"/>
                 <Property Name="Description" Value=""/>
@@ -3959,80 +2730,9 @@
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
             </Folder>
-            <Folder Name="Uptime[8]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[2]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
             <Folder Name="Uptime[6]">
               <Property Name="Description" Value=""/>
               <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
               <DataPoint Name="Hours">
                 <Property Name="ConnectedBySharedResource" Value="False"/>
                 <Property Name="ConnectingVisus" Value="Vis"/>
@@ -4047,28 +2747,6 @@
                 <Property Name="ConnectingVisus" Value="Vis"/>
                 <Property Name="Description" Value=""/>
                 <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-            </Folder>
-            <Folder Name="Uptime[9]">
-              <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Minutes">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
-              <DataPoint Name="Hours">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="UDINT"/>
                 <Property Name="UpdateTime" Value="Default"/>
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
@@ -4083,18 +2761,9 @@
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
             </Folder>
-            <Folder Name="Uptime[3]">
+            <Folder Name="Uptime[7]">
               <Property Name="Description" Value=""/>
               <Property Name="FolderType" Value="Struct"/>
-              <DataPoint Name="Seconds">
-                <Property Name="ConnectedBySharedResource" Value="False"/>
-                <Property Name="ConnectingVisus" Value="Vis"/>
-                <Property Name="Description" Value=""/>
-                <Property Name="PLCType" Value="USINT"/>
-                <Property Name="UpdateTime" Value="Default"/>
-                <Property Name="UserID" Value="None"/>
-                <Property Name="VCType" Value="INTEGER"/>
-              </DataPoint>
               <DataPoint Name="Hours">
                 <Property Name="ConnectedBySharedResource" Value="False"/>
                 <Property Name="ConnectingVisus" Value="Vis"/>
@@ -4105,6 +2774,15 @@
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
               <DataPoint Name="Minutes">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="USINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="Seconds">
                 <Property Name="ConnectedBySharedResource" Value="False"/>
                 <Property Name="ConnectingVisus" Value="Vis"/>
                 <Property Name="Description" Value=""/>
@@ -4123,43 +2801,7 @@
             <Property Name="UpdateTime" Value="Default"/>
             <Property Name="UserID" Value="None"/>
             <Property Name="VCType" Value="INTEGER[]"/>
-            <DataPoint Name="EndTime[5]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="EndTime[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="EndTime[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
             <DataPoint Name="EndTime[2]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="EndTime[3]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4186,6 +2828,33 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
+            <DataPoint Name="EndTime[3]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="DATE_AND_TIME"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+            <DataPoint Name="EndTime[4]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="DATE_AND_TIME"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+            <DataPoint Name="EndTime[5]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="DATE_AND_TIME"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
             <DataPoint Name="EndTime[6]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
@@ -4204,15 +2873,6 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="EndTime[4]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
           </DataPoint>
           <DataPoint Name="ShiftName">
             <Property Name="ConnectedBySharedResource" Value="False"/>
@@ -4223,77 +2883,7 @@
             <Property Name="UpdateTime" Value="Default"/>
             <Property Name="UserID" Value="None"/>
             <Property Name="VCType" Value="STRING[]"/>
-            <DataPoint Name="ShiftName[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="ShiftName[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="ShiftName[3]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="ShiftName[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="ShiftName[5]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
             <DataPoint Name="ShiftName[0]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="ShiftName[4]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="ShiftName[6]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4323,6 +2913,56 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="STRING"/>
             </DataPoint>
+            <DataPoint Name="ShiftName[3]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="ShiftName[4]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="ShiftName[5]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="ShiftName[6]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="ShiftName[7]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
           </DataPoint>
           <DataPoint Name="StartTime">
             <Property Name="ConnectedBySharedResource" Value="False"/>
@@ -4332,15 +2972,6 @@
             <Property Name="UpdateTime" Value="Default"/>
             <Property Name="UserID" Value="None"/>
             <Property Name="VCType" Value="INTEGER[]"/>
-            <DataPoint Name="StartTime[5]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
             <DataPoint Name="StartTime[0]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
@@ -4359,16 +2990,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="StartTime[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="StartTime[7]">
+            <DataPoint Name="StartTime[2]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4386,7 +3008,16 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="StartTime[8]">
+            <DataPoint Name="StartTime[4]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="DATE_AND_TIME"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+            <DataPoint Name="StartTime[5]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4404,16 +3035,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="StartTime[4]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="StartTime[2]">
+            <DataPoint Name="StartTime[7]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4431,15 +3053,6 @@
             <Property Name="UpdateTime" Value="Default"/>
             <Property Name="UserID" Value="None"/>
             <Property Name="VCType" Value="INTEGER[]"/>
-            <DataPoint Name="RejectPieces[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
             <DataPoint Name="RejectPieces[0]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
@@ -4467,25 +3080,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="RejectPieces[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
             <DataPoint Name="RejectPieces[3]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="RejectPieces[9]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4521,6 +3116,15 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
+            <DataPoint Name="RejectPieces[7]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="UDINT"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
           </DataPoint>
           <DataPoint Name="JobName">
             <Property Name="ConnectedBySharedResource" Value="False"/>
@@ -4531,66 +3135,6 @@
             <Property Name="UpdateTime" Value="Default"/>
             <Property Name="UserID" Value="None"/>
             <Property Name="VCType" Value="STRING[]"/>
-            <DataPoint Name="JobName[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[5]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[4]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="JobName[6]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="20"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
             <DataPoint Name="JobName[1]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
@@ -4611,6 +3155,16 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="STRING"/>
             </DataPoint>
+            <DataPoint Name="JobName[2]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
             <DataPoint Name="JobName[3]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
@@ -4621,7 +3175,37 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="STRING"/>
             </DataPoint>
-            <DataPoint Name="JobName[2]">
+            <DataPoint Name="JobName[4]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="JobName[5]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="JobName[6]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="20"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="JobName[7]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4649,25 +3233,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="GoodPieces[6]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
             <DataPoint Name="GoodPieces[1]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[5]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4685,24 +3251,6 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="GoodPieces[4]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
-            <DataPoint Name="GoodPieces[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
             <DataPoint Name="GoodPieces[3]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
@@ -4712,7 +3260,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="GoodPieces[7]">
+            <DataPoint Name="GoodPieces[4]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4721,7 +3269,25 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="GoodPieces[8]">
+            <DataPoint Name="GoodPieces[5]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="UDINT"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+            <DataPoint Name="GoodPieces[6]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="UDINT"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="INTEGER"/>
+            </DataPoint>
+            <DataPoint Name="GoodPieces[7]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4742,79 +3308,7 @@
             <Property Name="UpdateTime" Value="Default"/>
             <Property Name="UserID" Value="None"/>
             <Property Name="VCType" Value="SCALED[]"/>
-            <DataPoint Name="BadPieceRate[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[6]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[4]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[5]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
             <DataPoint Name="BadPieceRate[2]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="DPLimit" Value="None"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL"/>
-              <Property Name="PLCUnit" Value="None"/>
-              <Property Name="UnitGroup" Value="None"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="SCALED"/>
-            </DataPoint>
-            <DataPoint Name="BadPieceRate[3]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="DPLimit" Value="None"/>
@@ -4850,7 +3344,55 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="SCALED"/>
             </DataPoint>
-            <DataPoint Name="BadPieceRate[8]">
+            <DataPoint Name="BadPieceRate[3]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="DPLimit" Value="None"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="REAL"/>
+              <Property Name="PLCUnit" Value="None"/>
+              <Property Name="UnitGroup" Value="None"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="SCALED"/>
+            </DataPoint>
+            <DataPoint Name="BadPieceRate[4]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="DPLimit" Value="None"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="REAL"/>
+              <Property Name="PLCUnit" Value="None"/>
+              <Property Name="UnitGroup" Value="None"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="SCALED"/>
+            </DataPoint>
+            <DataPoint Name="BadPieceRate[5]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="DPLimit" Value="None"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="REAL"/>
+              <Property Name="PLCUnit" Value="None"/>
+              <Property Name="UnitGroup" Value="None"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="SCALED"/>
+            </DataPoint>
+            <DataPoint Name="BadPieceRate[6]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="DPLimit" Value="None"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="REAL"/>
+              <Property Name="PLCUnit" Value="None"/>
+              <Property Name="UnitGroup" Value="None"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="SCALED"/>
+            </DataPoint>
+            <DataPoint Name="BadPieceRate[7]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="DPLimit" Value="None"/>
@@ -4872,67 +3414,7 @@
             <Property Name="UpdateTime" Value="Default"/>
             <Property Name="UserID" Value="None"/>
             <Property Name="VCType" Value="STRING[]"/>
-            <DataPoint Name="CurrentUser[4]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
             <DataPoint Name="CurrentUser[1]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[9]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[8]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[7]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[6]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING"/>
-              <Property Name="StringLength" Value="50"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="STRING"/>
-            </DataPoint>
-            <DataPoint Name="CurrentUser[5]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -4972,6 +3454,46 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="STRING"/>
             </DataPoint>
+            <DataPoint Name="CurrentUser[4]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="50"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="CurrentUser[5]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="50"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="CurrentUser[6]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="50"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
+            <DataPoint Name="CurrentUser[7]">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="STRING"/>
+              <Property Name="StringLength" Value="50"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="STRING"/>
+            </DataPoint>
           </DataPoint>
           <DataPoint Name="TotalPieces">
             <Property Name="ConnectedBySharedResource" Value="False"/>
@@ -4999,7 +3521,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="TotalPieces[3]">
+            <DataPoint Name="TotalPieces[2]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -5008,7 +3530,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="TotalPieces[2]">
+            <DataPoint Name="TotalPieces[3]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -5026,7 +3548,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="TotalPieces[7]">
+            <DataPoint Name="TotalPieces[5]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -5044,7 +3566,7 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="TotalPieces[9]">
+            <DataPoint Name="TotalPieces[7]">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="ConnectingVisus" Value="Vis"/>
               <Property Name="Description" Value=""/>
@@ -5053,15 +3575,42 @@
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER"/>
             </DataPoint>
-            <DataPoint Name="TotalPieces[5]">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Vis"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
+          </DataPoint>
+          <DataPoint Name="PageUp">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="BOOL"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="BOOL"/>
+          </DataPoint>
+          <DataPoint Name="StepUp">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="BOOL"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="BOOL"/>
+          </DataPoint>
+          <DataPoint Name="StepDown">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="BOOL"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="BOOL"/>
+          </DataPoint>
+          <DataPoint Name="PageDown">
+            <Property Name="ConnectedBySharedResource" Value="False"/>
+            <Property Name="ConnectingVisus" Value="Vis"/>
+            <Property Name="Description" Value=""/>
+            <Property Name="PLCType" Value="BOOL"/>
+            <Property Name="UpdateTime" Value="Default"/>
+            <Property Name="UserID" Value="None"/>
+            <Property Name="VCType" Value="BOOL"/>
           </DataPoint>
         </Folder>
       </Folder>
@@ -9113,7 +7662,7 @@
             <DataPoint Name="JobStartTime">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME[0..19]"/>
+              <Property Name="PLCType" Value="DATE_AND_TIME[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -9180,11 +7729,20 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="JobStartTime[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="JobEndTime">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME[0..19]"/>
+              <Property Name="PLCType" Value="DATE_AND_TIME[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -9251,11 +7809,20 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="JobEndTime[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="JobName">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING[0..19]"/>
+              <Property Name="PLCType" Value="STRING[0..8]"/>
               <Property Name="StringLength" Value="20"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
@@ -9330,11 +7897,21 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="STRING"/>
               </DataPoint>
+              <DataPoint Name="JobName[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="CurrentUser">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING[0..19]"/>
+              <Property Name="PLCType" Value="STRING[0..8]"/>
               <Property Name="StringLength" Value="50"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
@@ -9409,11 +7986,21 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="STRING"/>
               </DataPoint>
+              <DataPoint Name="CurrentUser[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="50"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="TotalPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..19]"/>
+              <Property Name="PLCType" Value="UDINT[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -9480,11 +8067,20 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="TotalPieces[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="GoodPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..19]"/>
+              <Property Name="PLCType" Value="UDINT[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -9551,11 +8147,20 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="GoodPieces[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="RejectPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..19]"/>
+              <Property Name="PLCType" Value="UDINT[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -9622,12 +8227,21 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="RejectPieces[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="BadPieceRate">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="DPLimit" Value="None"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL[0..19]"/>
+              <Property Name="PLCType" Value="REAL[0..8]"/>
               <Property Name="PLCUnit" Value="None"/>
               <Property Name="UnitGroup" Value="None"/>
               <Property Name="UpdateTime" Value="Default"/>
@@ -9717,10 +8331,22 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="SCALED"/>
               </DataPoint>
+              <DataPoint Name="BadPieceRate[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="DPLimit" Value="None"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="REAL"/>
+                <Property Name="PLCUnit" Value="None"/>
+                <Property Name="UnitGroup" Value="None"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="SCALED"/>
+              </DataPoint>
             </DataPoint>
             <Folder Name="Uptime">
               <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct[0..19]"/>
+              <Property Name="FolderType" Value="Struct[0..8]"/>
               <Folder Name="Uptime[0]">
                 <Property Name="Description" Value=""/>
                 <Property Name="FolderType" Value="Struct"/>
@@ -9938,7 +8564,74 @@
                   <Property Name="VCType" Value="INTEGER"/>
                 </DataPoint>
               </Folder>
+              <Folder Name="Uptime[7]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="Hours">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="UDINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Minutes">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Seconds">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+              </Folder>
             </Folder>
+            <DataPoint Name="PageUp">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="BOOL"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="BOOL"/>
+            </DataPoint>
+            <DataPoint Name="PageDown">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="BOOL"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="BOOL"/>
+            </DataPoint>
+            <DataPoint Name="StepUp">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="BOOL"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="BOOL"/>
+            </DataPoint>
+            <DataPoint Name="StepDown">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="BOOL"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="BOOL"/>
+            </DataPoint>
           </Folder>
         </Folder>
         <DataPoint Name="LoggerCore">
@@ -9960,7 +8653,7 @@
             <DataPoint Name="StartTime">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME[0..19]"/>
+              <Property Name="PLCType" Value="DATE_AND_TIME[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -9991,11 +8684,56 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="StartTime[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="StartTime[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="StartTime[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="StartTime[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="StartTime[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="EndTime">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="DATE_AND_TIME[0..19]"/>
+              <Property Name="PLCType" Value="DATE_AND_TIME[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -10026,11 +8764,56 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="EndTime[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="EndTime[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="EndTime[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="EndTime[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="EndTime[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="DATE_AND_TIME"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="ShiftName">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING[0..19]"/>
+              <Property Name="PLCType" Value="STRING[0..8]"/>
               <Property Name="StringLength" Value="20"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
@@ -10065,11 +8848,61 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="STRING"/>
               </DataPoint>
+              <DataPoint Name="ShiftName[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="ShiftName[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="ShiftName[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="ShiftName[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="ShiftName[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="CurrentUser">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING[0..19]"/>
+              <Property Name="PLCType" Value="STRING[0..8]"/>
               <Property Name="StringLength" Value="50"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
@@ -10104,11 +8937,61 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="STRING"/>
               </DataPoint>
+              <DataPoint Name="CurrentUser[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="50"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="CurrentUser[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="50"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="CurrentUser[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="50"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="CurrentUser[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="50"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="CurrentUser[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="50"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="TotalPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..19]"/>
+              <Property Name="PLCType" Value="UDINT[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -10139,11 +9022,56 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="TotalPieces[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="TotalPieces[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="TotalPieces[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="TotalPieces[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="TotalPieces[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="GoodPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..19]"/>
+              <Property Name="PLCType" Value="UDINT[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -10174,11 +9102,56 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="GoodPieces[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="GoodPieces[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="GoodPieces[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="GoodPieces[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="GoodPieces[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="RejectPieces">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UDINT[0..19]"/>
+              <Property Name="PLCType" Value="UDINT[0..8]"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
               <Property Name="VCType" Value="INTEGER[]"/>
@@ -10209,12 +9182,57 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="INTEGER"/>
               </DataPoint>
+              <DataPoint Name="RejectPieces[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="RejectPieces[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="RejectPieces[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="RejectPieces[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
+              <DataPoint Name="RejectPieces[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="UDINT"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="INTEGER"/>
+              </DataPoint>
             </DataPoint>
             <DataPoint Name="BadPieceRate">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="DPLimit" Value="None"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="REAL[0..19]"/>
+              <Property Name="PLCType" Value="REAL[0..8]"/>
               <Property Name="PLCUnit" Value="None"/>
               <Property Name="UnitGroup" Value="None"/>
               <Property Name="UpdateTime" Value="Default"/>
@@ -10256,10 +9274,70 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="SCALED"/>
               </DataPoint>
+              <DataPoint Name="BadPieceRate[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="DPLimit" Value="None"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="REAL"/>
+                <Property Name="PLCUnit" Value="None"/>
+                <Property Name="UnitGroup" Value="None"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="SCALED"/>
+              </DataPoint>
+              <DataPoint Name="BadPieceRate[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="DPLimit" Value="None"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="REAL"/>
+                <Property Name="PLCUnit" Value="None"/>
+                <Property Name="UnitGroup" Value="None"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="SCALED"/>
+              </DataPoint>
+              <DataPoint Name="BadPieceRate[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="DPLimit" Value="None"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="REAL"/>
+                <Property Name="PLCUnit" Value="None"/>
+                <Property Name="UnitGroup" Value="None"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="SCALED"/>
+              </DataPoint>
+              <DataPoint Name="BadPieceRate[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="DPLimit" Value="None"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="REAL"/>
+                <Property Name="PLCUnit" Value="None"/>
+                <Property Name="UnitGroup" Value="None"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="SCALED"/>
+              </DataPoint>
+              <DataPoint Name="BadPieceRate[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="DPLimit" Value="None"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="REAL"/>
+                <Property Name="PLCUnit" Value="None"/>
+                <Property Name="UnitGroup" Value="None"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="SCALED"/>
+              </DataPoint>
             </DataPoint>
             <Folder Name="Uptime">
               <Property Name="Description" Value=""/>
-              <Property Name="FolderType" Value="Struct[0..19]"/>
+              <Property Name="FolderType" Value="Struct[0..8]"/>
               <Folder Name="Uptime[0]">
                 <Property Name="Description" Value=""/>
                 <Property Name="FolderType" Value="Struct"/>
@@ -10353,11 +9431,166 @@
                   <Property Name="VCType" Value="INTEGER"/>
                 </DataPoint>
               </Folder>
+              <Folder Name="Uptime[3]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="Hours">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="UDINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Minutes">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Seconds">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+              </Folder>
+              <Folder Name="Uptime[4]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="Hours">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="UDINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Minutes">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Seconds">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+              </Folder>
+              <Folder Name="Uptime[5]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="Hours">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="UDINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Minutes">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Seconds">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+              </Folder>
+              <Folder Name="Uptime[6]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="Hours">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="UDINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Minutes">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Seconds">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+              </Folder>
+              <Folder Name="Uptime[7]">
+                <Property Name="Description" Value=""/>
+                <Property Name="FolderType" Value="Struct"/>
+                <DataPoint Name="Hours">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="UDINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Minutes">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+                <DataPoint Name="Seconds">
+                  <Property Name="ConnectedBySharedResource" Value="False"/>
+                  <Property Name="ConnectingVisus" Value="Vis"/>
+                  <Property Name="Description" Value=""/>
+                  <Property Name="PLCType" Value="USINT"/>
+                  <Property Name="UpdateTime" Value="Default"/>
+                  <Property Name="UserID" Value="None"/>
+                  <Property Name="VCType" Value="INTEGER"/>
+                </DataPoint>
+              </Folder>
             </Folder>
             <DataPoint Name="JobName">
               <Property Name="ConnectedBySharedResource" Value="False"/>
               <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="STRING[0..19]"/>
+              <Property Name="PLCType" Value="STRING[0..8]"/>
               <Property Name="StringLength" Value="20"/>
               <Property Name="UpdateTime" Value="Default"/>
               <Property Name="UserID" Value="None"/>
@@ -10392,6 +9625,92 @@
                 <Property Name="UserID" Value="None"/>
                 <Property Name="VCType" Value="STRING"/>
               </DataPoint>
+              <DataPoint Name="JobName[3]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="JobName[4]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="JobName[5]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="JobName[6]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+              <DataPoint Name="JobName[7]">
+                <Property Name="ConnectedBySharedResource" Value="False"/>
+                <Property Name="ConnectingVisus" Value="Vis"/>
+                <Property Name="Description" Value=""/>
+                <Property Name="PLCType" Value="STRING"/>
+                <Property Name="StringLength" Value="20"/>
+                <Property Name="UpdateTime" Value="Default"/>
+                <Property Name="UserID" Value="None"/>
+                <Property Name="VCType" Value="STRING"/>
+              </DataPoint>
+            </DataPoint>
+            <DataPoint Name="PageUp">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="BOOL"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="BOOL"/>
+            </DataPoint>
+            <DataPoint Name="StepUp">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="BOOL"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="BOOL"/>
+            </DataPoint>
+            <DataPoint Name="StepDown">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="BOOL"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="BOOL"/>
+            </DataPoint>
+            <DataPoint Name="PageDown">
+              <Property Name="ConnectedBySharedResource" Value="False"/>
+              <Property Name="ConnectingVisus" Value="Vis"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="PLCType" Value="BOOL"/>
+              <Property Name="UpdateTime" Value="Default"/>
+              <Property Name="UserID" Value="None"/>
+              <Property Name="VCType" Value="BOOL"/>
             </DataPoint>
           </Folder>
         </Folder>
