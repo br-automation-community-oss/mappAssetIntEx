@@ -268,9 +268,7 @@ FUNCTION_BLOCK exAssetIntCore
 				IF exLink.ShiftName <> '' THEN
 					// Collect data for record
 					Internal.RecordData.EventType := RecordTypeShift;
-					Internal.DT_TO_DTStructure_0.hour := UDINT_TO_USINT(TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.Start)/3600000);
-					Internal.DT_TO_DTStructure_0.minute := UDINT_TO_USINT((TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.Start) - Internal.DT_TO_DTStructure_0.hour*3600000)/60000);
-					Internal.RecordData.TimeStart := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
+					Internal.RecordData.TimeStart := exLink.ShiftStart;
 					Internal.DT_TO_DTStructure_0.hour := UDINT_TO_USINT(TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.End)/3600000);
 					Internal.DT_TO_DTStructure_0.minute := UDINT_TO_USINT((TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.End) - Internal.DT_TO_DTStructure_0.hour*3600000)/60000);
 					Internal.RecordData.TimeEnd := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
