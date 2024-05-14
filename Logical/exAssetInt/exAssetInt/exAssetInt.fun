@@ -86,6 +86,8 @@ FUNCTION_BLOCK exAssetIntJobListUI (*mapp function block which can be used for s
 		Internal : {REDUND_UNREPLICABLE} exUIInternalDataType; (*Internal data*)
 		zzEdge00000 : BOOL;
 		zzEdge00001 : BOOL;
+		zzEdge00002 : BOOL;
+		zzEdge00003 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 

@@ -83,7 +83,6 @@ TYPE
 		DT_TO_DTStructure_0 : DTStructure;
 		x : UDINT;
 		y : UDINT;
-		test : BOOL;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 	END_STRUCT;

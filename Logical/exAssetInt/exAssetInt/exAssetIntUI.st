@@ -43,6 +43,16 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				StatusID := ERR_OK;
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
 				
+				UISetup.OutputListSize := UI_SHIFT_LIST_IDX;			
+				UIConnect.Filter.Dialog.LayerStatus := 1;
+				UIConnect.Filter.DefaultLayerStatus := 0;
+				UIConnect.Filter.Dialog.From.Year := 1970;
+				UIConnect.Filter.Dialog.From.Month := 1;
+				UIConnect.Filter.Dialog.From.Day := 1;
+				UIConnect.Filter.Dialog.Until.Year := 1970;
+				UIConnect.Filter.Dialog.Until.Month := 1;
+				UIConnect.Filter.Dialog.Until.Day := 1;
+				
 				UISetup.OutputListSize := UI_JOB_LIST_IDX;
 
 				Internal.State := exASSETINT_STATE_IDLE;
@@ -50,13 +60,56 @@ FUNCTION_BLOCK exAssetIntJobListUI
 
 		// -------------------------------------------------------------------------------------------
 		// Wait for new event
-		exASSETINT_STATE_IDLE:		
+		exASSETINT_STATE_IDLE:
+			// -------------------------------------------------------------------------------------------
+			// Handle dialog window
+			IF EDGEPOS(UIConnect.Filter.ShowDialog) THEN
+				UIConnect.Filter.Dialog.LayerStatus := 0;
+				UIConnect.Filter.DefaultLayerStatus := 2;
+				UIConnect.Filter.ShowDialog := FALSE;
+			END_IF
+			// Dialog is open
+			IF UIConnect.Filter.Dialog.LayerStatus = 0 THEN
+				// Button cancel
+				IF EDGEPOS(UIConnect.Filter.Dialog.Cancel) THEN
+					UIConnect.Filter.Dialog.LayerStatus := 1;
+					UIConnect.Filter.DefaultLayerStatus := 0;
+					UIConnect.Filter.Dialog.Cancel := 0;
+				END_IF
+				// Button ok
+				IF EDGEPOS(UIConnect.Filter.Dialog.Confirm) THEN
+					Internal.DT_TO_DTStructure_0.year := UIConnect.Filter.Dialog.From.Year;
+					Internal.DT_TO_DTStructure_0.month := UIConnect.Filter.Dialog.From.Month;
+					Internal.DT_TO_DTStructure_0.day := UIConnect.Filter.Dialog.From.Day;
+					Internal.DT_TO_DTStructure_0.hour := UIConnect.Filter.Dialog.From.Hour;
+					Internal.DT_TO_DTStructure_0.minute := UIConnect.Filter.Dialog.From.Minute;
+					UIConnect.Filter.Current.From.DateTime := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
+					UIConnect.Filter.Current.From.Enable := UIConnect.Filter.Dialog.From.Enable;
+
+					Internal.DT_TO_DTStructure_0.year := UIConnect.Filter.Dialog.Until.Year;
+					Internal.DT_TO_DTStructure_0.month := UIConnect.Filter.Dialog.Until.Month;
+					Internal.DT_TO_DTStructure_0.day := UIConnect.Filter.Dialog.Until.Day;
+					Internal.DT_TO_DTStructure_0.hour := UIConnect.Filter.Dialog.Until.Hour;
+					Internal.DT_TO_DTStructure_0.minute := UIConnect.Filter.Dialog.Until.Minute;
+					UIConnect.Filter.Current.Until.DateTime := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
+					UIConnect.Filter.Current.Until.Enable := UIConnect.Filter.Dialog.Until.Enable;
+
+					UIConnect.Filter.Dialog.LayerStatus := 1;
+					UIConnect.Filter.DefaultLayerStatus := 0;
+					UIConnect.Filter.Dialog.Confirm := 0;
+					
+					Internal.State := exASSETINT_STATE_UI_BUFFER;
+				END_IF
+			END_IF
+			
+			// -------------------------------------------------------------------------------------------
 			// Handle sorting direction change
 			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
 				Internal.State := exASSETINT_STATE_UI_BUFFER;
 			END_IF
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
+			// -------------------------------------------------------------------------------------------
 			// Handle page up and down
 			IF UIConnect.Output.PageUp THEN
 				Internal.RecordStart := Internal.RecordStart - UI_JOB_LIST_IDX;
@@ -67,6 +120,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				Internal.State := exASSETINT_STATE_UI_DATA;					
 			END_IF
 			
+			// -------------------------------------------------------------------------------------------
 			// Handle step up and down
 			IF UIConnect.Output.StepUp THEN
 				Internal.RecordStart := Internal.RecordStart - 1;
@@ -77,6 +131,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				Internal.State := exASSETINT_STATE_UI_DATA;					
 			END_IF
 			
+			// -------------------------------------------------------------------------------------------
 			// Correction for step/page up/down
 			IF Internal.RecordStart + UI_JOB_LIST_IDX > Internal.RecordCount THEN
 				Internal.RecordStart := Internal.RecordCount - UI_JOB_LIST_IDX;
@@ -85,6 +140,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				Internal.RecordStart := 0;
 			END_IF
 
+			// -------------------------------------------------------------------------------------------
 			// Wait for core task to call update command
 			IF exLink.RefreshJobUI AND exLink.RecordCount > 0 THEN			
 				Internal.State := exASSETINT_STATE_UI_BUFFER;					
@@ -110,12 +166,18 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				ELSE
 					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (exLink.RecordCount - Internal.y - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
 				END_IF
-					
+				
 				// Only transfer job data
 				IF Internal.RecordData.EventType = RecordTypeJob THEN
-					brsmemcpy(exLink.MemoryJob + Internal.RecordCount*SIZEOF(Internal.RecordData), ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
-
-					Internal.RecordCount := Internal.RecordCount + 1;
+					// Only transfer data that matches filter
+					IF (NOT UIConnect.Filter.Current.From.Enable AND NOT UIConnect.Filter.Current.Until.Enable) OR 
+						(UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.From.DateTime <= Internal.RecordData.TimeStart AND NOT UIConnect.Filter.Current.Until.Enable) OR 	
+						(NOT UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.Until.Enable AND UIConnect.Filter.Current.Until.DateTime >= Internal.RecordData.TimeEnd) OR 	
+						(UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.From.DateTime <= Internal.RecordData.TimeStart AND UIConnect.Filter.Current.Until.Enable AND UIConnect.Filter.Current.Until.DateTime >= Internal.RecordData.TimeEnd) THEN	
+						
+						brsmemcpy(exLink.MemoryJob + Internal.RecordCount*SIZEOF(Internal.RecordData), ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
+						Internal.RecordCount := Internal.RecordCount + 1;
+					END_IF
 				END_IF
 	  
 				Internal.y := Internal.y + 1;
@@ -229,6 +291,8 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 				UIConnect.Filter.Dialog.Until.Year := 1970;
 				UIConnect.Filter.Dialog.Until.Month := 1;
 				UIConnect.Filter.Dialog.Until.Day := 1;
+				
+				UISetup.OutputListSize := UI_JOB_LIST_IDX;
 
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
@@ -341,9 +405,6 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 				ELSE
 					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (exLink.RecordCount - Internal.y - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
 				END_IF
-				
-				Internal.test := UIConnect.Filter.Current.From.DateTime >= Internal.RecordData.TimeStart;
-				Internal.test := UIConnect.Filter.Current.Until.DateTime <= Internal.RecordData.TimeEnd;
 				
 				// Only transfer shift data
 				IF Internal.RecordData.EventType = RecordTypeShift THEN
