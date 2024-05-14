@@ -73,7 +73,7 @@ FUNCTION_BLOCK exAssetIntJobListUI (*mapp function block which can be used for s
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
 		Logger : UDINT;
-		UISetup : exAssetIntJobListUISetupType; (*Setup UI connection - must be configured before enabling the FB*) (* *) (*#PAR#; *)
+		UISetup : exAssetIntListUISetupType; (*Setup UI connection - must be configured before enabling the FB*) (* *) (*#PAR#; *)
 		UIConnect : REFERENCE TO exAssetIntJobListUIConnectType; (*Connection structure for VC4 User interface*) (* *) (*#CMD#; *)
 	END_VAR
 	VAR_OUTPUT
@@ -97,7 +97,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI (*mapp function block which can be used for
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
 		Logger : UDINT;
-		UISetup : exAssetIntShiftListUISetupType; (*Setup UI connection - must be configured before enabling the FB*) (* *) (*#PAR#; *)
+		UISetup : exAssetIntListUISetupType; (*Setup UI connection - must be configured before enabling the FB*) (* *) (*#PAR#; *)
 		UIConnect : REFERENCE TO exAssetIntShiftListUIConnectType; (*Connection structure for VC4 User interface*) (* *) (*#CMD#; *)
 	END_VAR
 	VAR_OUTPUT
@@ -283,6 +283,16 @@ FUNCTION_BLOCK ExportEventData
 		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
+
+FUNCTION exAssetIntFilterListUI : UDINT
+	VAR_INPUT
+		Filter : REFERENCE TO exAssetIntUIFilterType;
+		Status : REFERENCE TO exAssetIntUIStatusEnum;
+	END_VAR
+	VAR
+		DT_TO_DTStructure_0 : DTStructure;
+	END_VAR
+END_FUNCTION
 
 FUNCTION InsertEventData : USINT
 	VAR_INPUT

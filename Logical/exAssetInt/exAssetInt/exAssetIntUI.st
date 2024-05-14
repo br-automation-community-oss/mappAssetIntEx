@@ -44,6 +44,8 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
 				
 				UISetup.OutputListSize := UI_SHIFT_LIST_IDX;			
+				UISetup.OutputListSize := UI_JOB_LIST_IDX;
+
 				UIConnect.Filter.Dialog.LayerStatus := 1;
 				UIConnect.Filter.DefaultLayerStatus := 0;
 				UIConnect.Filter.Dialog.From.Year := 1970;
@@ -53,54 +55,18 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				UIConnect.Filter.Dialog.Until.Month := 1;
 				UIConnect.Filter.Dialog.Until.Day := 1;
 				
-				UISetup.OutputListSize := UI_JOB_LIST_IDX;
-
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
 		// Wait for new event
 		exASSETINT_STATE_IDLE:
+			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
+			Active := TRUE;
+
 			// -------------------------------------------------------------------------------------------
 			// Handle dialog window
-			IF EDGEPOS(UIConnect.Filter.ShowDialog) THEN
-				UIConnect.Filter.Dialog.LayerStatus := 0;
-				UIConnect.Filter.DefaultLayerStatus := 2;
-				UIConnect.Filter.ShowDialog := FALSE;
-			END_IF
-			// Dialog is open
-			IF UIConnect.Filter.Dialog.LayerStatus = 0 THEN
-				// Button cancel
-				IF EDGEPOS(UIConnect.Filter.Dialog.Cancel) THEN
-					UIConnect.Filter.Dialog.LayerStatus := 1;
-					UIConnect.Filter.DefaultLayerStatus := 0;
-					UIConnect.Filter.Dialog.Cancel := 0;
-				END_IF
-				// Button ok
-				IF EDGEPOS(UIConnect.Filter.Dialog.Confirm) THEN
-					Internal.DT_TO_DTStructure_0.year := UIConnect.Filter.Dialog.From.Year;
-					Internal.DT_TO_DTStructure_0.month := UIConnect.Filter.Dialog.From.Month;
-					Internal.DT_TO_DTStructure_0.day := UIConnect.Filter.Dialog.From.Day;
-					Internal.DT_TO_DTStructure_0.hour := UIConnect.Filter.Dialog.From.Hour;
-					Internal.DT_TO_DTStructure_0.minute := UIConnect.Filter.Dialog.From.Minute;
-					UIConnect.Filter.Current.From.DateTime := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
-					UIConnect.Filter.Current.From.Enable := UIConnect.Filter.Dialog.From.Enable;
-
-					Internal.DT_TO_DTStructure_0.year := UIConnect.Filter.Dialog.Until.Year;
-					Internal.DT_TO_DTStructure_0.month := UIConnect.Filter.Dialog.Until.Month;
-					Internal.DT_TO_DTStructure_0.day := UIConnect.Filter.Dialog.Until.Day;
-					Internal.DT_TO_DTStructure_0.hour := UIConnect.Filter.Dialog.Until.Hour;
-					Internal.DT_TO_DTStructure_0.minute := UIConnect.Filter.Dialog.Until.Minute;
-					UIConnect.Filter.Current.Until.DateTime := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
-					UIConnect.Filter.Current.Until.Enable := UIConnect.Filter.Dialog.Until.Enable;
-
-					UIConnect.Filter.Dialog.LayerStatus := 1;
-					UIConnect.Filter.DefaultLayerStatus := 0;
-					UIConnect.Filter.Dialog.Confirm := 0;
-					
-					Internal.State := exASSETINT_STATE_UI_BUFFER;
-				END_IF
-			END_IF
+			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status));
 			
 			// -------------------------------------------------------------------------------------------
 			// Handle sorting direction change
@@ -146,11 +112,8 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				Internal.State := exASSETINT_STATE_UI_BUFFER;					
 			END_IF
 			
-			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
-			Active := TRUE;
-
-		// -------------------------------------------------------------------------------------------
-		// Copy job data from global buffer to job buffer
+			// -------------------------------------------------------------------------------------------
+			// Copy job data from global buffer to job buffer
 		exASSETINT_STATE_UI_BUFFER:
 			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh job data'), Logger);
 			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
@@ -192,6 +155,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 		exASSETINT_STATE_UI_DATA:			
 						
 			Internal.x := 0;
+			brsmemset(ADR(UIConnect.Output), 0, SIZEOF(UIConnect.Output));
 			REPEAT
 				brsmemcpy(ADR(Internal.RecordData), exLink.MemoryJob + (Internal.x + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
 				
@@ -297,49 +261,15 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
 
-			// -------------------------------------------------------------------------------------------
-			// Wait for new event
-		exASSETINT_STATE_IDLE:		
+		// -------------------------------------------------------------------------------------------
+		// Wait for new event
+		exASSETINT_STATE_IDLE:	
+			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
+			Active := TRUE;
+
 			// -------------------------------------------------------------------------------------------
 			// Handle dialog window
-			IF EDGEPOS(UIConnect.Filter.ShowDialog) THEN
-				UIConnect.Filter.Dialog.LayerStatus := 0;
-				UIConnect.Filter.DefaultLayerStatus := 2;
-				UIConnect.Filter.ShowDialog := FALSE;
-			END_IF
-			// Dialog is open
-			IF UIConnect.Filter.Dialog.LayerStatus = 0 THEN
-				// Button cancel
-				IF EDGEPOS(UIConnect.Filter.Dialog.Cancel) THEN
-					UIConnect.Filter.Dialog.LayerStatus := 1;
-					UIConnect.Filter.DefaultLayerStatus := 0;
-					UIConnect.Filter.Dialog.Cancel := 0;
-				END_IF
-				// Button ok
-				IF EDGEPOS(UIConnect.Filter.Dialog.Confirm) THEN
-					Internal.DT_TO_DTStructure_0.year := UIConnect.Filter.Dialog.From.Year;
-					Internal.DT_TO_DTStructure_0.month := UIConnect.Filter.Dialog.From.Month;
-					Internal.DT_TO_DTStructure_0.day := UIConnect.Filter.Dialog.From.Day;
-					Internal.DT_TO_DTStructure_0.hour := UIConnect.Filter.Dialog.From.Hour;
-					Internal.DT_TO_DTStructure_0.minute := UIConnect.Filter.Dialog.From.Minute;
-					UIConnect.Filter.Current.From.DateTime := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
-					UIConnect.Filter.Current.From.Enable := UIConnect.Filter.Dialog.From.Enable;
-
-					Internal.DT_TO_DTStructure_0.year := UIConnect.Filter.Dialog.Until.Year;
-					Internal.DT_TO_DTStructure_0.month := UIConnect.Filter.Dialog.Until.Month;
-					Internal.DT_TO_DTStructure_0.day := UIConnect.Filter.Dialog.Until.Day;
-					Internal.DT_TO_DTStructure_0.hour := UIConnect.Filter.Dialog.Until.Hour;
-					Internal.DT_TO_DTStructure_0.minute := UIConnect.Filter.Dialog.Until.Minute;
-					UIConnect.Filter.Current.Until.DateTime := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
-					UIConnect.Filter.Current.Until.Enable := UIConnect.Filter.Dialog.Until.Enable;
-
-					UIConnect.Filter.Dialog.LayerStatus := 1;
-					UIConnect.Filter.DefaultLayerStatus := 0;
-					UIConnect.Filter.Dialog.Confirm := 0;
-					
-					Internal.State := exASSETINT_STATE_UI_BUFFER;
-				END_IF
-			END_IF
+			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status));
 			
 			// -------------------------------------------------------------------------------------------
 			// Handle sorting direction change
@@ -385,9 +315,6 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 				Internal.State := exASSETINT_STATE_UI_BUFFER;					
 			END_IF
 			
-			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
-			Active := TRUE;
-
 			// -------------------------------------------------------------------------------------------
 			// Copy shift data from global buffer to shift buffer
 		exASSETINT_STATE_UI_BUFFER:
@@ -479,4 +406,50 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 	END_CASE;
 END_FUNCTION_BLOCK
 
+// -------------------------------------------------------------------------------------------
+// Handle dialog window
+FUNCTION exAssetIntFilterListUI
+	IF Filter.ShowDialog THEN
+		Filter.Dialog.LayerStatus := 0;
+		Filter.DefaultLayerStatus := 2;
+		Filter.ShowDialog := FALSE;
+	END_IF
+				// Dialog is open
+	IF Filter.Dialog.LayerStatus = 0 THEN
+		Status := exASSETINT_UI_STATUS_FILTER;
+		
+		// Button cancel
+		IF Filter.Dialog.Cancel THEN
+			Filter.Dialog.LayerStatus := 1;
+			Filter.DefaultLayerStatus := 0;
+			Filter.Dialog.Cancel := 0;
+		END_IF
+		// Button ok
+		IF Filter.Dialog.Confirm THEN
+			DT_TO_DTStructure_0.year := Filter.Dialog.From.Year;
+			DT_TO_DTStructure_0.month := Filter.Dialog.From.Month;
+			DT_TO_DTStructure_0.day := Filter.Dialog.From.Day;
+			DT_TO_DTStructure_0.hour := Filter.Dialog.From.Hour;
+			DT_TO_DTStructure_0.minute := Filter.Dialog.From.Minute;
+			Filter.Current.From.DateTime := DTStructure_TO_DT(ADR(DT_TO_DTStructure_0));
+			Filter.Current.From.Enable := Filter.Dialog.From.Enable;
+	
+			DT_TO_DTStructure_0.year := Filter.Dialog.Until.Year;
+			DT_TO_DTStructure_0.month := Filter.Dialog.Until.Month;
+			DT_TO_DTStructure_0.day := Filter.Dialog.Until.Day;
+			DT_TO_DTStructure_0.hour := Filter.Dialog.Until.Hour;
+			DT_TO_DTStructure_0.minute := Filter.Dialog.Until.Minute;
+			Filter.Current.Until.DateTime := DTStructure_TO_DT(ADR(DT_TO_DTStructure_0));
+			Filter.Current.Until.Enable := Filter.Dialog.Until.Enable;
+	
+			Filter.Dialog.LayerStatus := 1;
+			Filter.DefaultLayerStatus := 0;
+			Filter.Dialog.Confirm := 0;
+						
+			exAssetIntFilterListUI := exASSETINT_STATE_UI_BUFFER;
+			RETURN;
+		END_IF
+	END_IF
+	exAssetIntFilterListUI := exASSETINT_STATE_IDLE;
 
+END_FUNCTION

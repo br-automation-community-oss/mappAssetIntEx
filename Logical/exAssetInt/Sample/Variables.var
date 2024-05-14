@@ -14,7 +14,6 @@ END_VAR
 VAR
 	exAssetIntJobListUI_0 : exAssetIntJobListUI;
 	JobListUIConnect : exAssetIntJobListUIConnectType;
-	JobListUISetup : exAssetIntJobListUISetupType;
 	exAssetIntShiftListUI_0 : exAssetIntShiftListUI;
 	ShiftListUIConnect : exAssetIntShiftListUIConnectType;
 END_VAR

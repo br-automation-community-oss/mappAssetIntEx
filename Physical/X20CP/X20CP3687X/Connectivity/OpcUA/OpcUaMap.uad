@@ -15,10 +15,6 @@
     <EngineeringUnitAliases />
   </Aliases>
   <DefaultView AclId="2">
-    <Module Name="&lt;Default&gt;">
-      <GlobalVariables Name="Global Variables">
-        <Variable Name="gPieceCounter" />
-      </GlobalVariables>
-    </Module>
+    <Module Name="&lt;Default&gt;" />
   </DefaultView>
 </OpcUaSource>

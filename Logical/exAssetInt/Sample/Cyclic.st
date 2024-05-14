@@ -66,7 +66,6 @@ PROGRAM _CYCLIC
 	exAssetIntJobListUI_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntJobListUI_0.exLink := ADR(exAssetIntLink);
 	exAssetIntJobListUI_0.UIConnect := ADR(JobListUIConnect);
-	exAssetIntJobListUI_0.UISetup := JobListUISetup;
 	exAssetIntJobListUI_0();
 
 	exAssetIntShiftListUI_0.Enable := exAssetIntCore_0.Active;

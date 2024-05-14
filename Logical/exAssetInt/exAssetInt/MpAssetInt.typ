@@ -321,7 +321,7 @@ TYPE
 	exAssetIntUIShiftListJobType : 	STRUCT  (*Jobs within one shift*)
 		Name : ARRAY[0..9]OF STRING[20]; (*Name of the job*)
 	END_STRUCT;
-	exAssetIntShiftListUISetupType : 	STRUCT 
+	exAssetIntListUISetupType : 	STRUCT 
 		OutputListSize : UINT := 10; (*Output list size*)
 		ScrollWindow : USINT := 0; (*Scroll Window (overlap for PageUp/Down)*)
 		SortingStartTime : exAssetIntUISortingEnum := exASSETINT_SORTING_DESC;
@@ -358,11 +358,6 @@ TYPE
 		StepDown : BOOL; (*Command: Line Down (Scroll Down)*)
 		PageDown : BOOL; (*Command: Page Down (Scroll Down)*)
 		ShiftName : ARRAY[0..UI_JOB_LIST_IDX]OF STRING[20]; (*Shift ID list*)
-	END_STRUCT;
-	exAssetIntJobListUISetupType : 	STRUCT 
-		OutputListSize : UINT := 10; (*Output list size*)
-		ScrollWindow : USINT := 0; (*Scroll Window (overlap for PageUp/Down)*)
-		SortingStartTime : exAssetIntUISortingEnum := exASSETINT_SORTING_DESC;
 	END_STRUCT;
 	exAssetIntUISortingEnum : 
 		(
