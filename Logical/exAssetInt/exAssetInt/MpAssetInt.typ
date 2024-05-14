@@ -80,8 +80,10 @@ TYPE
 		RecordCountOld : UDINT; (*Old record number is required for DESC list*)
 		RecordData : exCoreInternalRecordType;
 		SortingStartTimeOld : exAssetIntUISortingEnum := exASSETINT_SORTING_ASC;
+		DT_TO_DTStructure_0 : DTStructure;
 		x : UDINT;
 		y : UDINT;
+		test : BOOL;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 	END_STRUCT;
@@ -315,7 +317,7 @@ TYPE
 		StepDown : BOOL; (*Command: Line Down (Scroll Down)*)
 		PageDown : BOOL; (*Command: Page Down (Scroll Down)*)
 		IdealProductionRate : ARRAY[0..UI_SHIFT_LIST_IDX]OF REAL; (*ideal production rate list*)
-		JobName : ARRAY[0..UI_SHIFT_LIST_IDX] OF STRING[20]; (*Job name list*)
+		JobName : ARRAY[0..UI_SHIFT_LIST_IDX]OF STRING[20]; (*Job name list*)
 	END_STRUCT;
 	exAssetIntUIShiftListJobType : 	STRUCT  (*Jobs within one shift*)
 		Name : ARRAY[0..9]OF STRING[20]; (*Name of the job*)

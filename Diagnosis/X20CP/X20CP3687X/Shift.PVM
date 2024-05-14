@@ -1,66 +1,66 @@
 WATCH Ver=2.00 PLCName=PLC1 CPUName=CPU TaskName=Shift 
-Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=835 ASCIIString=0
+Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 Index=857 ASCIIString=0
                                     name                                     type force                                                            value level type len format place expand specs
                            gAssetIntCore                           MpComIdentType    0 "                                                               *"    0   24    1    0    0    1         
                                 Internal                              UDINT[0..1]    0 "                                                               *"    1    7    2    0    0    1         
-                             Internal[0]                                    UDINT    0 "                                                       105689312"    2    7    1   10    0    0         
-                             Internal[1]                                    UDINT    0 "                                                      2464478461"    2    7    1   10    0    0         
+                             Internal[0]                                    UDINT    0 "                                                       124207328"    2    7    1   10    0    0         
+                             Internal[1]                                    UDINT    0 "                                                      2479817981"    2    7    1   10    0    0         
                            DisableConfig                                     BOOL    0 "                                                           FALSE"    0    1    1    2    1    0         
                       ShiftListUIConnect         MpAssetIntShiftListUIConnectType    0 "                                                               *"    0   24    1    0    1    1         
-                                  Output          MpAssetIntUIShiftListOutputType    0 "                                                               *"    1   24    1    0    0    1         
+                                  Output          MpAssetIntUIShiftListOutputType    0 "                                                               *"    1   24    1    0    0    0         
                                StartTime                     DATE_AND_TIME[0..19]    0 "                                                               *"    2   11   20    0    0    0         
-                            StartTime[0]                            DATE_AND_TIME    0 "                                          DT#2024-05-08-12:30:36"    3   11    1    1    0    0         
-                            StartTime[1]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                            StartTime[2]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                            StartTime[3]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                            StartTime[4]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                            StartTime[5]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                            StartTime[6]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                            StartTime[7]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                            StartTime[8]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                            StartTime[9]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[10]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[11]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[12]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[13]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[14]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[15]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[16]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[17]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[18]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                           StartTime[19]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
+                            StartTime[0]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[1]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[2]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[3]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[4]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[5]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[6]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[7]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[8]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                            StartTime[9]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[10]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[11]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[12]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[13]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[14]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[15]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[16]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[17]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[18]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                           StartTime[19]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                                  EndTime                     DATE_AND_TIME[0..19]    0 "                                                               *"    2   11   20    0    0    0         
-                              EndTime[0]                            DATE_AND_TIME    0 "                                          DT#2024-05-08-13:27:09"    3   11    1    1    0    0         
-                              EndTime[1]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                              EndTime[2]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                              EndTime[3]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                              EndTime[4]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                              EndTime[5]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                              EndTime[6]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                              EndTime[7]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                              EndTime[8]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                              EndTime[9]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[10]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[11]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[12]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[13]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[14]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[15]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[16]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[17]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[18]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
-                             EndTime[19]                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    3   11    1    1    0    0         
+                              EndTime[0]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[1]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[2]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[3]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[4]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[5]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[6]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[7]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[8]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                              EndTime[9]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[10]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[11]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[12]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[13]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[14]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[15]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[16]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[17]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[18]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
+                             EndTime[19]                            DATE_AND_TIME    0 "                                                               *"    3   11    1    1    0    0         
                                ShiftName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    0         
                             ShiftName[0]                               STRING[20]    0 "                                                       'Morning'"    3    9   21    1    0    0         
-                            ShiftName[1]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                            ShiftName[2]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                            ShiftName[3]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                            ShiftName[4]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                            ShiftName[5]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                            ShiftName[6]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                            ShiftName[7]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                            ShiftName[8]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                            ShiftName[9]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                            ShiftName[1]                               STRING[20]    0 "                                                         'Night'"    3    9   21    1    0    0         
+                            ShiftName[2]                               STRING[20]    0 "                                                       'Morning'"    3    9   21    1    0    0         
+                            ShiftName[3]                               STRING[20]    0 "                                                         'Night'"    3    9   21    1    0    0         
+                            ShiftName[4]                               STRING[20]    0 "                                                       'Morning'"    3    9   21    1    0    0         
+                            ShiftName[5]                               STRING[20]    0 "                                                         'Night'"    3    9   21    1    0    0         
+                            ShiftName[6]                               STRING[20]    0 "                                                     'Afternoon'"    3    9   21    1    0    0         
+                            ShiftName[7]                               STRING[20]    0 "                                                       'Morning'"    3    9   21    1    0    0         
+                            ShiftName[8]                               STRING[20]    0 "                                                         'Night'"    3    9   21    1    0    0         
+                            ShiftName[9]                               STRING[20]    0 "                                                     'Afternoon'"    3    9   21    1    0    0         
                            ShiftName[10]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                            ShiftName[11]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                            ShiftName[12]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
@@ -73,15 +73,15 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                            ShiftName[19]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                              CurrentUser                        STRING[50][0..19]    0 "                                                               *"    2    9   51    0    0    0         
                           CurrentUser[0]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
-                          CurrentUser[1]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
-                          CurrentUser[2]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
-                          CurrentUser[3]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
-                          CurrentUser[4]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
-                          CurrentUser[5]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
-                          CurrentUser[6]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
-                          CurrentUser[7]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
-                          CurrentUser[8]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
-                          CurrentUser[9]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
+                          CurrentUser[1]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[2]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[3]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[4]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[5]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[6]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[7]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[8]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
+                          CurrentUser[9]                               STRING[50]    0 "                                                   'TylerDurden'"    3    9   51    1    0    0         
                          CurrentUser[10]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
                          CurrentUser[11]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
                          CurrentUser[12]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
@@ -94,15 +94,15 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                          CurrentUser[19]                               STRING[50]    0 "                                                              ''"    3    9   51    1    0    0         
                           AdditionalData                       STRING[255][0..19]    0 "                                                               *"    2    9  256    0    0    0         
                        AdditionalData[0]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
-                       AdditionalData[1]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                       AdditionalData[2]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                       AdditionalData[3]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                       AdditionalData[4]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                       AdditionalData[5]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                       AdditionalData[6]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                       AdditionalData[7]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                       AdditionalData[8]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
-                       AdditionalData[9]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
+                       AdditionalData[1]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[2]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[3]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[4]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[5]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[6]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[7]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[8]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
+                       AdditionalData[9]                              STRING[255]    0 "                                                      'Choclate'"    3    9  256    1    0    0         
                       AdditionalData[10]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
                       AdditionalData[11]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
                       AdditionalData[12]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
@@ -114,139 +114,139 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                       AdditionalData[18]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
                       AdditionalData[19]                              STRING[255]    0 "                                                              ''"    3    9  256    1    0    0         
                             TargetPieces                             UDINT[0..19]    0 "                                                               *"    2    7   20    0    0    0         
-                         TargetPieces[0]                                    UDINT    0 "                                                            5364"    3    7    1   10    0    0         
-                         TargetPieces[1]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TargetPieces[2]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TargetPieces[3]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TargetPieces[4]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TargetPieces[5]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TargetPieces[6]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TargetPieces[7]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TargetPieces[8]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TargetPieces[9]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[10]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[11]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[12]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[13]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[14]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[15]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[16]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[17]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[18]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        TargetPieces[19]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                         TargetPieces[0]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[1]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[2]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[3]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[4]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[5]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[6]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[7]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[8]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TargetPieces[9]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[10]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[11]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[12]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[13]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[14]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[15]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[16]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[17]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[18]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        TargetPieces[19]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                              TotalPieces                             UDINT[0..19]    0 "                                                               *"    2    7   20    0    0    0         
-                          TotalPieces[0]                                    UDINT    0 "                                                              12"    3    7    1   10    0    0         
-                          TotalPieces[1]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[2]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[3]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[4]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[5]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[6]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[7]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[8]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          TotalPieces[9]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[10]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[11]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[12]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[13]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[14]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[15]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[16]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[17]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[18]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         TotalPieces[19]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                          TotalPieces[0]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[1]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[2]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[3]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[4]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[5]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[6]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[7]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[8]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          TotalPieces[9]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[10]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[11]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[12]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[13]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[14]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[15]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[16]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[17]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[18]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         TotalPieces[19]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                               GoodPieces                             UDINT[0..19]    0 "                                                               *"    2    7   20    0    0    0         
-                           GoodPieces[0]                                    UDINT    0 "                                                              11"    3    7    1   10    0    0         
-                           GoodPieces[1]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[2]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[3]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[4]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[5]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[6]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[7]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[8]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                           GoodPieces[9]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[10]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[11]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[12]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[13]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[14]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[15]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[16]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[17]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[18]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                          GoodPieces[19]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                           GoodPieces[0]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[1]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[2]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[3]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[4]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[5]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[6]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[7]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[8]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                           GoodPieces[9]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[10]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[11]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[12]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[13]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[14]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[15]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[16]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[17]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[18]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                          GoodPieces[19]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                             RejectPieces                             UDINT[0..19]    0 "                                                               *"    2    7   20    0    0    0         
-                         RejectPieces[0]                                    UDINT    0 "                                                               1"    3    7    1   10    0    0         
-                         RejectPieces[1]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         RejectPieces[2]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         RejectPieces[3]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         RejectPieces[4]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         RejectPieces[5]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         RejectPieces[6]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         RejectPieces[7]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         RejectPieces[8]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                         RejectPieces[9]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[10]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[11]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[12]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[13]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[14]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[15]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[16]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[17]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[18]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
-                        RejectPieces[19]                                    UDINT    0 "                                                               0"    3    7    1   10    0    0         
+                         RejectPieces[0]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[1]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[2]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[3]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[4]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[5]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[6]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[7]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[8]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                         RejectPieces[9]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[10]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[11]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[12]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[13]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[14]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[15]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[16]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[17]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[18]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
+                        RejectPieces[19]                                    UDINT    0 "                                                               *"    3    7    1   10    0    0         
                             BadPieceRate                              REAL[0..19]    0 "                                                               *"    2    8   20    0    0    0         
-                         BadPieceRate[0]                                     REAL    0 "                                                            0.08"    3    8    1   10    0    0         
-                         BadPieceRate[1]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                         BadPieceRate[2]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                         BadPieceRate[3]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                         BadPieceRate[4]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                         BadPieceRate[5]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                         BadPieceRate[6]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                         BadPieceRate[7]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                         BadPieceRate[8]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                         BadPieceRate[9]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[10]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[11]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[12]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[13]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[14]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[15]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[16]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[17]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[18]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                        BadPieceRate[19]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
+                         BadPieceRate[0]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[1]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[2]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[3]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[4]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[5]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[6]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[7]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[8]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                         BadPieceRate[9]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[10]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[11]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[12]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[13]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[14]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[15]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[16]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                        BadPieceRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                                TotalTime                MpAssetIntTimeType[0..19]    0 "                                                               *"    2   24   20    0    0    0         
                             TotalTime[0]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                              12"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                             TotalTime[1]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                             TotalTime[2]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                             TotalTime[3]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                             TotalTime[4]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                             TotalTime[5]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                             TotalTime[6]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                             TotalTime[7]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
@@ -301,32 +301,32 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                        ScheduledDowntime                MpAssetIntTimeType[0..19]    0 "                                                               *"    2   24   20    0    0    0         
                     ScheduledDowntime[0]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                     ScheduledDowntime[1]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                     ScheduledDowntime[2]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                     ScheduledDowntime[3]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                     ScheduledDowntime[4]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                     ScheduledDowntime[5]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                     ScheduledDowntime[6]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                     ScheduledDowntime[7]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
@@ -382,31 +382,31 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                      UnscheduledDowntime                MpAssetIntTimeType[0..19]    0 "                                                               *"    2   24   20    0    0    0         
                   UnscheduledDowntime[0]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                   UnscheduledDowntime[1]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                   UnscheduledDowntime[2]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                   UnscheduledDowntime[3]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                   UnscheduledDowntime[4]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                   UnscheduledDowntime[5]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                   UnscheduledDowntime[6]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                   UnscheduledDowntime[7]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
@@ -463,29 +463,29 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                   Uptime                MpAssetIntTimeType[0..19]    0 "                                                               *"    2   24   20    0    0    0         
                                Uptime[0]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                              12"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                Uptime[1]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                Uptime[2]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                Uptime[3]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                Uptime[4]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                Uptime[5]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                Uptime[6]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
@@ -544,29 +544,29 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                       GoodProductionTime                MpAssetIntTimeType[0..19]    0 "                                                               *"    2   24   20    0    0    0         
                    GoodProductionTime[0]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                              11"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                    GoodProductionTime[1]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                    GoodProductionTime[2]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                    GoodProductionTime[3]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                    GoodProductionTime[4]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                    GoodProductionTime[5]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                    GoodProductionTime[6]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
@@ -625,28 +625,28 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                    NominalProductionTime                MpAssetIntTimeType[0..19]    0 "                                                               *"    2   24   20    0    0    0         
                 NominalProductionTime[0]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                              23"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                              57"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                 NominalProductionTime[1]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                 NominalProductionTime[2]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                 NominalProductionTime[3]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                 NominalProductionTime[4]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
-                                 Seconds                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
+                                 Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                 NominalProductionTime[5]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
-                                   Hours                                    UDINT    0 "                                                               0"    4    7    1   10    0    0         
-                                 Minutes                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
+                                 Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                 NominalProductionTime[6]                       MpAssetIntTimeType    0 "                                                               *"    3   24    1    0    0    0         
                                    Hours                                    UDINT    0 "                                                               *"    4    7    1   10    0    0         
@@ -705,148 +705,148 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                                  Minutes                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                                  Seconds                                    USINT    0 "                                                               *"    4    5    1   10    0    0         
                    NominalProductionRate                              REAL[0..19]    0 "                                                               *"    2    8   20    0    0    0         
-                NominalProductionRate[0]                                     REAL    0 "                                                          117.98"    3    8    1   10    0    0         
-                NominalProductionRate[1]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                NominalProductionRate[2]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                NominalProductionRate[3]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                NominalProductionRate[4]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                NominalProductionRate[5]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                NominalProductionRate[6]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                NominalProductionRate[7]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                NominalProductionRate[8]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                NominalProductionRate[9]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[10]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[11]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[12]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[13]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[14]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[15]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[16]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[17]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[18]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               NominalProductionRate[19]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
+                NominalProductionRate[0]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[1]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[2]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[3]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[4]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[5]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[6]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[7]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[8]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                NominalProductionRate[9]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[10]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[11]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[12]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[13]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[14]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[15]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[16]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               NominalProductionRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                      ShiftProductionRate                              REAL[0..19]    0 "                                                               *"    2    8   20    0    0    0         
-                  ShiftProductionRate[0]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[1]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[2]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[3]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[4]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[5]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[6]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[7]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[8]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  ShiftProductionRate[9]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[10]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[11]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[12]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[13]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[14]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[15]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[16]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[17]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[18]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 ShiftProductionRate[19]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
+                  ShiftProductionRate[0]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[1]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[2]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[3]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[4]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[5]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[6]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[7]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[8]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  ShiftProductionRate[9]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[10]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[11]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[12]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[13]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[14]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[15]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[16]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 ShiftProductionRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                    ScheduledDowntimeRate                              REAL[0..19]    0 "                                                               *"    2    8   20    0    0    0         
-                ScheduledDowntimeRate[0]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[1]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[2]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[3]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[4]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[5]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[6]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[7]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[8]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                ScheduledDowntimeRate[9]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[10]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[11]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[12]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[13]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[14]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[15]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[16]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[17]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[18]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-               ScheduledDowntimeRate[19]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[0]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[1]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[2]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[3]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[4]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[5]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[6]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[7]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[8]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                ScheduledDowntimeRate[9]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[10]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[11]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[12]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[13]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[14]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[15]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[16]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+               ScheduledDowntimeRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                  UnscheduledDowntimeRate                              REAL[0..19]    0 "                                                               *"    2    8   20    0    0    0         
-              UnscheduledDowntimeRate[0]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[1]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[2]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[3]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[4]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[5]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[6]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[7]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[8]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-              UnscheduledDowntimeRate[9]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[10]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[11]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[12]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[13]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[14]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[15]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[16]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[17]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-             UnscheduledDowntimeRate[18]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[0]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[1]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[2]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[3]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[4]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[5]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[6]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[7]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[8]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+              UnscheduledDowntimeRate[9]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[10]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[11]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[12]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[13]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[14]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[15]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[16]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+             UnscheduledDowntimeRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
              UnscheduledDowntimeRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                           ProductionRate                              REAL[0..19]    0 "                                                               *"    2    8   20    0    0    0         
-                       ProductionRate[0]                                     REAL    0 "                                                          3600.0"    3    8    1   10    0    0         
-                       ProductionRate[1]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                       ProductionRate[2]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                       ProductionRate[3]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                       ProductionRate[4]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                       ProductionRate[5]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                       ProductionRate[6]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                       ProductionRate[7]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                       ProductionRate[8]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                       ProductionRate[9]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                      ProductionRate[10]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                      ProductionRate[11]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                      ProductionRate[12]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                      ProductionRate[13]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                      ProductionRate[14]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                      ProductionRate[15]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                      ProductionRate[16]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                      ProductionRate[17]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
+                       ProductionRate[0]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[1]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[2]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[3]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[4]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[5]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[6]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[7]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[8]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                       ProductionRate[9]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                      ProductionRate[10]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                      ProductionRate[11]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                      ProductionRate[12]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                      ProductionRate[13]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                      ProductionRate[14]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                      ProductionRate[15]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                      ProductionRate[16]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                      ProductionRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                       ProductionRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
                       ProductionRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
-                              RangeStart                                     REAL    0 "                                                             0.0"    2    8    1   10    0    0         
+                              RangeStart                                     REAL    0 "                                                            50.0"    2    8    1   10    0    0         
                                 RangeEnd                                     REAL    0 "                                                           100.0"    2    8    1   10    0    0         
                                   PageUp                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
                                   StepUp                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
                                 StepDown                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
                                 PageDown                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
                      IdealProductionRate                              REAL[0..19]    0 "                                                               *"    2    8   20    0    0    0         
-                  IdealProductionRate[0]                                     REAL    0 "                                                            0.99"    3    8    1   10    0    0         
-                  IdealProductionRate[1]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  IdealProductionRate[2]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  IdealProductionRate[3]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  IdealProductionRate[4]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  IdealProductionRate[5]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  IdealProductionRate[6]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  IdealProductionRate[7]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  IdealProductionRate[8]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                  IdealProductionRate[9]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[10]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[11]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[12]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[13]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[14]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[15]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[16]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[17]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[18]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                 IdealProductionRate[19]                                     REAL    0 "                                                             0.0"    3    8    1   10    0    0         
-                                 JobName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    1         
-                              JobName[0]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[1]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[2]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[3]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[4]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[5]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[6]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[7]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[8]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                              JobName[9]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                  IdealProductionRate[0]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[1]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[2]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[3]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[4]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[5]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[6]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[7]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[8]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                  IdealProductionRate[9]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[10]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[11]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[12]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[13]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[14]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[15]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[16]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[17]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[18]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                 IdealProductionRate[19]                                     REAL    0 "                                                               *"    3    8    1   10    0    0         
+                                 JobName                        STRING[20][0..19]    0 "                                                               *"    2    9   21    0    0    0         
+                              JobName[0]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[1]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[2]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[3]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[4]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[5]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[6]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[7]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[8]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
+                              JobName[9]                               STRING[20]    0 "                                                       'Cookies'"    3    9   21    1    0    0         
                              JobName[10]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                              JobName[11]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                              JobName[12]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
@@ -856,4 +856,32 @@ Position X=0 Y=0 Width=0 Height=0 TabWidth Name=200 Type=100 Scope=60 Force=60 I
                              JobName[16]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                              JobName[17]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
                              JobName[18]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
-                             JobName[19]                               STRING[20]    0 "                                                              ''"    3    9   21    1    0    0         
+                             JobName[19]                               STRING[20]    0 "                                                               *"    3    9   21    1    0    0         
+                                  Filter                   MpAssetIntUIFilterType    0 "                                                               *"    1   24    1    0    0    1         
+                              ShowDialog                                     BOOL    0 "                                                           FALSE"    2    1    1    2    0    0         
+                                  Dialog             MpAssetIntUIFilterDialogType    0 "                                                               *"    2   24    1    0    0    1         
+                             LayerStatus                                     UINT    0 "                                                               0"    3    6    1   10    0    0         
+                                    From              MpAssetIntUISetDTFilterType    0 "                                                               *"    3   24    1    0    0    1         
+                                  Enable                                     BOOL    0 "                                                           FALSE"    4    1    1    2    0    0         
+                                    Year                                     UINT    0 "                                                            1970"    4    6    1   10    0    0         
+                                   Month                                    USINT    0 "                                                               1"    4    5    1   10    0    0         
+                                     Day                                    USINT    0 "                                                               1"    4    5    1   10    0    0         
+                                    Hour                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                  Minute                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                   Until              MpAssetIntUISetDTFilterType    0 "                                                               *"    3   24    1    0    0    1         
+                                  Enable                                     BOOL    0 "                                                           FALSE"    4    1    1    2    0    0         
+                                    Year                                     UINT    0 "                                                            1970"    4    6    1   10    0    0         
+                                   Month                                    USINT    0 "                                                               1"    4    5    1   10    0    0         
+                                     Day                                    USINT    0 "                                                               1"    4    5    1   10    0    0         
+                                    Hour                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                  Minute                                    USINT    0 "                                                               0"    4    5    1   10    0    0         
+                                 Confirm                                     BOOL    0 "                                                           FALSE"    3    1    1    2    0    0         
+                                  Cancel                                     BOOL    0 "                                                           FALSE"    3    1    1    2    0    0         
+                                 Current            MpAssetIntUICurrentFilterType    0 "                                                               *"    2   24    1    0    0    1         
+                                    From             MpAssetIntUICurrDTFilterType    0 "                                                               *"    3   24    1    0    0    1         
+                                  Enable                                     BOOL    0 "                                                           FALSE"    4    1    1    2    0    0         
+                                DateTime                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    4   11    1    1    0    0         
+                                   Until             MpAssetIntUICurrDTFilterType    0 "                                                               *"    3   24    1    0    0    1         
+                                  Enable                                     BOOL    0 "                                                           FALSE"    4    1    1    2    0    0         
+                                DateTime                            DATE_AND_TIME    0 "                                          DT#1970-01-01-00:00:00"    4   11    1    1    0    0         
+                      DefaultLayerStatus                                     UINT    0 "                                                               2"    2    6    1   10    0    0         
