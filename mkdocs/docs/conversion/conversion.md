@@ -1,0 +1,1 @@
+This guide provides details how to convert the official mappAssetInt package to a community version.

@@ -5,8 +5,8 @@ FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset 
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
 		Parameters : REFERENCE TO exAssetIntParType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
-		Configuration : REFERENCE TO exAssetIntCoreConfigType;
 		Logger : UDINT;
+		Configuration : REFERENCE TO exAssetIntCoreConfigType;
 		Update : BOOL; (*Updates the parameters (mapp standard interface)*) (* *) (*#PAR#; *)
 		Downtime : exAssetIntDowntimeEnum; (*The machine is in down time*) (* *) (*#CMD#; *)
 		DowntimeReason : REFERENCE TO STRING[50]; (*The reason for down time*) (* *) (*#CMD#; *)
@@ -45,7 +45,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
-		DeviceName : REFERENCE TO STRING[50]; (*Address of the exported device name*) (* *) (*#CMD#; *)
+		DeviceName : {REDUND_UNREPLICABLE} STRING[30]; (*Address of the exported device name*) (* *) (*#CMD#; *)
 		Configuration : REFERENCE TO exAssetIntCoreConfigType;
 		Logger : UDINT;
 		Load : {REDUND_UNREPLICABLE} BOOL; (* *) (* *) (*#PAR#;*)

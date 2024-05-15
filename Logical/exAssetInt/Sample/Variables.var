@@ -1,3 +1,7 @@
+(*Remanet cross link variable*)
+VAR RETAIN
+	exAssetIntLink : exAssetIntLinkType;
+END_VAR
 (*Asset core*)
 VAR
 	exAssetIntCore_0 : exAssetIntCore;

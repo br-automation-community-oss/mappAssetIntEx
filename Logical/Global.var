@@ -1,7 +1,4 @@
 (*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
-VAR RETAIN
-	exAssetIntLink : exAssetIntLinkType;
-END_VAR
 VAR
 	gShift : ARRAY[0..3] OF SHIFT_typ := [(Start:=(Hour:=6,Minutes:=0),End:=(Hour:=14,Minutes:=00),Name:='Morning'),(Start:=(Hour:=14,Minutes:=30),End:=(Hour:=22,Minutes:=00),Name:='Afternoon'),(Start:=(Hour:=22,Minutes:=00),End:=(Hour:=6,Minutes:=0),Name:='Night'),(0)];
 	gAdditionalData : STRING[255] := 'Choclate';
