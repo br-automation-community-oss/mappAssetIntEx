@@ -11,7 +11,8 @@ nav:
   - Start: index.md
   - Compatibility: compatibility/compatibility.md
   - Conversion: conversion/conversion.md
-  - Appendix:: appendix.md
+  - FAQs: faq/faq.md
+  - Appendix: appendix.md
   - Revision: revision.md
 
 theme:

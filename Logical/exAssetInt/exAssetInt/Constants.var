@@ -2,7 +2,7 @@
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR CONSTANT
 	CORE_EVENT_NUM_MAX : UINT := 500; (*Maximum number of events*)
-	CORE_EVENT_DIR_MAX : UINT := 100; (*Maximum number of events in one directory*)
+	CORE_EVENT_DIR_MAX : UINT := 1000; (*Maximum number of events in one directory*)
 	EVENT_ADDITONAL_DATA_LEN : UINT := 100; (*Length of the event comment*)
 	EXPORT_BUFFER : UINT := 500; (*Length of the buffer for the event export*)
 	EXPORT_JOB_TITEL : STRING[100] := 'AssetInt Job Statistics Export File'; (*Export file header*)

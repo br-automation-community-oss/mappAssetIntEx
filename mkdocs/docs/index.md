@@ -8,6 +8,7 @@ Here is a short list of differences between the official mappAssetInt and the co
 ### What is missing
 
 * There is no configuration file in Automation Studio under the configuration view. The configuration is done through code.
+* There is no integration for mappAlarmX. Since the official version only supported 3 alarms this was removed. The community version provides a rich set of status information that can be used to trigger alarms. See [appendix](appendix.md) for the corresponding error numbers and the [FAQ](faq/faq.md) for more information.
 
 ### What is different
 
