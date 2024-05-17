@@ -99,7 +99,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 			
 			// -------------------------------------------------------------------------------------------
 			// Correction for step/page up/down
-			IF Internal.RecordStart + UI_JOB_LIST_IDX > Internal.RecordCount THEN
+			IF Internal.RecordStart + UI_JOB_LIST_IDX > UDINT_TO_DINT(Internal.RecordCount) THEN
 				Internal.RecordStart := Internal.RecordCount - UI_JOB_LIST_IDX;
 			END_IF
 			IF Internal.RecordStart < 0 THEN
@@ -302,7 +302,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			
 			// -------------------------------------------------------------------------------------------
 			// Correction for step/page up/down
-			IF Internal.RecordStart + UI_SHIFT_LIST_IDX > Internal.RecordCount THEN
+			IF Internal.RecordStart + UI_SHIFT_LIST_IDX > UDINT_TO_DINT(Internal.RecordCount) THEN
 				Internal.RecordStart := Internal.RecordCount - UI_SHIFT_LIST_IDX;
 			END_IF
 			IF Internal.RecordStart < 0 THEN

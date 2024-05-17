@@ -6,6 +6,11 @@ PROGRAM _INIT
 END_PROGRAM
 
 PROGRAM _CYCLIC
+	// Count time it takes the function block to become active
+	IF exAssetIntCore_0.Enable = TRUE AND exAssetIntCore_0.Active = FALSE THEN
+		TestBootCounter := TestBootCounter + 1;
+	END_IF
+	
 	// Get current date and time
 	IF GetDateTime THEN
 		RTC_gettime(ADR(RTCtime_struct));

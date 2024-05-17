@@ -85,9 +85,6 @@ FUNCTION_BLOCK exAssetIntJobListUI (*mapp function block which can be used for s
 	VAR
 		Internal : {REDUND_UNREPLICABLE} exUIInternalDataType; (*Internal data*)
 		zzEdge00000 : BOOL;
-		zzEdge00001 : BOOL;
-		zzEdge00002 : BOOL;
-		zzEdge00003 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -109,9 +106,6 @@ FUNCTION_BLOCK exAssetIntShiftListUI (*mapp function block which can be used for
 	VAR
 		Internal : {REDUND_UNREPLICABLE} exUIInternalDataType; (*Internal data*)
 		zzEdge00000 : BOOL;
-		zzEdge00001 : BOOL;
-		zzEdge00002 : BOOL;
-		zzEdge00003 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -220,6 +214,7 @@ FUNCTION_BLOCK ReadEventData
 		TimeFirst : DATE_AND_TIME;
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
+		Override : {REDUND_UNREPLICABLE} USINT;
 		State : USINT;
 		CRC : USINT;
 		zzEdge00000 : BOOL;
@@ -271,7 +266,7 @@ FUNCTION_BLOCK ExportEventData
 		FileWrite_0 : FileWrite;
 		RtcGettime : {REDUND_UNREPLICABLE} RTCtime_typ;
 		RecordDataIntern : exCoreInternalRecordType;
-		DTStructure : DTStructure;
+		DTStructure_0 : DTStructure;
 		DiffTime : UDINT;
 		FileName : STRING[50];
 		TmpStr : STRING[50];
@@ -280,7 +275,6 @@ FUNCTION_BLOCK ExportEventData
 		Offset : UDINT;
 		idx : UDINT;
 		State : USINT;
-		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 
@@ -362,8 +356,6 @@ FUNCTION CalcStatsShift : USINT
 		Uptime : UDINT; (*Uptime in seconds*)
 		NominalProductionTime : UDINT;
 		GoodProductionTime : UDINT;
-		StartTime : TIME_OF_DAY;
-		EndTime : TIME_OF_DAY;
 	END_VAR
 END_FUNCTION
 

@@ -70,7 +70,7 @@ FUNCTION CalcStatsJob
 		JobStatistics.NominalProductionTimeRate := UDINT_TO_REAL(NominalProductionTime)/UDINT_TO_REAL(Uptime);
 	END_IF
 	IF JobTotalTime > 0 THEN
-		JobStatistics.CurrentProductionRate := JobStatistics.TotalPieces/UDINT_TO_REAL(JobTotalTime)*3600;
+		JobStatistics.CurrentProductionRate := UDINT_TO_REAL(JobStatistics.TotalPieces)/UDINT_TO_REAL(JobTotalTime)*3600;
 	END_IF
 	
 	CalcStatsJob := TRUE;
@@ -115,7 +115,7 @@ FUNCTION CalcStatsShift
 	// -------------------------------------------------------------------------------------------
 	// Calculate counters
 	ShiftStatistics.TotalPieces := exLink.ShiftPieceCounter;
-	ShiftStatistics.TargetPieces := LREAL_TO_UDINT(ShiftTotalTime/3600*Parameter.NominalProductionRate);
+	ShiftStatistics.TargetPieces := LREAL_TO_UDINT(UDINT_TO_REAL(ShiftTotalTime)/3600*Parameter.NominalProductionRate);
 	ShiftStatistics.RejectPieces := exLink.ShiftRejectCounter;
 	IF exLink.ShiftPieceCounter > exLink.ShiftRejectCounter THEN
 		ShiftStatistics.GoodPieces := exLink.ShiftPieceCounter - exLink.ShiftRejectCounter;

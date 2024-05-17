@@ -172,28 +172,28 @@ FUNCTION_BLOCK ExportEventData
 			// -------------------------------------------------------------------------------------------
 			// Create row string for job and shift export
 			IF (RecordDataIntern.EventType = RecordTypeJob AND ExportType = ExportTypeJob) OR (RecordDataIntern.EventType = RecordTypeShift AND ExportType = ExportTypeShift) THEN
-				DT_TO_DTStructure(RecordDataIntern.TimeStart, ADR(DTStructure));
+				DT_TO_DTStructure(RecordDataIntern.TimeStart, ADR(DTStructure_0));
 				TmpStr := Configuration.TimeStaexPattern;
 							
-				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure.day);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure.year);
-				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure.second);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure.hour);
+				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure_0.day);				
+				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure_0.year);
+				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure_0.second);				
+				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure_0.hour);
 
 				brsstrcat(ADR(Buffer), ADR(TmpStr));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 
-				DT_TO_DTStructure(RecordDataIntern.TimeEnd, ADR(DTStructure));
+				DT_TO_DTStructure(RecordDataIntern.TimeEnd, ADR(DTStructure_0));
 				TmpStr := Configuration.TimeStaexPattern;
 							
-				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure.day);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure.year);
-				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure.second);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure.hour);
+				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure_0.day);				
+				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure_0.year);
+				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure_0.second);				
+				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure_0.hour);
 
 				brsstrcat(ADR(Buffer), ADR(TmpStr));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
@@ -307,15 +307,15 @@ FUNCTION_BLOCK ExportEventData
 			// -------------------------------------------------------------------------------------------
 			// Export data for timeline
 			IF ExportType = ExportTypeTimeline THEN
-				DT_TO_DTStructure(RecordDataIntern.TimeStart, ADR(DTStructure));
+				DT_TO_DTStructure(RecordDataIntern.TimeStart, ADR(DTStructure_0));
 				TmpStr := Configuration.TimeStaexPattern;
 							
-				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure.day);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure.year);
-				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure.second);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure.hour);
+				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure_0.day);				
+				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure_0.year);
+				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure_0.second);				
+				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure_0.hour);
 
 				brsstrcat(ADR(Buffer), ADR(TmpStr));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
