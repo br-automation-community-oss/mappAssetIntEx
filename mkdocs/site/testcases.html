@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="testcases.html">
+        <link rel="prev" href="appendix.html">
       
+      
+        <link rel="next" href="revision.html">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Revision - mappAssetInt community version</title>
+        <title>Test Cases - mappAssetInt community version</title>
       
     
     
@@ -71,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#15052024" class="md-skip">
+        <a href="#test-case" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Revision
+              Test Cases
             
           </span>
         </div>
@@ -315,25 +317,6 @@
       
   
   
-  
-    <li class="md-nav__item">
-      <a href="testcases.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Test Cases
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
     
   
   
@@ -347,18 +330,18 @@
           
   
   <span class="md-ellipsis">
-    Revision
+    Test Cases
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="revision.html" class="md-nav__link md-nav__link--active">
+      <a href="testcases.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Revision
+    Test Cases
   </span>
   
 
@@ -378,9 +361,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#15052024" class="md-nav__link">
-    15.05.2024
+  <a href="#test-case" class="md-nav__link">
+    Test case
   </a>
+  
+    <nav class="md-nav" aria-label="Test case">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-case-1" class="md-nav__link">
+    Test Case 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Case 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preset" class="md-nav__link">
+    Preset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-steps" class="md-nav__link">
+    Test Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-result" class="md-nav__link">
+    Expected Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -388,6 +411,25 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="revision.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Revision
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -410,10 +452,26 @@
   
 
 
-  <h1>Revision</h1>
+  <h1>Test Cases</h1>
 
-<h4 id="15052024">15.05.2024</h4>
-<p>First release</p>
+<h2 id="test-case">Test case</h2>
+<p>The following test cases were performed to verify the functionality of the AssetInt component.</p>
+<h4 id="test-case-1">Test Case 1</h4>
+<h5 id="preset">Preset</h5>
+<p>Shift 1 start 06:00 end 14:00
+Shift 2 start 14:30 end 22:00</p>
+<h5 id="test-steps">Test Steps</h5>
+<ul>
+<li>Set time to 13:55</li>
+<li>Let PLC run for 2 minutes</li>
+<li>Power off PLC for 5 minutes</li>
+<li>Turn PLC back on</li>
+</ul>
+<h5 id="expected-result">Expected Result</h5>
+<ul>
+<li>PLC should log shift with 3 minutes</li>
+<li>PLC should not log any data after power on since the timne is 14:02 and there is no shift defined for this time</li>
+</ul>
 
 
 

@@ -1,5 +1,9 @@
 ## Appendix
 
+### How the data is recorded
+
+Data is only recorded when the PLC is running and the current time is within the configured shift times and there is no scheduled or unscheduled downtime. Is the PLC is turned of during a shift the time is not considered downtime. 
+
 ### How the data is stored
 
 Short term data like piece counters are stored in the remanent variable of type `exAssetIntLinkType`. This structure is used for cross function block communication. The short term data will survive a power off but not a cold reboot. 
