@@ -104,6 +104,7 @@
           <Text ID="255316" Value="Enable"/>
           <Text ID="255317" Value="Disable"/>
           <Text ID="257267" Value="UI Status"/>
+          <Text ID="259222" Value="Logger"/>
         </TextLayer>
         <IndexMap>
           <Index ID="208240" Value="1"/>
@@ -184,6 +185,7 @@
           <Index ID="255316" Value="150"/>
           <Index ID="255317" Value="151"/>
           <Index ID="257267" Value="152"/>
+          <Index ID="259222" Value="153"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -5197,6 +5199,51 @@
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="110"/>
         </Control>
+        <Control ClassId="0x00001008" Name="Listbox_1">
+          <Property Name="AlignmentHorizontal" Value="Left"/>
+          <Property Name="ButtonsBitmapGroup" Value="None"/>
+          <Property Name="ButtonsPressedBitmapGroup" Value="None"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
+          <Property Name="Height" Value="345"/>
+          <Property Name="IndexDatapoint" Value="None"/>
+          <Property Name="Left" Value="1005"/>
+          <Property Name="LeftBitmap" Value="None"/>
+          <Property Name="LeftTextGroup" Value="None"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxIndex" Value="None"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinIndex" Value="None"/>
+          <Property Name="OptionDatapoint" Value="None"/>
+          <Property Name="RightBitmap" Value="None"/>
+          <Property Name="RightTextGroup" Value="None"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
+          <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.LoggerUIJob]"/>
+          <Property Name="TextIndexOffset" Value="0"/>
+          <Property Name="TextSource" Value="MultipleStrings"/>
+          <Property Name="Top" Value="530"/>
+          <Property Name="Width" Value="540"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_61">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial14pxBold]"/>
+          <Property Name="Height" Value="35"/>
+          <Property Name="Left" Value="1005"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="153"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="495"/>
+          <Property Name="Width" Value="540"/>
+        </Control>
       </Controls>
       <KeyMapping>
         <VirtualKey Name="%embVirtualKey_1">
@@ -6500,40 +6547,46 @@
   </Layers>
   <MovementOrder>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_177]">
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[FilterDialogOld].Control[numUntilMinute]"/>
+      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilYear]"/>
+    </MovementEntry>
+    <MovementEntry Control="Source[embedded].Layer[Default].Control[Listbox_1]">
       <Property Name="Down" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromYear]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogOld].Control[numUntilMinute]"/>
-      <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilMonth]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilYear]"/>
+      <Property Name="Right" Value="Source[embedded].Layer[FilterDialogOld].Control[numUntilYear]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numFromYear]">
       <Property Name="Down" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilYear]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogOld].Control[numFromMinute]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromMonth]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numFromMonth]">
       <Property Name="Down" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilMonth]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromYear]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromDay]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numFromDay]">
       <Property Name="Down" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilDay]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromMonth]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromHour]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilDay]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numFromHour]">
       <Property Name="Down" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilHour]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromDay]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromMinute]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilHour]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numFromMinute]">
       <Property Name="Down" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilMinute]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromHour]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromYear]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilMinute]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numUntilYear]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
@@ -6548,19 +6601,19 @@
       <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromMonth]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numUntilDay]">
-      <Property Name="Down" Value="Source[embedded].Layer[FilterDialogOld].Control[numFromMinute]"/>
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilMonth]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilHour]"/>
       <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromDay]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numUntilHour]">
-      <Property Name="Down" Value="Source[embedded].Layer[FilterDialogOld].Control[numFromMinute]"/>
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilDay]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilMinute]"/>
       <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromHour]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numUntilMinute]">
-      <Property Name="Down" Value="Source[embedded].Layer[FilterDialogOld].Control[numFromMinute]"/>
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
       <Property Name="Left" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilHour]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilYear]"/>
       <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromMinute]"/>
@@ -6760,5 +6813,6 @@
     <TabSeqItem Index="130" Value="Source[embedded].Layer[FilterDialogOld].Control[numUntilHour]"/>
     <TabSeqItem Index="131" Value="Source[embedded].Layer[FilterDialogOld].Control[numUntilMinute]"/>
     <TabSeqItem Index="132" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
+    <TabSeqItem Index="133" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
   </TabSequence>
 </Page>

@@ -66,11 +66,13 @@ PROGRAM _CYCLIC
 	exAssetIntJobListUI_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntJobListUI_0.exLink := ADR(exAssetIntLink);
 	exAssetIntJobListUI_0.UIConnect := ADR(JobListUIConnect);
+	exAssetIntJobListUI_0.Logger := ADR(LoggerUIJob);
 	exAssetIntJobListUI_0();
 
 	exAssetIntShiftListUI_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntShiftListUI_0.exLink := ADR(exAssetIntLink);
 	exAssetIntShiftListUI_0.UIConnect := ADR(ShiftListUIConnect);
+	exAssetIntShiftListUI_0.Logger := ADR(LoggerUIShift);
 	exAssetIntShiftListUI_0();
 
 END_PROGRAM

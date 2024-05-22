@@ -282,9 +282,54 @@ FUNCTION exAssetIntFilterListUI : UDINT
 	VAR_INPUT
 		Filter : REFERENCE TO exAssetIntUIFilterType;
 		Status : REFERENCE TO exAssetIntUIStatusEnum;
+		Logger : UDINT;
 	END_VAR
 	VAR
 		DT_TO_DTStructure_0 : DTStructure;
+	END_VAR
+END_FUNCTION
+
+FUNCTION exAssetIntScrollListUI : BOOL
+	VAR_INPUT
+		RecordCount : UDINT;
+		ListMaxCount : UINT;
+		PageUp : REFERENCE TO BOOL; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		PageDown : REFERENCE TO BOOL; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		StepUp : REFERENCE TO BOOL; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		StepDown : REFERENCE TO BOOL; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		RecordStart : REFERENCE TO DINT;
+		State : REFERENCE TO exAssetIntStateEnum;
+	END_VAR
+END_FUNCTION
+
+FUNCTION exAssetIntBufferUI : UDINT
+	VAR_INPUT
+		Memory : UDINT;
+		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		SortingStartTime : exAssetIntUISortingEnum;
+		Filter : exAssetIntUIFilterType;
+		EventType : exCoreInternalRecordEnum;
+	END_VAR
+	VAR
+		RecordData : exCoreInternalRecordType;
+		RecordCount : UDINT;
+		y : UDINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION exAssetIntFilterReset : BOOL
+	VAR_INPUT
+		Filter : REFERENCE TO exAssetIntUIFilterType;
+	END_VAR
+END_FUNCTION
+
+FUNCTION exAssetIntCheckPreq : BOOL
+	VAR_INPUT
+		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		Logger : UDINT;
+		State : REFERENCE TO exAssetIntStateEnum;
+		StatusID : REFERENCE TO DINT;
+		InfoDiagStatusID : REFERENCE TO exAssetIntStatusIDType;
 	END_VAR
 END_FUNCTION
 
@@ -321,7 +366,6 @@ FUNCTION CreateErrorState : DINT
 		ErrorMsg : UDINT; (*Log message*)
 		Logger : UDINT;
 		Severity : exComSeveritiesEnum;
-		StateError : REFERENCE TO exAssetIntStateEnum;
 		State : REFERENCE TO exAssetIntStateEnum;
 		DiagStatusID : REFERENCE TO exAssetIntStatusIDType;
 	END_VAR

@@ -18,24 +18,10 @@ FUNCTION_BLOCK exAssetIntJobListUI
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
-
-				// Make sure we have remanent buffer
-				IF ADR(exLink) = 0 THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;				
-				END_IF
-				// Make sure we have temporary buffer
-				IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, ADR('ERR: no temp memory'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;				
-				END_IF
-				// Make sure core function block is active
-				IF NOT exLink.IsCoreActive THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(mpASSETINT_INF_WAIT_CORE_FB, ADR('ERR: core is not active'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;				
+				
+				// Check prerequisites, exLink and buffers
+				IF NOT exAssetIntCheckPreq(exLink, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+					RETURN;
 				END_IF
 
 				// Reset error and status
@@ -43,70 +29,32 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				StatusID := ERR_OK;
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
 				
-				UISetup.OutputListSize := UI_SHIFT_LIST_IDX;			
+				// Set output list to constant, reset filter settings
 				UISetup.OutputListSize := UI_JOB_LIST_IDX;
-
-				UIConnect.Filter.Dialog.LayerStatus := 1;
-				UIConnect.Filter.DefaultLayerStatus := 0;
-				UIConnect.Filter.Dialog.From.Year := 1970;
-				UIConnect.Filter.Dialog.From.Month := 1;
-				UIConnect.Filter.Dialog.From.Day := 1;
-				UIConnect.Filter.Dialog.Until.Year := 1970;
-				UIConnect.Filter.Dialog.Until.Month := 1;
-				UIConnect.Filter.Dialog.Until.Day := 1;
-				
+				exAssetIntFilterReset(ADR(UIConnect.Filter));
+			
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
 
-		// -------------------------------------------------------------------------------------------
-		// Wait for new event
+			// -------------------------------------------------------------------------------------------
+			// Wait for new event
 		exASSETINT_STATE_IDLE:
+			// Set status
 			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
 			Active := TRUE;
 
-			// -------------------------------------------------------------------------------------------
 			// Handle dialog window
-			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status));
+			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger);
 			
-			// -------------------------------------------------------------------------------------------
 			// Handle sorting direction change
 			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
 				Internal.State := exASSETINT_STATE_UI_BUFFER;
 			END_IF
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
-			// -------------------------------------------------------------------------------------------
 			// Handle page up and down
-			IF UIConnect.Output.PageUp THEN
-				Internal.RecordStart := Internal.RecordStart - UI_JOB_LIST_IDX;
-				Internal.State := exASSETINT_STATE_UI_DATA;					
-			END_IF
-			IF UIConnect.Output.PageDown THEN
-				Internal.RecordStart := Internal.RecordStart + UI_JOB_LIST_IDX;					
-				Internal.State := exASSETINT_STATE_UI_DATA;					
-			END_IF
-			
-			// -------------------------------------------------------------------------------------------
-			// Handle step up and down
-			IF UIConnect.Output.StepUp THEN
-				Internal.RecordStart := Internal.RecordStart - 1;
-				Internal.State := exASSETINT_STATE_UI_DATA;					
-			END_IF
-			IF UIConnect.Output.StepDown THEN
-				Internal.RecordStart := Internal.RecordStart + 1;					
-				Internal.State := exASSETINT_STATE_UI_DATA;					
-			END_IF
-			
-			// -------------------------------------------------------------------------------------------
-			// Correction for step/page up/down
-			IF Internal.RecordStart + UI_JOB_LIST_IDX > UDINT_TO_DINT(Internal.RecordCount) THEN
-				Internal.RecordStart := Internal.RecordCount - UI_JOB_LIST_IDX;
-			END_IF
-			IF Internal.RecordStart < 0 THEN
-				Internal.RecordStart := 0;
-			END_IF
+			exAssetIntScrollListUI(Internal.RecordCount, UI_JOB_LIST_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
 
-			// -------------------------------------------------------------------------------------------
 			// Wait for core task to call update command
 			IF exLink.RefreshJobUI AND exLink.RecordCount > 0 THEN			
 				Internal.State := exASSETINT_STATE_UI_BUFFER;					
@@ -115,38 +63,12 @@ FUNCTION_BLOCK exAssetIntJobListUI
 			// -------------------------------------------------------------------------------------------
 			// Copy job data from global buffer to job buffer
 		exASSETINT_STATE_UI_BUFFER:
+			// Set status
 			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh job data'), Logger);
 			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
 
-			brsmemset(exLink.MemoryJob, 0, CORE_EVENT_NUM_MAX*SIZEOF(Internal.RecordData));
-			
-			Internal.RecordCount := 0;
-			Internal.y := 0;
-			REPEAT
-				// Check sorting direction
-				IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC THEN
-					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + Internal.y*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-				ELSE
-					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (exLink.RecordCount - Internal.y - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-				END_IF
-				
-				// Only transfer job data
-				IF Internal.RecordData.EventType = RecordTypeJob THEN
-					// Only transfer data that matches filter
-					IF (NOT UIConnect.Filter.Current.From.Enable AND NOT UIConnect.Filter.Current.Until.Enable) OR 
-						(UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.From.DateTime <= Internal.RecordData.TimeStart AND NOT UIConnect.Filter.Current.Until.Enable) OR 	
-						(NOT UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.Until.Enable AND UIConnect.Filter.Current.Until.DateTime >= Internal.RecordData.TimeEnd) OR 	
-						(UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.From.DateTime <= Internal.RecordData.TimeStart AND UIConnect.Filter.Current.Until.Enable AND UIConnect.Filter.Current.Until.DateTime >= Internal.RecordData.TimeEnd) THEN	
-						
-						brsmemcpy(exLink.MemoryJob + Internal.RecordCount*SIZEOF(Internal.RecordData), ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
-						Internal.RecordCount := Internal.RecordCount + 1;
-					END_IF
-				END_IF
-	  
-				Internal.y := Internal.y + 1;
-					
-				UNTIL (Internal.y = exLink.RecordCount)
-			END_REPEAT;
+			// Generate job data
+			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryJob, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeJob);
 			
 			Internal.State := exASSETINT_STATE_UI_DATA;	
 
@@ -222,23 +144,9 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			IF Enable THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 
-				// Make sure we have remanent buffer
-				IF ADR(exLink) = 0 THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;				
-				END_IF
-				// Make sure we have temporary buffer
-				IF exLink.MemoryDb = 0 OR exLink.MemoryShift = 0 THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, ADR('ERR: no temp memory'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;				
-				END_IF
-				// Make sure core function block is active
-				IF NOT exLink.IsCoreActive THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(mpASSETINT_INF_WAIT_CORE_FB, ADR('ERR: core is not active'), Logger, exCOM_SEV_ERROR, ADR(Internal.StateError), ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;				
+				// Check prerequisites, exLink and buffers
+				IF NOT exAssetIntCheckPreq(exLink, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+					RETURN;
 				END_IF
 
 				// Reset error and status
@@ -246,17 +154,9 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 				StatusID := ERR_OK;
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
 				
+				// Set output list to constant, reset filter settings
 				UISetup.OutputListSize := UI_SHIFT_LIST_IDX;			
-				UIConnect.Filter.Dialog.LayerStatus := 1;
-				UIConnect.Filter.DefaultLayerStatus := 0;
-				UIConnect.Filter.Dialog.From.Year := 1970;
-				UIConnect.Filter.Dialog.From.Month := 1;
-				UIConnect.Filter.Dialog.From.Day := 1;
-				UIConnect.Filter.Dialog.Until.Year := 1970;
-				UIConnect.Filter.Dialog.Until.Month := 1;
-				UIConnect.Filter.Dialog.Until.Day := 1;
-				
-				UISetup.OutputListSize := UI_JOB_LIST_IDX;
+				exAssetIntFilterReset(ADR(UIConnect.Filter));		
 
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
@@ -264,52 +164,22 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 		// -------------------------------------------------------------------------------------------
 		// Wait for new event
 		exASSETINT_STATE_IDLE:	
+			// Set status
 			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
 			Active := TRUE;
 
-			// -------------------------------------------------------------------------------------------
 			// Handle dialog window
-			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status));
+			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger);
 			
-			// -------------------------------------------------------------------------------------------
 			// Handle sorting direction change
 			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
 				Internal.State := exASSETINT_STATE_UI_BUFFER;
 			END_IF
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
-			// -------------------------------------------------------------------------------------------
 			// Handle page up and down
-			IF UIConnect.Output.PageUp THEN
-				Internal.RecordStart := Internal.RecordStart - UI_SHIFT_LIST_IDX;
-				Internal.State := exASSETINT_STATE_UI_DATA;					
-			END_IF
-			IF UIConnect.Output.PageDown THEN
-				Internal.RecordStart := Internal.RecordStart + UI_SHIFT_LIST_IDX;					
-				Internal.State := exASSETINT_STATE_UI_DATA;					
-			END_IF
-			
-			// -------------------------------------------------------------------------------------------
-			// Handle step up and down
-			IF UIConnect.Output.StepUp THEN
-				Internal.RecordStart := Internal.RecordStart - 1;
-				Internal.State := exASSETINT_STATE_UI_DATA;					
-			END_IF
-			IF UIConnect.Output.StepDown THEN
-				Internal.RecordStart := Internal.RecordStart + 1;					
-				Internal.State := exASSETINT_STATE_UI_DATA;					
-			END_IF
-			
-			// -------------------------------------------------------------------------------------------
-			// Correction for step/page up/down
-			IF Internal.RecordStart + UI_SHIFT_LIST_IDX > UDINT_TO_DINT(Internal.RecordCount) THEN
-				Internal.RecordStart := Internal.RecordCount - UI_SHIFT_LIST_IDX;
-			END_IF
-			IF Internal.RecordStart < 0 THEN
-				Internal.RecordStart := 0;
-			END_IF
+			exAssetIntScrollListUI(Internal.RecordCount, UI_SHIFT_LIST_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
 				
-			// -------------------------------------------------------------------------------------------
 			// Wait for core task to call update command
 			IF exLink.RefreshShiftUI AND exLink.RecordCount > 0 THEN			
 				Internal.State := exASSETINT_STATE_UI_BUFFER;					
@@ -318,38 +188,12 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			// -------------------------------------------------------------------------------------------
 			// Copy shift data from global buffer to shift buffer
 		exASSETINT_STATE_UI_BUFFER:
+			// Set status
 			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh shift data'), Logger);
 			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
 
-			brsmemset(exLink.MemoryShift, 0, CORE_EVENT_NUM_MAX*SIZEOF(Internal.RecordData));
-			
-			Internal.RecordCount := 0;
-			Internal.y := 0;
-			REPEAT
-				// Check sorting direction
-				IF UISetup.SortingStartTime = exASSETINT_SORTING_ASC THEN
-					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + Internal.y*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-				ELSE
-					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (exLink.RecordCount - Internal.y - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-				END_IF
-				
-				// Only transfer shift data
-				IF Internal.RecordData.EventType = RecordTypeShift THEN
-					// Only transfer data that matches filter
-					IF (NOT UIConnect.Filter.Current.From.Enable AND NOT UIConnect.Filter.Current.Until.Enable) OR 
-					   (UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.From.DateTime <= Internal.RecordData.TimeStart AND NOT UIConnect.Filter.Current.Until.Enable) OR 	
-					   (NOT UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.Until.Enable AND UIConnect.Filter.Current.Until.DateTime >= Internal.RecordData.TimeEnd) OR 	
-   					   (UIConnect.Filter.Current.From.Enable AND UIConnect.Filter.Current.From.DateTime <= Internal.RecordData.TimeStart AND UIConnect.Filter.Current.Until.Enable AND UIConnect.Filter.Current.Until.DateTime >= Internal.RecordData.TimeEnd) THEN	
-						
-						brsmemcpy(exLink.MemoryShift + Internal.RecordCount*SIZEOF(Internal.RecordData), ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
-						Internal.RecordCount := Internal.RecordCount + 1;
-					END_IF
-				END_IF
-	  
-				Internal.y := Internal.y + 1;
-					
-				UNTIL (Internal.y = exLink.RecordCount)
-			END_REPEAT;
+			// Generate shift data
+			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryShift, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeShift);
 			
 			Internal.State := exASSETINT_STATE_UI_DATA;	
 
@@ -407,25 +251,152 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 END_FUNCTION_BLOCK
 
 // -------------------------------------------------------------------------------------------
+// Generate buffer data for job or shift
+FUNCTION exAssetIntBufferUI
+	brsmemset(Memory, 0, CORE_EVENT_NUM_MAX*SIZEOF(RecordData));
+	IF exLink.RecordCount > 0 THEN
+		REPEAT
+			// Check sorting direction
+			IF SortingStartTime = exASSETINT_SORTING_ASC THEN
+				brsmemcpy(ADR(RecordData), exLink.MemoryDb + y*SIZEOF(RecordData), SIZEOF(RecordData));
+			ELSE
+				brsmemcpy(ADR(RecordData), exLink.MemoryDb + (exLink.RecordCount - y - 1)*SIZEOF(RecordData), SIZEOF(RecordData));
+			END_IF
+					
+			// Only transfer shift data
+			IF RecordData.EventType = EventType  THEN
+				// Only transfer data that matches filter
+				IF (NOT Filter.Current.From.Enable AND NOT Filter.Current.Until.Enable) OR 
+					(Filter.Current.From.Enable AND Filter.Current.From.DateTime <= RecordData.TimeStart AND NOT Filter.Current.Until.Enable) OR 	
+					(NOT Filter.Current.From.Enable AND Filter.Current.Until.Enable AND Filter.Current.Until.DateTime >= RecordData.TimeEnd) OR 	
+					(Filter.Current.From.Enable AND Filter.Current.From.DateTime <= RecordData.TimeStart AND Filter.Current.Until.Enable AND Filter.Current.Until.DateTime >= RecordData.TimeEnd) THEN	
+							
+					brsmemcpy(Memory + RecordCount*SIZEOF(RecordData), ADR(RecordData), SIZEOF(RecordData));
+					RecordCount := RecordCount + 1;
+				END_IF
+			END_IF
+		  
+			y := y + 1;
+						
+			UNTIL (y = exLink.RecordCount)
+		END_REPEAT;
+	END_IF
+	
+	exAssetIntBufferUI := RecordCount;
+END_FUNCTION
+
+// -------------------------------------------------------------------------------------------
+// Check prerequisites, exLink and buffers
+FUNCTION exAssetIntCheckPreq
+	// Make sure we have remanent buffer
+	IF ADR(exLink) = 0 THEN
+		// Set status, remember state, go to error state
+		StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR,  ADR(State), ADR(InfoDiagStatusID));
+		exAssetIntCheckPreq := FALSE;
+		RETURN;				
+	END_IF
+	// Make sure we have temporary buffer
+	IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 THEN
+		// Set status, remember state, go to error state
+		StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, ADR('ERR: no temp memory'), Logger, exCOM_SEV_ERROR,  ADR(State), ADR(InfoDiagStatusID));
+		exAssetIntCheckPreq := FALSE;
+		RETURN;				
+	END_IF
+	// Make sure core function block is active
+	IF NOT exLink.IsCoreActive THEN
+		// Set status, remember state, go to error state
+		StatusID := CreateErrorState(mpASSETINT_INF_WAIT_CORE_FB, ADR('ERR: core is not active'), Logger, exCOM_SEV_ERROR,  ADR(State), ADR(InfoDiagStatusID));
+		exAssetIntCheckPreq := FALSE;
+		RETURN;				
+	END_IF
+	exAssetIntCheckPreq := TRUE;
+END_FUNCTION
+
+// -------------------------------------------------------------------------------------------
+// Handle list scrolling
+FUNCTION exAssetIntScrollListUI
+	// -------------------------------------------------------------------------------------------
+	// Handle page up and down
+	IF PageUp THEN
+		RecordStart := RecordStart - ListMaxCount;
+		State := exASSETINT_STATE_UI_DATA;					
+	END_IF
+	IF PageDown THEN
+		RecordStart := RecordStart + ListMaxCount;					
+		State := exASSETINT_STATE_UI_DATA;					
+	END_IF
+				
+	// -------------------------------------------------------------------------------------------
+	// Handle step up and down
+	IF StepUp THEN
+		RecordStart := RecordStart - 1;
+		State := exASSETINT_STATE_UI_DATA;					
+	END_IF
+	IF StepDown THEN
+		RecordStart := RecordStart + 1;					
+		State := exASSETINT_STATE_UI_DATA;					
+	END_IF
+				
+	// -------------------------------------------------------------------------------------------
+	// Correction for step/page up/down
+	IF RecordStart + UI_JOB_LIST_IDX > UDINT_TO_DINT(RecordCount) THEN
+		RecordStart := RecordCount - ListMaxCount;
+	END_IF
+	IF RecordStart < 0 THEN
+		RecordStart := 0;
+	END_IF
+	
+	PageUp := FALSE;
+	PageDown := FALSE;
+	StepUp := FALSE;
+	StepDown := FALSE;
+	
+	exAssetIntScrollListUI := TRUE;
+END_FUNCTION
+
+// -------------------------------------------------------------------------------------------
+// Reset filter settings
+FUNCTION exAssetIntFilterReset
+	Filter.DefaultLayerStatus := 0;
+	Filter.Dialog.LayerStatus := 1;
+	Filter.Dialog.From.Year := 1970;
+	Filter.Dialog.From.Month := 1;
+	Filter.Dialog.From.Day := 1;
+	Filter.Dialog.Until.Year := 1970;
+	Filter.Dialog.Until.Month := 1;
+	Filter.Dialog.Until.Day := 1;
+	
+	exAssetIntFilterReset := TRUE;
+END_FUNCTION
+	
+// -------------------------------------------------------------------------------------------
 // Handle dialog window
 FUNCTION exAssetIntFilterListUI
+	// Open dialog window
 	IF Filter.ShowDialog THEN
+		CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('show dialog window'), Logger);
+		
 		Filter.Dialog.LayerStatus := 0;
 		Filter.DefaultLayerStatus := 2;
 		Filter.ShowDialog := FALSE;
 	END_IF
-				// Dialog is open
+	
+	// Dialog is open
 	IF Filter.Dialog.LayerStatus = 0 THEN
 		Status := exASSETINT_UI_STATUS_FILTER;
 		
 		// Button cancel
 		IF Filter.Dialog.Cancel THEN
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('dialog canceled'), Logger);
+
 			Filter.Dialog.LayerStatus := 1;
 			Filter.DefaultLayerStatus := 0;
 			Filter.Dialog.Cancel := 0;
 		END_IF
 		// Button ok
 		IF Filter.Dialog.Confirm THEN
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('dialog ok'), Logger);
+
 			DT_TO_DTStructure_0.year := Filter.Dialog.From.Year;
 			DT_TO_DTStructure_0.month := Filter.Dialog.From.Month;
 			DT_TO_DTStructure_0.day := Filter.Dialog.From.Day;

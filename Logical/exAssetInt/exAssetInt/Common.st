@@ -25,12 +25,11 @@ END_FUNCTION
 FUNCTION CreateErrorState
 	CreateLoggerEntry(exASSETINT_LOG_ERROR, ErrorMsg, Logger);
 
-	StateError := State;
-	State := exASSETINT_STATE_ERROR;
-	
 	DiagStatusID.ID := ErrorID;
-	DiagStatusID.Code := UDINT_TO_UINT(StateError);
+	DiagStatusID.Code := UDINT_TO_UINT(State);
 	DiagStatusID.Severity := Severity;
+
+	State := exASSETINT_STATE_ERROR;
 	
 	CreateErrorState := ErrorID;
 END_FUNCTION

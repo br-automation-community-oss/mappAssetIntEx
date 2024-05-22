@@ -10585,6 +10585,26 @@
             <Property Name="VCType" Value="INTEGER"/>
           </DataPoint>
         </Folder>
+        <DataPoint Name="LoggerUIShift">
+          <Property Name="ConnectedBySharedResource" Value="False"/>
+          <Property Name="ConnectingVisus" Value="Vis"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="PLCType" Value="STRING[0..50]"/>
+          <Property Name="StringLength" Value="100"/>
+          <Property Name="UpdateTime" Value="Default"/>
+          <Property Name="UserID" Value="None"/>
+          <Property Name="VCType" Value="STRING[]"/>
+        </DataPoint>
+        <DataPoint Name="LoggerUIJob">
+          <Property Name="ConnectedBySharedResource" Value="False"/>
+          <Property Name="ConnectingVisus" Value="Vis"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="PLCType" Value="STRING[0..50]"/>
+          <Property Name="StringLength" Value="100"/>
+          <Property Name="UpdateTime" Value="Default"/>
+          <Property Name="UserID" Value="None"/>
+          <Property Name="VCType" Value="STRING[]"/>
+        </DataPoint>
       </Folder>
     </Folder>
     <Folder Name="MpTeachPointUIConnect">
