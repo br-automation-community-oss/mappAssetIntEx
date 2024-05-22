@@ -15,6 +15,7 @@ TYPE
 		ShiftPieceCounterOld : UDINT;
 		ShiftRejectCounterOld : UDINT;
 		ShiftId : SINT;
+		ShiftName : STRING[20];
 		TmpStr : STRING[500];
 		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
@@ -95,20 +96,15 @@ TYPE
 		IsCoreActive : BOOL; (*Core function block is ready*)
 		RefreshJobUI : BOOL; (*Update job stats in UI*)
 		RefreshShiftUI : BOOL; (*Update shift stats in UI*)
-		ShiftPieceCounter : UDINT; (*Total piece counter*)
-		ShiftRejectCounter : UDINT; (*Total reject counter*)
-		JobPieceCounter : UDINT; (*Total piece counter*)
-		JobRejectCounter : UDINT; (*Total reject counter*)
-		JobStart : DATE_AND_TIME; (*Time when the job started*)
+		ShiftStatistics : exAssetIntShiftStatisticsType; (*Current shift stats*)
+		ShiftTotalTime : LREAL; (*Milliseconds the job is running*)
+		ShiftDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
+		ShiftDowntimeUnscheduled : UDINT; (*Milliseconds of unscheduled downtime*)
+		JobStatistics : exAssetIntJobStatisticsType; (*Current job stats*)
 		JobTotalTime : LREAL; (*Milliseconds the job is running*)
 		JobDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
 		JobDowntimeUnscheduled : UDINT; (*Milliseconds of unscheduled downtime*)
 		ShiftId : SINT := -1; (*Index of shift configuration*)
-		ShiftName : STRING[20]; (*Shift name*)
-		ShiftStart : DATE_AND_TIME; (*Time when shift started*)
-		ShiftTotalTime : LREAL; (*Milliseconds the shift is running*)
-		ShiftDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
-		ShiftDowntimeUnscheduled : UDINT; (*Milliseconds of unscheduled downtime*)
 		DowntimeStart : DATE_AND_TIME;
 	END_STRUCT;
 END_TYPE
@@ -407,6 +403,7 @@ END_TYPE
 TYPE
 	exAssetIntJobStatisticsType : 	STRUCT 
 		JobName : STRING[20]; (*Job name.*)
+		StartTime : DATE_AND_TIME;
 		TotalTime : exAssetIntTimeType; (*Total time since this job started*)
 		ScheduledDowntime : exAssetIntTimeType; (*Scheduled downtime since this job started*)
 		UnscheduledDowntime : exAssetIntTimeType; (*Unsheduled downtime since this job started*)
@@ -426,6 +423,7 @@ TYPE
 	END_STRUCT;
 	exAssetIntShiftStatisticsType : 	STRUCT 
 		ShiftName : STRING[20]; (*Shift name.*)
+		StartTime : DATE_AND_TIME;
 		TotalTime : exAssetIntTimeType; (*Total time since this shift started*)
 		ScheduledDowntime : exAssetIntTimeType; (*Scheduled downtime since this shift started*)
 		UnscheduledDowntime : exAssetIntTimeType; (*Unsheduled downtime since this shift started*)
