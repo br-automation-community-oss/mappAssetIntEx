@@ -37,13 +37,13 @@ FUNCTION CalcStatsJob
 	// -------------------------------------------------------------------------------------------
 	// Calculate counters
 	IF exLink.JobStatistics.TotalPieces > exLink.JobStatistics.RejectPieces THEN
-		JobStatistics.GoodPieces := exLink.JobStatistics.TotalPieces - exLink.JobStatistics.RejectPieces;
+		exLink.JobStatistics.GoodPieces := exLink.JobStatistics.TotalPieces - exLink.JobStatistics.RejectPieces;
 	ELSE
-		JobStatistics.GoodPieces := 0;
-		JobStatistics.RejectPieces := exLink.JobStatistics.TotalPieces;		
+		exLink.JobStatistics.GoodPieces := 0;
+		exLink.JobStatistics.RejectPieces := exLink.JobStatistics.TotalPieces;		
 	END_IF	
-	IF JobStatistics.TotalPieces > 0 THEN
-		JobStatistics.BadPieceRate := UDINT_TO_REAL(exLink.JobStatistics.RejectPieces)/UDINT_TO_REAL(exLink.JobStatistics.TotalPieces);
+	IF exLink.JobStatistics.TotalPieces > 0 THEN
+		exLink.JobStatistics.BadPieceRate := UDINT_TO_REAL(exLink.JobStatistics.RejectPieces)/UDINT_TO_REAL(exLink.JobStatistics.TotalPieces);
 	END_IF
 
 	// -------------------------------------------------------------------------------------------

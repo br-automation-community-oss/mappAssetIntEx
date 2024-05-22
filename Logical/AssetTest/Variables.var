@@ -9,7 +9,7 @@ VAR
 	AutoCount : BOOL; (*Start auto count*)
 END_VAR
 VAR CONSTANT
-	AutoCountCycle : UINT := 100; (*Auto count cycle in ms*)
+	AutoCountCycle : UINT := 1000; (*Auto count cycle in ms*)
 END_VAR
 VAR
 	AutoCountTime : TON_10ms;

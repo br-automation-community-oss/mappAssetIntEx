@@ -263,8 +263,8 @@ FUNCTION exAssetIntBufferUI
 				brsmemcpy(ADR(RecordData), exLink.MemoryDb + (exLink.RecordCount - y - 1)*SIZEOF(RecordData), SIZEOF(RecordData));
 			END_IF
 					
-			// Only transfer shift data
-			IF RecordData.EventType = EventType  THEN
+			// Only transfer job or shift data or both if event is shift and flag is set to show job and shift data together
+			IF (RecordData.EventType = EventType) OR ((RecordData.EventType = RecordTypeShift OR RecordData.EventType = RecordTypeJob) AND EventType = RecordTypeShift AND UI_SHIFT_SHOW_JOBS) THEN
 				// Only transfer data that matches filter
 				IF (NOT Filter.Current.From.Enable AND NOT Filter.Current.Until.Enable) OR 
 					(Filter.Current.From.Enable AND Filter.Current.From.DateTime <= RecordData.TimeStart AND NOT Filter.Current.Until.Enable) OR 	
