@@ -9,7 +9,7 @@ PROGRAM _CYCLIC
 	MpAssetIntCore_0.RejectCounter := gRejectCounter;
 	
     MpAssetIntCore_0.MpLink := ADR(gAssetIntCore);
-    MpAssetIntCore_0.Enable := 1;
+    MpAssetIntCore_0.Enable := gEnable;
     MpAssetIntCore_0.Parameters := ADR(AssetIntPar);
 	MpAssetIntCore_0.DeviceName := ADR(gDeviceName);
 	MpAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
