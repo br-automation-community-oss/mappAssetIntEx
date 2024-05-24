@@ -1,16 +1,5 @@
 ## Appendix
 
-### How the data is recorded
-
-Data is only recorded when the PLC is running and the current time is within the configured shift times and there is no scheduled or unscheduled downtime. Is the PLC is turned of during a shift the time is not considered downtime. 
-
-### How the data is stored
-
-Short term data like piece counters are stored in the remanent variable of type `exAssetIntLinkType`. This structure is used for cross function block communication. The short term data will survive a power off but not a cold reboot. 
-
-All long term data is stored in a ring buffer consisting of individual files on the user partition. The data is spread over multiple directories to speed up the reading process during boot-up. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be job or shift change or a downtime event. The total number of stored events can be adjusted with the constant `CORE_EVENT_NUM_MAX`. Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.
-
-
 ### Constants
 
 #### Common constants
