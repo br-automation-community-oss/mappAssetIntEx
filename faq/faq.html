@@ -331,6 +331,20 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#how-is-the-data-recorded" class="md-nav__link">
+    How is the data recorded?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-and-where-is-the-data-stored" class="md-nav__link">
+    How and where is the data stored?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#what-task-class-should-be-used" class="md-nav__link">
     What task class should be used?
   </a>
@@ -442,6 +456,12 @@
   <h1>FAQs</h1>
 
 <h2 id="faqs">FAQs</h2>
+<h3 id="how-is-the-data-recorded">How is the data recorded?</h3>
+<p>Data is only recorded when the PLC is running and the current time is within the configured shift times and there is no scheduled or unscheduled downtime. Is the PLC is turned of during a shift the time is not considered downtime. </p>
+<h3 id="how-and-where-is-the-data-stored">How and where is the data stored?</h3>
+<p>Short term data like piece counters are stored in the remanent variable of type <code>exAssetIntLinkType</code>. This structure is used for cross function block communication. The short term data will survive a power off but not a cold reboot. </p>
+<p>All long term data is stored in a ring buffer consisting of individual files on the user partition. The data is spread over multiple directories to speed up the reading process during boot-up. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be job or shift change or a downtime event. The total number of stored events can be adjusted with the constant <code>CORE_EVENT_NUM_MAX</code>. Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.</p>
+<p>When the data is loaded all files are checked against a CRC as well as the file size. If a file is corrupt it is deleted and the error is logged. To recover from this error the input <code>ErrorReset</code> must be set to true. When there are no more corrupt files the system will recover and continue to load the remaining files. Only one file is deleted at a time.</p>
 <h3 id="what-task-class-should-be-used">What task class should be used?</h3>
 <p>It is recommended to use task class #8 with a 10ms cycle time.</p>
 <h3 id="how-do-i-increase-the-number-of-events-stored">How do I increase the number of events stored?</h3>

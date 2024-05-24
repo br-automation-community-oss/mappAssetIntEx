@@ -369,11 +369,11 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#test-case-1" class="md-nav__link">
-    Test Case 1
+  <a href="#test-case-storage-1" class="md-nav__link">
+    Test case storage 1
   </a>
   
-    <nav class="md-nav" aria-label="Test Case 1">
+    <nav class="md-nav" aria-label="Test case storage 1">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -392,6 +392,74 @@
         
           <li class="md-nav__item">
   <a href="#expected-result" class="md-nav__link">
+    Expected Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-case-storage-2" class="md-nav__link">
+    Test case storage 2
+  </a>
+  
+    <nav class="md-nav" aria-label="Test case storage 2">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preset_1" class="md-nav__link">
+    Preset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-steps_1" class="md-nav__link">
+    Test Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-result_1" class="md-nav__link">
+    Expected Result
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-case-shift-1" class="md-nav__link">
+    Test case Shift 1
+  </a>
+  
+    <nav class="md-nav" aria-label="Test case Shift 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preset_2" class="md-nav__link">
+    Preset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-steps_2" class="md-nav__link">
+    Test Steps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expected-result_2" class="md-nav__link">
     Expected Result
   </a>
   
@@ -456,21 +524,54 @@
 
 <h2 id="test-case">Test case</h2>
 <p>The following test cases were performed to verify the functionality of the AssetInt component.</p>
-<h4 id="test-case-1">Test Case 1</h4>
+<h4 id="test-case-storage-1">Test case storage 1</h4>
+<p>This test verifies that the CRC is working correctly.</p>
 <h5 id="preset">Preset</h5>
+<p>Trigger one event to create a file.</p>
+<h5 id="test-steps">Test Steps</h5>
+<ul>
+<li>Open the file</li>
+<li>Change a character in the file</li>
+<li>Close and save the file</li>
+<li>Power cycle PLC</li>
+</ul>
+<h5 id="expected-result">Expected Result</h5>
+<ul>
+<li>AssetInt should report an error and delete the corrupt file</li>
+<li>After ErrorReset or Enable 1-&gt;0-&gt;1 the AssetInt should recover</li>
+</ul>
+<h4 id="test-case-storage-2">Test case storage 2</h4>
+<p>This test verifies that the file size is correct.</p>
+<h5 id="preset_1">Preset</h5>
+<p>Trigger one event to create a file.</p>
+<h5 id="test-steps_1">Test Steps</h5>
+<ul>
+<li>Open the file</li>
+<li>Remove a character in the file</li>
+<li>Close and save the file</li>
+<li>Power cycle PLC</li>
+</ul>
+<h5 id="expected-result_1">Expected Result</h5>
+<ul>
+<li>AssetInt should report an error and delete the corrupt file</li>
+<li>After ErrorReset or Enable 1-&gt;0-&gt;1 the AssetInt should recover</li>
+</ul>
+<h4 id="test-case-shift-1">Test case Shift 1</h4>
+<p>This test case verifies that the shift change is logged correctly.</p>
+<h5 id="preset_2">Preset</h5>
 <p>Shift 1 start 06:00 end 14:00
 Shift 2 start 14:30 end 22:00</p>
-<h5 id="test-steps">Test Steps</h5>
+<h5 id="test-steps_2">Test Steps</h5>
 <ul>
 <li>Set time to 13:55</li>
 <li>Let PLC run for 2 minutes</li>
 <li>Power off PLC for 5 minutes</li>
 <li>Turn PLC back on</li>
 </ul>
-<h5 id="expected-result">Expected Result</h5>
+<h5 id="expected-result_2">Expected Result</h5>
 <ul>
-<li>PLC should log shift with 3 minutes</li>
-<li>PLC should not log any data after power on since the timne is 14:02 and there is no shift defined for this time</li>
+<li>AssetInt should log shift with 3 minutes</li>
+<li>AssetInt should not log any data after power on since the time is 14:02 and there is no shift defined for this time</li>
 </ul>
 
 
