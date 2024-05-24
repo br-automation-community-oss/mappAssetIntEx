@@ -8,6 +8,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 		StatusID := ERR_FUB_ENABLE_FALSE;
 		Active := FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
+		CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block disabled'), Logger);
 		RETURN;
 	END_IF
 	
@@ -133,6 +134,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 		StatusID := ERR_FUB_ENABLE_FALSE;
 		Active := FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
+		CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block disabled'), Logger);
 		RETURN;
 	END_IF
 	

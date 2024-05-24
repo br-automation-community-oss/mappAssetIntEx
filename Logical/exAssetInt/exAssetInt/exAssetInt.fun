@@ -208,6 +208,7 @@ FUNCTION_BLOCK ReadEventData
 		FileOpen_0 : FileOpen;
 		FileClose_0 : FileClose;
 		FileRead_0 : FileRead;
+		FileDelete_0 : FileDelete;
 		FileName : STRING[100];
 		FileInfo_0 : fiDIR_READ_EX_DATA;
 		RecordData : exCoreInternalRecordType;
@@ -217,6 +218,7 @@ FUNCTION_BLOCK ReadEventData
 		Override : {REDUND_UNREPLICABLE} USINT;
 		State : USINT;
 		CRC : USINT;
+		StatusRead : DINT;
 		zzEdge00000 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK

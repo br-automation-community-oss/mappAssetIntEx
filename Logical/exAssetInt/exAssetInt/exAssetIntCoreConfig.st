@@ -8,6 +8,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		Active := FALSE;
 		StatusID := ERR_FUB_ENABLE_FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
+		CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block disabled'), Logger);
 		RETURN;
 	END_IF
 	

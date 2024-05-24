@@ -36,7 +36,9 @@ FUNCTION_BLOCK ReadEventData
 					DirName := 'events0';
 					
 					Status := ERR_FUB_BUSY;
-					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('raeding all events'), Logger);
+					StatusRead := ERR_OK;
+					RecordCount := 0;
+					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('reading all events'), Logger);
 					State := 1;
 				END_IF
 	
@@ -160,7 +162,7 @@ FUNCTION_BLOCK ReadEventData
 						TmpStr1 := 'data in event file has wrong size -> ';
 						brsstrcat(ADR(TmpStr1), ADR(FileName));
 						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR(TmpStr1), Logger);
-						Status := ERR_ASSET_READ_RECORD_SIZE;
+						StatusRead := ERR_ASSET_READ_RECORD_SIZE;
 						
 						State := 6;
 					ELSE
@@ -196,7 +198,7 @@ FUNCTION_BLOCK ReadEventData
 						TmpStr1 := 'read event file CRC error -> ';
 						brsstrcat(ADR(TmpStr1), ADR(FileName));
 						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR(TmpStr1), Logger);
-						Status := ERR_ASSET_READ_CRC;
+						StatusRead := ERR_ASSET_READ_CRC;
 					ELSE
 						// Insert record
 						InsertEventData(Memory, RecordCount, RecordData);
@@ -225,8 +227,11 @@ FUNCTION_BLOCK ReadEventData
 					brsstrcat(ADR(TmpStr1), ADR(FileName));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 					
+					// Auto delete corrupt file 
+					IF StatusRead = ERR_ASSET_READ_RECORD_SIZE OR StatusRead = ERR_ASSET_READ_CRC THEN
+						State := 7;						
 					// Abort if there was a previous error, else proceed with next file
-					IF Status <> ERR_FUB_BUSY THEN
+					ELSIF Status <> ERR_FUB_BUSY THEN
 						State := 0;
 					ELSE
 						State := 2;
@@ -237,7 +242,30 @@ FUNCTION_BLOCK ReadEventData
 					Status := FileClose_0.status;
 					State := 0;
 				END_IF
-			
+				
+			// -------------------------------------------------------------------------------------------
+			// Delete corrupt file
+			7:
+				FileDelete_0.enable := TRUE;
+				FileDelete_0.pDevice := ADR(Device);
+				FileDelete_0.pName := ADR(FileName);
+				FileDelete_0();
+		
+				// File delete successful
+				IF FileDelete_0.status = ERR_OK THEN
+					// Generate log entry
+					TmpStr1 := 'delete corrupt event file ok -> ';
+					brsstrcat(ADR(TmpStr1), ADR(FileName));
+					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
+					
+					Status := StatusRead;
+					State := 0;
+					
+				// Error
+				ELSIF FileDelete_0.status <> ERR_FUB_BUSY THEN
+					Status := FileDelete_0.status;
+					State := 0;
+				END_IF			
 		END_CASE;
 	END_FOR;
 
