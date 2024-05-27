@@ -109,6 +109,28 @@ FUNCTION_BLOCK exAssetIntShiftListUI (*mapp function block which can be used for
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK exAssetIntTimelineUI (*mapp function block which can be used for showing shift statistics in a list *)
+	VAR_INPUT
+		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
+		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
+		Logger : UDINT;
+		UISetup : exAssetIntListUISetupType; (*Setup UI connection - must be configured before enabling the FB*) (* *) (*#PAR#; *)
+		UIConnect : REFERENCE TO exAssetIntTimelineUIConnectType; (*Connection structure for VC4 User interface*) (* *) (*#CMD#; *)
+	END_VAR
+	VAR_OUTPUT
+		Active : BOOL; (*Function block is active (mapp standard interface)*) (* *) (*#PAR#;*)
+		Error : BOOL; (*Indicates an error (mapp standard interface)*) (* *) (*#PAR#;*)
+		StatusID : DINT; (*Error/Status information (mapp standard interface)*) (* *) (*#PAR#; *)
+		Info : exAssetIntInfoType; (*Provide any further useful information as function block output.(mapp standard interface)*) (* *) (*#CMD#; *)
+	END_VAR
+	VAR
+		Internal : {REDUND_UNREPLICABLE} exUIInternalDataType; (*Internal data*)
+		zzEdge00000 : BOOL;
+		zzEdge1 : BOOL;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK CreateDirStructure
 	VAR_INPUT
 		Enable : BOOL;
@@ -138,6 +160,7 @@ FUNCTION_BLOCK CreateMemory
 		MemoryDb : UDINT;
 		MemoryJob : UDINT;
 		MemoryShift : UDINT;
+		MemoryTimeline : UDINT;
 		Status : UINT;
 	END_VAR
 	VAR
@@ -241,7 +264,8 @@ FUNCTION_BLOCK WriteEventData
 		FileWrite_0 : FileWrite;
 		RecordDataIntern : exCoreInternalRecordType;
 		FileName : STRING[100];
-		TmpStr : STRING[100];
+		TmpStr1 : STRING[100];
+		TmpStr2 : STRING[10];
 		Ident : UDINT;
 		State : USINT;
 		zzEdge00000 : BOOL;

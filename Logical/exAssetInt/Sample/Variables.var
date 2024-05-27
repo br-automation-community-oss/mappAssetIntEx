@@ -22,4 +22,7 @@ VAR
 	exAssetIntShiftListUI_0 : exAssetIntShiftListUI;
 	ShiftListUIConnect : exAssetIntShiftListUIConnectType;
 	LoggerUIShift : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
+	exAssetIntTimelineUI_0 : exAssetIntTimelineUI;
+	TimelineUIConnect : exAssetIntTimelineUIConnectType;
+	LoggerUITimeline : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
 END_VAR

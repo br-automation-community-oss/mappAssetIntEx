@@ -75,5 +75,11 @@ PROGRAM _CYCLIC
 	exAssetIntShiftListUI_0.UIConnect := ADR(ShiftListUIConnect);
 	exAssetIntShiftListUI_0.Logger := ADR(LoggerUIShift);
 	exAssetIntShiftListUI_0();
+	
+	exAssetIntTimelineUI_0.Enable := exAssetIntCore_0.Active;
+	exAssetIntTimelineUI_0.exLink :=  ADR(exAssetIntLink);
+	exAssetIntTimelineUI_0.UIConnect := ADR(TimelineUIConnect);
+	exAssetIntTimelineUI_0.Logger := ADR(LoggerUITimeline);
+	exAssetIntTimelineUI_0();
 
 END_PROGRAM

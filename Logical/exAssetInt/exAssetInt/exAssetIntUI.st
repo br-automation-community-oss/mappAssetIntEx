@@ -30,8 +30,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				StatusID := ERR_OK;
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
 				
-				// Set output list to constant, reset filter settings
-				UISetup.OutputListSize := UI_JOB_LIST_IDX;
+				// Reset filter settings
 				exAssetIntFilterReset(ADR(UIConnect.Filter));
 			
 				Internal.State := exASSETINT_STATE_IDLE;
@@ -156,15 +155,14 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 				StatusID := ERR_OK;
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
 				
-				// Set output list to constant, reset filter settings
-				UISetup.OutputListSize := UI_SHIFT_LIST_IDX;			
-				exAssetIntFilterReset(ADR(UIConnect.Filter));		
+				// Reset filter settings
+				exAssetIntFilterReset(ADR(UIConnect.Filter));				
 
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
 
-		// -------------------------------------------------------------------------------------------
-		// Wait for new event
+			// -------------------------------------------------------------------------------------------
+			// Wait for new event
 		exASSETINT_STATE_IDLE:	
 			// Set status
 			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
@@ -180,7 +178,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			exAssetIntScrollListUI(Internal.RecordCount, UI_SHIFT_LIST_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
+			exAssetIntScrollListUI(Internal.RecordCount, UI_SHIFT_TIMELINE_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
 				
 			// Wait for core task to call update command
 			IF exLink.RefreshShiftUI AND exLink.RecordCount > 0 THEN			
@@ -195,7 +193,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
 
 			// Generate shift data
-			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryShift, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeShift);
+			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryTimeline, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeShift);
 			
 			Internal.State := exASSETINT_STATE_UI_DATA;	
 
@@ -253,6 +251,118 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 END_FUNCTION_BLOCK
 
 // -------------------------------------------------------------------------------------------
+// Shift timeline function block
+FUNCTION_BLOCK exAssetIntTimelineUI
+	// -------------------------------------------------------------------------------------------
+	// Reset everything when enable is false
+	IF NOT Enable THEN
+		StatusID := ERR_FUB_ENABLE_FALSE;
+		Active := FALSE;
+		Internal.State := exASSETINT_STATE_INIT_1;
+		CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block disabled'), Logger);
+		RETURN;
+	END_IF
+	
+	CASE Internal.State OF
+
+		// -------------------------------------------------------------------------------------------
+		// Wait for enable
+		exASSETINT_STATE_INIT_1:
+			IF Enable THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
+
+				// Check prerequisites, exLink and buffers
+				IF NOT exAssetIntCheckPreq(exLink, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+					RETURN;
+				END_IF
+
+				// Reset error and status
+				Error := FALSE;
+				StatusID := ERR_OK;
+				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
+				
+				// Reset filter settings
+				exAssetIntFilterReset(ADR(UIConnect.Filter));		
+
+				Internal.State := exASSETINT_STATE_IDLE;
+			END_IF
+
+			// -------------------------------------------------------------------------------------------
+			// Wait for new event
+		exASSETINT_STATE_IDLE:	
+			// Set status
+			UIConnect.Status := exASSETINT_UI_STATUS_IDLE;
+			Active := TRUE;
+
+			// Handle dialog window
+			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger);
+			
+			// Handle sorting direction change
+			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
+				Internal.State := exASSETINT_STATE_UI_BUFFER;
+			END_IF
+			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
+			
+			// Handle page up and down
+			exAssetIntScrollListUI(Internal.RecordCount, UI_SHIFT_LIST_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
+				
+			// Wait for core task to call update command
+			IF exLink.RefreshTimelineUI AND exLink.RecordCount > 0 THEN			
+				Internal.State := exASSETINT_STATE_UI_BUFFER;					
+			END_IF
+			
+			// -------------------------------------------------------------------------------------------
+			// Copy shift data from global buffer to shift buffer
+		exASSETINT_STATE_UI_BUFFER:
+			// Set status
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh shift data'), Logger);
+			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
+
+			// Generate shift data
+			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryTimeline, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeTimeline);
+			
+			Internal.State := exASSETINT_STATE_UI_DATA;	
+
+			// -------------------------------------------------------------------------------------------
+			// Transfer data from buffer to list array
+		exASSETINT_STATE_UI_DATA:	
+						
+			Internal.x := 0;
+			brsmemset(ADR(UIConnect.Output), 0, SIZEOF(UIConnect.Output));
+			REPEAT
+				brsmemcpy(ADR(Internal.RecordData), exLink.MemoryTimeline + (Internal.x + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+				
+				UIConnect.Output.StartTime[Internal.x] := Internal.RecordData.TimeStart;
+				UIConnect.Output.ShiftName[Internal.x] := Internal.RecordData.ShiftName;
+				UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
+				UIConnect.Output.ProductionState[Internal.x] := UDINT_TO_UINT(Internal.RecordData.EventType) - 3;
+				UIConnect.Output.Duration[Internal.x] := Internal.RecordData.Uptime;
+				UIConnect.Output.Reason[Internal.x] := Internal.RecordData.AdditionalData;
+
+				Internal.x := Internal.x + 1;
+				
+				UNTIL (Internal.x = UI_SHIFT_LIST_IDX) OR (Internal.x + Internal.RecordStart > Internal.RecordCount)
+			END_REPEAT;
+											
+			exLink.RefreshTimelineUI := FALSE;
+			UIConnect.Output.PageUp := FALSE;
+			UIConnect.Output.PageDown := FALSE;
+			UIConnect.Output.StepUp := FALSE;
+			UIConnect.Output.StepDown := FALSE;
+			
+			Internal.State := exASSETINT_STATE_IDLE;	
+			
+			// -------------------------------------------------------------------------------------------
+			// Error state
+		exASSETINT_STATE_ERROR:		
+			IF EDGEPOS(ErrorReset) THEN
+				Internal.StateError := exASSETINT_STATE_NONE;
+				Internal.State := exASSETINT_STATE_INIT_1;
+			END_IF
+	END_CASE;
+END_FUNCTION_BLOCK
+
+// -------------------------------------------------------------------------------------------
 // Generate buffer data for job or shift
 FUNCTION exAssetIntBufferUI
 	brsmemset(Memory, 0, CORE_EVENT_NUM_MAX*SIZEOF(RecordData));
@@ -265,8 +375,12 @@ FUNCTION exAssetIntBufferUI
 				brsmemcpy(ADR(RecordData), exLink.MemoryDb + (exLink.RecordCount - y - 1)*SIZEOF(RecordData), SIZEOF(RecordData));
 			END_IF
 					
-			// Only transfer job or shift data or both if event is shift and flag is set to show job and shift data together
-			IF (RecordData.EventType = EventType) OR ((RecordData.EventType = RecordTypeShift OR RecordData.EventType = RecordTypeJob) AND EventType = RecordTypeShift AND UI_SHIFT_SHOW_JOBS) THEN
+			// Data must match event type
+			// or eventy type is shift and data is shift or job and flag is set to show job and shift data together
+			// or eventy type is timeline and data timeline data (>= RecordTypeNoShift)
+			IF (RecordData.EventType = EventType) OR 
+			   (EventType = RecordTypeShift AND UI_SHIFT_SHOW_JOBS AND (RecordData.EventType = RecordTypeShift OR RecordData.EventType = RecordTypeJob)) OR 
+     		   (EventType = RecordTypeTimeline AND RecordData.EventType >= RecordTypeNoShift) THEN
 				// Only transfer data that matches filter
 				IF (NOT Filter.Current.From.Enable AND NOT Filter.Current.Until.Enable) OR 
 					(Filter.Current.From.Enable AND Filter.Current.From.DateTime <= RecordData.TimeStart AND NOT Filter.Current.Until.Enable) OR 	
@@ -298,7 +412,7 @@ FUNCTION exAssetIntCheckPreq
 		RETURN;				
 	END_IF
 	// Make sure we have temporary buffer
-	IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 THEN
+	IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 OR exLink.MemoryTimeline = 0 THEN
 		// Set status, remember state, go to error state
 		StatusID := CreateErrorState(ERR_ASSET_TEMP_MEMORY, ADR('ERR: no temp memory'), Logger, exCOM_SEV_ERROR,  ADR(State), ADR(InfoDiagStatusID));
 		exAssetIntCheckPreq := FALSE;

@@ -85,6 +85,11 @@ PROGRAM _CYCLIC
     MpAssetIntJobListUI_0.Enable := MpAssetIntCore_0.Active;
 	MpAssetIntJobListUI_0.UIConnect := ADR(JobListUIConnect);
 	MpAssetIntJobListUI_0.UISetup := JobListUISetup;
-    MpAssetIntJobListUI_0();
+	MpAssetIntJobListUI_0();
+	
+	MpAssetIntTimelineUI_0.MpLink :=  ADR(gAssetIntCore);
+	MpAssetIntTimelineUI_0.Enable := MpAssetIntCore_0.Active;
+	MpAssetIntTimelineUI_0.UIConnect := ADR(TimelineUIConnect);
+	MpAssetIntTimelineUI_0();
      
 END_PROGRAM

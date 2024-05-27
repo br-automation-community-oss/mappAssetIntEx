@@ -69,9 +69,21 @@ FUNCTION_BLOCK CreateMemory
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1)); 
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger); 
  
+					// Reset memory, set up next memory 
+					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size); 
+					Cnt := 0; 
+					MemoryShift := DatObjCreate_0.pDatObjMem; 
+					MemoryType := exASSETINT_MEM_TIMELINE; 
+					TmpStr1 := 'AsTl_0'; 
+				ELSIF MemoryType = exASSETINT_MEM_TIMELINE THEN 
+					// Generate log entry 
+					TmpStr2 := 'create timeline memory module ok -> '; 
+					brsstrcat(ADR(TmpStr2), ADR(TmpStr1)); 
+					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger); 
+ 
 					// Reset memory, finish up 
 					brsmemset(DatObjCreate_0.pDatObjMem, 0, Size); 
-					MemoryShift := DatObjCreate_0.pDatObjMem; 
+					MemoryTimeline := DatObjCreate_0.pDatObjMem; 
 					Status := ERR_OK; 
 					State := 0; 
 				END_IF 

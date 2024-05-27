@@ -58,10 +58,13 @@ TYPE
 	END_STRUCT;
 	exCoreInternalRecordEnum : 
 		(
-		RecordTypeJob,
-		RecordTypeShift,
-		RecordTypeDowntimeScheduled,
-		RecordTypeDowntimeUnscheduled
+		RecordTypeJob := 0,
+		RecordTypeShift := 1,
+		RecordTypeNoShift := 2,
+		RecordTypeUptime := 3,
+		RecordTypeDowntimeScheduled := 4,
+		RecordTypeDowntimeUnscheduled := 5,
+		RecordTypeTimeline := 10
 		);
 	exCoreInternalExportEnum : 
 		(
@@ -91,11 +94,13 @@ TYPE
 		MemoryDb : UDINT; (*Database memory*)
 		MemoryJob : UDINT; (*Job data memory*)
 		MemoryShift : UDINT; (*Shift data memory*)
+		MemoryTimeline : UDINT; (*Timeline data memory*)
 		Configuration : REFERENCE TO exAssetIntCoreConfigType; (*Configuration structure*)
 		RecordCount : UDINT; (*Number of total records*)
 		IsCoreActive : BOOL; (*Core function block is ready*)
 		RefreshJobUI : BOOL; (*Update job stats in UI*)
 		RefreshShiftUI : BOOL; (*Update shift stats in UI*)
+		RefreshTimelineUI : BOOL; (*Update timeline stats in UI*)
 		ShiftStatistics : exAssetIntShiftStatisticsType; (*Current shift stats*)
 		ShiftTotalTime : LREAL; (*Milliseconds the job is running*)
 		ShiftDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
@@ -149,7 +154,8 @@ TYPE
 		(
 		exASSETINT_MEM_DB := 0, (*Database memory*)
 		exASSETINT_MEM_JOB := 1, (*Job working memory*)
-		exASSETINT_MEM_SHIFT := 2 (*Shift working memory*)
+		exASSETINT_MEM_SHIFT := 2, (*Shift working memory*)
+		exASSETINT_MEM_TIMELINE := 3 (*Timeline working memory*)
 		);
 	exAssetIntDowntimeEnum : 
 		(
@@ -243,7 +249,13 @@ TYPE
 		Filter : exAssetIntUIFilterType; (*Output filter.*)
 	END_STRUCT;
 	exAssetIntUITimelineOutputType : 	STRUCT 
-		Display : ARRAY[0..19]OF exAssetIntUITimelineLineType; (*States display*)
+		StartTime : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF DATE_AND_TIME; (*FB->VC:Start time of this state*)
+		ShiftName : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF STRING[20]; (*FB->VC:Shift name*)
+		JobName : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF STRING[20]; (*FB->VC:Job name*)
+		ProductionState : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF exAssetIntUIProductionStateEnum; (*FB->VC:Production state*)
+		Reason : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF STRING[50]; (*FB->VC:Reason of this state*)
+		Duration : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF exAssetIntTimeType; (*FB->VC:Duration of this state*)
+		DurationBar : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF exAssetIntUITimeBargraphType; (*FB->VC:Duration of this state in a graphic way*)
 		RangeStart : REAL; (*Displayed range: Start %*)
 		RangeEnd : REAL; (*Displayed range: End %*)
 		PageUp : BOOL; (*Command: Page Up (Scroll Up)*)
@@ -251,22 +263,9 @@ TYPE
 		StepDown : BOOL; (*Command: Line Down (Scroll Down)*)
 		PageDown : BOOL; (*Command: Page Down (Scroll Down)*)
 	END_STRUCT;
-	exAssetIntUITimelineLineType : 	STRUCT 
-		StartTime : DATE_AND_TIME; (*FB->VC:Start time of this state*)
-		ShiftName : STRING[20]; (*FB->VC:Shift name*)
-		JobName : STRING[20]; (*FB->VC:Job name*)
-		ProductionState : exAssetIntUIProductionStateEnum; (*FB->VC:Production state*)
-		Reason : STRING[50]; (*FB->VC:Reason of this state*)
-		Duration : exAssetIntTimeType; (*FB->VC:Duration of this state*)
-		DurationBar : exAssetIntUITimeBargraphType; (*FB->VC:Duration of this state in a graphic way*)
-	END_STRUCT;
 	exAssetIntUITimeBargraphType : 	STRUCT 
 		Duration : UDINT; (*FB->VC:EndValue(lenth) of the scale*)
 		Color : UDINT; (*FB->VC:ColorDatapoint of the scale*)
-	END_STRUCT;
-	exAssetIntTimelineUISetupType : 	STRUCT 
-		TimelineListSize : UINT := 10; (*Output list size*)
-		ScrollWindow : USINT := 0; (*Scroll Window (overlap for PageUp/Down)*)
 	END_STRUCT;
 	exAssetIntTimelineUIConnectType : 	STRUCT 
 		Status : exAssetIntUIStatusEnum; (*Status of UI function block*)
@@ -318,7 +317,6 @@ TYPE
 		Name : ARRAY[0..9]OF STRING[20]; (*Name of the job*)
 	END_STRUCT;
 	exAssetIntListUISetupType : 	STRUCT 
-		OutputListSize : UINT := 10; (*Output list size*)
 		ScrollWindow : USINT := 0; (*Scroll Window (overlap for PageUp/Down)*)
 		SortingStartTime : exAssetIntUISortingEnum := exASSETINT_SORTING_DESC;
 	END_STRUCT;

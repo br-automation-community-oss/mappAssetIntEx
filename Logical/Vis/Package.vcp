@@ -131,6 +131,7 @@
     <Source File="Pages\Init_Page.page"/>
     <Source File="Pages\JobList.page"/>
     <Source File="Pages\ShiftList.page"/>
+    <Source File="Pages\ShiftTimeline.page"/>
     <Source File="StyleSheets\Gray.vcs"/>
     <Source File="StyleSheets\Color.vcs"/>
     <Source File="Borders\Raised.bdr"/>
