@@ -23,7 +23,7 @@ END_VAR
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR CONSTANT
 	UI_SHIFT_LIST_IDX : UINT := 8; (*Max index for list box entries for shift data*)
-	UI_SHIFT_TIMELINE_IDX : UINT := 8; (*Max index for list box entries for timeline data*)
+	UI_TIMELINE_IDX : UINT := 8; (*Max index for list box entries for timeline data*)
 	UI_SHIFT_SHOW_JOBS : BOOL := TRUE; (*Show job changes in shift list*)
 	UI_JOB_LIST_IDX : UINT := 8; (*Max index for list box entries for job data*)
 END_VAR

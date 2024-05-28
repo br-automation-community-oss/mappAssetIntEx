@@ -136,10 +136,10 @@ FUNCTION CalcStatsShift
 	exLink.ShiftStatistics.GoodProductionTime.Minutes := UDINT_TO_USINT((GoodProductionTime - exLink.ShiftStatistics.GoodProductionTime.Hours*3600)/60);
 	exLink.ShiftStatistics.GoodProductionTime.Seconds := UDINT_TO_USINT(GoodProductionTime - exLink.ShiftStatistics.GoodProductionTime.Hours*3600 - exLink.ShiftStatistics.GoodProductionTime.Minutes*60);
 	
-	IF exLink.ShiftDowntimeScheduled > 0 THEN
+	IF exLink.ShiftDowntimeScheduled > 0 AND ShiftTotalTime > 0 THEN
 		exLink.ShiftStatistics.ScheduledDowntimeRate := UDINT_TO_REAL(exLink.ShiftDowntimeScheduled/ShiftTotalTime);
 	END_IF
-	IF exLink.ShiftDowntimeUnscheduled > 0 THEN
+	IF exLink.ShiftDowntimeUnscheduled > 0 AND ShiftTotalTime > 0 THEN
 		exLink.ShiftStatistics.UnscheduledDowntimeRate := UDINT_TO_REAL(exLink.ShiftDowntimeUnscheduled/ShiftTotalTime);
 	END_IF
 	IF Uptime > 0 THEN

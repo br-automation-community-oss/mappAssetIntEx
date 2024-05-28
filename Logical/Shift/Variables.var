@@ -10,5 +10,7 @@ VAR
 	ShiftListUIConnect : MpAssetIntShiftListUIConnectType;
 	TimelineUIConnect : MpAssetIntTimelineUIConnectType;
 	DisableConfig : BOOL;
+	ShiftListUISetup : MpAssetIntShiftListUISetupType;
+	TimelineUISetup : MpAssetIntTimelineUISetupType;
 	JobListUISetup : MpAssetIntJobListUISetupType := (OutputListSize:=8,ScrollWindow:=2);
 END_VAR

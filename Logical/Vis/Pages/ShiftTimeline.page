@@ -2547,10 +2547,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1295"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Job"/>
+          <Property Name="SimulationValue" Value="Shift"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.ShiftName[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -2698,10 +2698,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1295"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Job"/>
+          <Property Name="SimulationValue" Value="Shift"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.ShiftName[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -2847,10 +2847,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1295"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Job"/>
+          <Property Name="SimulationValue" Value="Shift"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.ShiftName[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -2998,10 +2998,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1295"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Job"/>
+          <Property Name="SimulationValue" Value="Shift"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.ShiftName[3]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3147,10 +3147,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1295"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Job"/>
+          <Property Name="SimulationValue" Value="Shift"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.ShiftName[4]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3298,10 +3298,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1295"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Job"/>
+          <Property Name="SimulationValue" Value="Shift"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.ShiftName[5]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3447,10 +3447,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1295"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Job"/>
+          <Property Name="SimulationValue" Value="Shift"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.ShiftName[6]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3598,10 +3598,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1195"/>
+          <Property Name="Left" Value="1295"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Job"/>
+          <Property Name="SimulationValue" Value="Shift"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.ShiftName[7]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3730,10 +3730,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1295"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Shift"/>
+          <Property Name="SimulationValue" Value="Job"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.JobName[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3748,10 +3748,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1295"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Shift"/>
+          <Property Name="SimulationValue" Value="Job"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.JobName[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3766,10 +3766,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1295"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Shift"/>
+          <Property Name="SimulationValue" Value="Job"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.JobName[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3784,10 +3784,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1295"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Shift"/>
+          <Property Name="SimulationValue" Value="Job"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.JobName[3]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3802,10 +3802,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1295"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Shift"/>
+          <Property Name="SimulationValue" Value="Job"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.JobName[4]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3820,10 +3820,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1295"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Shift"/>
+          <Property Name="SimulationValue" Value="Job"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.JobName[5]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3838,10 +3838,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1295"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Shift"/>
+          <Property Name="SimulationValue" Value="Job"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.JobName[6]]"/>
           <Property Name="TextSource" Value="SingleString"/>
@@ -3856,10 +3856,10 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1295"/>
+          <Property Name="Left" Value="1195"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
-          <Property Name="SimulationValue" Value="Shift"/>
+          <Property Name="SimulationValue" Value="Job"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.JobName[7]]"/>
           <Property Name="TextSource" Value="SingleString"/>

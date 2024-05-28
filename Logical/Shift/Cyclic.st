@@ -79,7 +79,8 @@ PROGRAM _CYCLIC
     MpAssetIntShiftListUI_0.MpLink :=  ADR(gAssetIntCore);
     MpAssetIntShiftListUI_0.Enable := MpAssetIntCore_0.Active;
     MpAssetIntShiftListUI_0.UIConnect := ADR(ShiftListUIConnect);
-    MpAssetIntShiftListUI_0();
+	MpAssetIntShiftListUI_0.UISetup := ShiftListUISetup;
+	MpAssetIntShiftListUI_0();
     
     MpAssetIntJobListUI_0.MpLink :=  ADR(gAssetIntCore);
     MpAssetIntJobListUI_0.Enable := MpAssetIntCore_0.Active;
@@ -90,6 +91,7 @@ PROGRAM _CYCLIC
 	MpAssetIntTimelineUI_0.MpLink :=  ADR(gAssetIntCore);
 	MpAssetIntTimelineUI_0.Enable := MpAssetIntCore_0.Active;
 	MpAssetIntTimelineUI_0.UIConnect := ADR(TimelineUIConnect);
+	MpAssetIntTimelineUI_0.UISetup := TimelineUISetup;
 	MpAssetIntTimelineUI_0();
      
 END_PROGRAM

@@ -16,7 +16,10 @@ TYPE
 		ShiftRejectCounterOld : UDINT;
 		ShiftId : SINT;
 		ShiftName : STRING[20];
+		TimelineShiftName : STRING[20];
+		TimelineJobName : STRING[20];
 		TmpStr : STRING[500];
+		ProductionTotalTime : UDINT;
 		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
 		DT_TO_DTStructure_0 : DTStructure;
@@ -110,7 +113,9 @@ TYPE
 		JobDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
 		JobDowntimeUnscheduled : UDINT; (*Milliseconds of unscheduled downtime*)
 		ShiftId : SINT := -1; (*Index of shift configuration*)
-		DowntimeStart : DATE_AND_TIME;
+		ProductionStateStart : DATE_AND_TIME; (*Current state beginning*)
+		ProductionState : exAssetIntUIProductionStateEnum; (*Current state*)
+		ProductionTotalTime : LREAL; (*Milliseconds the state is running*)
 	END_STRUCT;
 END_TYPE
 
@@ -249,13 +254,13 @@ TYPE
 		Filter : exAssetIntUIFilterType; (*Output filter.*)
 	END_STRUCT;
 	exAssetIntUITimelineOutputType : 	STRUCT 
-		StartTime : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF DATE_AND_TIME; (*FB->VC:Start time of this state*)
-		ShiftName : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF STRING[20]; (*FB->VC:Shift name*)
-		JobName : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF STRING[20]; (*FB->VC:Job name*)
-		ProductionState : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF exAssetIntUIProductionStateEnum; (*FB->VC:Production state*)
-		Reason : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF STRING[50]; (*FB->VC:Reason of this state*)
-		Duration : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF exAssetIntTimeType; (*FB->VC:Duration of this state*)
-		DurationBar : ARRAY[0..UI_SHIFT_TIMELINE_IDX]OF exAssetIntUITimeBargraphType; (*FB->VC:Duration of this state in a graphic way*)
+		StartTime : ARRAY[0..UI_TIMELINE_IDX]OF DATE_AND_TIME; (*FB->VC:Start time of this state*)
+		ShiftName : ARRAY[0..UI_TIMELINE_IDX]OF STRING[20]; (*FB->VC:Shift name*)
+		JobName : ARRAY[0..UI_TIMELINE_IDX]OF STRING[20]; (*FB->VC:Job name*)
+		ProductionState : ARRAY[0..UI_TIMELINE_IDX]OF exAssetIntUIProductionStateEnum; (*FB->VC:Production state*)
+		Reason : ARRAY[0..UI_TIMELINE_IDX]OF STRING[50]; (*FB->VC:Reason of this state*)
+		Duration : ARRAY[0..UI_TIMELINE_IDX]OF exAssetIntTimeType; (*FB->VC:Duration of this state*)
+		DurationBar : ARRAY[0..UI_TIMELINE_IDX]OF exAssetIntUITimeBargraphType; (*FB->VC:Duration of this state in a graphic way*)
 		RangeStart : REAL; (*Displayed range: Start %*)
 		RangeEnd : REAL; (*Displayed range: End %*)
 		PageUp : BOOL; (*Command: Page Up (Scroll Up)*)

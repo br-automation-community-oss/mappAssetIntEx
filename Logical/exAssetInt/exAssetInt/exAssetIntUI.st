@@ -103,7 +103,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 
 				Internal.x := Internal.x + 1;
 				
-				UNTIL (Internal.x = UI_JOB_LIST_IDX) OR (Internal.x + Internal.RecordStart > Internal.RecordCount)
+				UNTIL (Internal.x = UI_JOB_LIST_IDX) OR (Internal.x + Internal.RecordStart >= Internal.RecordCount)
 			END_REPEAT;
 											
 			exLink.RefreshJobUI := FALSE;
@@ -178,7 +178,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			exAssetIntScrollListUI(Internal.RecordCount, UI_SHIFT_TIMELINE_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
+			exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
 				
 			// Wait for core task to call update command
 			IF exLink.RefreshShiftUI AND exLink.RecordCount > 0 THEN			
@@ -229,7 +229,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 
 				Internal.x := Internal.x + 1;
 				
-				UNTIL (Internal.x = UI_SHIFT_LIST_IDX) OR (Internal.x + Internal.RecordStart > Internal.RecordCount)
+				UNTIL (Internal.x = UI_SHIFT_LIST_IDX) OR (Internal.x + Internal.RecordStart >= Internal.RecordCount)
 			END_REPEAT;
 											
 			exLink.RefreshShiftUI := FALSE;
@@ -304,7 +304,7 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			exAssetIntScrollListUI(Internal.RecordCount, UI_SHIFT_LIST_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
+			exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
 				
 			// Wait for core task to call update command
 			IF exLink.RefreshTimelineUI AND exLink.RecordCount > 0 THEN			
@@ -312,13 +312,13 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
-			// Copy shift data from global buffer to shift buffer
+			// Copy timeline data from global buffer to timeline buffer
 		exASSETINT_STATE_UI_BUFFER:
 			// Set status
-			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh shift data'), Logger);
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh timeline data'), Logger);
 			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
 
-			// Generate shift data
+			// Generate timeline data
 			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryTimeline, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeTimeline);
 			
 			Internal.State := exASSETINT_STATE_UI_DATA;	
@@ -335,13 +335,13 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 				UIConnect.Output.StartTime[Internal.x] := Internal.RecordData.TimeStart;
 				UIConnect.Output.ShiftName[Internal.x] := Internal.RecordData.ShiftName;
 				UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
-				UIConnect.Output.ProductionState[Internal.x] := UDINT_TO_UINT(Internal.RecordData.EventType) - 3;
-				UIConnect.Output.Duration[Internal.x] := Internal.RecordData.Uptime;
+				UIConnect.Output.ProductionState[Internal.x] := UDINT_TO_UINT(Internal.RecordData.EventType) - 2;
+				UIConnect.Output.Duration[Internal.x] := Internal.RecordData.TotalTime;
 				UIConnect.Output.Reason[Internal.x] := Internal.RecordData.AdditionalData;
 
 				Internal.x := Internal.x + 1;
 				
-				UNTIL (Internal.x = UI_SHIFT_LIST_IDX) OR (Internal.x + Internal.RecordStart > Internal.RecordCount)
+				UNTIL (Internal.x = UI_TIMELINE_IDX) OR (Internal.x + Internal.RecordStart >= Internal.RecordCount)
 			END_REPEAT;
 											
 			exLink.RefreshTimelineUI := FALSE;
@@ -363,7 +363,7 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 END_FUNCTION_BLOCK
 
 // -------------------------------------------------------------------------------------------
-// Generate buffer data for job or shift
+// Generate buffer data for job, shift or timeline
 FUNCTION exAssetIntBufferUI
 	brsmemset(Memory, 0, CORE_EVENT_NUM_MAX*SIZEOF(RecordData));
 	IF exLink.RecordCount > 0 THEN
