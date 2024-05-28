@@ -31,9 +31,9 @@ Here is a short list of differences between the official mappAssetInt and the co
 
 #### exAssetIntTimelineUI
 
-* The parameter UISetup.TimelineListSize was removed. The list size is now defined by the constant UI_SHIFT_TIMELINE_IDX.
+* The parameter UISetup.TimelineListSize was removed. The list size is now defined by the constant UI_TIMELINE_IDX.
 * The parameter UISetup.SortingStartTime was added to allow for ascending and descending sorting.
-* All parameters from UIConnect.Output.Display were move one level up to UIConnect.Output to harmonize the data with the other function blocks.
+* All parameters from UIConnect.Output.Display were move one level up to UIConnect.Output to harmonize the data structure with the other function blocks.
 
 ### What is new
 

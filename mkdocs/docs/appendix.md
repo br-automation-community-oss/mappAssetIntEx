@@ -28,6 +28,7 @@
 | UI_SHIFT_LIST_IDX | UINT | 8 | Max index for list box entries for shift data |
 | UI_SHIFT_SHOW_JOBS | BOOL | TRUE | Show job changes in shift list |
 | UI_JOB_LIST_IDX | UINT | 8 | Max index for list box entries for job data |
+| UI_TIMELINE_LIST_IDX | UINT | 8 | Max index for list box entries for timeline data |
 
 #### Logger constants
 
