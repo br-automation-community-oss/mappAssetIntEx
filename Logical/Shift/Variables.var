@@ -1,4 +1,5 @@
 VAR
+	DisableConfig : BOOL;
 	MpAssetIntCore_0 : MpAssetIntCore;
 	AssetIntPar : MpAssetIntParType;
 	MpAssetIntCoreConfig_0 : MpAssetIntCoreConfig;
@@ -9,7 +10,6 @@ VAR
 	JobListUIConnect : MpAssetIntJobListUIConnectType;
 	ShiftListUIConnect : MpAssetIntShiftListUIConnectType;
 	TimelineUIConnect : MpAssetIntTimelineUIConnectType;
-	DisableConfig : BOOL;
 	ShiftListUISetup : MpAssetIntShiftListUISetupType;
 	TimelineUISetup : MpAssetIntTimelineUISetupType;
 	JobListUISetup : MpAssetIntJobListUISetupType := (OutputListSize:=8,ScrollWindow:=2);

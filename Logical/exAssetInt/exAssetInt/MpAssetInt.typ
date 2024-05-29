@@ -7,9 +7,10 @@ TYPE
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 		InitAfterBoot : BOOL;
-		TimeTotalStart : DATE_AND_TIME;
-		TimeLastCall : TIME;
-		DiffLastCall : UDINT;
+		TimeLastCallShift : TIME;
+		DiffLastCallShift : UDINT;
+		TimeLastCallProduction : TIME;
+		DiffLastCallProduction : UDINT;
 		JobPieceCounterOld : UDINT;
 		JobRejectCounterOld : UDINT;
 		ShiftPieceCounterOld : UDINT;
