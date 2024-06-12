@@ -112,6 +112,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 			UIConnect.Output.StepUp := FALSE;
 			UIConnect.Output.StepDown := FALSE;
 
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh job done'), Logger);
 			Internal.State := exASSETINT_STATE_IDLE;	
 			
 		// -------------------------------------------------------------------------------------------
@@ -238,6 +239,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			UIConnect.Output.StepUp := FALSE;
 			UIConnect.Output.StepDown := FALSE;
 			
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh shift done'), Logger);
 			Internal.State := exASSETINT_STATE_IDLE;	
 			
 			// -------------------------------------------------------------------------------------------
@@ -350,6 +352,7 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 			UIConnect.Output.StepUp := FALSE;
 			UIConnect.Output.StepDown := FALSE;
 			
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh timeline done'), Logger);
 			Internal.State := exASSETINT_STATE_IDLE;	
 			
 			// -------------------------------------------------------------------------------------------

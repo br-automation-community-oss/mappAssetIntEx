@@ -19,7 +19,8 @@ TYPE
 		ShiftName : STRING[20];
 		TimelineShiftName : STRING[20];
 		TimelineJobName : STRING[20];
-		TmpStr : STRING[500];
+		TmpStr1 : STRING[500];
+		TmpStr2 : STRING[50];
 		ProductionTotalTime : UDINT;
 		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
@@ -33,6 +34,7 @@ TYPE
 		WriteEventData : WriteEventData;
 		ExportEventData : ExportEventData;
 		x : UINT;
+		y : UINT;
 	END_STRUCT;
 	exCoreInternalRecordType : 	STRUCT 
 		CRC : USINT;

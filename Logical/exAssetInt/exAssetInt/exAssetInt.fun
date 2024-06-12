@@ -127,7 +127,6 @@ FUNCTION_BLOCK exAssetIntTimelineUI (*mapp function block which can be used for 
 	VAR
 		Internal : {REDUND_UNREPLICABLE} exUIInternalDataType; (*Internal data*)
 		zzEdge00000 : BOOL;
-		zzEdge1 : BOOL;
 	END_VAR
 END_FUNCTION_BLOCK
 

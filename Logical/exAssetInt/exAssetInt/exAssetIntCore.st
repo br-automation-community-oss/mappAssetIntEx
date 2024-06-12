@@ -54,6 +54,29 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.WriteEventData(Enable := FALSE);
 				Internal.ReadEventData(Enable := FALSE);
 				Internal.WriteEventData(Enable := FALSE);
+				
+				// -------------------------------------------------------------------------------------------
+				// Check shift configuration for errors
+				FOR Internal.y := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) - 1 DO
+					FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts[Internal.y].ScheduledDowntime)/SIZEOF(Configuration.Shifts[Internal.y].ScheduledDowntime[0]) - 1 DO
+						// Make sure we have a valid configuration
+						IF TOD_TO_UDINT(Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].Start) <> 0 OR TOD_TO_UDINT(Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].End) <> 0 THEN
+							// Make sure downtime is within shift
+							IF Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].Start < Configuration.Shifts[Internal.y].TotalTime.Start OR 
+								Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].End > Configuration.Shifts[Internal.y].TotalTime.End THEN
+								// Set status, remember state, go to error state
+								Internal.TmpStr1 := 'ERR: downtime is outside of shift in no ';
+								brsitoa(Internal.y, ADR(Internal.TmpStr2));
+								brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.TmpStr2));
+								brsstrcat(ADR(Internal.TmpStr1), ADR(' in downtime no '));
+								brsitoa(Internal.x, ADR(Internal.TmpStr2));
+								brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.TmpStr2));
+								StatusID := CreateErrorState(ERR_ASSET_SHIFT_CALC, ADR(Internal.TmpStr1), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
+								RETURN;							
+							END_IF
+						END_IF
+					END_FOR;
+				END_FOR;
 								
 				// -------------------------------------------------------------------------------------------
 				// Create folder structure and read event data only after boot
@@ -131,8 +154,8 @@ FUNCTION_BLOCK exAssetIntCore
 				IF exLink.RecordCount > 0 THEN
 					// Get last entry, make correction if necessary
 					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (exLink.RecordCount - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-					brsstrcpy(ADR(Internal.TmpStr), ADR(Internal.RecordData.FileName) + FindInstr(ADR(Internal.RecordData.FileName), ADR('#')) + 1);
-					Internal.RecordNext := DINT_TO_UINT(brsatoi(ADR(Internal.TmpStr))) + 1;
+					brsstrcpy(ADR(Internal.TmpStr1), ADR(Internal.RecordData.FileName) + FindInstr(ADR(Internal.RecordData.FileName), ADR('#')) + 1);
+					Internal.RecordNext := DINT_TO_UINT(brsatoi(ADR(Internal.TmpStr1))) + 1;
 					IF Internal.RecordNext >= CORE_EVENT_NUM_MAX THEN
 						Internal.RecordNext := 0;
 					END_IF
@@ -178,7 +201,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// Track current shift
 			Internal.ShiftName := '';
 			Internal.ShiftId := -1;
-			FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) DO
+			FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) - 1 DO
 				// Shift ends on same day
 				IF Configuration.Shifts[Internal.x].TotalTime.Start < Configuration.Shifts[Internal.x].TotalTime.End THEN
 					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start AND Internal.TimeOfDay < Configuration.Shifts[Internal.x].TotalTime.End THEN
@@ -199,23 +222,13 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 			// Track current shift scheduled downtime
 			IF Internal.ShiftName <> '' THEN
-				FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime)/SIZEOF(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[0]) DO
+				FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime)/SIZEOF(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[0]) - 1 DO
 					// Make sure we have a valid configuration
 					IF TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[exLink.ShiftId].Start) <> 0 OR TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[exLink.ShiftId].End) <> 0 THEN
-						// Scheduled downtime ends on same day
-						IF Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[exLink.ShiftId].Start < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[exLink.ShiftId].End THEN
-							IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start AND Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
-								Downtime := exASSETINT_SCHEDULED_DOWNTIME;
-								DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
-								EXIT;
-							END_IF
-							// Scheduled downtime ends next day
-						ELSE
-							IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start OR Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
-								Downtime := exASSETINT_SCHEDULED_DOWNTIME;
-								DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
-								EXIT;
-							END_IF
+						IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start AND Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
+							Downtime := exASSETINT_SCHEDULED_DOWNTIME;
+							DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+							EXIT;
 						END_IF
 					END_IF
 				END_FOR;
@@ -225,15 +238,15 @@ FUNCTION_BLOCK exAssetIntCore
 			// Handle production state change
 			IF (Downtime <> Internal.DowntimeOld) OR (Internal.ShiftName <> Internal.TimelineShiftName) OR (exLink.JobStatistics.JobName <> Internal.TimelineJobName) THEN
 				// Create log message
-				Internal.TmpStr := 'production state changed -> ';
+				Internal.TmpStr1 := 'production state changed -> ';
 				IF exLink.ProductionState = exASSETINT_STATE_NO_SHIFT_ACTIVE THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('no shift -> '));
+					brsstrcat(ADR(Internal.TmpStr1), ADR('no shift -> '));
 				ELSIF exLink.ProductionState = exASSETINT_STATE_UPTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('uptime -> '));
+					brsstrcat(ADR(Internal.TmpStr1), ADR('uptime -> '));
 				ELSIF exLink.ProductionState = exASSETINT_STATE_SCHDL_DOWNTIME THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('scheduled -> '));
+					brsstrcat(ADR(Internal.TmpStr1), ADR('scheduled -> '));
 				ELSE
-					brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled -> '));
+					brsstrcat(ADR(Internal.TmpStr1), ADR('unscheduled -> '));
 				END_IF
 					
 				// Transfer stats to record, make sure structures are allignent
@@ -253,18 +266,18 @@ FUNCTION_BLOCK exAssetIntCore
 
 				// State change is new job
 				IF (exLink.JobStatistics.JobName <> Internal.TimelineJobName) THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('new job -> '));
-					brsstrcat(ADR(Internal.TmpStr), ADR(exLink.JobStatistics.JobName));
+					brsstrcat(ADR(Internal.TmpStr1), ADR('new job -> '));
+					brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.JobStatistics.JobName));
 					exLink.ProductionState := exASSETINT_STATE_UPTIME;
 
 				// State change is to no shift
 				ELSIF (Internal.TimelineShiftName <> '' AND Internal.ShiftName = '') THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('no shift'));
+					brsstrcat(ADR(Internal.TmpStr1), ADR('no shift'));
 					exLink.ProductionState := exASSETINT_STATE_NO_SHIFT_ACTIVE;
 
 				// State change is to uptime
 				ELSIF (Internal.TimelineShiftName = '' AND Internal.ShiftName <> '') THEN
-					brsstrcat(ADR(Internal.TmpStr), ADR('uptime'));
+					brsstrcat(ADR(Internal.TmpStr1), ADR('uptime'));
 					exLink.ProductionState := exASSETINT_STATE_UPTIME;
 
 				// State change is downtime 
@@ -272,13 +285,13 @@ FUNCTION_BLOCK exAssetIntCore
 					// Ignore downtime when no shift is running
 					IF Internal.ShiftName <> '' THEN
 						IF Downtime = exASSETINT_NO_DOWNTIME THEN
-							brsstrcat(ADR(Internal.TmpStr), ADR('no downtime'));
+							brsstrcat(ADR(Internal.TmpStr1), ADR('no downtime'));
 						ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
-							brsstrcat(ADR(Internal.TmpStr), ADR('scheduled -> '));
-							brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
+							brsstrcat(ADR(Internal.TmpStr1), ADR('scheduled -> '));
+							brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
 						ELSE
-							brsstrcat(ADR(Internal.TmpStr), ADR('unscheduled -> '));
-							brsstrcat(ADR(Internal.TmpStr), ADR(DowntimeReason));
+							brsstrcat(ADR(Internal.TmpStr1), ADR('unscheduled -> '));
+							brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
 						END_IF
 	
 						IF exLink.ProductionState = exASSETINT_STATE_SCHDL_DOWNTIME OR exLink.ProductionState = exASSETINT_STATE_UNSCH_DOWNTIME THEN
@@ -291,7 +304,7 @@ FUNCTION_BLOCK exAssetIntCore
 						RETURN;
 					END_IF
 				END_IF
-				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr1), Logger);
 										
 				Internal.TimelineShiftName := Internal.ShiftName;
 				Internal.TimelineJobName := exLink.JobStatistics.JobName;
@@ -330,13 +343,13 @@ FUNCTION_BLOCK exAssetIntCore
 				brsmemset(ADR(Internal.RecordData), 0, SIZEOF(Internal.RecordData));
 
 				IF Internal.ShiftName <> '' THEN
-					Internal.TmpStr := 'new shift started ';
-					brsstrcat(ADR(Internal.TmpStr), ADR(Internal.ShiftName));
-					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
+					Internal.TmpStr1 := 'new shift started ';
+					brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.ShiftName));
+					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr1), Logger);
 				ELSE
-					Internal.TmpStr := 'shift ended ';
-					brsstrcat(ADR(Internal.TmpStr), ADR(exLink.ShiftStatistics.ShiftName));
-					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
+					Internal.TmpStr1 := 'shift ended ';
+					brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ShiftStatistics.ShiftName));
+					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr1), Logger);
 				END_IF
 				
 				// Only store data when shift name was not empty
@@ -515,9 +528,9 @@ FUNCTION_BLOCK exAssetIntCore
 
 				// Job has changed
 				IF Parameters.Job <> exLink.JobStatistics.JobName THEN
-					Internal.TmpStr := 'new job started ';
-					brsstrcat(ADR(Internal.TmpStr), ADR(Parameters.Job));
-					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr), Logger);
+					Internal.TmpStr1 := 'new job started ';
+					brsstrcat(ADR(Internal.TmpStr1), ADR(Parameters.Job));
+					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr1), Logger);
 
 					CommandBusy := TRUE;
 					CommandDone := FALSE;
