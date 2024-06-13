@@ -60,10 +60,10 @@
           <Text ID="263479" Value="From"/>
           <Text ID="263480" Value="%Y/%m/%d %H:%M:%S"/>
           <Text ID="263481" Value="To"/>
-          <Text ID="263484" Value="Enable"/>
-          <Text ID="263485" Value="Disable"/>
-          <Text ID="263486" Value="Enable"/>
-          <Text ID="263487" Value="Disable"/>
+          <Text ID="263484" Value="Disabled"/>
+          <Text ID="263485" Value="Enabled"/>
+          <Text ID="263486" Value="Disabled"/>
+          <Text ID="263487" Value="Enabled"/>
           <Text ID="263498" Value="UI Status"/>
           <Text ID="263500" Value="Logger"/>
           <Text ID="263501" Value="UI Status"/>
@@ -100,10 +100,10 @@
           <Text ID="264522" Value="From"/>
           <Text ID="264523" Value="%Y/%m/%d %H:%M:%S"/>
           <Text ID="264524" Value="To"/>
-          <Text ID="264527" Value="Enable"/>
-          <Text ID="264528" Value="Disable"/>
-          <Text ID="264529" Value="Enable"/>
-          <Text ID="264530" Value="Disable"/>
+          <Text ID="264527" Value="Disabled"/>
+          <Text ID="264528" Value="Enabled"/>
+          <Text ID="264529" Value="Disabled"/>
+          <Text ID="264530" Value="Enabled"/>
         </TextLayer>
         <IndexMap>
           <Index ID="263326" Value="115"/>
@@ -1908,7 +1908,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="255"/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="130"/>
+          <Property Name="Left" Value="145"/>
           <Property Name="SimulationValue" Value="12/31/2015 23:59"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
@@ -1924,7 +1924,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="95"/>
+          <Property Name="Left" Value="110"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1939,7 +1939,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="255"/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="435"/>
           <Property Name="SimulationValue" Value="12/31/2015 23:59"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
@@ -1955,7 +1955,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="385"/>
+          <Property Name="Left" Value="400"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1975,7 +1975,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="565"/>
+          <Property Name="Left" Value="580"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedForeColor" Value="253"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -1993,6 +1993,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_63]"/>
@@ -2000,8 +2001,11 @@
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="20"/>
+          <Property Name="Locking" Value="Datapoint = 0"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.gLocked]"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedBorder" Value="Source[local].Border[Flat_black]"/>
           <Property Name="PressedTextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="PressedTextIndex" Value="336"/>
           <Property Name="PressedTextSource" Value="SingleText"/>
@@ -2013,12 +2017,13 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="425"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_63]"/>
-          <Property Name="Width" Value="70"/>
+          <Property Name="Width" Value="75"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_12">
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_64]"/>
@@ -2026,8 +2031,11 @@
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="320"/>
+          <Property Name="Locking" Value="Datapoint = 0"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.gLocked]"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedBorder" Value="Source[local].Border[Flat_black]"/>
           <Property Name="PressedTextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="PressedTextIndex" Value="338"/>
           <Property Name="PressedTextSource" Value="SingleText"/>
@@ -2039,7 +2047,7 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="425"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_64]"/>
-          <Property Name="Width" Value="70"/>
+          <Property Name="Width" Value="75"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_75">
           <Property Name="AlignmentHorizontal" Value="Right"/>
@@ -2320,7 +2328,7 @@
           <Property Name="MinDatapoint" Value="None"/>
           <Property Name="MinValue" Value="0"/>
           <Property Name="Orientation" Value="Top"/>
-          <Property Name="RangeColor" Value="46"/>
+          <Property Name="RangeColor" Value="48"/>
           <Property Name="RangeColorDatapoint" Value="Source[global].Variable[DataSource.Shift.TimelineUIConnect.Output.Display[0].DurationBar.Color]"/>
           <Property Name="RangeEndDatapoint" Value="Source[global].Variable[DataSource.Shift.TimelineUIConnect.Output.Display[0].DurationBar.Duration]"/>
           <Property Name="RangeEndValue" Value="1"/>
@@ -4219,7 +4227,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="255"/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1105"/>
+          <Property Name="Left" Value="1115"/>
           <Property Name="SimulationValue" Value="12/31/2015 23:59"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
@@ -4235,7 +4243,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1070"/>
+          <Property Name="Left" Value="1080"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -4250,7 +4258,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="255"/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1395"/>
+          <Property Name="Left" Value="1405"/>
           <Property Name="SimulationValue" Value="12/31/2015 23:59"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
@@ -4266,7 +4274,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1360"/>
+          <Property Name="Left" Value="1370"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -4286,7 +4294,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1540"/>
+          <Property Name="Left" Value="1550"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedForeColor" Value="253"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -4304,6 +4312,7 @@
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_66]"/>
@@ -4311,8 +4320,11 @@
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="995"/>
+          <Property Name="Locking" Value="Datapoint = 0"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.gLocked]"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedBorder" Value="Source[local].Border[Flat_black]"/>
           <Property Name="PressedTextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="PressedTextIndex" Value="183"/>
           <Property Name="PressedTextSource" Value="SingleText"/>
@@ -4324,12 +4336,13 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="425"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_66]"/>
-          <Property Name="Width" Value="70"/>
+          <Property Name="Width" Value="75"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_14">
           <Property Name="AlignmentHorizontal" Value="Center"/>
           <Property Name="BitmapIndexDatapoint" Value="None"/>
           <Property Name="BitmapSource" Value="None"/>
+          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_67]"/>
@@ -4337,8 +4350,11 @@
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
           <Property Name="Left" Value="1295"/>
+          <Property Name="Locking" Value="Datapoint = 0"/>
+          <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.gLocked]"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedBorder" Value="Source[local].Border[Flat_black]"/>
           <Property Name="PressedTextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="PressedTextIndex" Value="185"/>
           <Property Name="PressedTextSource" Value="SingleText"/>
@@ -4350,7 +4366,7 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="425"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_67]"/>
-          <Property Name="Width" Value="70"/>
+          <Property Name="Width" Value="75"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_66">
           <Property Name="AlignmentHorizontal" Value="Center"/>
@@ -4889,7 +4905,7 @@
               <Property Name="Locking" Value="Never"/>
               <Property Name="Name" Value="Action_0"/>
               <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.StepDown]"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Output.StepDown]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>
@@ -4952,7 +4968,7 @@
       <Property Name="OutlineDisplayControl" Value="False"/>
       <Property Name="OutlineDisplayName" Value="True"/>
       <Property Name="OutlineHatched" Value="False"/>
-      <Property Name="StatusDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Filter.Dialog.LayerStatus]"/>
+      <Property Name="StatusDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.TimelineUIConnect.Filter.Dialog.LayerStatus]"/>
       <Property Name="Top" Value="0"/>
       <Property Name="VisibilityMode" Value="Hidden"/>
       <Property Name="Width" Value="1920"/>

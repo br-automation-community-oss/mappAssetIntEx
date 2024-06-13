@@ -59,9 +59,8 @@ FUNCTION_BLOCK exAssetIntCore
 				// Check shift configuration for errors
 				FOR Internal.y := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) - 1 DO
 					FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts[Internal.y].ScheduledDowntime)/SIZEOF(Configuration.Shifts[Internal.y].ScheduledDowntime[0]) - 1 DO
-						// Make sure we have a valid configuration
+						// Make sure downtime is within shift
 						IF TOD_TO_UDINT(Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].Start) <> 0 OR TOD_TO_UDINT(Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].End) <> 0 THEN
-							// Make sure downtime is within shift
 							IF Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].Start < Configuration.Shifts[Internal.y].TotalTime.Start OR 
 								Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].End > Configuration.Shifts[Internal.y].TotalTime.End THEN
 								// Set status, remember state, go to error state
@@ -236,7 +235,7 @@ FUNCTION_BLOCK exAssetIntCore
 				
 			// -------------------------------------------------------------------------------------------
 			// Handle production state change
-			IF (Downtime <> Internal.DowntimeOld) OR (Internal.ShiftName <> Internal.TimelineShiftName) OR (exLink.JobStatistics.JobName <> Internal.TimelineJobName) THEN
+			IF (Downtime <> Internal.DowntimeOld AND exLink.ShiftStatistics.ShiftName <> '') OR (Internal.ShiftName <> Internal.TimelineShiftName) OR (exLink.JobStatistics.JobName <> Internal.TimelineJobName AND exLink.ShiftStatistics.ShiftName <> '') THEN
 				// Create log message
 				Internal.TmpStr1 := 'production state changed -> ';
 				IF exLink.ProductionState = exASSETINT_STATE_NO_SHIFT_ACTIVE THEN

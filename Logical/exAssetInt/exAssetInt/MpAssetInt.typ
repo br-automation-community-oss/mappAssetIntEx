@@ -89,6 +89,8 @@ TYPE
 		RecordCount : UDINT; (*Total number of items*)
 		RecordCountOld : UDINT; (*Old record number is required for DESC list*)
 		RecordData : exCoreInternalRecordType;
+		TimeSeconds : UDINT;
+		TimeLongest : UDINT;
 		SortingStartTimeOld : exAssetIntUISortingEnum := exASSETINT_SORTING_ASC;
 		DT_TO_DTStructure_0 : DTStructure;
 		x : UDINT;

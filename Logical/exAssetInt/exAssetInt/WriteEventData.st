@@ -35,7 +35,7 @@ FUNCTION_BLOCK WriteEventData
 				brsstrcat(ADR(FileName), ADR(TmpStr1));
 				
 				Status := ERR_FUB_BUSY;
-				TmpStr1 := 'creating new event -> ';
+				TmpStr1 := 'creating new event type -> ';
 				brsitoa(RecordDataIntern.EventType, ADR(TmpStr2));
 				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(TmpStr1), Logger);

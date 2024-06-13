@@ -16,4 +16,5 @@ VAR
 	gCommandReset : BOOL;
 	gCommandResetError : BOOL;
 	gEnable : BOOL := TRUE;
+	gLocked : UINT := 0;
 END_VAR

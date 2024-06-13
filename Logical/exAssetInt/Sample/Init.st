@@ -1,6 +1,7 @@
 
 
 PROGRAM _INIT
+	gLocked;
 	exAssetIntConfig.Export.DecimalMark := ',';
 	exAssetIntConfig.Export.ColumnSeparator := ';';
 	brsstrcpy(ADR(exAssetIntConfig.Export.JobStatisticsFileNamePattern), ADR('JobStatistics_%Y_%m_%d_%H_%M.csv'));

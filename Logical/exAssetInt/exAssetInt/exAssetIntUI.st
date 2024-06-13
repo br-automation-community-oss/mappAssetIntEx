@@ -194,7 +194,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			UIConnect.Status := exASSETINT_UI_STATUS_UPDATE;
 
 			// Generate shift data
-			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryTimeline, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeShift);
+			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryShift, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeShift);
 			
 			Internal.State := exASSETINT_STATE_UI_DATA;	
 
@@ -323,6 +323,18 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 			// Generate timeline data
 			Internal.RecordCount := exAssetIntBufferUI(exLink.MemoryTimeline, exLink, UISetup.SortingStartTime, UIConnect.Filter, RecordTypeTimeline);
 			
+			// Generate bar graph data
+			Internal.TimeLongest := 0;
+			FOR Internal.x := 0 TO Internal.RecordCount DO
+				brsmemcpy(ADR(Internal.RecordData), exLink.MemoryTimeline + (Internal.x + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+				
+				Internal.TimeSeconds := Internal.RecordData.TotalTime.Hours*60*60 + Internal.RecordData.TotalTime.Minutes*60 + Internal.RecordData.TotalTime.Seconds;
+				
+				IF Internal.TimeSeconds > Internal.TimeLongest THEN
+					Internal.TimeLongest := Internal.TimeSeconds;
+				END_IF
+			END_FOR
+			
 			Internal.State := exASSETINT_STATE_UI_DATA;	
 
 			// -------------------------------------------------------------------------------------------
@@ -331,21 +343,33 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 						
 			Internal.x := 0;
 			brsmemset(ADR(UIConnect.Output), 0, SIZEOF(UIConnect.Output));
-			REPEAT
-				brsmemcpy(ADR(Internal.RecordData), exLink.MemoryTimeline + (Internal.x + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-				
-				UIConnect.Output.StartTime[Internal.x] := Internal.RecordData.TimeStart;
-				UIConnect.Output.ShiftName[Internal.x] := Internal.RecordData.ShiftName;
-				UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
-				UIConnect.Output.ProductionState[Internal.x] := UDINT_TO_UINT(Internal.RecordData.EventType) - 2;
-				UIConnect.Output.Duration[Internal.x] := Internal.RecordData.TotalTime;
-				UIConnect.Output.Reason[Internal.x] := Internal.RecordData.AdditionalData;
-
-				Internal.x := Internal.x + 1;
-				
-				UNTIL (Internal.x = UI_TIMELINE_IDX) OR (Internal.x + Internal.RecordStart >= Internal.RecordCount)
-			END_REPEAT;
-											
+			IF Internal.RecordCount > 0 THEN
+				REPEAT
+					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryTimeline + (Internal.x + Internal.RecordStart)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
+					Internal.TimeSeconds := Internal.RecordData.TotalTime.Hours*60*60 + Internal.RecordData.TotalTime.Minutes*60 + Internal.RecordData.TotalTime.Seconds;
+					
+					UIConnect.Output.StartTime[Internal.x] := Internal.RecordData.TimeStart;
+					UIConnect.Output.ShiftName[Internal.x] := Internal.RecordData.ShiftName;
+					UIConnect.Output.JobName[Internal.x] := Internal.RecordData.JobName;
+					UIConnect.Output.ProductionState[Internal.x] := UDINT_TO_UINT(Internal.RecordData.EventType) - 2;
+					UIConnect.Output.Duration[Internal.x] := Internal.RecordData.TotalTime;
+					UIConnect.Output.Reason[Internal.x] := Internal.RecordData.AdditionalData;
+					UIConnect.Output.DurationBar[Internal.x].Duration := REAL_TO_UDINT(UDINT_TO_REAL(Internal.TimeSeconds)/UDINT_TO_REAL(Internal.TimeLongest)*100);
+					
+					IF Internal.RecordData.EventType = RecordTypeUptime THEN
+						UIConnect.Output.DurationBar[Internal.x].Color := 2;
+					ELSIF Internal.RecordData.EventType = RecordTypeDowntimeScheduled THEN
+						UIConnect.Output.DurationBar[Internal.x].Color := 14;
+					ELSIF Internal.RecordData.EventType = RecordTypeDowntimeUnscheduled THEN
+						UIConnect.Output.DurationBar[Internal.x].Color := 51;
+					END_IF
+	
+					Internal.x := Internal.x + 1;
+					
+					UNTIL (Internal.x = UI_TIMELINE_IDX) OR (Internal.x + Internal.RecordStart >= Internal.RecordCount)
+				END_REPEAT;
+			END_IF
+			
 			exLink.RefreshTimelineUI := FALSE;
 			UIConnect.Output.PageUp := FALSE;
 			UIConnect.Output.PageDown := FALSE;
@@ -458,7 +482,7 @@ FUNCTION exAssetIntScrollListUI
 				
 	// -------------------------------------------------------------------------------------------
 	// Correction for step/page up/down
-	IF RecordStart + UI_JOB_LIST_IDX > UDINT_TO_DINT(RecordCount) THEN
+	IF RecordStart + ListMaxCount > UDINT_TO_DINT(RecordCount) THEN
 		RecordStart := RecordCount - ListMaxCount;
 	END_IF
 	IF RecordStart < 0 THEN
