@@ -14,6 +14,7 @@ VAR
 	gDowntime : exAssetIntDowntimeEnum;
 	gCommandUpdate : BOOL;
 	gCommandReset : BOOL;
+	gCommandExport : BOOL;
 	gCommandResetError : BOOL;
 	gEnable : BOOL := TRUE;
 	gLocked : UINT := 0;

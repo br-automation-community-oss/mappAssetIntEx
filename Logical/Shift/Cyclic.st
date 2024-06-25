@@ -16,6 +16,7 @@ PROGRAM _CYCLIC
 	MpAssetIntCore_0.Downtime := UDINT_TO_UINT(gDowntime);
 	MpAssetIntCore_0.Update := gCommandUpdate;
 	MpAssetIntCore_0.Reset := gCommandReset;
+	MpAssetIntCore_0.Export := gCommandExport;
 	MpAssetIntCore_0();
 	
 	IF EDGEPOS(MpAssetIntCore_0.UpdateDone) THEN

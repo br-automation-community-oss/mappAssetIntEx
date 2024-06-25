@@ -306,7 +306,9 @@ FUNCTION_BLOCK ExportEventData
 			
 			// -------------------------------------------------------------------------------------------
 			// Export data for timeline
-			IF ExportType = ExportTypeTimeline THEN
+			
+			IF (RecordDataIntern.EventType >= RecordTypeNoShift AND ExportType = ExportTypeTimeline) THEN
+				// Create start time
 				DT_TO_DTStructure(RecordDataIntern.TimeStart, ADR(DTStructure_0));
 				TmpStr := Configuration.TimeStaexPattern;
 							
@@ -320,76 +322,41 @@ FUNCTION_BLOCK ExportEventData
 				brsstrcat(ADR(Buffer), ADR(TmpStr));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 
+				// Add shift name
 				brsstrcat(ADR(Buffer), ADR(RecordDataIntern.ShiftName));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 				
-				// -------------------------------------------------------------------------------------------
-				// Details for scheduled downtime
-				IF RecordDataIntern.EventType = RecordTypeDowntimeScheduled THEN
-					brsstrcat(ADR(Buffer), ADR('Scheduled Downtime'));
-					brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
-					
-					brsstrcat(ADR(Buffer), ADR(RecordDataIntern.AdditionalData));
-					brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
-
-					// Calculate total time
-					DiffTime := DiffDT(RecordDataIntern.TimeEnd, RecordDataIntern.TimeStart);
-					RecordDataIntern.ScheduledDowntime.Hours := DiffTime/3600;
-					RecordDataIntern.ScheduledDowntime.Minutes := UDINT_TO_USINT((DiffTime - RecordDataIntern.ScheduledDowntime.Hours*3600)/60);
-					RecordDataIntern.ScheduledDowntime.Seconds := UDINT_TO_USINT(DiffTime - RecordDataIntern.ScheduledDowntime.Hours*3600 - RecordDataIntern.ScheduledDowntime.Minutes*60);
-					
-					lrealStr := NormalizeDateTime(RecordDataIntern.ScheduledDowntime.Hours);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(':'));
-					lrealStr := NormalizeDateTime(RecordDataIntern.ScheduledDowntime.Minutes);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(':'));
-					lrealStr := NormalizeDateTime(RecordDataIntern.ScheduledDowntime.Seconds);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
-
-				// -------------------------------------------------------------------------------------------
-				// Details for unscheduled downtime
+				// Event is scheduled downtime
+				IF RecordDataIntern.EventType = RecordTypeNoShift THEN
+					brsstrcat(ADR(Buffer), ADR('No shift'));
+				// Event is scheduled downtime
 				ELSIF RecordDataIntern.EventType = RecordTypeDowntimeScheduled THEN
-					brsstrcat(ADR(Buffer), ADR('Unscheduled Downtime'));
-					brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
-				
-					brsstrcat(ADR(Buffer), ADR(RecordDataIntern.AdditionalData));
-					brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
-
-					// Calculate total time
-					DiffTime := DiffDT(RecordDataIntern.TimeStart, RecordDataIntern.TimeEnd);
-					RecordDataIntern.UnscheduledDowntime.Hours := DiffTime/3600;
-					RecordDataIntern.UnscheduledDowntime.Minutes := UDINT_TO_USINT((DiffTime - RecordDataIntern.UnscheduledDowntime.Hours*3600)/60);
-					RecordDataIntern.UnscheduledDowntime.Seconds := UDINT_TO_USINT(DiffTime - RecordDataIntern.UnscheduledDowntime.Hours*3600 - RecordDataIntern.UnscheduledDowntime.Minutes*60);
-
-					lrealStr := NormalizeDateTime(RecordDataIntern.UnscheduledDowntime.Hours);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(':'));
-					lrealStr := NormalizeDateTime(RecordDataIntern.UnscheduledDowntime.Minutes);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(':'));
-					lrealStr := NormalizeDateTime(RecordDataIntern.UnscheduledDowntime.Seconds);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
-					
-				// -------------------------------------------------------------------------------------------
-				// Shift and job data
+					brsstrcat(ADR(Buffer), ADR('Scheduled Downtime'));
+				// Event is unscheduled downtime
+				ELSIF RecordDataIntern.EventType = RecordTypeDowntimeUnscheduled THEN
+					brsstrcat(ADR(Buffer), ADR('Unscheduled Downtime'));	
+				// Event is new shift
 				ELSE
 					brsstrcat(ADR(Buffer), ADR('Uptime'));
-					brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
-				
-					lrealStr := NormalizeDateTime(RecordDataIntern.Uptime.Hours);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(':'));
-					lrealStr := NormalizeDateTime(RecordDataIntern.Uptime.Minutes);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(':'));
-					lrealStr := NormalizeDateTime(RecordDataIntern.Uptime.Seconds);
-					brsstrcat(ADR(Buffer), ADR(lrealStr));
-					brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));			
 				END_IF
+				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));			
 				
+				// Additional data
+				brsstrcat(ADR(Buffer), ADR(RecordDataIntern.AdditionalData));
+				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
+
+				// Total time
+				lrealStr := NormalizeDateTime(RecordDataIntern.TotalTime.Hours);
+				brsstrcat(ADR(Buffer), ADR(lrealStr));
+				brsstrcat(ADR(Buffer), ADR(':'));
+				lrealStr := NormalizeDateTime(RecordDataIntern.TotalTime.Minutes);
+				brsstrcat(ADR(Buffer), ADR(lrealStr));
+				brsstrcat(ADR(Buffer), ADR(':'));
+				lrealStr := NormalizeDateTime(RecordDataIntern.TotalTime.Seconds);
+				brsstrcat(ADR(Buffer), ADR(lrealStr));
+				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
+				
+				// Job name
 				brsstrcat(ADR(Buffer), ADR(RecordDataIntern.JobName));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 				

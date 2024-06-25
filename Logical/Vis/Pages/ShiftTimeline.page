@@ -44,7 +44,7 @@
           <Text ID="263374" Value=":"/>
           <Text ID="263375" Value=":"/>
           <Text ID="263384" Value="Start"/>
-          <Text ID="263385" Value="End"/>
+          <Text ID="263385" Value=""/>
           <Text ID="263386" Value="State"/>
           <Text ID="263387" Value="Job"/>
           <Text ID="263388" Value="Reason"/>
@@ -84,7 +84,7 @@
           <Text ID="264494" Value=":"/>
           <Text ID="264495" Value=":"/>
           <Text ID="264504" Value="Start"/>
-          <Text ID="264505" Value="End"/>
+          <Text ID="264505" Value=""/>
           <Text ID="264506" Value="State"/>
           <Text ID="264507" Value="Job"/>
           <Text ID="264508" Value="Reason"/>

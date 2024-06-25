@@ -123,6 +123,7 @@
           <Text ID="261187" Value="Disable"/>
           <Text ID="263578" Value="Timeline"/>
           <Text ID="265406" Value="Production State"/>
+          <Text ID="266283" Value="Export"/>
         </TextLayer>
         <IndexMap>
           <Index ID="206794" Value="8"/>
@@ -223,6 +224,7 @@
           <Index ID="261187" Value="157"/>
           <Index ID="263578" Value="152"/>
           <Index ID="265406" Value="158"/>
+          <Index ID="266283" Value="159"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -7709,6 +7711,29 @@
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="110"/>
         </Control>
+        <Control ClassId="0x00001002" Name="Button_12">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="BitmapIndexDatapoint" Value="None"/>
+          <Property Name="BitmapSource" Value="None"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="EmbVirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_77]"/>
+          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
+          <Property Name="Height" Value="50"/>
+          <Property Name="KeyMatrixOffset" Value="None"/>
+          <Property Name="Left" Value="1185"/>
+          <Property Name="PressedBitmapSource" Value="None"/>
+          <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[BasicButton]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndex" Value="159"/>
+          <Property Name="TextIndexDatapoint" Value="None"/>
+          <Property Name="TextSimulationValue" Value="0"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="635"/>
+          <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_77]"/>
+          <Property Name="Width" Value="160"/>
+        </Control>
       </Controls>
       <KeyMapping>
         <VirtualKey Name="%embVirtualKey_2">
@@ -7898,6 +7923,22 @@
               <Property Name="Name" Value="Action_0"/>
               <Property Name="Page" Value="Source[local].Page[ShiftTimeline]"/>
               <Property Name="Target" Value="Page"/>
+            </KeyAction>
+          </KeyActions>
+        </VirtualKey>
+        <VirtualKey Name="%embVirtualKey_77">
+          <Property Name="Description" Value=""/>
+          <Property Name="VirtualKey_LED" Value="False"/>
+          <KeyActions>
+            <KeyAction ClassId="0x0000016B">
+              <Property Name="CompletionDatapoint" Value="None"/>
+              <Property Name="CompletionValue" Value="0"/>
+              <Property Name="Description" Value=""/>
+              <Property Name="Locking" Value="Never"/>
+              <Property Name="Name" Value="Action_0"/>
+              <Property Name="ResetValue" Value="0"/>
+              <Property Name="SetValue" Value="1"/>
+              <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.gCommandExport]"/>
             </KeyAction>
           </KeyActions>
         </VirtualKey>

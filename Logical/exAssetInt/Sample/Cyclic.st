@@ -55,6 +55,7 @@ PROGRAM _CYCLIC
 	exAssetIntCore_0.Logger := ADR(LoggerCore);
 	exAssetIntCore_0.Update := gCommandUpdate;
 	exAssetIntCore_0.Reset := gCommandReset;
+	exAssetIntCore_0.Export := gCommandExport;
 	exAssetIntCore_0.ErrorReset := gCommandResetError;
 	exAssetIntCore_0();
 	
