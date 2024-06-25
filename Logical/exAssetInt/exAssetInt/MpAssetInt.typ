@@ -17,12 +17,9 @@ TYPE
 		ShiftRejectCounterOld : UDINT;
 		ShiftId : SINT;
 		ShiftName : STRING[20];
-		TimelineShiftName : STRING[20];
-		TimelineJobName : STRING[20];
 		TmpStr1 : STRING[500];
 		TmpStr2 : STRING[50];
 		ProductionTotalTime : UDINT;
-		DowntimeOld : exAssetIntDowntimeEnum;
 		DTGetTime_0 : DTGetTime;
 		DT_TO_DTStructure_0 : DTStructure;
 		TimeOfDay : TIME_OF_DAY;
@@ -121,6 +118,9 @@ TYPE
 		ProductionStateStart : DATE_AND_TIME; (*Current state beginning*)
 		ProductionState : exAssetIntUIProductionStateEnum; (*Current state*)
 		ProductionTotalTime : LREAL; (*Milliseconds the state is running*)
+		ProductionShiftName : STRING[20]; (*ShiftName for this timeline*)
+		ProductionJobName : STRING[20]; (*Job name for this timeline*)
+		ProductionDowntime : exAssetIntDowntimeEnum; (*Downtime for this timeline*)
 	END_STRUCT;
 END_TYPE
 

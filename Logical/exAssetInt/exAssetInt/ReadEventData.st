@@ -53,7 +53,7 @@ FUNCTION_BLOCK ReadEventData
 				// File created successful
 				IF DirOpen_0.status = ERR_OK THEN
 					// Generate log entry
-					TmpStr1 := 'open dir -> ';
+					TmpStr1 := 'open dir > ';
 					brsstrcat(ADR(TmpStr1), ADR(DirName));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 					
@@ -79,7 +79,7 @@ FUNCTION_BLOCK ReadEventData
 				IF DirReadEx_0.status = ERR_OK THEN
 					IF brsstrcmp(ADR(FileInfo_0.Filename), ADR('.')) <> 0 AND brsstrcmp(ADR(FileInfo_0.Filename), ADR('..')) <> 0 THEN			
 						// Generate log entry
-						TmpStr1 := 'found file -> ';
+						TmpStr1 := 'found file > ';
 						brsstrcat(ADR(TmpStr1), ADR(FileInfo_0.Filename));
 						CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 		
@@ -111,7 +111,7 @@ FUNCTION_BLOCK ReadEventData
 				// Directory closed successful
 				IF DirClose_0.status = ERR_OK THEN
 					// Generate log entry
-					TmpStr1 := 'close dir ok -> ';
+					TmpStr1 := 'close dir ok > ';
 					brsstrcat(ADR(TmpStr1), ADR(DirName));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 					
@@ -153,13 +153,13 @@ FUNCTION_BLOCK ReadEventData
 				// File opened successful
 				IF FileOpen_0.status = ERR_OK THEN
 					// Generate log entry
-					TmpStr1 := 'open event file ok -> ';
+					TmpStr1 := 'open event file ok > ';
 					brsstrcat(ADR(TmpStr1), ADR(FileName));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 									
 					// Make sure data has correct size
 					IF FileOpen_0.filelen <> SIZEOF(RecordData) THEN
-						TmpStr1 := 'data in event file has wrong size -> ';
+						TmpStr1 := 'data in event file has wrong size > ';
 						brsstrcat(ADR(TmpStr1), ADR(FileName));
 						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR(TmpStr1), Logger);
 						StatusRead := ERR_ASSET_READ_RECORD_SIZE;
@@ -187,7 +187,7 @@ FUNCTION_BLOCK ReadEventData
 				// File read successful
 				IF FileRead_0.status = ERR_OK THEN
 					// Generate log entry
-					TmpStr1 := 'read event file ok -> ';
+					TmpStr1 := 'read event file ok > ';
 					brsstrcat(ADR(TmpStr1), ADR(FileName));
 					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(TmpStr1), Logger);
 					
@@ -195,7 +195,7 @@ FUNCTION_BLOCK ReadEventData
 					CRC := CalcCrc(ADR(RecordData), SIZEOF(RecordData));
 					IF CRC <> RecordData.CRC THEN
 						// Generate log entry
-						TmpStr1 := 'read event file CRC error -> ';
+						TmpStr1 := 'read event file CRC error > ';
 						brsstrcat(ADR(TmpStr1), ADR(FileName));
 						CreateLoggerEntry(exASSETINT_LOG_ERROR, ADR(TmpStr1), Logger);
 						StatusRead := ERR_ASSET_READ_CRC;
@@ -223,7 +223,7 @@ FUNCTION_BLOCK ReadEventData
 				// File closed successful
 				IF FileClose_0.status = ERR_OK THEN
 					// Generate log entry
-					TmpStr1 := 'close event file ok -> ';
+					TmpStr1 := 'close event file ok > ';
 					brsstrcat(ADR(TmpStr1), ADR(FileName));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 					
@@ -254,7 +254,7 @@ FUNCTION_BLOCK ReadEventData
 				// File delete successful
 				IF FileDelete_0.status = ERR_OK THEN
 					// Generate log entry
-					TmpStr1 := 'delete corrupt event file ok -> ';
+					TmpStr1 := 'delete corrupt event file ok > ';
 					brsstrcat(ADR(TmpStr1), ADR(FileName));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 					

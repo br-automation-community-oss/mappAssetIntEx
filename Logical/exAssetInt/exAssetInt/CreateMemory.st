@@ -41,7 +41,7 @@ FUNCTION_BLOCK CreateMemory
 				// Created working memory 
 				IF MemoryType = exASSETINT_MEM_DB THEN 
 					// Generate log entry 
-					TmpStr2 := 'create db memory module ok -> '; 
+					TmpStr2 := 'create db memory module ok > '; 
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1)); 
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger); 
 					 
@@ -53,7 +53,7 @@ FUNCTION_BLOCK CreateMemory
 					TmpStr1 := 'AsWr_0'; 
 				ELSIF MemoryType = exASSETINT_MEM_JOB THEN 
 					// Generate log entry 
-					TmpStr2 := 'create job memory module ok -> '; 
+					TmpStr2 := 'create job memory module ok > '; 
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1)); 
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger); 
  
@@ -65,7 +65,7 @@ FUNCTION_BLOCK CreateMemory
 					TmpStr1 := 'AsSh_0'; 
 				ELSIF MemoryType = exASSETINT_MEM_SHIFT THEN 
 					// Generate log entry 
-					TmpStr2 := 'create shift memory module ok -> '; 
+					TmpStr2 := 'create shift memory module ok > '; 
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1)); 
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger); 
  
@@ -77,7 +77,7 @@ FUNCTION_BLOCK CreateMemory
 					TmpStr1 := 'AsTl_0'; 
 				ELSIF MemoryType = exASSETINT_MEM_TIMELINE THEN 
 					// Generate log entry 
-					TmpStr2 := 'create timeline memory module ok -> '; 
+					TmpStr2 := 'create timeline memory module ok > '; 
 					brsstrcat(ADR(TmpStr2), ADR(TmpStr1)); 
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger); 
  
@@ -94,7 +94,7 @@ FUNCTION_BLOCK CreateMemory
 				// Data module already exists 
 			ELSIF DatObjCreate_0.status = doERR_DUPOBJECT  THEN 
 				// Generate log entry 
-				TmpStr2 := 'module already exists -> '; 
+				TmpStr2 := 'module already exists > '; 
 				brsstrcat(ADR(TmpStr2), ADR(TmpStr1)); 
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr2), Logger); 
 				 

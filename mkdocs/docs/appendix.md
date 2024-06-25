@@ -1,18 +1,20 @@
 ## Appendix
 
+### How the data is stored
+
+Short term data like piece counters are stored in the remanent variable of type `exAssetIntLinkType`. This structure is used for cross function block communication. The short term data will survive a power off but not a cold reboot. 
+
+All long term data is stored in a ring buffer consisting of individual files on the user partition. The data is spread over multiple directories to speed up the reading process during boot-up. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be a production state, job or shift change or a downtime event. The total number of stored events can be adjusted with the constant `CORE_EVENT_NUM_MAX`. Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.
+
 ### Constants
 
-#### Common constants
+#### Common
 
 | Name | Type | Value | Description |
 |------|------|-------|-------------|
-| CORE_EVENT_NUM_MAX | UINT | 50 | Maximum number of events |
-| CORE_EVENT_DIR_MAX | UINT | 10 | Maximum number of events in one directory |
-
-#### Export constants
-
-| Name | Type | Value | Description |
-|------|------|-------|-------------|
+| CORE_EVENT_NUM_MAX | UINT | 500 | Maximum number of events |
+| CORE_EVENT_DIR_MAX | UINT | 1000 | Maximum number of events in one directory |
+| EVENT_ADDITONAL_DATA_LEN | UINT | 100 | Length of the event comment |
 | EXPORT_BUFFER | UINT | 500 | Length of the buffer for the event export |
 | EXPORT_JOB_TITEL | STRING[100] | 'AssetInt Job Statistics Export File' | Export file header |
 | EXPORT_SHIFT_TITEL | STRING[100] | 'AssetInt Shift Statistics Export File' | Export file header |
@@ -20,20 +22,8 @@
 | EXPORT_JOB_HEADER | STRING[400] | 'Job Start Time;Job End Time;Job Name;...' | Export file column headers |
 | EXPORT_SHIFT_HEADER | STRING[400] | 'Job Start Time;Job End Time;Job Name;...' | Export file column headers |
 | EXPORT_TIMELINE_HEADER | STRING[400] | 'Start Time;Shift ID;Production State;...' | Export file column headers |
-
-#### UI constants
-
-| Name | Type | Value | Description |
-|------|------|-------|-------------|
 | UI_SHIFT_LIST_IDX | UINT | 8 | Max index for list box entries for shift data |
-| UI_SHIFT_SHOW_JOBS | BOOL | TRUE | Show job changes in shift list |
 | UI_JOB_LIST_IDX | UINT | 8 | Max index for list box entries for job data |
-| UI_TIMELINE_LIST_IDX | UINT | 8 | Max index for list box entries for timeline data |
-
-#### Logger constants
-
-| Name | Type | Value | Description |
-|------|------|-------|-------------|
 | LOG_LEN | UINT | 100 | Length of one log entry (minimum size is 50) |
 | LOG_NUM | UINT | 50 | Number of log entries |
 | LOG_LEVEL | exAssetIntLogLevelEnum | exASSETINT_LOG_ALL | Define log level details |

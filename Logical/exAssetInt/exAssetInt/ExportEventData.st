@@ -105,7 +105,7 @@ FUNCTION_BLOCK ExportEventData
 			// File delete successful
 			IF FileDelete_0.status = ERR_OK  OR FileDelete_0.status = fiERR_FILE_NOT_FOUND THEN
 				// Generate log entry
-				TmpStr := 'delete old file ok -> ';
+				TmpStr := 'delete old file ok > ';
 				brsstrcat(ADR(TmpStr), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr), Logger);
 
@@ -130,7 +130,7 @@ FUNCTION_BLOCK ExportEventData
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr := 'create event file -> ';
+				TmpStr := 'create event file > ';
 				brsstrcat(ADR(TmpStr), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr), Logger);
 				
@@ -447,7 +447,7 @@ FUNCTION_BLOCK ExportEventData
 			// File created successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr := 'close export file ok -> ';
+				TmpStr := 'close export file ok > ';
 				brsstrcat(ADR(TmpStr), ADR(FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr), Logger);
 								
