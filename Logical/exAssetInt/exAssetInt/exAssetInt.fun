@@ -293,7 +293,8 @@ FUNCTION_BLOCK ExportEventData
 		RecordDataIntern : exCoreInternalRecordType;
 		DTStructure_0 : DTStructure;
 		FileName : STRING[50];
-		TmpStr : STRING[50];
+		TmpStr1 : STRING[50];
+		TmpStr2 : STRING[50];
 		lrealStr : {REDUND_UNREPLICABLE} LREAL;
 		Buffer : STRING[EXPORT_BUFFER];
 		Offset : UDINT;
@@ -477,5 +478,17 @@ FUNCTION NormalizeDateTime : LREAL
 	VAR
 		TmpStr1 : STRING[6] := '';
 		TmpStr2 : STRING[6] := '';
+	END_VAR
+END_FUNCTION
+
+FUNCTION NormalizeFloat : LREAL
+	VAR_INPUT
+		value : REAL;
+		output : UDINT;
+		configuration : exAssetIntExportType;
+	END_VAR
+	VAR
+		idx : UDINT;
+		tmpStr : STRING[50];
 	END_VAR
 END_FUNCTION

@@ -198,7 +198,7 @@ TYPE
 		ShiftStatisticsFileNamePattern : STRING[50] := 'ShiftStatistics_%Y_%m_%d_%H_%M.csv'; (*Pattern for export shift statistics file.*)
 		Timeline : BOOL := TRUE; (*Export the timeline statistics or not.*)
 		TimelineFileNamePattern : STRING[50] := 'Timeline_%Y_%m_%d_%H_%M.csv'; (*Pattern for export timeline  file.*)
-		TimeStaexPattern : STRING[50] := '%Y-%m-%d %H:%M:%S'; (*Time staex pattern in exported file.*)
+		TimestampPattern : STRING[50] := '%Y-%m-%d %H:%M:%S'; (*Timestamp pattern in exported file.*)
 		DecimalDigits : UINT := 2; (*Specifies how many decimal positions are saved*)
 		ColumnSeparator : STRING[1] := ','; (*Delimiter used to split up PVs in the .csv file*)
 		DecimalMark : STRING[1] := '.'; (*Character to be used for the decimal separator*)

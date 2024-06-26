@@ -28,7 +28,7 @@ PROGRAM _CYCLIC
 	IF (exAssetIntConfig.Shifts[0].TotalTime.Start = exAssetIntConfig.Shifts[2].TotalTime.End) THEN
 		exAssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 1);
 	END_IF
-	
+		
 	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
 	exAssetIntConfig_0.DeviceName := gDeviceName;

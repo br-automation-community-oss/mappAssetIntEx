@@ -21,11 +21,17 @@ FUNCTION_BLOCK ExportEventData
 				// Create file name
 				RTC_gettime(ADR(RtcGettime));
 				ExportType := ExportTypeJob;
-
-				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('start exporting data'), Logger);
 				
-				State := 1;
+				// Make sure we have data that can be exported
+				IF RecordCount > 0 THEN
+					Status := ERR_FUB_BUSY;
+					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('start exporting data'), Logger);
+
+					State := 1;
+				ELSE
+
+					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('no data to export'), Logger);
+				END_IF
 			END_IF
 
 		// -------------------------------------------------------------------------------------------
@@ -83,7 +89,7 @@ FUNCTION_BLOCK ExportEventData
 			ReplaceDateTime(ADR(FileName), ADR('%M'), RtcGettime.month);
 			ReplaceDateTime(ADR(FileName), ADR('%H'), RtcGettime.hour);
 
-			idx := RecordCount;
+			idx := RecordCount - 1;
 			Offset := 0;
 			Status := ERR_FUB_BUSY;
 			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('start exporting data'), Logger);
@@ -103,9 +109,9 @@ FUNCTION_BLOCK ExportEventData
 			// File delete successful
 			IF FileDelete_0.status = ERR_OK  OR FileDelete_0.status = fiERR_FILE_NOT_FOUND THEN
 				// Generate log entry
-				TmpStr := 'delete old file ok > ';
-				brsstrcat(ADR(TmpStr), ADR(FileName));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr), Logger);
+				TmpStr1 := 'delete old file ok > ';
+				brsstrcat(ADR(TmpStr1), ADR(FileName));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 
 				State := 3;
 				
@@ -128,9 +134,9 @@ FUNCTION_BLOCK ExportEventData
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr := 'create event file > ';
-				brsstrcat(ADR(TmpStr), ADR(FileName));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr), Logger);
+				TmpStr1 := 'create event file > ';
+				brsstrcat(ADR(TmpStr1), ADR(FileName));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
 				// Create header data depending on export file
 				brsmemset(ADR(Buffer), 0, SIZEOF(Buffer));
@@ -171,29 +177,29 @@ FUNCTION_BLOCK ExportEventData
 			// Create row string for job and shift export
 			IF (RecordDataIntern.EventType = RecordTypeJob AND ExportType = ExportTypeJob) OR (RecordDataIntern.EventType = RecordTypeShift AND ExportType = ExportTypeShift) THEN
 				DT_TO_DTStructure(RecordDataIntern.TimeStart, ADR(DTStructure_0));
-				TmpStr := Configuration.TimeStaexPattern;
+				TmpStr1 := Configuration.TimestampPattern;
 							
-				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure_0.day);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure_0.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure_0.year);
-				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure_0.second);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure_0.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure_0.hour);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%d'), DTStructure_0.day);				
+				ReplaceDateTime(ADR(TmpStr1), ADR('%m'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%Y'), DTStructure_0.year);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%S'), DTStructure_0.second);				
+				ReplaceDateTime(ADR(TmpStr1), ADR('%M'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%H'), DTStructure_0.hour);
 
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 
 				DT_TO_DTStructure(RecordDataIntern.TimeEnd, ADR(DTStructure_0));
-				TmpStr := Configuration.TimeStaexPattern;
+				TmpStr1 := Configuration.TimestampPattern;
 							
-				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure_0.day);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure_0.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure_0.year);
-				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure_0.second);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure_0.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure_0.hour);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%d'), DTStructure_0.day);				
+				ReplaceDateTime(ADR(TmpStr1), ADR('%m'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%Y'), DTStructure_0.year);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%S'), DTStructure_0.second);				
+				ReplaceDateTime(ADR(TmpStr1), ADR('%M'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%H'), DTStructure_0.hour);
 
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 
 				brsstrcat(ADR(Buffer), ADR(RecordDataIntern.JobName));
@@ -203,20 +209,20 @@ FUNCTION_BLOCK ExportEventData
 				brsstrcat(ADR(Buffer), ADR(RecordDataIntern.AdditionalData));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 				
-				brsitoa(RecordDataIntern.TargetPieces, ADR(TmpStr));
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				brsitoa(RecordDataIntern.TargetPieces, ADR(TmpStr1));
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 	
-				brsitoa(RecordDataIntern.GoodPieces, ADR(TmpStr));
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				brsitoa(RecordDataIntern.GoodPieces, ADR(TmpStr1));
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 	
-				brsitoa(RecordDataIntern.RejectPieces, ADR(TmpStr));
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				brsitoa(RecordDataIntern.RejectPieces, ADR(TmpStr1));
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 	
-				brsftoa(RecordDataIntern.BadPieceRate, ADR(TmpStr));
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				NormalizeFloat(RecordDataIntern.BadPieceRate, ADR(TmpStr1), Configuration);
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 	
 				lrealStr := NormalizeDateTime(RecordDataIntern.TotalTime.Hours);
@@ -278,21 +284,21 @@ FUNCTION_BLOCK ExportEventData
 				lrealStr := NormalizeDateTime(RecordDataIntern.NominalProductionTime.Seconds);
 				brsstrcat(ADR(Buffer), ADR(lrealStr));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
-									
-				brsftoa(RecordDataIntern.NominalProductionTimeRate, ADR(TmpStr));
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+
+				NormalizeFloat(RecordDataIntern.NominalProductionTimeRate, ADR(TmpStr1), Configuration);
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 	
-				brsftoa(RecordDataIntern.ScheduledDowntimeRate, ADR(TmpStr));
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				NormalizeFloat(RecordDataIntern.ScheduledDowntimeRate, ADR(TmpStr1), Configuration);
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 	
-				brsftoa(RecordDataIntern.UnscheduledDowntimeRate, ADR(TmpStr));
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				NormalizeFloat(RecordDataIntern.UnscheduledDowntimeRate, ADR(TmpStr1), Configuration);
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 	
-				brsftoa(RecordDataIntern.CurrentProductionRate, ADR(TmpStr));
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				NormalizeFloat(RecordDataIntern.CurrentProductionRate, ADR(TmpStr1), Configuration);
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 	
 				brsstrcat(ADR(Buffer), ADR(RecordDataIntern.ShiftName));
@@ -308,16 +314,16 @@ FUNCTION_BLOCK ExportEventData
 			IF (RecordDataIntern.EventType >= RecordTypeNoShift AND ExportType = ExportTypeTimeline) THEN
 				// Create start time
 				DT_TO_DTStructure(RecordDataIntern.TimeStart, ADR(DTStructure_0));
-				TmpStr := Configuration.TimeStaexPattern;
+				TmpStr1 := Configuration.TimestampPattern;
 							
-				ReplaceDateTime(ADR(TmpStr), ADR('%d'), DTStructure_0.day);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%m'), DTStructure_0.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%Y'), DTStructure_0.year);
-				ReplaceDateTime(ADR(TmpStr), ADR('%S'), DTStructure_0.second);				
-				ReplaceDateTime(ADR(TmpStr), ADR('%M'), DTStructure_0.month);
-				ReplaceDateTime(ADR(TmpStr), ADR('%H'), DTStructure_0.hour);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%d'), DTStructure_0.day);				
+				ReplaceDateTime(ADR(TmpStr1), ADR('%m'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%Y'), DTStructure_0.year);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%S'), DTStructure_0.second);				
+				ReplaceDateTime(ADR(TmpStr1), ADR('%M'), DTStructure_0.month);
+				ReplaceDateTime(ADR(TmpStr1), ADR('%H'), DTStructure_0.hour);
 
-				brsstrcat(ADR(Buffer), ADR(TmpStr));
+				brsstrcat(ADR(Buffer), ADR(TmpStr1));
 				brsstrcat(ADR(Buffer), ADR(Configuration.ColumnSeparator));
 
 				// Add shift name
@@ -384,8 +390,11 @@ FUNCTION_BLOCK ExportEventData
 			// File created successful
 			IF FileWrite_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('write chunk ok'), Logger);
-				
+				TmpStr1 := 'write idx ok > ';
+				brsitoa(idx, ADR(TmpStr2));
+				brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
+			
 				// Remember offset
 				Offset := Offset + FileWrite_0.len;
 				
@@ -413,9 +422,9 @@ FUNCTION_BLOCK ExportEventData
 			// File created successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				TmpStr := 'close export file ok > ';
-				brsstrcat(ADR(TmpStr), ADR(FileName));
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr), Logger);
+				TmpStr1 := 'close export file ok > ';
+				brsstrcat(ADR(TmpStr1), ADR(FileName));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 								
 				// Proceed with shift export
 				IF ExportType = ExportTypeJob THEN
@@ -439,6 +448,21 @@ FUNCTION_BLOCK ExportEventData
 	END_CASE;
 
 END_FUNCTION_BLOCK
+
+// -------------------------------------------------------------------------------------------
+// Format float according to configuration																	
+// -------------------------------------------------------------------------------------------
+FUNCTION NormalizeFloat
+	brsftoa(value, ADR(tmpStr));
+	idx := FindInstr(ADR(tmpStr), ADR('.')) + configuration.DecimalDigits + 1;
+	IF idx >= brsstrlen(ADR(tmpStr)) THEN
+		brsstrcpy(output, ADR(tmpStr));
+	ELSE
+		brsmemcpy(output, ADR(tmpStr), idx);
+		brsmemset(output + idx, 0, 1);
+	END_IF
+	ReplaceString(output, ADR('.'), ADR(configuration.DecimalMark));	
+END_FUNCTION
 
 // -------------------------------------------------------------------------------------------
 // Add additional 0 when value is < 10																	
