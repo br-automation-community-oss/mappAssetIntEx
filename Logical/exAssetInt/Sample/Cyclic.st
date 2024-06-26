@@ -2,33 +2,24 @@
 PROGRAM _CYCLIC
 	// --------------------------------------------------------------------------------------------------------------------------
 	// Asset configuration
-	exAssetIntConfig.Shifts[0].Name := gShift[0].Name;
-	exAssetIntConfig.Shifts[0].ScheduledDowntime := gShift[0].ScheduledDowntime;
-	exAssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000));
-	exAssetIntConfig.Shifts[0].TotalTime.End := UDINT_TO_TOD((gShift[0].End.Hour * 3600000) + (gShift[0].End.Minutes * 60000));
+	exAssetIntConfig.Shifts[0].Name := 'Morning';
+	exAssetIntConfig.Shifts[0].TotalTime.Start := TOD#08:00:00;
+	exAssetIntConfig.Shifts[0].TotalTime.End := TOD#14:00:00;
+	exAssetIntConfig.Shifts[0].ScheduledDowntime[0].Start := TOD#09:00:00;
+	exAssetIntConfig.Shifts[0].ScheduledDowntime[0].End := TOD#10:00:00;
+	exAssetIntConfig.Shifts[0].ScheduledDowntime[0].Reason := 'Breakfast';
 
-	exAssetIntConfig.Shifts[1].Name := gShift[1].Name; 
-	exAssetIntConfig.Shifts[1].ScheduledDowntime := gShift[1].ScheduledDowntime;
-	exAssetIntConfig.Shifts[1].TotalTime.Start := UDINT_TO_TOD((gShift[1].Start.Hour * 3600000) + (gShift[1].Start.Minutes * 60000));
-	exAssetIntConfig.Shifts[1].TotalTime.End := UDINT_TO_TOD((gShift[1].End.Hour * 3600000) + (gShift[1].End.Minutes * 60000));
+	exAssetIntConfig.Shifts[1].Name := 'Afternoon'; 
+	exAssetIntConfig.Shifts[1].TotalTime.Start := TOD#14:00:00;
+	exAssetIntConfig.Shifts[1].TotalTime.End := TOD#22:00:00;
 
-	exAssetIntConfig.Shifts[2].Name := gShift[2].Name; 
-	exAssetIntConfig.Shifts[2].ScheduledDowntime := gShift[2].ScheduledDowntime;
-	exAssetIntConfig.Shifts[2].TotalTime.Start := UDINT_TO_TOD((gShift[2].Start.Hour * 3600000) + (gShift[2].Start.Minutes * 60000));
-	exAssetIntConfig.Shifts[2].TotalTime.End := UDINT_TO_TOD((gShift[2].End.Hour * 3600000) + (gShift[2].End.Minutes * 60000));
+	exAssetIntConfig.Shifts[2].Name := 'Night'; 
+	exAssetIntConfig.Shifts[2].TotalTime.Start := TOD#22:00:00;
+	exAssetIntConfig.Shifts[2].TotalTime.End := TOD#08:00:00;
+	
+	exAssetIntConfig.Export.ShiftStatistics := TRUE;
+	exAssetIntConfig.Export.ShiftStatisticsFileNamePattern := 'ShiftStatistics_%Y_%m_%d_%H_%M.csv';
    
-	IF (exAssetIntConfig.Shifts[1].TotalTime.Start = exAssetIntConfig.Shifts[0].TotalTime.End) AND (exAssetIntConfig.Shifts[1].TotalTime.End <> exAssetIntConfig.Shifts[1].TotalTime.Start) THEN
-		exAssetIntConfig.Shifts[1].TotalTime.Start := UDINT_TO_TOD((gShift[1].Start.Hour * 3600000) + (gShift[1].Start.Minutes * 60000) + 1);
-	END_IF
-    
-	IF (exAssetIntConfig.Shifts[2].TotalTime.Start = exAssetIntConfig.Shifts[1].TotalTime.End) AND (exAssetIntConfig.Shifts[2].TotalTime.End <> exAssetIntConfig.Shifts[2].TotalTime.Start)  THEN
-		exAssetIntConfig.Shifts[2].TotalTime.Start := UDINT_TO_TOD((gShift[2].Start.Hour * 3600000) + (gShift[2].Start.Minutes * 60000) + 1);
-	END_IF
-    
-	IF (exAssetIntConfig.Shifts[0].TotalTime.Start = exAssetIntConfig.Shifts[2].TotalTime.End) THEN
-		exAssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 1);
-	END_IF
-		
 	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
 	exAssetIntConfig_0.DeviceName := gDeviceName;

@@ -72,6 +72,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#installation" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -264,6 +269,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Conversion
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="conversion.html" class="md-nav__link md-nav__link--active">
         
   
@@ -273,6 +289,65 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transfer-existing-configuration" class="md-nav__link">
+    Transfer existing configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-configuration" class="md-nav__link">
+    Additional configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional-configuration" class="md-nav__link">
+    Optional configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connect-the-function-blocks" class="md-nav__link">
+    Connect the function blocks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-old-assetint" class="md-nav__link">
+    Remove old AssetInt
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -374,7 +449,28 @@
 
   <h1>Conversion</h1>
 
-<p>This guide provides details how to convert the official mappAssetInt package to a community version.</p>
+<p>This guide provides details how to convert the official mappAssetInt package to the community version.</p>
+<h3 id="installation">Installation</h3>
+<p>The fastest way to convert the official mappAssetInt package to a community version is to use the package from the sample as a template. Copy the package "exAssetInt" into your project.</p>
+<h3 id="transfer-existing-configuration">Transfer existing configuration</h3>
+<p>Open the assetInt configuration in the configuration view. Everything above shift can be ignored. Write down the shift details.
+<img alt="" src="conv1.jpg" /></p>
+<p>Open the sample task and copy the shift details into the task. The data can also be entered into the variable declaration.</p>
+<p><img alt="" src="conv2.jpg" /></p>
+<p>The same structure is used to enter the export configuration.</p>
+<p><img alt="" src="conv3.jpg" /></p>
+<p>Export parameters are optional. You can also use the default values.</p>
+<h3 id="additional-configuration">Additional configuration</h3>
+<p>The only mandatory additional configuration is the device name. Since the community version uses the flash card to store data it is necessary to enter the device name. The device name is defined under the CPU configuration under file devices.</p>
+<p><img alt="" src="conv4.jpg" /></p>
+<h3 id="optional-configuration">Optional configuration</h3>
+<p>The default configuration should work for most applications. However, the following parameters can be adjusted if necessary. For a detailed description see the <a href="appendix.md">appendix</a>.</p>
+<p><img alt="" src="conv5.jpg" /></p>
+<h3 id="connect-the-function-blocks">Connect the function blocks</h3>
+<p>All function blocks and variable structures have the exact same name as before. The only difference is the prefix. The prefix "Mp" was changed to "ex". For example, "MpAssetIntCore" was changed to "exAssetIntCore".</p>
+<h3 id="remove-old-assetint">Remove old AssetInt</h3>
+<p>To remove the old assetInt configuration delete configuration file under the configuration view. If there is no other mappService used you can also set the mappService to "not defined".</p>
+<p><img alt="" src="conv6.jpg" /></p>
 
 
 

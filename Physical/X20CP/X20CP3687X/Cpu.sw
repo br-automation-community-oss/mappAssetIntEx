@@ -9,12 +9,10 @@
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
-    <Task Name="AssetTest" Source="AssetTest.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Sample" Source="exAssetInt.Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" />
-    <Task Name="Shift" Source="Shift.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <VcDataObjects>
-    <VcDataObject Name="Vis" Source="Vis.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
+    <VcDataObject Name="Visu" Source="Visu.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
   </VcDataObjects>
   <Binaries>
     <BinaryObject Name="vcnet" Source="" Memory="UserROM" Language="Binary" />
