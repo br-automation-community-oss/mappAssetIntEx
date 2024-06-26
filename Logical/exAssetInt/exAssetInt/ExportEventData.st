@@ -32,65 +32,63 @@ FUNCTION_BLOCK ExportEventData
 		// Generate file name
 		// -------------------------------------------------------------------------------------------
 		1:
-			IF Enable THEN
-				// -------------------------------------------------------------------------------------------
-				// Reset function blocks
-				FileCreate_0.enable := FALSE;
-				FileCreate_0();
-				FileWrite_0.enable := FALSE;
-				FileWrite_0();
-				FileClose_0.enable := FALSE;
-				FileClose_0();
-				
-				// -------------------------------------------------------------------------------------------
-				// Export job data
-				IF ExportType = ExportTypeJob THEN
-					IF Configuration.JobStatistics THEN
-						FileName := Configuration.JobStatisticsFileNamePattern;
-					ELSE
-						ExportType := ExportTypeShift;
-					END_IF
+			// -------------------------------------------------------------------------------------------
+			// Reset function blocks
+			FileCreate_0.enable := FALSE;
+			FileCreate_0();
+			FileWrite_0.enable := FALSE;
+			FileWrite_0();
+			FileClose_0.enable := FALSE;
+			FileClose_0();
+			
+			// -------------------------------------------------------------------------------------------
+			// Export job data
+			IF ExportType = ExportTypeJob THEN
+				IF Configuration.JobStatistics THEN
+					FileName := Configuration.JobStatisticsFileNamePattern;
+				ELSE
+					ExportType := ExportTypeShift;
 				END_IF
-
-				// -------------------------------------------------------------------------------------------
-				// Export shift data
-				IF ExportType = ExportTypeShift THEN
-					IF Configuration.ShiftStatistics THEN
-						FileName := Configuration.ShiftStatisticsFileNamePattern;
-					ELSE
-						ExportType := ExportTypeTimeline;
-					END_IF
-				END_IF
-				
-				// -------------------------------------------------------------------------------------------
-				// Export timeline
-				IF ExportType = ExportTypeTimeline THEN
-					IF Configuration.JobStatistics THEN
-						FileName := Configuration.TimelineFileNamePattern;
-					ELSE
-						State := 0;
-						Status := ERR_OK;
-						RETURN;
-					END_IF
-				END_IF
-
-				// -------------------------------------------------------------------------------------------
-				// Create date and time information
-				ReplaceDateTime(ADR(FileName), ADR('%d'), RtcGettime.day);				
-				ReplaceDateTime(ADR(FileName), ADR('%m'), RtcGettime.month);
-				ReplaceDateTime(ADR(FileName), ADR('%Y'), RtcGettime.year);
-				
-				ReplaceDateTime(ADR(FileName), ADR('%S'), RtcGettime.second);				
-				ReplaceDateTime(ADR(FileName), ADR('%M'), RtcGettime.month);
-				ReplaceDateTime(ADR(FileName), ADR('%H'), RtcGettime.hour);
-
-				idx := 0;
-				Offset := 0;
-				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('start exporting data'), Logger);
-				
-				State := 2;
 			END_IF
+
+			// -------------------------------------------------------------------------------------------
+			// Export shift data
+			IF ExportType = ExportTypeShift THEN
+				IF Configuration.ShiftStatistics THEN
+					FileName := Configuration.ShiftStatisticsFileNamePattern;
+				ELSE
+					ExportType := ExportTypeTimeline;
+				END_IF
+			END_IF
+			
+			// -------------------------------------------------------------------------------------------
+			// Export timeline
+			IF ExportType = ExportTypeTimeline THEN
+				IF Configuration.JobStatistics THEN
+					FileName := Configuration.TimelineFileNamePattern;
+				ELSE
+					State := 0;
+					Status := ERR_OK;
+					RETURN;
+				END_IF
+			END_IF
+
+			// -------------------------------------------------------------------------------------------
+			// Create date and time information
+			ReplaceDateTime(ADR(FileName), ADR('%d'), RtcGettime.day);				
+			ReplaceDateTime(ADR(FileName), ADR('%m'), RtcGettime.month);
+			ReplaceDateTime(ADR(FileName), ADR('%Y'), RtcGettime.year);
+			
+			ReplaceDateTime(ADR(FileName), ADR('%S'), RtcGettime.second);				
+			ReplaceDateTime(ADR(FileName), ADR('%M'), RtcGettime.month);
+			ReplaceDateTime(ADR(FileName), ADR('%H'), RtcGettime.hour);
+
+			idx := RecordCount;
+			Offset := 0;
+			Status := ERR_FUB_BUSY;
+			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('start exporting data'), Logger);
+			
+			State := 2;
 			
 		// -------------------------------------------------------------------------------------------
 		// Delete old export file
@@ -366,9 +364,10 @@ FUNCTION_BLOCK ExportEventData
 			END_IF
 
 			// Increase counter
-			idx := idx + 1;
-			IF idx > RecordCount THEN
+			IF idx = 0 THEN
 				State := 6;
+			ELSE
+				idx := idx - 1;
 			END_IF
 			
 		// -------------------------------------------------------------------------------------------
@@ -391,7 +390,7 @@ FUNCTION_BLOCK ExportEventData
 				Offset := Offset + FileWrite_0.len;
 				
 				// Go to next step
-				IF idx < RecordCount THEN
+				IF idx > 0 THEN
 					State := 4;
 				ELSE
 					State := 6;

@@ -292,7 +292,6 @@ FUNCTION_BLOCK ExportEventData
 		RtcGettime : {REDUND_UNREPLICABLE} RTCtime_typ;
 		RecordDataIntern : exCoreInternalRecordType;
 		DTStructure_0 : DTStructure;
-		DiffTime : UDINT;
 		FileName : STRING[50];
 		TmpStr : STRING[50];
 		lrealStr : {REDUND_UNREPLICABLE} LREAL;
