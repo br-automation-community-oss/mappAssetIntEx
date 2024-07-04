@@ -2,27 +2,23 @@
 PROGRAM _CYCLIC
 	// --------------------------------------------------------------------------------------------------------------------------
 	// Asset configuration
-	exAssetIntConfig.Shifts[0].Name := 'Morning';
-	exAssetIntConfig.Shifts[0].TotalTime.Start := TOD#08:00:00;
-	exAssetIntConfig.Shifts[0].TotalTime.End := TOD#14:00:00;
-	exAssetIntConfig.Shifts[0].ScheduledDowntime[0].Start := TOD#09:00:00;
-	exAssetIntConfig.Shifts[0].ScheduledDowntime[0].End := TOD#10:00:00;
-	exAssetIntConfig.Shifts[0].ScheduledDowntime[0].Reason := 'Breakfast';
+	FOR x := 0 TO SIZEOF(exAssetIntConfig.Shifts)/SIZEOF(exAssetIntConfig.Shifts[0]) DO
+		exAssetIntConfig.Shifts[x].Name := gShift[x].Name;
+		FOR y := 0 TO SIZEOF(exAssetIntConfig.Shifts[x].ScheduledDowntime)/SIZEOF(exAssetIntConfig.Shifts[x].ScheduledDowntime[0]) DO
+			exAssetIntConfig.Shifts[x].ScheduledDowntime[y].Reason := gShift[x].ScheduledDowntime[y].Reason;
+			exAssetIntConfig.Shifts[x].ScheduledDowntime[y].Start := UDINT_TO_TOD((gShift[x].ScheduledDowntime[y].Start.Hour * 3600000) + (gShift[x].ScheduledDowntime[y].Start.Minutes * 60000));
+			exAssetIntConfig.Shifts[x].ScheduledDowntime[y].End := UDINT_TO_TOD((gShift[x].ScheduledDowntime[y].End.Hour * 3600000) + (gShift[x].ScheduledDowntime[y].End.Minutes * 60000));
+		END_FOR;
+		exAssetIntConfig.Shifts[x].TotalTime.Start := UDINT_TO_TOD((gShift[x].Start.Hour * 3600000) + (gShift[x].Start.Minutes * 60000));
+		exAssetIntConfig.Shifts[x].TotalTime.End := UDINT_TO_TOD((gShift[x].End.Hour * 3600000) + (gShift[x].End.Minutes * 60000));
+	END_FOR;
 
-	exAssetIntConfig.Shifts[1].Name := 'Afternoon'; 
-	exAssetIntConfig.Shifts[1].TotalTime.Start := TOD#14:00:00;
-	exAssetIntConfig.Shifts[1].TotalTime.End := TOD#22:00:00;
-
-	exAssetIntConfig.Shifts[2].Name := 'Night'; 
-	exAssetIntConfig.Shifts[2].TotalTime.Start := TOD#22:00:00;
-	exAssetIntConfig.Shifts[2].TotalTime.End := TOD#08:00:00;
 	
-	exAssetIntConfig.Export.ShiftStatistics := TRUE;
-	exAssetIntConfig.Export.ShiftStatisticsFileNamePattern := 'ShiftStatistics_%Y_%m_%d_%H_%M.csv';
-   
+	// --------------------------------------------------------------------------------------------------------------------------
+	// Import or export configuration
 	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
-	exAssetIntConfig_0.DeviceName := gDeviceName;
+	exAssetIntConfig_0.DeviceName := DeviceName;
 	exAssetIntConfig_0.Configuration := ADR(exAssetIntConfig);
 	exAssetIntConfig_0.Logger := ADR(LoggerConfig);
 	exAssetIntConfig_0();
@@ -38,7 +34,7 @@ PROGRAM _CYCLIC
 	exAssetIntCore_0.exLink := ADR(exAssetIntLink);
 	exAssetIntCore_0.Parameters := ADR(exAssetIntPar);
 	exAssetIntCore_0.Configuration := ADR(exAssetIntConfig);
-	exAssetIntCore_0.DeviceName := ADR(gDeviceName);
+	exAssetIntCore_0.DeviceName := ADR(DeviceName);
 	exAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
 	exAssetIntCore_0.Downtime := gDowntime;
 	exAssetIntCore_0.PieceCounter := gPieceCounter;
@@ -55,7 +51,7 @@ PROGRAM _CYCLIC
 	END_IF
 	
 	// --------------------------------------------------------------------------------------------------------------------------
-	// UI function blocks
+	// UI function blocks for shift, job and timeline
 	exAssetIntJobListUI_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntJobListUI_0.exLink := ADR(exAssetIntLink);
 	exAssetIntJobListUI_0.UIConnect := ADR(JobListUIConnect);

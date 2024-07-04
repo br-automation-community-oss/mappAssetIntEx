@@ -2,7 +2,6 @@
 VAR
 	gAdditionalData : STRING[255] := '';
 	gNominalProductionRate : REAL := 3600;
-	gDeviceName : STRING[50] := 'USER_HD';
 	gPieceCounter : UDINT;
 	gRejectCounter : UDINT;
 	gJobName : STRING[20] := 'Cookies';
@@ -15,4 +14,5 @@ VAR
 	gCommandResetError : BOOL;
 	gEnable : BOOL := TRUE;
 	gLocked : UINT := 0;
+	gShift : ARRAY[0..3] OF SHIFT_typ;
 END_VAR

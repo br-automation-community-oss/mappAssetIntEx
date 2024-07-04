@@ -11,6 +11,9 @@
   <TaskClass Name="Cyclic#8">
     <Task Name="Sample" Source="exAssetInt.Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
+  <VcDataObjects>
+    <VcDataObject Name="Visu" Source="Visu.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
+  </VcDataObjects>
   <Binaries>
     <BinaryObject Name="vcnet" Source="" Memory="UserROM" Language="Binary" />
     <BinaryObject Name="udbdef" Source="" Memory="UserROM" Language="Binary" />
