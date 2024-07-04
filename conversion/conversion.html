@@ -453,16 +453,46 @@
 <h3 id="installation">Installation</h3>
 <p>The fastest way to convert the official mappAssetInt package to a community version is to use the package from the sample as a template. Copy the package "exAssetInt" into your project.</p>
 <h3 id="transfer-existing-configuration">Transfer existing configuration</h3>
-<p>Open the assetInt configuration in the configuration view. Everything above shift can be ignored. Write down the shift details.
+<p>Open the assetInt configuration in the configuration view. Everything above "Shifts" can be ignored. Write down the shift details.
 <img alt="" src="conv1.jpg" /></p>
-<p>Open the sample task and copy the shift details into the task. The data can also be entered into the variable declaration.</p>
-<p><img alt="" src="conv2.jpg" /></p>
-<p>The same structure is used to enter the export configuration.</p>
-<p><img alt="" src="conv3.jpg" /></p>
-<p>Export parameters are optional. You can also use the default values.</p>
+<p>Open the sample task and transfer the shift details into the init section of the task. The data can also be entered into the variable declaration as start values.</p>
+<pre><code>// --------------------------------------------------------------------------------------------------------------------------
+// Shift configuration
+exAssetIntConfig.Shifts[0].Name := 'Morning';
+exAssetIntConfig.Shifts[0].TotalTime.Start := TOD#08:00:00;
+exAssetIntConfig.Shifts[0].TotalTime.End := TOD#14:00:00;
+exAssetIntConfig.Shifts[0].ScheduledDowntime[0].Start := TOD#09:00:00;
+exAssetIntConfig.Shifts[0].ScheduledDowntime[0].End := TOD#10:00:00;
+exAssetIntConfig.Shifts[0].ScheduledDowntime[0].Reason := 'Breakfast';
+
+exAssetIntConfig.Shifts[1].Name := 'Afternoon'; 
+exAssetIntConfig.Shifts[1].TotalTime.Start := TOD#14:00:00;
+exAssetIntConfig.Shifts[1].TotalTime.End := TOD#22:00:00;
+
+exAssetIntConfig.Shifts[2].Name := 'Night'; 
+exAssetIntConfig.Shifts[2].TotalTime.Start := TOD#22:00:00;
+exAssetIntConfig.Shifts[2].TotalTime.End := TOD#08:00:00;
+</code></pre>
+<p>The export configuration is entered using the same structure. Export parameters are optional. You can also use the default values.</p>
+<pre><code>// --------------------------------------------------------------------------------------------------------------------------
+// Export configuration
+exAssetIntConfig.Export.DecimalMark := ',';
+exAssetIntConfig.Export.ColumnSeparator := ';';
+
+exAssetIntConfig.Export.ShiftStatistics := TRUE;
+exAssetIntConfig.Export.ShiftStatisticsFileNamePattern := 'ShiftStatistics_%Y_%m_%d_%H_%M.csv';
+
+exAssetIntConfig.Export.JobStatistics := TRUE;
+exAssetIntConfig.Export.JobStatisticsFileNamePattern := 'JobStatistics_%Y_%m_%d_%H_%M.csv';
+
+exAssetIntConfig.Export.Timeline := TRUE;
+exAssetIntConfig.Export.TimelineFileNamePattern := 'Timeline_%Y_%m_%d_%H_%M.csv';
+</code></pre>
 <h3 id="additional-configuration">Additional configuration</h3>
 <p>The only mandatory additional configuration is the device name. Since the community version uses the flash card to store data it is necessary to enter the device name. The device name is defined under the CPU configuration under file devices.</p>
 <p><img alt="" src="conv4.jpg" /></p>
+<pre><code>DeviceName := 'USER_HD';
+</code></pre>
 <h3 id="optional-configuration">Optional configuration</h3>
 <p>The default configuration should work for most applications. However, the following parameters can be adjusted if necessary. For a detailed description see the <a href="appendix.md">appendix</a>.</p>
 <p><img alt="" src="conv5.jpg" /></p>
