@@ -332,8 +332,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#connect-the-function-blocks" class="md-nav__link">
-    Connect the function blocks
+  <a href="#connect-the-function-blocks-and-structures-to-other-tasks-or-visual-components" class="md-nav__link">
+    Connect the function blocks and structures to other tasks or visual components
   </a>
   
 </li>
@@ -456,7 +456,7 @@
 <p>Open the assetInt configuration in the configuration view. Everything above "Shifts" can be ignored. Write down the shift details.
 <img alt="" src="conv1.jpg" /></p>
 <p>Open the sample task and transfer the shift details into the init section of the task. The data can also be entered into the variable declaration as start values.</p>
-<pre><code>// --------------------------------------------------------------------------------------------------------------------------
+<pre><code>// ---------------------------------------------------------------------------------------------
 // Shift configuration
 exAssetIntConfig.Shifts[0].Name := 'Morning';
 exAssetIntConfig.Shifts[0].TotalTime.Start := TOD#08:00:00;
@@ -474,7 +474,7 @@ exAssetIntConfig.Shifts[2].TotalTime.Start := TOD#22:00:00;
 exAssetIntConfig.Shifts[2].TotalTime.End := TOD#08:00:00;
 </code></pre>
 <p>The export configuration is entered using the same structure. Export parameters are optional. You can also use the default values.</p>
-<pre><code>// --------------------------------------------------------------------------------------------------------------------------
+<pre><code>// ----------------------------------------------------------------------------------------------
 // Export configuration
 exAssetIntConfig.Export.DecimalMark := ',';
 exAssetIntConfig.Export.ColumnSeparator := ';';
@@ -496,7 +496,7 @@ exAssetIntConfig.Export.TimelineFileNamePattern := 'Timeline_%Y_%m_%d_%H_%M.csv'
 <h3 id="optional-configuration">Optional configuration</h3>
 <p>The default configuration should work for most applications. However, the following parameters can be adjusted if necessary. For a detailed description see the <a href="appendix.md">appendix</a>.</p>
 <p><img alt="" src="conv5.jpg" /></p>
-<h3 id="connect-the-function-blocks">Connect the function blocks</h3>
+<h3 id="connect-the-function-blocks-and-structures-to-other-tasks-or-visual-components">Connect the function blocks and structures to other tasks or visual components</h3>
 <p>All function blocks and variable structures have the exact same name as before. The only difference is the prefix. The prefix "Mp" was changed to "ex". For example, "MpAssetIntCore" was changed to "exAssetIntCore".</p>
 <h3 id="remove-old-assetint">Remove old AssetInt</h3>
 <p>To remove the old assetInt configuration delete configuration file under the configuration view. If there is no other mappService used you can also set the mappService to "not defined".</p>
