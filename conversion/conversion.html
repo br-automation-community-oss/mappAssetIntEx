@@ -455,23 +455,30 @@
 <h3 id="transfer-existing-configuration">Transfer existing configuration</h3>
 <p>Open the assetInt configuration in the configuration view. Everything above "Shifts" can be ignored. Write down the shift details.
 <img alt="" src="conv1.jpg" /></p>
-<p>Open the sample task and transfer the shift details into the init section of the task. The data can also be entered into the variable declaration as start values.</p>
+<p>Open the sample task and transfer the shift details into the init section of the task. The example uses an additional structure for the shift data for better integration into visual components. The cyclic tasks then translates this data into the configuration structure. The data can also be entered into the configuration structure (exAssetIntConfig.Shifts[]) directly as "Time Of Day" value.</p>
 <pre><code>// ---------------------------------------------------------------------------------------------
 // Shift configuration
-exAssetIntConfig.Shifts[0].Name := 'Morning';
-exAssetIntConfig.Shifts[0].TotalTime.Start := TOD#08:00:00;
-exAssetIntConfig.Shifts[0].TotalTime.End := TOD#14:00:00;
-exAssetIntConfig.Shifts[0].ScheduledDowntime[0].Start := TOD#09:00:00;
-exAssetIntConfig.Shifts[0].ScheduledDowntime[0].End := TOD#10:00:00;
-exAssetIntConfig.Shifts[0].ScheduledDowntime[0].Reason := 'Breakfast';
+gShift[0].Name := 'Morning';
+gShift[0].Start.Hour := 8;
+gShift[0].Start.Minutes := 0;
+gShift[0].End.Hour := 14;
+gShift[0].End.Minutes := 0;
+gShift[0].ScheduledDowntime[0].Reason := 'Breakfast';
+gShift[0].ScheduledDowntime[0].Start.Hour := 9;
+gShift[0].ScheduledDowntime[0].End.Hour := 9;
+gShift[0].ScheduledDowntime[0].End.Minutes := 15;
 
-exAssetIntConfig.Shifts[1].Name := 'Afternoon'; 
-exAssetIntConfig.Shifts[1].TotalTime.Start := TOD#14:00:00;
-exAssetIntConfig.Shifts[1].TotalTime.End := TOD#22:00:00;
+gShift[1].Name := 'Afternoon';
+gShift[1].Start.Hour := 14;
+gShift[1].Start.Minutes := 0;
+gShift[1].End.Hour := 22;
+gShift[1].End.Minutes := 0;
 
-exAssetIntConfig.Shifts[2].Name := 'Night'; 
-exAssetIntConfig.Shifts[2].TotalTime.Start := TOD#22:00:00;
-exAssetIntConfig.Shifts[2].TotalTime.End := TOD#08:00:00;
+gShift[2].Name := 'Night';
+gShift[2].Start.Hour := 22;
+gShift[2].Start.Minutes := 0;
+gShift[2].End.Hour := 8;
+gShift[2].End.Minutes := 0;
 </code></pre>
 <p>The export configuration is entered using the same structure. Export parameters are optional. You can also use the default values.</p>
 <pre><code>// ----------------------------------------------------------------------------------------------
