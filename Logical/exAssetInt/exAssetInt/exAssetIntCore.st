@@ -436,7 +436,7 @@ FUNCTION_BLOCK exAssetIntCore
 						exLink.ProductionState := exASSETINT_STATE_UPTIME;
 
 					// State is shift change
-					ELSIF (exLink.ProductionShiftName <> '' AND exLink.ShiftStatistics.ShiftName <> '') THEN
+					ELSIF (exLink.ProductionShiftName <> exLink.ShiftStatistics.ShiftName) THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR('new shift'));
 						exLink.ProductionState := exASSETINT_STATE_UPTIME;
 						
