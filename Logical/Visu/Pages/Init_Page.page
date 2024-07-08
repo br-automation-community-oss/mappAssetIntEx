@@ -38,7 +38,7 @@
           <Text ID="214558" Value="Shift"/>
           <Text ID="217724" Value="Nominal Rate"/>
           <Text ID="219306" Value="Downtime Reason"/>
-          <Text ID="219307" Value="Downtime Reason"/>
+          <Text ID="219307" Value="Downtime Type"/>
           <Text ID="220898" Value="Additional Data"/>
           <Text ID="220900" Value="new Asset Int"/>
           <Text ID="220901" Value="Logger"/>
@@ -49,7 +49,6 @@
           <Text ID="224194" Value=":"/>
           <Text ID="224195" Value=":"/>
           <Text ID="229196" Value="Last File Name"/>
-          <Text ID="229197" Value="Next ID"/>
           <Text ID="231048" Value="Reset"/>
           <Text ID="232813" Value="Core Status"/>
           <Text ID="234580" Value="Jobs New"/>
@@ -66,6 +65,25 @@
           <Text ID="263578" Value="Timeline"/>
           <Text ID="265406" Value="Production State"/>
           <Text ID="266283" Value="Export"/>
+          <Text ID="267322" Value="Start"/>
+          <Text ID="267323" Value="End"/>
+          <Text ID="267324" Value="User"/>
+          <Text ID="267325" Value="Job"/>
+          <Text ID="267326" Value="Counter Total"/>
+          <Text ID="267327" Value="Counter Products"/>
+          <Text ID="267328" Value="Counter Reject"/>
+          <Text ID="267329" Value="Rate Rejected"/>
+          <Text ID="267330" Value="Duration"/>
+          <Text ID="267331" Value="Start"/>
+          <Text ID="267332" Value="User"/>
+          <Text ID="267333" Value="End"/>
+          <Text ID="267334" Value="Job"/>
+          <Text ID="267335" Value="Counter Total"/>
+          <Text ID="267336" Value="Counter Product"/>
+          <Text ID="267337" Value="Counter Reject"/>
+          <Text ID="267338" Value="Rate Rejected"/>
+          <Text ID="267339" Value="Duration"/>
+          <Text ID="267340" Value="Shift"/>
         </TextLayer>
         <IndexMap>
           <Index ID="206794" Value="8"/>
@@ -92,7 +110,6 @@
           <Index ID="224194" Value="92"/>
           <Index ID="224195" Value="93"/>
           <Index ID="229196" Value="102"/>
-          <Index ID="229197" Value="103"/>
           <Index ID="231048" Value="104"/>
           <Index ID="232813" Value="106"/>
           <Index ID="234580" Value="108"/>
@@ -109,6 +126,25 @@
           <Index ID="263578" Value="152"/>
           <Index ID="265406" Value="158"/>
           <Index ID="266283" Value="159"/>
+          <Index ID="267322" Value="52"/>
+          <Index ID="267323" Value="53"/>
+          <Index ID="267324" Value="54"/>
+          <Index ID="267325" Value="55"/>
+          <Index ID="267326" Value="56"/>
+          <Index ID="267327" Value="57"/>
+          <Index ID="267328" Value="58"/>
+          <Index ID="267329" Value="59"/>
+          <Index ID="267330" Value="60"/>
+          <Index ID="267331" Value="61"/>
+          <Index ID="267332" Value="62"/>
+          <Index ID="267333" Value="63"/>
+          <Index ID="267334" Value="64"/>
+          <Index ID="267335" Value="65"/>
+          <Index ID="267336" Value="66"/>
+          <Index ID="267337" Value="67"/>
+          <Index ID="267338" Value="70"/>
+          <Index ID="267339" Value="71"/>
+          <Index ID="267340" Value="72"/>
         </IndexMap>
       </TextGroup>
       <Controls>
@@ -599,7 +635,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="24"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="590"/>
+          <Property Name="Top" Value="560"/>
           <Property Name="Width" Value="140"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_13">
@@ -637,7 +673,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="590"/>
+          <Property Name="Top" Value="560"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntLink.RecordCount]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="110"/>
@@ -1923,7 +1959,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
-          <Property Name="Height" Value="700"/>
+          <Property Name="Height" Value="760"/>
           <Property Name="IndexDatapoint" Value="None"/>
           <Property Name="Left" Value="810"/>
           <Property Name="LeftBitmap" Value="None"/>
@@ -2023,7 +2059,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobStartTime[0]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -2043,7 +2079,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobName[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_15">
@@ -2058,7 +2094,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="695"/>
+          <Property Name="Top" Value="710"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobEndTime[0]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -2078,7 +2114,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.CurrentUser[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_134">
@@ -2096,7 +2132,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.TotalPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2116,7 +2152,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.GoodPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2136,7 +2172,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.RejectPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2157,7 +2193,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.BadPieceRate[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2179,7 +2215,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[0].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2201,7 +2237,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[0].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2223,7 +2259,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[0].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2241,7 +2277,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="68"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_51">
@@ -2257,7 +2293,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="69"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="675"/>
+          <Property Name="Top" Value="690"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_6">
@@ -2271,7 +2307,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobStartTime[1]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -2291,7 +2327,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobName[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_16">
@@ -2305,7 +2341,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="735"/>
+          <Property Name="Top" Value="750"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobEndTime[1]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -2325,7 +2361,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.CurrentUser[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_141">
@@ -2342,7 +2378,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.TotalPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2361,7 +2397,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.GoodPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2380,7 +2416,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.RejectPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2400,7 +2436,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.BadPieceRate[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2421,7 +2457,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[1].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2442,7 +2478,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[1].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2460,7 +2496,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="74"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_147">
@@ -2479,7 +2515,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[1].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2497,7 +2533,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="75"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="715"/>
+          <Property Name="Top" Value="730"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_7">
@@ -2512,7 +2548,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobStartTime[2]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -2532,7 +2568,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobName[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_17">
@@ -2547,7 +2583,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="775"/>
+          <Property Name="Top" Value="790"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.JobEndTime[2]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -2567,7 +2603,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.CurrentUser[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_162">
@@ -2585,7 +2621,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.TotalPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2605,7 +2641,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.GoodPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2625,7 +2661,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.RejectPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2646,7 +2682,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.BadPieceRate[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="80"/>
@@ -2668,7 +2704,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[2].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2690,7 +2726,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[2].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2712,7 +2748,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.Uptime[2].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -2730,7 +2766,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="92"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_59">
@@ -2746,7 +2782,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="93"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="755"/>
+          <Property Name="Top" Value="770"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_62">
@@ -2780,44 +2816,6 @@
           <Property Name="Top" Value="560"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntCore_0.Internal.WriteEventData.FileName]"/>
           <Property Name="Width" Value="180"/>
-        </Control>
-        <Control ClassId="0x00001004" Name="Text_63">
-          <Property Name="AlignmentHorizontal" Value="Right"/>
-          <Property Name="AlignmentVertical" Value="Center"/>
-          <Property Name="Border" Value="Source[local].Border[Flat_grey]"/>
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
-          <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="10"/>
-          <Property Name="SimulationIndex" Value="0"/>
-          <Property Name="SimulationValue" Value=""/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
-          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
-          <Property Name="TextIndexOffset" Value="103"/>
-          <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="560"/>
-          <Property Name="Width" Value="140"/>
-        </Control>
-        <Control ClassId="0x00001007" Name="Numeric_176">
-          <Property Name="ControlID" Value="0"/>
-          <Property Name="Description" Value=""/>
-          <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
-          <Property Name="Height" Value="30"/>
-          <Property Name="InputMinus" Value="Normal"/>
-          <Property Name="InputNext" Value="Enter"/>
-          <Property Name="Left" Value="150"/>
-          <Property Name="MaxDatapoint" Value="None"/>
-          <Property Name="MaxValue" Value="None"/>
-          <Property Name="MinDatapoint" Value="None"/>
-          <Property Name="MinValue" Value="None"/>
-          <Property Name="SimulationValue" Value="0"/>
-          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
-          <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="560"/>
-          <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntCore_0.Internal.RecordNext]"/>
-          <Property Name="ValueMode" Value="Standard"/>
-          <Property Name="Width" Value="110"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_6">
           <Property Name="AlignmentHorizontal" Value="Center"/>
@@ -2895,7 +2893,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="108"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="645"/>
+          <Property Name="Top" Value="620"/>
           <Property Name="Width" Value="745"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_9">
@@ -2910,7 +2908,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.StartTime[0]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -2930,7 +2928,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.JobName[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_19">
@@ -2945,7 +2943,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="850"/>
+          <Property Name="Top" Value="910"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.EndTime[0]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -2965,7 +2963,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.CurrentUser[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_185">
@@ -2983,7 +2981,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.TotalPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3003,7 +3001,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.GoodPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3023,7 +3021,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.RejectPieces[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3044,7 +3042,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.BadPieceRate[0]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3066,7 +3064,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[0].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3088,7 +3086,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[0].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3110,7 +3108,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[0].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3128,7 +3126,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="154"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_88">
@@ -3144,7 +3142,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="155"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_20">
@@ -3158,7 +3156,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.StartTime[1]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -3178,7 +3176,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.JobName[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_21">
@@ -3192,7 +3190,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="890"/>
+          <Property Name="Top" Value="950"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.EndTime[1]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -3212,7 +3210,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.CurrentUser[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_192">
@@ -3229,7 +3227,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.TotalPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3248,7 +3246,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.GoodPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3267,7 +3265,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.RejectPieces[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3287,7 +3285,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.BadPieceRate[1]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3308,7 +3306,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[1].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3329,7 +3327,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[1].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3347,7 +3345,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="160"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_198">
@@ -3366,7 +3364,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[1].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3384,7 +3382,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="161"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_22">
@@ -3399,7 +3397,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.StartTime[2]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -3419,7 +3417,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.JobName[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x0000100A" Name="dtStartTimeHMS_23">
@@ -3434,7 +3432,7 @@
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
           <Property Name="TextIndex" Value="3"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="930"/>
+          <Property Name="Top" Value="990"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.EndTime[2]]"/>
           <Property Name="Width" Value="100"/>
         </Control>
@@ -3454,7 +3452,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.CurrentUser[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_199">
@@ -3472,7 +3470,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.TotalPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3492,7 +3490,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.GoodPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3512,7 +3510,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.RejectPieces[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3533,7 +3531,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.BadPieceRate[2]]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="90"/>
@@ -3555,7 +3553,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[2].Hours]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3577,7 +3575,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[2].Minutes]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3599,7 +3597,7 @@
           <Property Name="SimulationValue" Value="0"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Output]"/>
           <Property Name="TeachDatapoint" Value="None"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.Uptime[2].Seconds]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="30"/>
@@ -3617,7 +3615,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="166"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_92">
@@ -3633,7 +3631,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="167"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="Width" Value="20"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_37">
@@ -3652,7 +3650,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.ShiftName[0]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="830"/>
+          <Property Name="Top" Value="890"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_38">
@@ -3671,7 +3669,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.ShiftName[1]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="870"/>
+          <Property Name="Top" Value="930"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001004" Name="txtShiftID_39">
@@ -3690,7 +3688,7 @@
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
           <Property Name="TextDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.ShiftName[2]]"/>
           <Property Name="TextSource" Value="SingleString"/>
-          <Property Name="Top" Value="910"/>
+          <Property Name="Top" Value="970"/>
           <Property Name="Width" Value="120"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_94">
@@ -3708,7 +3706,7 @@
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
           <Property Name="TextIndexOffset" Value="172"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="800"/>
+          <Property Name="Top" Value="820"/>
           <Property Name="Width" Value="905"/>
         </Control>
         <Control ClassId="0x00001007" Name="Numeric_207">
@@ -3750,7 +3748,7 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="525"/>
+          <Property Name="Top" Value="305"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_51]"/>
           <Property Name="Width" Value="140"/>
         </Control>
@@ -3861,9 +3859,555 @@
           <Property Name="TextIndexDatapoint" Value="None"/>
           <Property Name="TextSimulationValue" Value="0"/>
           <Property Name="TextSource" Value="SingleText"/>
-          <Property Name="Top" Value="580"/>
+          <Property Name="Top" Value="360"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_77]"/>
           <Property Name="Width" Value="140"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_1">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="1"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="10"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="100"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_2">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Transparent"/>
+          <Property Name="Font" Value="Source[local].Font[Arial9pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="1"/>
+          <Property Name="Height" Value="20"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[StyleClass_2]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="52"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="100"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_2">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="2"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="110"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="120"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_40">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Transparent"/>
+          <Property Name="Font" Value="Source[local].Font[Arial9pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="1"/>
+          <Property Name="Height" Value="20"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[StyleClass_2]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="53"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="670"/>
+          <Property Name="Width" Value="100"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_3">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Transparent"/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="2"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="105"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[StyleClass_2]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="54"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="655"/>
+          <Property Name="Width" Value="128"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_4">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="3"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="230"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="120"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_41">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="3"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="225"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="55"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="655"/>
+          <Property Name="Width" Value="128"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_5">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="4"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="345"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_6">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="5"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="435"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="80"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_42">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="5"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="435"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="56"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="655"/>
+          <Property Name="Width" Value="75"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_7">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="6"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="515"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="80"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_8">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="7"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="595"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="80"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_43">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="6"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="520"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="57"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="655"/>
+          <Property Name="Width" Value="75"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_44">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="7"/>
+          <Property Name="Height" Value="32"/>
+          <Property Name="Left" Value="600"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="58"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="655"/>
+          <Property Name="Width" Value="75"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_3">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="8"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="675"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="650"/>
+          <Property Name="Width" Value="80"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_45">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="8"/>
+          <Property Name="Height" Value="32"/>
+          <Property Name="Left" Value="675"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="59"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="655"/>
+          <Property Name="Width" Value="80"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_5">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="4"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="345"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="60"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="655"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_9">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="9"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="10"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="100"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_4">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Transparent"/>
+          <Property Name="Font" Value="Source[local].Font[Arial9pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="9"/>
+          <Property Name="Height" Value="20"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[StyleClass_2]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="61"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="100"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_10">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="10"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="110"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="120"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_6">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Transparent"/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="10"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="105"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[StyleClass_2]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="62"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="128"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_56">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="AlignmentVertical" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="FillStyle" Value="Transparent"/>
+          <Property Name="Font" Value="Source[local].Font[Arial9pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="9"/>
+          <Property Name="Height" Value="20"/>
+          <Property Name="Left" Value="15"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[StyleClass_2]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="63"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="870"/>
+          <Property Name="Width" Value="100"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_11">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="230"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="120"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_57">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="225"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="64"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="128"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_12">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="GroupID" Value="11"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="465"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_13">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="555"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="92"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_60">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="560"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="65"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="80"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_14">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="645"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="92"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_15">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="735"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="92"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_61">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="650"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="66"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_67">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="Height" Value="32"/>
+          <Property Name="Left" Value="745"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="67"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_16">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="825"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="92"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_68">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="Height" Value="32"/>
+          <Property Name="Left" Value="835"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="70"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="80"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_69">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="GroupID" Value="11"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="460"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="71"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="90"/>
+        </Control>
+        <Control ClassId="0x00001001" Name="Shape_17">
+          <Property Name="BackColor" Value="250"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="345"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
+          <Property Name="Top" Value="850"/>
+          <Property Name="Width" Value="120"/>
+        </Control>
+        <Control ClassId="0x00001004" Name="Text_76">
+          <Property Name="AlignmentHorizontal" Value="Center"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Font" Value="Source[local].Font[Arial10pxBold]"/>
+          <Property Name="ForeColor" Value="254"/>
+          <Property Name="Height" Value="41"/>
+          <Property Name="Left" Value="340"/>
+          <Property Name="Multiline" Value="Automatic"/>
+          <Property Name="SimulationIndex" Value="0"/>
+          <Property Name="SimulationValue" Value=""/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
+          <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
+          <Property Name="TextIndexOffset" Value="72"/>
+          <Property Name="TextSource" Value="SingleText"/>
+          <Property Name="Top" Value="855"/>
+          <Property Name="Width" Value="128"/>
         </Control>
       </Controls>
       <KeyMapping>
@@ -4017,7 +4561,7 @@
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_1]"/>
       <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_2]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[ddbDowntime]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[String_2]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_5]"/>
@@ -4124,8 +4668,8 @@
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_14]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
       <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
-      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_176]"/>
+      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_20]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_15]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_13]"/>
@@ -4149,7 +4693,7 @@
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_15]"/>
       <Property Name="Left" Value="Source[embedded].Layer[Default].Control[ddbDowntime]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
+      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_20]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[String_19]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[String_18]"/>
@@ -4158,19 +4702,13 @@
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_5]"/>
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[String_20]">
-      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
-      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_176]"/>
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_15]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_206]"/>
     </MovementEntry>
-    <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_176]">
-      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
-      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
-      <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_20]"/>
-      <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
-    </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Numeric_177]">
-      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_176]"/>
+      <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_14]"/>
       <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[Numeric_206]"/>
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Numeric_3]"/>
@@ -4287,30 +4825,29 @@
     <TabSeqItem Index="101" Value="Source[embedded].Layer[Default].Control[Numeric_167]"/>
     <TabSeqItem Index="102" Value="Source[embedded].Layer[Default].Control[Numeric_168]"/>
     <TabSeqItem Index="103" Value="Source[embedded].Layer[Default].Control[String_20]"/>
-    <TabSeqItem Index="104" Value="Source[embedded].Layer[Default].Control[Numeric_176]"/>
-    <TabSeqItem Index="105" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
-    <TabSeqItem Index="106" Value="Source[embedded].Layer[Default].Control[Numeric_185]"/>
-    <TabSeqItem Index="107" Value="Source[embedded].Layer[Default].Control[Numeric_186]"/>
-    <TabSeqItem Index="108" Value="Source[embedded].Layer[Default].Control[Numeric_187]"/>
-    <TabSeqItem Index="109" Value="Source[embedded].Layer[Default].Control[Numeric_188]"/>
-    <TabSeqItem Index="110" Value="Source[embedded].Layer[Default].Control[Numeric_189]"/>
-    <TabSeqItem Index="111" Value="Source[embedded].Layer[Default].Control[Numeric_190]"/>
-    <TabSeqItem Index="112" Value="Source[embedded].Layer[Default].Control[Numeric_191]"/>
-    <TabSeqItem Index="113" Value="Source[embedded].Layer[Default].Control[Numeric_192]"/>
-    <TabSeqItem Index="114" Value="Source[embedded].Layer[Default].Control[Numeric_193]"/>
-    <TabSeqItem Index="115" Value="Source[embedded].Layer[Default].Control[Numeric_194]"/>
-    <TabSeqItem Index="116" Value="Source[embedded].Layer[Default].Control[Numeric_195]"/>
-    <TabSeqItem Index="117" Value="Source[embedded].Layer[Default].Control[Numeric_196]"/>
-    <TabSeqItem Index="118" Value="Source[embedded].Layer[Default].Control[Numeric_197]"/>
-    <TabSeqItem Index="119" Value="Source[embedded].Layer[Default].Control[Numeric_198]"/>
-    <TabSeqItem Index="120" Value="Source[embedded].Layer[Default].Control[Numeric_199]"/>
-    <TabSeqItem Index="121" Value="Source[embedded].Layer[Default].Control[Numeric_200]"/>
-    <TabSeqItem Index="122" Value="Source[embedded].Layer[Default].Control[Numeric_201]"/>
-    <TabSeqItem Index="123" Value="Source[embedded].Layer[Default].Control[Numeric_202]"/>
-    <TabSeqItem Index="124" Value="Source[embedded].Layer[Default].Control[Numeric_203]"/>
-    <TabSeqItem Index="125" Value="Source[embedded].Layer[Default].Control[Numeric_204]"/>
-    <TabSeqItem Index="126" Value="Source[embedded].Layer[Default].Control[Numeric_205]"/>
-    <TabSeqItem Index="127" Value="Source[embedded].Layer[Default].Control[Numeric_207]"/>
-    <TabSeqItem Index="128" Value="Source[embedded].Layer[Default].Control[Numeric_206]"/>
+    <TabSeqItem Index="104" Value="Source[embedded].Layer[Default].Control[Numeric_177]"/>
+    <TabSeqItem Index="105" Value="Source[embedded].Layer[Default].Control[Numeric_185]"/>
+    <TabSeqItem Index="106" Value="Source[embedded].Layer[Default].Control[Numeric_186]"/>
+    <TabSeqItem Index="107" Value="Source[embedded].Layer[Default].Control[Numeric_187]"/>
+    <TabSeqItem Index="108" Value="Source[embedded].Layer[Default].Control[Numeric_188]"/>
+    <TabSeqItem Index="109" Value="Source[embedded].Layer[Default].Control[Numeric_189]"/>
+    <TabSeqItem Index="110" Value="Source[embedded].Layer[Default].Control[Numeric_190]"/>
+    <TabSeqItem Index="111" Value="Source[embedded].Layer[Default].Control[Numeric_191]"/>
+    <TabSeqItem Index="112" Value="Source[embedded].Layer[Default].Control[Numeric_192]"/>
+    <TabSeqItem Index="113" Value="Source[embedded].Layer[Default].Control[Numeric_193]"/>
+    <TabSeqItem Index="114" Value="Source[embedded].Layer[Default].Control[Numeric_194]"/>
+    <TabSeqItem Index="115" Value="Source[embedded].Layer[Default].Control[Numeric_195]"/>
+    <TabSeqItem Index="116" Value="Source[embedded].Layer[Default].Control[Numeric_196]"/>
+    <TabSeqItem Index="117" Value="Source[embedded].Layer[Default].Control[Numeric_197]"/>
+    <TabSeqItem Index="118" Value="Source[embedded].Layer[Default].Control[Numeric_198]"/>
+    <TabSeqItem Index="119" Value="Source[embedded].Layer[Default].Control[Numeric_199]"/>
+    <TabSeqItem Index="120" Value="Source[embedded].Layer[Default].Control[Numeric_200]"/>
+    <TabSeqItem Index="121" Value="Source[embedded].Layer[Default].Control[Numeric_201]"/>
+    <TabSeqItem Index="122" Value="Source[embedded].Layer[Default].Control[Numeric_202]"/>
+    <TabSeqItem Index="123" Value="Source[embedded].Layer[Default].Control[Numeric_203]"/>
+    <TabSeqItem Index="124" Value="Source[embedded].Layer[Default].Control[Numeric_204]"/>
+    <TabSeqItem Index="125" Value="Source[embedded].Layer[Default].Control[Numeric_205]"/>
+    <TabSeqItem Index="126" Value="Source[embedded].Layer[Default].Control[Numeric_207]"/>
+    <TabSeqItem Index="127" Value="Source[embedded].Layer[Default].Control[Numeric_206]"/>
   </TabSequence>
 </Page>

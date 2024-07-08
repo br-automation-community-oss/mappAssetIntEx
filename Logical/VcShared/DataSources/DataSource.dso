@@ -3801,15 +3801,6 @@
                 <Property Name="VCType" Value="STRING"/>
               </DataPoint>
             </Folder>
-            <DataPoint Name="RecordNext">
-              <Property Name="ConnectedBySharedResource" Value="False"/>
-              <Property Name="ConnectingVisus" Value="Visu"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="PLCType" Value="UINT"/>
-              <Property Name="UpdateTime" Value="Default"/>
-              <Property Name="UserID" Value="None"/>
-              <Property Name="VCType" Value="INTEGER"/>
-            </DataPoint>
           </Folder>
           <Folder Name="Info">
             <Property Name="Description" Value=""/>

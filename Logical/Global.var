@@ -14,5 +14,5 @@ VAR
 	gCommandResetError : BOOL;
 	gEnable : BOOL := TRUE;
 	gLocked : UINT := 0;
-	gShift : ARRAY[0..3] OF SHIFT_typ;
+	gShift : ARRAY[0..4] OF SHIFT_typ;
 END_VAR

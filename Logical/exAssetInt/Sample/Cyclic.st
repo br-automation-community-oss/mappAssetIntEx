@@ -2,9 +2,9 @@
 PROGRAM _CYCLIC
 	// --------------------------------------------------------------------------------------------------------------------------
 	// Asset configuration
-	FOR x := 0 TO SIZEOF(exAssetIntConfig.Shifts)/SIZEOF(exAssetIntConfig.Shifts[0]) DO
+	FOR x := 0 TO SIZEOF(exAssetIntConfig.Shifts)/SIZEOF(exAssetIntConfig.Shifts[0]) - 1 DO
 		exAssetIntConfig.Shifts[x].Name := gShift[x].Name;
-		FOR y := 0 TO SIZEOF(exAssetIntConfig.Shifts[x].ScheduledDowntime)/SIZEOF(exAssetIntConfig.Shifts[x].ScheduledDowntime[0]) DO
+		FOR y := 0 TO SIZEOF(exAssetIntConfig.Shifts[x].ScheduledDowntime)/SIZEOF(exAssetIntConfig.Shifts[x].ScheduledDowntime[0]) - 1 DO
 			exAssetIntConfig.Shifts[x].ScheduledDowntime[y].Reason := gShift[x].ScheduledDowntime[y].Reason;
 			exAssetIntConfig.Shifts[x].ScheduledDowntime[y].Start := UDINT_TO_TOD((gShift[x].ScheduledDowntime[y].Start.Hour * 3600000) + (gShift[x].ScheduledDowntime[y].Start.Minutes * 60000));
 			exAssetIntConfig.Shifts[x].ScheduledDowntime[y].End := UDINT_TO_TOD((gShift[x].ScheduledDowntime[y].End.Hour * 3600000) + (gShift[x].ScheduledDowntime[y].End.Minutes * 60000));
@@ -12,7 +12,6 @@ PROGRAM _CYCLIC
 		exAssetIntConfig.Shifts[x].TotalTime.Start := UDINT_TO_TOD((gShift[x].Start.Hour * 3600000) + (gShift[x].Start.Minutes * 60000));
 		exAssetIntConfig.Shifts[x].TotalTime.End := UDINT_TO_TOD((gShift[x].End.Hour * 3600000) + (gShift[x].End.Minutes * 60000));
 	END_FOR;
-
 	
 	// --------------------------------------------------------------------------------------------------------------------------
 	// Import or export configuration
