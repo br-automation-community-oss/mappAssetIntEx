@@ -448,7 +448,7 @@ FUNCTION exAssetIntCheckPreq
 	// Make sure core function block is active
 	IF NOT exLink.IsCoreActive THEN
 		// Set status, remember state, go to error state
-		StatusID := CreateErrorState(mpASSETINT_INF_WAIT_CORE_FB, ADR('ERR: core is not active'), Logger, exCOM_SEV_ERROR,  ADR(State), ADR(InfoDiagStatusID));
+		StatusID := CreateErrorState(exASSETINT_INF_WAIT_CORE_FB, ADR('ERR: core is not active'), Logger, exCOM_SEV_ERROR,  ADR(State), ADR(InfoDiagStatusID));
 		exAssetIntCheckPreq := FALSE;
 		RETURN;				
 	END_IF
