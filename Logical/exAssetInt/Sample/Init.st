@@ -1,6 +1,5 @@
 PROGRAM _INIT
 	gLocked;					// VC helper
-	DeviceName := 'USER_HD';	// File device name
 	
 	// --------------------------------------------------------------------------------------------------------------------------
 	// Shift configuration
