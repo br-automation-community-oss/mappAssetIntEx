@@ -359,6 +359,22 @@ FUNCTION exAssetIntCheckPreq : BOOL
 	END_VAR
 END_FUNCTION
 
+FUNCTION exAssetIntCheckShiftData : BOOL
+	VAR_INPUT
+		Configuration : exAssetIntCoreConfigType;
+		Logger : UDINT;
+		State : REFERENCE TO exAssetIntStateEnum;
+		StatusID : REFERENCE TO DINT;
+		InfoDiagStatusID : REFERENCE TO exAssetIntStatusIDType;
+	END_VAR
+	VAR
+		TmpStr1 : STRING[100];
+		TmpStr2 : STRING[100];
+		y : USINT;
+		x : USINT;
+	END_VAR
+END_FUNCTION
+
 FUNCTION InsertEventData : USINT
 	VAR_INPUT
 		Memory : UDINT;

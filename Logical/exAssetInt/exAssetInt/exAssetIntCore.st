@@ -65,25 +65,9 @@ FUNCTION_BLOCK exAssetIntCore
 				
 				// -------------------------------------------------------------------------------------------
 				// Check shift configuration for errors
-				FOR Internal.y := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) - 1 DO
-					FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts[Internal.y].ScheduledDowntime)/SIZEOF(Configuration.Shifts[Internal.y].ScheduledDowntime[0]) - 1 DO
-						// Make sure downtime is within shift
-						IF TOD_TO_UDINT(Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].Start) <> 0 OR TOD_TO_UDINT(Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].End) <> 0 THEN
-							IF Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].Start < Configuration.Shifts[Internal.y].TotalTime.Start OR 
-								Configuration.Shifts[Internal.y].ScheduledDowntime[Internal.x].End > Configuration.Shifts[Internal.y].TotalTime.End THEN
-								// Set status, remember state, go to error state
-								Internal.TmpStr1 := 'ERR: downtime is outside of shift in no ';
-								brsitoa(Internal.y, ADR(Internal.TmpStr2));
-								brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.TmpStr2));
-								brsstrcat(ADR(Internal.TmpStr1), ADR(' in downtime no '));
-								brsitoa(Internal.x, ADR(Internal.TmpStr2));
-								brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.TmpStr2));
-								StatusID := CreateErrorState(ERR_ASSET_SHIFT_CALC, ADR(Internal.TmpStr1), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
-								RETURN;							
-							END_IF
-						END_IF
-					END_FOR;
-				END_FOR;
+				IF NOT exAssetIntCheckShiftData(Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+					RETURN;
+				END_IF
 								
 				// -------------------------------------------------------------------------------------------
 				// Create folder structure and read event data only after boot
@@ -168,6 +152,7 @@ FUNCTION_BLOCK exAssetIntCore
 					END_IF
 				END_IF
 				
+				// -------------------------------------------------------------------------------------------
 				// Remember start called time
 				Internal.TimeLastCallShift := clock_ms();
 				Internal.TimeLastCallProduction := clock_ms();
@@ -178,7 +163,7 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.RefreshShiftUI := TRUE;
 				exLink.RefreshTimelineUI := TRUE;
 				Internal.State := exASSETINT_STATE_IDLE;
-			
+				
 				// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
@@ -500,8 +485,13 @@ FUNCTION_BLOCK exAssetIntCore
 			
 			// -------------------------------------------------------------------------------------------
 			// Handle update command
-			IF EDGEPOS(Update) THEN	
-
+			IF EDGEPOS(Update) THEN
+				// -------------------------------------------------------------------------------------------
+				// Check shift configuration for errors
+				IF NOT exAssetIntCheckShiftData(Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+					RETURN;
+				END_IF
+				
 				// Job has changed
 				IF Parameters.Job <> exLink.JobStatistics.JobName THEN
 					Internal.TmpStr1 := 'new job started ';

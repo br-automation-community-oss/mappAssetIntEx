@@ -102,3 +102,32 @@ FUNCTION CreateLoggerEntry
 
 	CreateLoggerEntry := TRUE;
 END_FUNCTION
+
+// -------------------------------------------------------------------------------------------
+// Check prerequisites, exLink and buffers
+FUNCTION exAssetIntCheckShiftData
+	// -------------------------------------------------------------------------------------------
+	// Check shift configuration for errors
+	FOR y := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) - 1 DO
+		FOR x := 0 TO SIZEOF(Configuration.Shifts[y].ScheduledDowntime)/SIZEOF(Configuration.Shifts[y].ScheduledDowntime[0]) - 1 DO
+			// Make sure downtime is within shift
+			IF TOD_TO_UDINT(Configuration.Shifts[y].ScheduledDowntime[x].Start) <> 0 OR TOD_TO_UDINT(Configuration.Shifts[y].ScheduledDowntime[x].End) <> 0 THEN
+				IF Configuration.Shifts[y].ScheduledDowntime[x].Start < Configuration.Shifts[y].TotalTime.Start OR 
+					Configuration.Shifts[y].ScheduledDowntime[x].End > Configuration.Shifts[y].TotalTime.End THEN
+					// Set status, remember state, go to error state
+					TmpStr1 := 'ERR: downtime is outside of shift in no ';
+					brsitoa(y, ADR(TmpStr2));
+					brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
+					brsstrcat(ADR(TmpStr1), ADR(' in downtime no '));
+					brsitoa(x, ADR(TmpStr2));
+					brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
+					StatusID := CreateErrorState(ERR_ASSET_SHIFT_CALC, ADR(TmpStr1), Logger, exCOM_SEV_ERROR,  ADR(State), ADR(InfoDiagStatusID));
+					exAssetIntCheckShiftData := FALSE;
+					RETURN;							
+				END_IF
+			END_IF
+		END_FOR;
+	END_FOR;
+	
+	exAssetIntCheckShiftData := TRUE;
+END_FUNCTION
