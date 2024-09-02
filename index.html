@@ -510,6 +510,9 @@
 <li>The prefix of all data type names was changed from Mp to ex. For example MpAssetIntCoreInfoType was changed to exAssetIntCoreInfoType. The new structures are identical to the official structures. All exceptions are documented in the <a href="compatibility/compatibility.html">compatibility</a> page.</li>
 <li>The MpLink was replaced with a remanent variable of type exAssetIntLinkType. This structure is used to store important data during power off and for cross communication between function blocks.</li>
 <li>All data is stored in a ring buffer consisting of individual files. Each file contains one event. An event can be job or shift change or a downtime event. You can find more details about the data management in the <a href="appendix.html">appendix</a>.</li>
+<li>The parameter "EnableFileBackup" is no longer required and was removed from the core config structure. The data is always stored in the flash memory.</li>
+<li>The parameters "SaveInterval", "RecordMemory", "RecordingSizeShiftStatistics" and "RecordingSizeJobStatistics" are no longer required and were removed from the general config structure.</li>
+<li>The data structure "exAssetIntUITimelineOutputType" was adjusted to match the other UI structures. Al data from the parameter "Display" was moved one level up to "UIConnect.Output".</li>
 </ul>
 <h4 id="exassetintshiftlistui">exAssetIntShiftListUI</h4>
 <ul>

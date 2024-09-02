@@ -345,6 +345,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#addition-notes" class="md-nav__link">
+    Addition notes
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -506,8 +513,19 @@ exAssetIntConfig.Export.TimelineFileNamePattern := 'Timeline_%Y_%m_%d_%H_%M.csv'
 <h3 id="connect-the-function-blocks-and-structures-to-other-tasks-or-visual-components">Connect the function blocks and structures to other tasks or visual components</h3>
 <p>All function blocks and variable structures have the exact same name as before. The only difference is the prefix. The prefix "Mp" was changed to "ex". For example, "MpAssetIntCore" was changed to "exAssetIntCore".</p>
 <h3 id="remove-old-assetint">Remove old AssetInt</h3>
-<p>To remove the old assetInt configuration delete configuration file under the configuration view. If there is no other mappService used you can also set the mappService to "not defined".</p>
+<p>To remove the old assetInt configuration delete configuration file under the configuration view. <strong>If there is no other mappService used</strong> you can also set the mappService to "not defined".</p>
 <p><img alt="" src="conv6.jpg" /></p>
+<p>If there are other mappServices used, you can remove the assetInt service by deleting the library MpAssetInt.</p>
+<p><img alt="" src="conv2.jpg" /></p>
+<h3 id="addition-notes">Addition notes</h3>
+<ul>
+<li>
+<p>The parameter "EnableFileBackup" is no longer required and was removed from the core config structure. The data is always stored in the flash memory.</p>
+</li>
+<li>
+<p>The parameters "SaveInterval", "RecordMemory", "RecordingSizeShiftStatistics" and "RecordingSizeJobStatistics" are no longer required and were removed from the general config structure.</p>
+</li>
+</ul>
 
 
 
