@@ -29,6 +29,14 @@ FUNCTION_BLOCK exAssetIntCore
 					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;			
 				END_IF
+				
+				// -------------------------------------------------------------------------------------------
+				// Make sure we have a configuration
+				IF ADR(Configuration) = 0 THEN
+					// Set status, remember state, go to error state
+					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No configuation attached'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
+					RETURN;			
+				END_IF
 							
 				// -------------------------------------------------------------------------------------------
 				// Transfer start values
@@ -209,7 +217,7 @@ FUNCTION_BLOCK exAssetIntCore
 						Internal.ShiftId := UINT_TO_SINT(Internal.x);
 						EXIT;
 					END_IF
-				// Shift ends next day
+					// Shift ends next day
 				ELSE
 					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start OR Internal.TimeOfDay <= Configuration.Shifts[Internal.x].TotalTime.End THEN
 						Internal.ShiftName := Configuration.Shifts[Internal.x].Name;
@@ -377,7 +385,7 @@ FUNCTION_BLOCK exAssetIntCore
 					END_IF			
 				END_IF
 				
-			// When no shift is active
+				// When no shift is active
 			ELSE
 				// Dont count when no shift is active, reset last call
 				Internal.ShiftPieceCounterOld := PieceCounter;
@@ -425,22 +433,22 @@ FUNCTION_BLOCK exAssetIntCore
 						brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.JobStatistics.JobName));
 						exLink.ProductionState := exASSETINT_STATE_UPTIME;
 	
-					// State change is to no shift
+						// State change is to no shift
 					ELSIF (exLink.ProductionShiftName <> '' AND exLink.ShiftStatistics.ShiftName = '') THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR('no shift'));
 						exLink.ProductionState := exASSETINT_STATE_NO_SHIFT_ACTIVE;
 	
-					// State change is to uptime
+						// State change is to uptime
 					ELSIF (exLink.ProductionShiftName = '' AND exLink.ShiftStatistics.ShiftName <> '') THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR('uptime'));
 						exLink.ProductionState := exASSETINT_STATE_UPTIME;
 
-					// State is shift change
+						// State is shift change
 					ELSIF (exLink.ProductionShiftName <> exLink.ShiftStatistics.ShiftName) THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR('new shift'));
 						exLink.ProductionState := exASSETINT_STATE_UPTIME;
 						
-					// State change is downtime 
+						// State change is downtime 
 					ELSE
 						IF Downtime = exASSETINT_NO_DOWNTIME THEN
 							brsstrcat(ADR(Internal.TmpStr1), ADR('no downtime'));
@@ -471,7 +479,7 @@ FUNCTION_BLOCK exAssetIntCore
 						// Create new event
 						Internal.State := exASSETINT_STATE_STORE_EVENT;
 				
-					// Just remember start time after cold start
+						// Just remember start time after cold start
 					ELSE
 						exLink.ProductionStateStart := Internal.DTGetTime_0.DT1;		
 					END_IF
