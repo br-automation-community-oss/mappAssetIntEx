@@ -186,7 +186,6 @@ END_TYPE
 
 TYPE
 	exAssetIntCoreConfigType : 	STRUCT 
-		EnableFileBackup : BOOL := FALSE; (*Enable file backup functionality or not.*)
 		CalculationTimeBase : UDINT := 1000; (*Cycle time for calculating the current production rate*)
 		Shifts : ARRAY[0..4]OF exAssetIntShiftParType := [5(0)]; (*Shift schedule in detailed*)
 		Export : exAssetIntExportType; (*Configuration for export*)
