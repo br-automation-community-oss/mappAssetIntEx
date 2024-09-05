@@ -13,6 +13,7 @@ FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset 
 		PieceCounter : UDINT; (*Total pieces counter.*) (* *) (*#CMD#; *)
 		RejectCounter : UDINT; (*Reject pieces counter*) (* *) (*#CMD#; *)
 		DeviceName : REFERENCE TO STRING[50]; (*Address of the exported device name*) (* *) (*#CMD#; *)
+		StorageName : REFERENCE TO STRING[50]; (*Address of the storage device name*) (* *) (*#CMD#; *)
 		Export : BOOL; (*Export the saved information to file*) (* *) (*#CMD#; *)
 		Reset : BOOL; (*Reset the data buffer*) (* *) (*#CMD#; *)
 	END_VAR

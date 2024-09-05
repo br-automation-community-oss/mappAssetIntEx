@@ -613,7 +613,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_STORE_EVENT:
 			Internal.WriteEventData.Enable := TRUE;
-			Internal.WriteEventData.Device := DeviceName;
+			Internal.WriteEventData.Device := StorageName;
 			Internal.WriteEventData.Logger := Logger;
 			Internal.WriteEventData.RecordData := ADR(Internal.RecordData);
 			Internal.WriteEventData.RecordNext := Internal.RecordNext;

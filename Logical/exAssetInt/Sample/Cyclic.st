@@ -33,7 +33,8 @@ PROGRAM _CYCLIC
 	exAssetIntCore_0.exLink := ADR(exAssetIntLink);
 	exAssetIntCore_0.Parameters := ADR(exAssetIntPar);
 	exAssetIntCore_0.Configuration := ADR(exAssetIntConfig);
-	exAssetIntCore_0.DeviceName := ADR(DeviceName);
+	exAssetIntCore_0.DeviceName := ADR(gDeviceName);
+	exAssetIntCore_0.StorageName := ADR(gDeviceName);
 	exAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
 	exAssetIntCore_0.Downtime := gDowntime;
 	exAssetIntCore_0.PieceCounter := gPieceCounter;
