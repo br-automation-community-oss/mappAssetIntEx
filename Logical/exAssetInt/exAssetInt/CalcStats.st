@@ -18,12 +18,12 @@ FUNCTION CalcStatsJob
 		exLink.JobStatistics.ScheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeScheduled - exLink.JobStatistics.ScheduledDowntime.Hours*3600000 - exLink.JobStatistics.ScheduledDowntime.Minutes*60000)/1000);
 	END_IF
 
-	// Calculate scheduled downtime
+	// Calculate unscheduled downtime
 	IF Downtime = exASSETINT_UNSCHEDULED_DOWNTIME THEN
 		exLink.JobDowntimeUnscheduled := exLink.JobDowntimeUnscheduled + DiffLastCall;
 		exLink.JobStatistics.UnscheduledDowntime.Hours := exLink.JobDowntimeUnscheduled/3600000;
 		exLink.JobStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - exLink.JobStatistics.UnscheduledDowntime.Hours*3600000)/60000);
-		exLink.JobStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - exLink.JobStatistics.UnscheduledDowntime.Hours*3600000 - exLink.JobStatistics.ScheduledDowntime.Minutes*60000)/1000);
+		exLink.JobStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT((exLink.JobDowntimeUnscheduled - exLink.JobStatistics.UnscheduledDowntime.Hours*3600000 - exLink.JobStatistics.UnscheduledDowntime.Minutes*60000)/1000);
 	END_IF
 	
 	// Calculate uptime
@@ -100,7 +100,7 @@ FUNCTION CalcStatsShift
 		exLink.ShiftDowntimeUnscheduled := exLink.ShiftDowntimeUnscheduled + DiffLastCall;
 		exLink.ShiftStatistics.UnscheduledDowntime.Hours := exLink.ShiftDowntimeUnscheduled/3600000;
 		exLink.ShiftStatistics.UnscheduledDowntime.Minutes := UDINT_TO_USINT((exLink.ShiftDowntimeUnscheduled - exLink.ShiftStatistics.UnscheduledDowntime.Hours*3600000)/60000);
-		exLink.ShiftStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT((exLink.ShiftDowntimeUnscheduled - exLink.ShiftStatistics.UnscheduledDowntime.Hours*3600000 - exLink.ShiftStatistics.ScheduledDowntime.Minutes*60000)/1000);
+		exLink.ShiftStatistics.UnscheduledDowntime.Seconds := UDINT_TO_USINT((exLink.ShiftDowntimeUnscheduled - exLink.ShiftStatistics.UnscheduledDowntime.Hours*3600000 - exLink.ShiftStatistics.UnscheduledDowntime.Minutes*60000)/1000);
 	END_IF
 	
 	// Calculate uptime
