@@ -219,13 +219,17 @@ FUNCTION_BLOCK exAssetIntCore
 						IF Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
 							IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start AND Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
 								Downtime := exASSETINT_SCHEDULED_DOWNTIME;
-								DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+                IF ADR(DowntimeReason) <> 0 THEN
+								  DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+                END_IF
 								EXIT;
 							END_IF
 						ELSE
 							IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start OR Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
 								Downtime := exASSETINT_SCHEDULED_DOWNTIME;
-								DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+                IF ADR(DowntimeReason) <> 0 THEN
+  								DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+							  END_IF
 								EXIT;
 							END_IF
 						END_IF
@@ -436,10 +440,17 @@ FUNCTION_BLOCK exAssetIntCore
 							brsstrcat(ADR(Internal.TmpStr1), ADR('no downtime'));
 						ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
 							brsstrcat(ADR(Internal.TmpStr1), ADR('scheduled dt > '));
-							brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
-						ELSE
+              IF ADR(DowntimeReason) <> 0 THEN
+							  brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
+              ELSE
+							  brsstrcat(ADR(Internal.TmpStr1), ADR('empty'));
+              END_IF						ELSE
 							brsstrcat(ADR(Internal.TmpStr1), ADR('unscheduled dt > '));
-							brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
+              IF ADR(DowntimeReason) <> 0 THEN
+							  brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
+              ELSE
+							  brsstrcat(ADR(Internal.TmpStr1), ADR('empty'));
+              END_IF
 						END_IF
 	
 						IF exLink.ProductionState = exASSETINT_STATE_SCHDL_DOWNTIME OR exLink.ProductionState = exASSETINT_STATE_UNSCH_DOWNTIME THEN
