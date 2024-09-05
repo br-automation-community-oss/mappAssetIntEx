@@ -2,6 +2,7 @@
 (*General constants*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR CONSTANT
+	CORE_FOLDER_NAME : STRING[50] := 'events'; (*Name of the event folder*)
 	CORE_EVENT_NUM_MAX : UINT := 500; (*Maximum number of events*)
 	CORE_EVENT_DIR_MAX : UINT := 1000; (*Maximum number of events in one directory*)
 	EVENT_ADDITONAL_DATA_LEN : UINT := 100; (*Length of the event comment*)

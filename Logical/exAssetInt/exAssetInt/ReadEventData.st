@@ -33,7 +33,8 @@ FUNCTION_BLOCK ReadEventData
 					// Generate folder name
 					DirCount := 0;
 					TimeFirst := 0;
-					DirName := 'events0';
+					DirName := CORE_FOLDER_NAME;
+					brsstrcat(ADR(DirName), ADR('0'));
 					
 					Status := ERR_FUB_BUSY;
 					StatusRead := ERR_OK;
@@ -123,7 +124,7 @@ FUNCTION_BLOCK ReadEventData
 						
 					// Generate next folder name
 					ELSE
-						DirName := 'events';
+						DirName := CORE_FOLDER_NAME;
 						brsitoa(DirCount, ADR(TmpStr2));
 						brsstrcat(ADR(DirName), ADR(TmpStr2));
 						State := 1;
