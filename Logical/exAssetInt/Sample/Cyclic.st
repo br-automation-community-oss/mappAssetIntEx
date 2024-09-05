@@ -17,7 +17,7 @@ PROGRAM _CYCLIC
 	// Import or export configuration
 	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
-	exAssetIntConfig_0.DeviceName := DeviceName;
+	exAssetIntConfig_0.DeviceName := ADR(gDeviceName);
 	exAssetIntConfig_0.Configuration := ADR(exAssetIntConfig);
 	exAssetIntConfig_0.Logger := ADR(LoggerConfig);
 	exAssetIntConfig_0();

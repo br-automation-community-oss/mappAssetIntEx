@@ -68,11 +68,15 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 				Internal.State := exASSETINT_STATE_SAVE_CFG;
 			END_IF
 			
+			IF Load = FALSE AND Save = FALSE THEN
+				CommandDone := FALSE;
+			END_IF
+			
 		// -------------------------------------------------------------------------------------------
 		// Save configuration
 		exASSETINT_STATE_LOAD_CFG:
 			Internal.ReadConfiguration.Enable := TRUE;
-			Internal.ReadConfiguration.Device := DeviceName;
+			Internal.ReadConfiguration.Device := ADR(DeviceName);
 			Internal.ReadConfiguration.Logger := Logger;
 			Internal.ReadConfiguration();
 		
@@ -97,7 +101,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 			// Save configuration
 		exASSETINT_STATE_SAVE_CFG:
 			Internal.WriteConfiguration.Enable := TRUE;
-			Internal.WriteConfiguration.Device := DeviceName;
+			Internal.WriteConfiguration.Device := ADR(DeviceName);
 			Internal.WriteConfiguration.Logger := Logger;
 			Internal.WriteConfiguration.Configuration := Configuration;
 			Internal.WriteConfiguration();

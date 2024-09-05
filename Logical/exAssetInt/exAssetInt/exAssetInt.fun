@@ -46,7 +46,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
-		DeviceName : {REDUND_UNREPLICABLE} STRING[30]; (*Address of the exported device name*) (* *) (*#CMD#; *)
+		DeviceName : REFERENCE TO STRING[30]; (*Address of the exported device name*) (* *) (*#CMD#; *)
 		Configuration : REFERENCE TO exAssetIntCoreConfigType;
 		Logger : UDINT;
 		Load : {REDUND_UNREPLICABLE} BOOL; (* *) (* *) (*#PAR#;*)
@@ -176,7 +176,7 @@ END_FUNCTION_BLOCK
 FUNCTION_BLOCK ReadConfiguration
 	VAR_INPUT
 		Enable : BOOL;
-		Device : STRING[50];
+		Device : REFERENCE TO STRING[50];
 		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
 		Configuration : exAssetIntCoreConfigType;
 	END_VAR
@@ -194,7 +194,7 @@ END_FUNCTION_BLOCK
 FUNCTION_BLOCK WriteConfiguration
 	VAR_INPUT
 		Enable : BOOL;
-		Device : STRING[50];
+		Device : REFERENCE TO STRING[50];
 		Logger : UDINT; (*Address of log buffer*)
 		Configuration : exAssetIntCoreConfigType;
 	END_VAR

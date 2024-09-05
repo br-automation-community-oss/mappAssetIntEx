@@ -22,15 +22,12 @@ FUNCTION_BLOCK exAssetIntCore
 			IF Enable THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 
-				// -------------------------------------------------------------------------------------------
 				// Make sure we have remanent buffer
 				IF ADR(exLink) = 0 THEN
 					// Set status, remember state, go to error state
 					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;			
 				END_IF
-				
-				// -------------------------------------------------------------------------------------------
 				// Make sure we have a configuration
 				IF ADR(Configuration) = 0 THEN
 					// Set status, remember state, go to error state
@@ -246,7 +243,7 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.TmpStr1 := 'new shift started ';
 					brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.ShiftName));
 					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr1), Logger);
-				ELSE
+				ELSIF exLink.ShiftStatistics.ShiftName <> '' THEN
 					Internal.TmpStr1 := 'shift ended ';
 					brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ShiftStatistics.ShiftName));
 					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr1), Logger);
@@ -486,6 +483,8 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 			// Handle update command
 			IF EDGEPOS(Update) THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('update command triggered'), Logger);
+
 				// -------------------------------------------------------------------------------------------
 				// Check shift configuration for errors
 				IF NOT exAssetIntCheckShiftData(Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
@@ -500,7 +499,6 @@ FUNCTION_BLOCK exAssetIntCore
 
 					CommandBusy := TRUE;
 					CommandDone := FALSE;
-					ExportDone := FALSE;
 					UpdateDone := FALSE;
 
 					// Transfer stats to record, make sure structures are allignent
@@ -543,7 +541,15 @@ FUNCTION_BLOCK exAssetIntCore
 					exLink.JobStatistics.AdditionalData := Parameters.AdditionalData;
 					
 					Internal.State := exASSETINT_STATE_STORE_EVENT;
+				ELSE
+					CommandBusy := FALSE;
+					CommandDone := TRUE;
+					UpdateDone := TRUE;
 				END_IF
+			END_IF
+			
+			IF NOT Update THEN
+				UpdateDone := FALSE;
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -586,16 +592,20 @@ FUNCTION_BLOCK exAssetIntCore
 				CommandBusy := FALSE;
 				CommandDone := TRUE;
 			END_IF
-			
+					
 			// -------------------------------------------------------------------------------------------
 			// Handle export command
 			IF EDGEPOS(Export) THEN	
 
 				CommandBusy := TRUE;
 				CommandDone := FALSE;
-				UpdateDone := FALSE;
+				ExportDone := FALSE;
 	
 				Internal.State := exASSETINT_STATE_EXPORT_EVENTS;
+			END_IF
+			
+			IF NOT Export THEN
+				ExportDone := FALSE;
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -604,6 +614,10 @@ FUNCTION_BLOCK exAssetIntCore
 				// Set stats timer
 				Internal.StatsRefresh.IN := FALSE;
 				Internal.StatsRefresh();
+			END_IF
+			
+			IF Update = FALSE AND Export = FALSE AND Reset = FALSE THEN
+				CommandDone := FALSE;
 			END_IF
 
 			// -------------------------------------------------------------------------------------------

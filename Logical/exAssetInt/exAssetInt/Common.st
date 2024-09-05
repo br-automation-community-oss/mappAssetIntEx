@@ -129,5 +129,6 @@ FUNCTION exAssetIntCheckShiftData
 		END_FOR;
 	END_FOR;
 	
+	CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('shift data is ok'), Logger);
 	exAssetIntCheckShiftData := TRUE;
 END_FUNCTION
