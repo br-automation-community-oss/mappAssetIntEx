@@ -17,7 +17,7 @@ PROGRAM _CYCLIC
 	// Import or export configuration
 	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
-	exAssetIntConfig_0.DeviceName := ADR(gDeviceName);
+	exAssetIntConfig_0.DeviceName := ADR(DeviceName);
 	exAssetIntConfig_0.Configuration := ADR(exAssetIntConfig);
 	exAssetIntConfig_0.Logger := ADR(LoggerConfig);
 	exAssetIntConfig_0();
@@ -33,8 +33,8 @@ PROGRAM _CYCLIC
 	exAssetIntCore_0.exLink := ADR(exAssetIntLink);
 	exAssetIntCore_0.Parameters := ADR(exAssetIntPar);
 	exAssetIntCore_0.Configuration := ADR(exAssetIntConfig);
-	exAssetIntCore_0.DeviceName := ADR(gDeviceName);
-	exAssetIntCore_0.StorageName := ADR(gDeviceName);
+	exAssetIntCore_0.DeviceName := ADR(DeviceName);
+	exAssetIntCore_0.StorageName := ADR(DeviceName);
 	exAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
 	exAssetIntCore_0.Downtime := gDowntime;
 	exAssetIntCore_0.PieceCounter := gPieceCounter;
