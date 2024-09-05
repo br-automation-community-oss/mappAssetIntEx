@@ -80,7 +80,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_2:
 			Internal.CreateDirStructure.Enable := TRUE;
-			Internal.CreateDirStructure.Device := DeviceName;
+			Internal.CreateDirStructure.Device := StorageName;
 			Internal.CreateDirStructure.Logger := Logger;
 			Internal.CreateDirStructure();
 		
@@ -127,7 +127,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_4:
 			Internal.ReadEventData.Enable := TRUE;
-			Internal.ReadEventData.Device := DeviceName;
+			Internal.ReadEventData.Device := StorageName;
 			Internal.ReadEventData.Memory := exLink.MemoryDb;
 			Internal.ReadEventData.Logger := Logger;
 			Internal.ReadEventData();
