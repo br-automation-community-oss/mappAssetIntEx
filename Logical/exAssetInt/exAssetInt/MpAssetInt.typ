@@ -19,6 +19,8 @@ TYPE
 		ShiftName : STRING[20];
 		TmpStr1 : STRING[500];
 		TmpStr2 : STRING[50];
+		Downtime : exAssetIntDowntimeEnum;
+		DowntimeReason : STRING[50];
 		ProductionTotalTime : UDINT;
 		DTGetTime_0 : DTGetTime;
 		DT_TO_DTStructure_0 : DTStructure;
@@ -68,13 +70,13 @@ TYPE
 		RecordTypeDowntimeScheduled := 4,
 		RecordTypeDowntimeUnscheduled := 5,
 		RecordTypeTimeline := 10
-		);
+	);
 	exCoreInternalExportEnum : 
 		(
 		ExportTypeJob,
 		ExportTypeShift,
 		ExportTypeTimeline
-		);
+	);
 	exConfigInternalDataType : 	STRUCT 
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
@@ -142,44 +144,44 @@ TYPE
 		exASSETINT_STATE_LOAD_CFG := 41, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_ERROR := 90, (*Status: Idle, Waiting for command*)
 		exASSETINT_STATE_NONE := 99 (*Status: Idle, Waiting for command*)
-		);
+	);
 	exAssetIntLogLevelEnum : 
 		(
 		exASSETINT_LOG_OFF := 0, (*Status: Idle, Waiting for command*)
 		exASSETINT_LOG_ERROR := 1, (*Status: Idle, Waiting for command*)
 		exASSETINT_LOG_INFO := 2, (*Status: Idle, Waiting for command*)
 		exASSETINT_LOG_ALL := 3 (*Status: Idle, Waiting for command*)
-		);
+	);
 	exAssetIntBufferOffsets : 
 		(
 		exASSETINT_BUFFER_MEMORY := 0
-		);
+	);
 	exAssetIntUIStatusEnum : 
 		(
 		exASSETINT_UI_STATUS_IDLE := 0, (*Status: Idle, Waiting for command*)
 		exASSETINT_UI_STATUS_UPDATE := 1, (*Status: Updating UIConnect structer*)
 		exASSETINT_UI_STATUS_FILTER := 2 (*Status: Showing filter-dialog*)
-		);
+	);
 	exAssetIntMemoryEnum : 
 		(
 		exASSETINT_MEM_DB := 0, (*Database memory*)
 		exASSETINT_MEM_JOB := 1, (*Job working memory*)
 		exASSETINT_MEM_SHIFT := 2, (*Shift working memory*)
 		exASSETINT_MEM_TIMELINE := 3 (*Timeline working memory*)
-		);
+	);
 	exAssetIntDowntimeEnum : 
 		(
 		exASSETINT_NO_DOWNTIME := 0, (*No downtime active = uptime*)
 		exASSETINT_SCHEDULED_DOWNTIME := 1, (*Additional scheduled downtime (e.g. monthly maintenance)*)
 		exASSETINT_UNSCHEDULED_DOWNTIME := 2 (*Unscheduled downtime (e.g. machine fault)*)
-		);
+	);
 	exComSeveritiesEnum : 
 		(
 		exCOM_SEV_SUCCESS := 0, (*Success - no error*)
 		exCOM_SEV_INFORMATIONAL := 1, (*Severity: Informational*)
 		exCOM_SEV_WARNING := 2, (*Severity: Warning*)
 		exCOM_SEV_ERROR := 3 (*Severity: Error*)
-		);
+	);
 END_TYPE
 
 (*Config type*)
@@ -366,14 +368,14 @@ TYPE
 		(
 		exASSETINT_SORTING_ASC := 0, (*Sorting ascending*)
 		exASSETINT_SORTING_DESC := 1 (*Sorting descending*)
-		);
+	);
 	exAssetIntUIProductionStateEnum : 
 		(
 		exASSETINT_STATE_NO_SHIFT_ACTIVE := 0, (*Inactive state*)
 		exASSETINT_STATE_UPTIME := 1, (*Uptime state*)
 		exASSETINT_STATE_SCHDL_DOWNTIME := 2, (*Scheduled downtime state*)
 		exASSETINT_STATE_UNSCH_DOWNTIME := 3 (*Unscheduled downtime state*)
-		);
+	);
 	exAssetIntUICurrDTFilterType : 	STRUCT 
 		Enable : BOOL; (*Enable Filter*)
 		DateTime : DATE_AND_TIME; (*Date and time of filter*)
