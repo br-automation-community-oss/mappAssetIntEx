@@ -229,16 +229,12 @@ FUNCTION_BLOCK exAssetIntCore
 							IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start AND Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
 								Internal.Downtime := exASSETINT_SCHEDULED_DOWNTIME;
 								Internal.DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
-								  DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
-                END_IF
 								EXIT;
 							END_IF
 						ELSE
 							IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start OR Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
 								Internal.Downtime := exASSETINT_SCHEDULED_DOWNTIME;
 								Internal.DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
-  								DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
-							  END_IF
 								EXIT;
 							END_IF
 						END_IF
@@ -451,15 +447,8 @@ FUNCTION_BLOCK exAssetIntCore
 							brsstrcat(ADR(Internal.TmpStr1), ADR('scheduled dt > '));
 							brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.DowntimeReason));
 						ELSE
-              ELSE
-							  brsstrcat(ADR(Internal.TmpStr1), ADR('empty'));
-              END_IF						ELSE
 							brsstrcat(ADR(Internal.TmpStr1), ADR('unscheduled dt > '));
 							brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.DowntimeReason));
-							  brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
-              ELSE
-							  brsstrcat(ADR(Internal.TmpStr1), ADR('empty'));
-              END_IF
 						END_IF
 	
 						IF exLink.ProductionState = exASSETINT_STATE_SCHDL_DOWNTIME OR exLink.ProductionState = exASSETINT_STATE_UNSCH_DOWNTIME THEN
@@ -557,8 +546,6 @@ FUNCTION_BLOCK exAssetIntCore
 					// Transfer data to job stats
 					exLink.JobStatistics.StartTime := Internal.DTGetTime_0.DT1;
 					exLink.JobStatistics.JobName := Parameters.Job;
-					exLink.JobStatistics.CurrentUser := Parameters.CurrentUser;
-					exLink.JobStatistics.AdditionalData := Parameters.AdditionalData;
 					
 					Internal.State := exASSETINT_STATE_STORE_EVENT;
 				ELSE
@@ -566,6 +553,13 @@ FUNCTION_BLOCK exAssetIntCore
 					CommandDone := TRUE;
 					UpdateDone := TRUE;
 				END_IF
+				
+				// Transfer username and additional data
+				exLink.JobStatistics.CurrentUser := Parameters.CurrentUser;
+				exLink.JobStatistics.AdditionalData := Parameters.AdditionalData;
+
+				exLink.ShiftStatistics.CurrentUser := Parameters.CurrentUser;
+				exLink.ShiftStatistics.AdditionalData := Parameters.AdditionalData;
 			END_IF
 			
 			IF NOT Update THEN
