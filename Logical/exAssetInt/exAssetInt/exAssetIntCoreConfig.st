@@ -1,5 +1,7 @@
 
 // -------------------------------------------------------------------------------------------
+// File version 1001
+// -------------------------------------------------------------------------------------------
 // Config function block
 FUNCTION_BLOCK exAssetIntCoreConfig
 	// -------------------------------------------------------------------------------------------
@@ -32,10 +34,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 					StatusID := CreateErrorState(ERR_ASSET_CONFIG, ADR('ERR: configuration link is 0'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;				
 				END_IF
-				
-				// Transfer configuration link
-				exLink.Configuration := ADR(Configuration);
-				
+								
 				// Reset error and status
 				CommandBusy := FALSE;
 				CommandDone := FALSE;
