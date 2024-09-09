@@ -1,4 +1,6 @@
 // -------------------------------------------------------------------------------------------
+// File version 1000
+// -------------------------------------------------------------------------------------------
 // Create folder structure
 // -------------------------------------------------------------------------------------------
 FUNCTION_BLOCK CreateDirStructure
@@ -18,7 +20,8 @@ FUNCTION_BLOCK CreateDirStructure
 				DirCreate_0();
 
 				DirCount := 0;
-				TmpStr1 := 'events0';
+				TmpStr1 := CORE_FOLDER_NAME;
+				brsstrcat(ADR(TmpStr1), ADR('0'));
 				Status := ERR_FUB_BUSY;
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('creating folder structure'), Logger);
 				State := 1;
@@ -47,7 +50,7 @@ FUNCTION_BLOCK CreateDirStructure
 					
 					// Generate next folder name
 				ELSE
-					TmpStr1 := 'events';
+					TmpStr1 := CORE_FOLDER_NAME;
 					brsitoa(DirCount, ADR(TmpStr2));
 					brsstrcat(ADR(TmpStr1), ADR(TmpStr2));
 				END_IF

@@ -1,4 +1,6 @@
 // -------------------------------------------------------------------------------------------
+// File version 1000
+// -------------------------------------------------------------------------------------------
 // Write event data
 // -------------------------------------------------------------------------------------------
 FUNCTION_BLOCK WriteEventData
@@ -27,7 +29,7 @@ FUNCTION_BLOCK WriteEventData
 				FileClose_0();
 
 				// Generate file name
-				FileName := 'events';
+				FileName := CORE_FOLDER_NAME;
 				brsitoa(RecordNext/CORE_EVENT_DIR_MAX, ADR(TmpStr1));
 				brsstrcat(ADR(FileName), ADR(TmpStr1));
 				brsstrcat(ADR(FileName), ADR('/event#'));

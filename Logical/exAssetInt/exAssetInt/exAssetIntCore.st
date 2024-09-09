@@ -1,4 +1,3 @@
-
 // -------------------------------------------------------------------------------------------
 // File version 1001
 // -------------------------------------------------------------------------------------------
@@ -85,7 +84,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_2:
 			Internal.CreateDirStructure.Enable := TRUE;
-			Internal.CreateDirStructure.Device := DeviceName;
+			Internal.CreateDirStructure.Device := StorageName;
 			Internal.CreateDirStructure.Logger := Logger;
 			Internal.CreateDirStructure();
 		
@@ -132,7 +131,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_4:
 			Internal.ReadEventData.Enable := TRUE;
-			Internal.ReadEventData.Device := DeviceName;
+			Internal.ReadEventData.Device := StorageName;
 			Internal.ReadEventData.Memory := exLink.MemoryDb;
 			Internal.ReadEventData.Logger := Logger;
 			Internal.ReadEventData();
@@ -191,6 +190,14 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.StatsRefresh.IN := TRUE;
 			Internal.StatsRefresh.PT := exLink.Configuration.CalculationTimeBase/10;	
 			Internal.StatsRefresh();
+			
+			// Transfer downtime information
+			Internal.Downtime := Downtime;
+			IF ADR(DowntimeReason) <> 0 THEN
+				Internal.DowntimeReason := DowntimeReason;
+			ELSE
+				Internal.DowntimeReason := '';
+			END_IF
 
 			// -------------------------------------------------------------------------------------------
 			// Track current shift
@@ -321,7 +328,7 @@ FUNCTION_BLOCK exAssetIntCore
 					ELSE
 					
 						// Do not count when downtime is active
-						IF Downtime = exASSETINT_NO_DOWNTIME THEN
+						IF Internal.Downtime = exASSETINT_NO_DOWNTIME THEN
 							// Transfer job counter data
 							IF Internal.JobPieceCounterOld <= PieceCounter THEN					
 								exLink.JobStatistics.TotalPieces := exLink.JobStatistics.TotalPieces + (PieceCounter - Internal.JobPieceCounterOld);
@@ -339,10 +346,10 @@ FUNCTION_BLOCK exAssetIntCore
 						END_IF
 						Internal.JobPieceCounterOld := PieceCounter;
 						Internal.JobRejectCounterOld := RejectCounter;
-						CalcStatsJob(exLink, Internal.DiffLastCallShift, Downtime, Parameters, ADR(Info.JobStatistics));
+						CalcStatsJob(exLink, Internal.DiffLastCallShift, Internal.Downtime, Parameters, ADR(Info.JobStatistics));
 						
 						// Do not count when downtime is active
-						IF Downtime = exASSETINT_NO_DOWNTIME THEN
+						IF Internal.Downtime = exASSETINT_NO_DOWNTIME THEN
 							// Transfer shift counter data
 							IF Internal.ShiftPieceCounterOld <= PieceCounter THEN					
 								exLink.ShiftStatistics.TotalPieces := exLink.ShiftStatistics.TotalPieces + (PieceCounter - Internal.ShiftPieceCounterOld);
@@ -360,7 +367,7 @@ FUNCTION_BLOCK exAssetIntCore
 						END_IF
 						Internal.ShiftPieceCounterOld := PieceCounter;
 						Internal.ShiftRejectCounterOld := RejectCounter;
-						CalcStatsShift(exLink, Internal.DiffLastCallShift, Downtime, Parameters, ADR(Info.ShiftStatistics));
+						CalcStatsShift(exLink, Internal.DiffLastCallShift, Internal.Downtime, Parameters, ADR(Info.ShiftStatistics));
 						
 						// Transfer shift data to main function block
 						CurrentProductionRate := exLink.ShiftStatistics.CurrentProductionRate;
@@ -386,7 +393,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 			// Handle production state change
 			IF Internal.State <> exASSETINT_STATE_STORE_EVENT THEN
-				IF (exLink.ShiftStatistics.ShiftName <> exLink.ProductionShiftName) OR (exLink.JobStatistics.JobName <> exLink.ProductionJobName AND exLink.ShiftId >= 0) OR (Downtime <> exLink.ProductionDowntime AND exLink.ShiftId >= 0) THEN
+				IF (exLink.ShiftStatistics.ShiftName <> exLink.ProductionShiftName) OR (exLink.JobStatistics.JobName <> exLink.ProductionJobName AND exLink.ShiftId >= 0) OR (Internal.Downtime <> exLink.ProductionDowntime AND exLink.ShiftId >= 0) THEN
 					// Create log message
 					Internal.TmpStr1 := 'production state changed from ';
 					IF exLink.ProductionState = exASSETINT_STATE_NO_SHIFT_ACTIVE THEN
@@ -437,26 +444,26 @@ FUNCTION_BLOCK exAssetIntCore
 						
 						// State change is downtime 
 					ELSE
-						IF Downtime = exASSETINT_NO_DOWNTIME THEN
+						IF Internal.Downtime = exASSETINT_NO_DOWNTIME THEN
 							brsstrcat(ADR(Internal.TmpStr1), ADR('no downtime'));
 						ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
 							brsstrcat(ADR(Internal.TmpStr1), ADR('scheduled dt > '));
-							brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
+							brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.DowntimeReason));
 						ELSE
 							brsstrcat(ADR(Internal.TmpStr1), ADR('unscheduled dt > '));
-							brsstrcat(ADR(Internal.TmpStr1), ADR(DowntimeReason));
+							brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.DowntimeReason));
 						END_IF
 	
 						IF exLink.ProductionState = exASSETINT_STATE_SCHDL_DOWNTIME OR exLink.ProductionState = exASSETINT_STATE_UNSCH_DOWNTIME THEN
-							Internal.RecordData.AdditionalData := DowntimeReason;
+							Internal.RecordData.AdditionalData := Internal.DowntimeReason;
 						END_IF
-						exLink.ProductionState := UDINT_TO_UINT(Downtime + 1);				
+						exLink.ProductionState := UDINT_TO_UINT(Internal.Downtime + 1);				
 					END_IF
 					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr1), Logger);
 											
 					exLink.ProductionShiftName :=exLink.ShiftStatistics.ShiftName;
 					exLink.ProductionJobName := exLink.JobStatistics.JobName;
-					exLink.ProductionDowntime := Downtime;
+					exLink.ProductionDowntime := Internal.Downtime;
 	
 					// Skip after cold start
 					IF exLink.ProductionStateStart <> DT#1970-01-01-00:00:00 THEN
@@ -552,8 +559,6 @@ FUNCTION_BLOCK exAssetIntCore
 					// Transfer data to job stats
 					exLink.JobStatistics.StartTime := Internal.DTGetTime_0.DT1;
 					exLink.JobStatistics.JobName := Parameters.Job;
-					exLink.JobStatistics.CurrentUser := Parameters.CurrentUser;
-					exLink.JobStatistics.AdditionalData := Parameters.AdditionalData;
 					
 					Internal.State := exASSETINT_STATE_STORE_EVENT;
 				ELSE

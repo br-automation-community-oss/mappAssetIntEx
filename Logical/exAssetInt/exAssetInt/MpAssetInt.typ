@@ -21,6 +21,8 @@ TYPE
 		ShiftName : STRING[20];
 		TmpStr1 : STRING[500];
 		TmpStr2 : STRING[50];
+		Downtime : exAssetIntDowntimeEnum;
+		DowntimeReason : STRING[50];
 		ProductionTotalTime : UDINT;
 		DTGetTime_0 : DTGetTime;
 		DT_TO_DTStructure_0 : DTStructure;
