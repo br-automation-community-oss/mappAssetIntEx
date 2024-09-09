@@ -9,7 +9,9 @@
   <TaskClass Name="Cyclic#6" />
   <TaskClass Name="Cyclic#7" />
   <TaskClass Name="Cyclic#8">
+    <Task Name="AssetTest" Source="AssetTest.prg" Memory="UserROM" Language="IEC" Debugging="true" />
     <Task Name="Sample" Source="exAssetInt.Sample.prg" Memory="UserROM" Language="IEC" Debugging="true" />
+    <Task Name="Shift" Source="Shift.prg" Memory="UserROM" Language="IEC" Debugging="true" />
   </TaskClass>
   <VcDataObjects>
     <VcDataObject Name="Vis" Source="Vis.dob" Memory="UserROM" Language="Vc" WarningLevel="2" />
@@ -66,6 +68,10 @@
   </Binaries>
   <Libraries>
     <LibraryObject Name="AsBrStr" Source="Libraries.AsBrStr.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="MpData" Source="Libraries.MpData.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="MpBase" Source="Libraries.MpBase.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="MpAssetInt" Source="Libraries.MpAssetInt.lby" Memory="UserROM" Language="Binary" Debugging="true" />
+    <LibraryObject Name="MpCom" Source="Libraries.MpCom.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="FileIO" Source="Libraries.FileIO.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="DataObj" Source="Libraries.DataObj.lby" Memory="UserROM" Language="Binary" Debugging="true" />
     <LibraryObject Name="astime" Source="Libraries.astime.lby" Memory="UserROM" Language="Binary" Debugging="true" />

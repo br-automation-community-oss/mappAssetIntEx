@@ -20,7 +20,7 @@ Here is a short list of differences between the official mappAssetInt and the co
 * All data is stored in a ring buffer consisting of individual files. Each file contains one event. An event can be job or shift change or a downtime event. You can find more details about the data management in the [appendix](appendix.md).
 * The parameter "EnableFileBackup" is no longer required and was removed from the core config structure. The data is always stored in the flash memory.
 * The parameters "SaveInterval", "RecordMemory", "RecordingSizeShiftStatistics" and "RecordingSizeJobStatistics" are no longer required and were removed from the general config structure.
-* The data structure "exAssetIntUITimelineOutputType" was adjusted to match the other UI structures. All data from the parameter "Display" was moved one level up to "UIConnect.Output".
+* The data structure "exAssetIntUITimelineOutputType" was adjusted to match the other UI structures. Al data from the parameter "Display" was moved one level up to "UIConnect.Output".
 
 #### exAssetIntShiftListUI
 

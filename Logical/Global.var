@@ -1,17 +1,16 @@
 (*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR
-<<<<<<< HEAD
-	gAdditionalData : STRING[255] := '';
-=======
 	gShift : ARRAY[0..4] OF SHIFT_typ;
 	gAdditionalData : STRING[255] := 'Choclate';
->>>>>>> origin/dev
 	gNominalProductionRate : REAL := 3600;
+	gDeviceName : STRING[50];
+	gPieceCounterJob : UDINT;
 	gPieceCounter : UDINT;
 	gRejectCounter : UDINT;
-	gJobName : STRING[20] := 'Cookies';
+	gRejectCounterRatio : UDINT := 10;
 	gCurrentUser : STRING[50] := 'TylerDurden';
-	gDowntimeReason : STRING[50] := 'Choclate is empty';
+	gJobName : STRING[20] := 'Cookies';
+	gDowntimeReason : STRING[50] := 'Winder is broken';
 	gDowntime : exAssetIntDowntimeEnum;
 	gCommandUpdate : BOOL;
 	gCommandReset : BOOL;
@@ -19,5 +18,4 @@ VAR
 	gCommandResetError : BOOL;
 	gEnable : BOOL := TRUE;
 	gLocked : UINT := 0;
-	gShift : ARRAY[0..4] OF SHIFT_typ;
 END_VAR

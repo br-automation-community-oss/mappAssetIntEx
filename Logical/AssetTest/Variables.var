@@ -1,0 +1,46 @@
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	Memory : ARRAY[0..19] OF exCoreInternalRecordType;
+	TmpStr1 : STRING[80];
+	TmpStr2 : STRING[80];
+END_VAR
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	AutoCount : BOOL; (*Start auto count*)
+END_VAR
+VAR CONSTANT
+	AutoCountCycle : UINT := 1000; (*Auto count cycle in ms*)
+END_VAR
+VAR
+	AutoCountTime : TON_10ms;
+END_VAR
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	AutoCreateJobs : BOOL; (*Auto create jobs*)
+	AutoCreatePieceCnt : UDINT; (*Job piece counter*)
+	AutoCreateJobsCnt : UDINT; (*Job name counter*)
+END_VAR
+VAR CONSTANT
+	AutoCreateJobsNum : UDINT := 30; (*Pieces per job auto create*)
+END_VAR
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	GetDateTime : BOOL;
+	SetDateTime : BOOL;
+	RTCtime_struct : RTCtime_typ;
+END_VAR
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	TestBootCounter : UDINT;
+	TestResult : ARRAY[1..9] OF TestResultEnum;
+	TestCase : ARRAY[1..9] OF BOOL;
+	TestState : ARRAY[1..9] OF USINT;
+	TestIdle : ARRAY[1..9] OF UDINT;
+	TesMyId : USINT;
+END_VAR
+(*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+VAR
+	exAssetIntCoreAdr : {REDUND_UNREPLICABLE} UDINT;
+	exAssetIntCoreLen : {REDUND_UNREPLICABLE} UDINT;
+	exAssetIntCore_0 : REFERENCE TO exAssetIntCore;
+END_VAR

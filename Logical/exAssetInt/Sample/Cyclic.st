@@ -12,19 +12,10 @@ PROGRAM _CYCLIC
 		exAssetIntConfig.Shifts[x].TotalTime.Start := UDINT_TO_TOD((gShift[x].Start.Hour * 3600000) + (gShift[x].Start.Minutes * 60000));
 		exAssetIntConfig.Shifts[x].TotalTime.End := UDINT_TO_TOD((gShift[x].End.Hour * 3600000) + (gShift[x].End.Minutes * 60000));
 	END_FOR;
-<<<<<<< HEAD
-	
-	// --------------------------------------------------------------------------------------------------------------------------
-	// Import or export configuration
-	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
-	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
-	exAssetIntConfig_0.DeviceName := ADR(DeviceName);
-=======
 		
 	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
 	exAssetIntConfig_0.DeviceName := ADR(gDeviceName);
->>>>>>> origin/dev
 	exAssetIntConfig_0.Configuration := ADR(exAssetIntConfig);
 	exAssetIntConfig_0.Logger := ADR(LoggerConfig);
 	exAssetIntConfig_0();
@@ -40,13 +31,8 @@ PROGRAM _CYCLIC
 	exAssetIntCore_0.exLink := ADR(exAssetIntLink);
 	exAssetIntCore_0.Parameters := ADR(exAssetIntPar);
 	exAssetIntCore_0.Configuration := ADR(exAssetIntConfig);
-<<<<<<< HEAD
-	exAssetIntCore_0.DeviceName := ADR(DeviceName);
-	exAssetIntCore_0.StorageName := ADR(DeviceName);
-=======
 	exAssetIntCore_0.DeviceName := ADR(gDeviceName);
 	exAssetIntCore_0.StorageName := ADR(gDeviceName);
->>>>>>> origin/dev
 	exAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
 	exAssetIntCore_0.Downtime := gDowntime;
 	exAssetIntCore_0.PieceCounter := gPieceCounter;
@@ -63,7 +49,7 @@ PROGRAM _CYCLIC
 	END_IF
 	
 	// --------------------------------------------------------------------------------------------------------------------------
-	// UI function blocks for shift, job and timeline
+	// UI function blocks
 	exAssetIntJobListUI_0.Enable := exAssetIntCore_0.Active;
 	exAssetIntJobListUI_0.exLink := ADR(exAssetIntLink);
 	exAssetIntJobListUI_0.UIConnect := ADR(JobListUIConnect);

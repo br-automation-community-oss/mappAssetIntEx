@@ -1,5 +1,3 @@
-(*File Version 1000*)
-(*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Internal type*)
 
 TYPE
@@ -21,8 +19,6 @@ TYPE
 		ShiftName : STRING[20];
 		TmpStr1 : STRING[500];
 		TmpStr2 : STRING[50];
-		Downtime : exAssetIntDowntimeEnum;
-		DowntimeReason : STRING[50];
 		ProductionTotalTime : UDINT;
 		DTGetTime_0 : DTGetTime;
 		DT_TO_DTStructure_0 : DTStructure;
@@ -104,7 +100,7 @@ TYPE
 		MemoryJob : UDINT; (*Job data memory*)
 		MemoryShift : UDINT; (*Shift data memory*)
 		MemoryTimeline : UDINT; (*Timeline data memory*)
-		Configuration : exAssetIntCoreConfigType; (*Configuration structure*)
+		Configuration : REFERENCE TO exAssetIntCoreConfigType; (*Configuration structure*)
 		RecordCount : UDINT; (*Number of total records*)
 		IsCoreActive : BOOL; (*Core function block is ready*)
 		RefreshJobUI : BOOL; (*Update job stats in UI*)

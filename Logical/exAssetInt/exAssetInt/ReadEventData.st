@@ -1,6 +1,4 @@
 // -------------------------------------------------------------------------------------------
-// File version 1000
-// -------------------------------------------------------------------------------------------
 // Read event data
 // -------------------------------------------------------------------------------------------
 FUNCTION_BLOCK ReadEventData
@@ -35,8 +33,7 @@ FUNCTION_BLOCK ReadEventData
 					// Generate folder name
 					DirCount := 0;
 					TimeFirst := 0;
-					DirName := CORE_FOLDER_NAME;
-					brsstrcat(ADR(DirName), ADR('0'));
+					DirName := 'events0';
 					
 					Status := ERR_FUB_BUSY;
 					StatusRead := ERR_OK;
@@ -126,7 +123,7 @@ FUNCTION_BLOCK ReadEventData
 						
 					// Generate next folder name
 					ELSE
-						DirName := CORE_FOLDER_NAME;
+						DirName := 'events';
 						brsitoa(DirCount, ADR(TmpStr2));
 						brsstrcat(ADR(DirName), ADR(TmpStr2));
 						State := 1;

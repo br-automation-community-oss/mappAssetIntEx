@@ -1,28 +1,19 @@
-VAR
-	DeviceName : STRING[50] := 'USER_HD'; (*File device name*)
-END_VAR
+(*Remanet cross link variable*)
 VAR RETAIN
-	exAssetIntLink : exAssetIntLinkType; (*Remanet cross link variable*)
+	exAssetIntLink : exAssetIntLinkType;
 END_VAR
-VAR
-	x : USINT;
-	y : USINT;
-END_VAR
-(**)
 (*Asset core*)
 VAR
 	exAssetIntCore_0 : exAssetIntCore;
 	exAssetIntPar : exAssetIntParType;
 	LoggerCore : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
 END_VAR
-(**)
 (*Asset configuration*)
 VAR
 	exAssetIntConfig_0 : exAssetIntCoreConfig;
 	exAssetIntConfig : exAssetIntCoreConfigType;
 	LoggerConfig : ARRAY[0..LOG_NUM] OF STRING[LOG_LEN];
 END_VAR
-(**)
 (*Asset UI function blocks*)
 VAR
 	exAssetIntJobListUI_0 : exAssetIntJobListUI;

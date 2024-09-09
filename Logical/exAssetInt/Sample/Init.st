@@ -35,13 +35,14 @@ PROGRAM _INIT
 	
 	exAssetIntConfig.Export.JobStatistics := TRUE;
 	exAssetIntConfig.Export.JobStatisticsFileNamePattern := 'JobStatistics_%Y_%m_%d_%H_%M.csv';
-<<<<<<< HEAD
-=======
 
 	exAssetIntConfig.Export.Timeline := TRUE;
 	exAssetIntConfig.Export.TimelineFileNamePattern := 'Timeline_%Y_%m_%d_%H_%M.csv';
->>>>>>> origin/dev
 
-	exAssetIntConfig.Export.Timeline := TRUE;
-	exAssetIntConfig.Export.TimelineFileNamePattern := 'Timeline_%Y_%m_%d_%H_%M.csv';
+	// Check if we are running in simuulation
+	IF DiagCpuIsARsim() THEN
+		gDeviceName := 'ARsim';
+	ELSE
+		gDeviceName := 'USER_HD';
+	END_IF
 END_PROGRAM
