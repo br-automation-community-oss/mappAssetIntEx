@@ -35,6 +35,12 @@ PROGRAM _INIT
 	
 	exAssetIntConfig.Export.JobStatistics := TRUE;
 	exAssetIntConfig.Export.JobStatisticsFileNamePattern := 'JobStatistics_%Y_%m_%d_%H_%M.csv';
+<<<<<<< HEAD
+=======
+
+	exAssetIntConfig.Export.Timeline := TRUE;
+	exAssetIntConfig.Export.TimelineFileNamePattern := 'Timeline_%Y_%m_%d_%H_%M.csv';
+>>>>>>> origin/dev
 
 	exAssetIntConfig.Export.Timeline := TRUE;
 	exAssetIntConfig.Export.TimelineFileNamePattern := 'Timeline_%Y_%m_%d_%H_%M.csv';

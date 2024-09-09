@@ -1,0 +1,96 @@
+PROGRAM _CYCLIC
+
+	AssetIntPar.NominalProductionRate := gNominalProductionRate;
+	AssetIntPar.AdditionalData := gAdditionalData;
+	AssetIntPar.CurrentUser := gCurrentUser;
+	AssetIntPar.Job := gJobName;
+      
+	MpAssetIntCore_0.PieceCounter := gPieceCounter;
+	MpAssetIntCore_0.RejectCounter := gRejectCounter;
+	
+    MpAssetIntCore_0.MpLink := ADR(gAssetIntCore);
+    MpAssetIntCore_0.Enable := gEnable;
+    MpAssetIntCore_0.Parameters := ADR(AssetIntPar);
+	MpAssetIntCore_0.DeviceName := ADR(gDeviceName);
+	MpAssetIntCore_0.DowntimeReason := ADR(gDowntimeReason);
+	MpAssetIntCore_0.Downtime := UDINT_TO_UINT(gDowntime);
+	MpAssetIntCore_0.Update := gCommandUpdate;
+	MpAssetIntCore_0.Reset := gCommandReset;
+	MpAssetIntCore_0.Export := gCommandExport;
+	MpAssetIntCore_0();
+	
+	IF EDGEPOS(MpAssetIntCore_0.UpdateDone) THEN
+		gCommandUpdate := FALSE;
+	END_IF
+       
+	AssetIntConfig.Export.DecimalMark := ',';
+	AssetIntConfig.Export.ColumnSeparator := ';';
+    brsstrcpy(ADR(AssetIntConfig.Export.JobStatisticsFileNamePattern), ADR('1234JobStatistics_%Y_%m_%d_%H_%M.csv'));
+    brsstrcpy(ADR(AssetIntConfig.Export.ShiftStatisticsFileNamePattern), ADR('1234ShiftStatistics_%Y_%m_%d_%H_%M.csv'));
+    brsstrcpy(ADR(AssetIntConfig.Export.TimelineFileNamePattern), ADR('1234Timeline_%Y_%m_%d_%H_%M.csv'));
+    
+	// --------------------------------------------------------------------------------------------------------------------------
+	// Asset configuration
+	FOR x := 0 TO SIZEOF(AssetIntConfig.Shifts)/SIZEOF(AssetIntConfig.Shifts[0]) - 1 DO
+		AssetIntConfig.Shifts[x].Name := gShift[x].Name;
+		FOR y := 0 TO SIZEOF(AssetIntConfig.Shifts[x].ScheduledDowntime)/SIZEOF(AssetIntConfig.Shifts[x].ScheduledDowntime[0]) - 1 DO
+			AssetIntConfig.Shifts[x].ScheduledDowntime[y].Reason := gShift[x].ScheduledDowntime[y].Reason;
+			AssetIntConfig.Shifts[x].ScheduledDowntime[y].Start := UDINT_TO_TOD((gShift[x].ScheduledDowntime[y].Start.Hour * 3600000) + (gShift[x].ScheduledDowntime[y].Start.Minutes * 60000));
+			AssetIntConfig.Shifts[x].ScheduledDowntime[y].End := UDINT_TO_TOD((gShift[x].ScheduledDowntime[y].End.Hour * 3600000) + (gShift[x].ScheduledDowntime[y].End.Minutes * 60000));
+		END_FOR;
+		AssetIntConfig.Shifts[x].TotalTime.Start := UDINT_TO_TOD((gShift[x].Start.Hour * 3600000) + (gShift[x].Start.Minutes * 60000));
+		AssetIntConfig.Shifts[x].TotalTime.End := UDINT_TO_TOD((gShift[x].End.Hour * 3600000) + (gShift[x].End.Minutes * 60000));
+	END_FOR;
+   
+	IF (AssetIntConfig.Shifts[1].TotalTime.Start = AssetIntConfig.Shifts[0].TotalTime.End) AND (AssetIntConfig.Shifts[1].TotalTime.End <> AssetIntConfig.Shifts[1].TotalTime.Start) THEN
+		AssetIntConfig.Shifts[1].TotalTime.Start := UDINT_TO_TOD((gShift[1].Start.Hour * 3600000) + (gShift[1].Start.Minutes * 60000) + 1);
+	END_IF
+    
+	IF (AssetIntConfig.Shifts[2].TotalTime.Start = AssetIntConfig.Shifts[1].TotalTime.End) AND (AssetIntConfig.Shifts[2].TotalTime.End <> AssetIntConfig.Shifts[2].TotalTime.Start)  THEN
+		AssetIntConfig.Shifts[2].TotalTime.Start := UDINT_TO_TOD((gShift[2].Start.Hour * 3600000) + (gShift[2].Start.Minutes * 60000) + 1);
+	END_IF
+    
+	IF (AssetIntConfig.Shifts[0].TotalTime.Start = AssetIntConfig.Shifts[2].TotalTime.End) THEN
+		AssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 1);
+	END_IF
+   
+    IF (AssetIntConfig.Shifts[1].TotalTime.Start = AssetIntConfig.Shifts[0].TotalTime.End) AND (AssetIntConfig.Shifts[1].TotalTime.End <> AssetIntConfig.Shifts[1].TotalTime.Start) THEN
+        AssetIntConfig.Shifts[1].TotalTime.Start := UDINT_TO_TOD((gShift[1].Start.Hour * 3600000) + (gShift[1].Start.Minutes * 60000) + 1);
+    END_IF
+    
+    IF (AssetIntConfig.Shifts[2].TotalTime.Start = AssetIntConfig.Shifts[1].TotalTime.End) AND (AssetIntConfig.Shifts[2].TotalTime.End <> AssetIntConfig.Shifts[2].TotalTime.Start)  THEN
+        AssetIntConfig.Shifts[2].TotalTime.Start := UDINT_TO_TOD((gShift[2].Start.Hour * 3600000) + (gShift[2].Start.Minutes * 60000) + 1);
+    END_IF
+    
+    IF (AssetIntConfig.Shifts[0].TotalTime.Start = AssetIntConfig.Shifts[2].TotalTime.End) THEN
+        AssetIntConfig.Shifts[0].TotalTime.Start := UDINT_TO_TOD((gShift[0].Start.Hour * 3600000) + (gShift[0].Start.Minutes * 60000) + 1);
+    END_IF
+    
+    IF (MpAssetIntCoreConfig_0.Save = 1) AND (MpAssetIntCoreConfig_0.CommandDone = 1) AND (MpAssetIntCoreConfig_0.CommandBusy = 0) THEN
+        MpAssetIntCoreConfig_0.Save := 0;
+    END_IF
+    
+    MpAssetIntCoreConfig_0.MpLink :=  ADR(gAssetIntCore);
+    MpAssetIntCoreConfig_0.Enable := MpAssetIntCore_0.Active AND NOT DisableConfig;
+    MpAssetIntCoreConfig_0.Configuration := ADR(AssetIntConfig);
+    MpAssetIntCoreConfig_0();
+    
+    MpAssetIntShiftListUI_0.MpLink :=  ADR(gAssetIntCore);
+    MpAssetIntShiftListUI_0.Enable := MpAssetIntCore_0.Active;
+    MpAssetIntShiftListUI_0.UIConnect := ADR(ShiftListUIConnect);
+	MpAssetIntShiftListUI_0.UISetup := ShiftListUISetup;
+	MpAssetIntShiftListUI_0();
+    
+    MpAssetIntJobListUI_0.MpLink :=  ADR(gAssetIntCore);
+    MpAssetIntJobListUI_0.Enable := MpAssetIntCore_0.Active;
+	MpAssetIntJobListUI_0.UIConnect := ADR(JobListUIConnect);
+	MpAssetIntJobListUI_0.UISetup := JobListUISetup;
+	MpAssetIntJobListUI_0();
+	
+	MpAssetIntTimelineUI_0.MpLink :=  ADR(gAssetIntCore);
+	MpAssetIntTimelineUI_0.Enable := MpAssetIntCore_0.Active;
+	MpAssetIntTimelineUI_0.UIConnect := ADR(TimelineUIConnect);
+	MpAssetIntTimelineUI_0.UISetup := TimelineUISetup;
+	MpAssetIntTimelineUI_0();
+     
+END_PROGRAM

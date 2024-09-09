@@ -1,6 +1,11 @@
 (*.-.-.-.-.---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 VAR
+<<<<<<< HEAD
 	gAdditionalData : STRING[255] := '';
+=======
+	gShift : ARRAY[0..4] OF SHIFT_typ;
+	gAdditionalData : STRING[255] := 'Choclate';
+>>>>>>> origin/dev
 	gNominalProductionRate : REAL := 3600;
 	gPieceCounter : UDINT;
 	gRejectCounter : UDINT;
