@@ -1,3 +1,5 @@
+(*File Version 1000*)
+(*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Internal type*)
 
 TYPE
@@ -100,7 +102,7 @@ TYPE
 		MemoryJob : UDINT; (*Job data memory*)
 		MemoryShift : UDINT; (*Shift data memory*)
 		MemoryTimeline : UDINT; (*Timeline data memory*)
-		Configuration : REFERENCE TO exAssetIntCoreConfigType; (*Configuration structure*)
+		Configuration : exAssetIntCoreConfigType; (*Configuration structure*)
 		RecordCount : UDINT; (*Number of total records*)
 		IsCoreActive : BOOL; (*Core function block is ready*)
 		RefreshJobUI : BOOL; (*Update job stats in UI*)

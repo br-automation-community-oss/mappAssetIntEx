@@ -1,5 +1,7 @@
 
 // -------------------------------------------------------------------------------------------
+// File version 1001
+// -------------------------------------------------------------------------------------------
 // Core function block
 FUNCTION_BLOCK exAssetIntCore
 	// -------------------------------------------------------------------------------------------
@@ -29,7 +31,7 @@ FUNCTION_BLOCK exAssetIntCore
 					RETURN;			
 				END_IF
 				// Make sure we have a configuration
-				IF ADR(Configuration) = 0 THEN
+				IF ADR(exLink.Configuration) = 0 THEN
 					// Set status, remember state, go to error state
 					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No configuation attached'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
 					RETURN;			
@@ -48,6 +50,9 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.ShiftStatistics.AdditionalData := Parameters.AdditionalData;
 				Internal.ShiftPieceCounterOld := PieceCounter;
 				Internal.ShiftRejectCounterOld := RejectCounter;
+				
+				// Transfer configuration
+				brsmemcpy(ADR(exLink.Configuration), ADR(Configuration), SIZEOF(Configuration));				
 
 				// -------------------------------------------------------------------------------------------
 				// Reset error, status and function and internal blocks
@@ -62,7 +67,7 @@ FUNCTION_BLOCK exAssetIntCore
 				
 				// -------------------------------------------------------------------------------------------
 				// Check shift configuration for errors
-				IF NOT exAssetIntCheckShiftData(Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+				IF NOT exAssetIntCheckShiftData(exLink.Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
 					RETURN;
 				END_IF
 								
@@ -184,25 +189,25 @@ FUNCTION_BLOCK exAssetIntCore
 
 			// Set stats timer
 			Internal.StatsRefresh.IN := TRUE;
-			Internal.StatsRefresh.PT := Configuration.CalculationTimeBase/10;	
+			Internal.StatsRefresh.PT := exLink.Configuration.CalculationTimeBase/10;	
 			Internal.StatsRefresh();
 
 			// -------------------------------------------------------------------------------------------
 			// Track current shift
 			Internal.ShiftName := '';
 			Internal.ShiftId := -1;
-			FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts)/SIZEOF(Configuration.Shifts[0]) - 1 DO
+			FOR Internal.x := 0 TO SIZEOF(exLink.Configuration.Shifts)/SIZEOF(exLink.Configuration.Shifts[0]) - 1 DO
 				// Shift ends on same day
-				IF Configuration.Shifts[Internal.x].TotalTime.Start < Configuration.Shifts[Internal.x].TotalTime.End THEN
-					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start AND Internal.TimeOfDay <= Configuration.Shifts[Internal.x].TotalTime.End THEN
-						Internal.ShiftName := Configuration.Shifts[Internal.x].Name;
+				IF exLink.Configuration.Shifts[Internal.x].TotalTime.Start < exLink.Configuration.Shifts[Internal.x].TotalTime.End THEN
+					IF Internal.TimeOfDay >= exLink.Configuration.Shifts[Internal.x].TotalTime.Start AND Internal.TimeOfDay <= exLink.Configuration.Shifts[Internal.x].TotalTime.End THEN
+						Internal.ShiftName := exLink.Configuration.Shifts[Internal.x].Name;
 						Internal.ShiftId := UINT_TO_SINT(Internal.x);
 						EXIT;
 					END_IF
 					// Shift ends next day
 				ELSE
-					IF Internal.TimeOfDay >= Configuration.Shifts[Internal.x].TotalTime.Start OR Internal.TimeOfDay <= Configuration.Shifts[Internal.x].TotalTime.End THEN
-						Internal.ShiftName := Configuration.Shifts[Internal.x].Name;
+					IF Internal.TimeOfDay >= exLink.Configuration.Shifts[Internal.x].TotalTime.Start OR Internal.TimeOfDay <= exLink.Configuration.Shifts[Internal.x].TotalTime.End THEN
+						Internal.ShiftName := exLink.Configuration.Shifts[Internal.x].Name;
 						Internal.ShiftId := UINT_TO_SINT(Internal.x);
 						EXIT;
 					END_IF
@@ -212,20 +217,20 @@ FUNCTION_BLOCK exAssetIntCore
 			// -------------------------------------------------------------------------------------------
 			// Track current shift scheduled downtime
 			IF exLink.ShiftId >= 0 THEN
-				FOR Internal.x := 0 TO SIZEOF(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime)/SIZEOF(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[0]) - 1 DO
+				FOR Internal.x := 0 TO SIZEOF(exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime)/SIZEOF(exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[0]) - 1 DO
 					// Make sure we have a valid configuration
-					IF TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start) <> 0 OR TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End) <> 0 THEN
+					IF TOD_TO_UDINT(exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start) <> 0 OR TOD_TO_UDINT(exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End) <> 0 THEN
 						// Downtime ends on same day
-						IF Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
-							IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start AND Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
-								Downtime := exASSETINT_SCHEDULED_DOWNTIME;
-								DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+						IF exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start < exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
+							IF Internal.TimeOfDay >= exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start AND Internal.TimeOfDay < exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
+								Internal.Downtime := exASSETINT_SCHEDULED_DOWNTIME;
+								Internal.DowntimeReason := exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
 								EXIT;
 							END_IF
 						ELSE
-							IF Internal.TimeOfDay >= Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start OR Internal.TimeOfDay < Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
-								Downtime := exASSETINT_SCHEDULED_DOWNTIME;
-								DowntimeReason := Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
+							IF Internal.TimeOfDay >= exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Start OR Internal.TimeOfDay < exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].End THEN
+								Internal.Downtime := exASSETINT_SCHEDULED_DOWNTIME;
+								Internal.DowntimeReason := exLink.Configuration.Shifts[exLink.ShiftId].ScheduledDowntime[Internal.x].Reason;
 								EXIT;
 							END_IF
 						END_IF
@@ -254,8 +259,8 @@ FUNCTION_BLOCK exAssetIntCore
 					// Collect data for record
 					Internal.RecordData.EventType := RecordTypeShift;
 					Internal.RecordData.TimeStart := exLink.ShiftStatistics.StartTime;
-					Internal.DT_TO_DTStructure_0.hour := UDINT_TO_USINT(TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.End)/3600000);
-					Internal.DT_TO_DTStructure_0.minute := UDINT_TO_USINT((TOD_TO_UDINT(Configuration.Shifts[exLink.ShiftId].TotalTime.End) - Internal.DT_TO_DTStructure_0.hour*3600000)/60000);
+					Internal.DT_TO_DTStructure_0.hour := UDINT_TO_USINT(TOD_TO_UDINT(exLink.Configuration.Shifts[exLink.ShiftId].TotalTime.End)/3600000);
+					Internal.DT_TO_DTStructure_0.minute := UDINT_TO_USINT((TOD_TO_UDINT(exLink.Configuration.Shifts[exLink.ShiftId].TotalTime.End) - Internal.DT_TO_DTStructure_0.hour*3600000)/60000);
 					Internal.RecordData.TimeEnd := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
 					Internal.RecordData.CurrentUser := exLink.ShiftStatistics.CurrentUser;
 					Internal.RecordData.AdditionalData := exLink.ShiftStatistics.AdditionalData;
@@ -487,10 +492,20 @@ FUNCTION_BLOCK exAssetIntCore
 
 				// -------------------------------------------------------------------------------------------
 				// Check shift configuration for errors
-				IF NOT exAssetIntCheckShiftData(Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+				IF NOT exAssetIntCheckShiftData(exLink.Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
 					RETURN;
 				END_IF
 				
+				// Transfer username and additional data
+				exLink.JobStatistics.CurrentUser := Parameters.CurrentUser;
+				exLink.JobStatistics.AdditionalData := Parameters.AdditionalData;
+
+				exLink.ShiftStatistics.CurrentUser := Parameters.CurrentUser;
+				exLink.ShiftStatistics.AdditionalData := Parameters.AdditionalData;
+				
+				// Transfer configuration
+				brsmemcpy(ADR(exLink.Configuration), ADR(Configuration), SIZEOF(Configuration));				
+
 				// Job has changed
 				IF Parameters.Job <> exLink.JobStatistics.JobName THEN
 					Internal.TmpStr1 := 'new job started ';
@@ -508,8 +523,8 @@ FUNCTION_BLOCK exAssetIntCore
 					Internal.RecordData.EventType := RecordTypeJob;
 					Internal.RecordData.TimeStart := exLink.JobStatistics.StartTime;
 					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
-					Internal.RecordData.CurrentUser := exLink.JobStatistics.CurrentUser;
-					Internal.RecordData.AdditionalData := exLink.JobStatistics.AdditionalData;
+					Internal.RecordData.CurrentUser := Parameters.CurrentUser;
+					Internal.RecordData.AdditionalData := Parameters.AdditionalData;
 					Internal.RecordData.ShiftName := exLink.ShiftStatistics.ShiftName;
 					Internal.RecordData.JobName := exLink.JobStatistics.JobName;				
 					Internal.RecordData.TotalPieces := exLink.JobStatistics.TotalPieces;
@@ -546,6 +561,7 @@ FUNCTION_BLOCK exAssetIntCore
 					CommandDone := TRUE;
 					UpdateDone := TRUE;
 				END_IF
+				
 			END_IF
 			
 			IF NOT Update THEN
@@ -676,7 +692,7 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.ExportEventData.Logger := Logger;
 			Internal.ExportEventData.RecordCount := exLink.RecordCount;
 			Internal.ExportEventData.Memory := exLink.MemoryDb;
-			Internal.ExportEventData.Configuration := Configuration.Export;
+			Internal.ExportEventData.Configuration := exLink.Configuration.Export;
 			Internal.ExportEventData();
 		
 			// -------------------------------------------------------------------------------------------
