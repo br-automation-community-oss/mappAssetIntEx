@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1001
+// File version 1002
 // -------------------------------------------------------------------------------------------
 // Config function block
 FUNCTION_BLOCK exAssetIntCoreConfig
@@ -13,6 +13,23 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		RETURN;
 	END_IF
 	
+	// -------------------------------------------------------------------------------------------
+	// Permanent watch critical values
+	IF Internal.State <> exASSETINT_STATE_ERROR THEN
+		// Make sure we have a configuration
+		IF ADR(Configuration) = 0 THEN
+			// Set status, remember state, go to error state
+			StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No configuation attached'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			RETURN;			
+		END_IF
+		// Make sure we have a device name
+		IF ADR(DeviceName) = 0 THEN
+			// Set status, remember state, go to error state
+			StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No device name attached'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			RETURN;			
+		END_IF
+	END_IF
+	
 	CASE Internal.State OF
 
 		// -------------------------------------------------------------------------------------------
@@ -20,19 +37,6 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
-
-				// Make sure we have remanent buffer
-				IF ADR(exLink) = 0 THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;				
-				END_IF
-				// Make sure core configuration link is valid
-				IF ADR(Configuration) = 0 THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_CONFIG, ADR('ERR: configuration link is 0'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;				
-				END_IF
 								
 				// Reset error and status
 				CommandBusy := FALSE;
@@ -43,8 +47,8 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF
 
-		// -------------------------------------------------------------------------------------------
-		// Wait for new event
+			// -------------------------------------------------------------------------------------------
+			// Wait for new event
 		exASSETINT_STATE_IDLE:
 			Active := TRUE;
 			
