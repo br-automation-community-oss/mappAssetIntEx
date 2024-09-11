@@ -9,11 +9,13 @@
     <Text ID="121492" Value="Uptime"/>
     <Text ID="121493" Value="Scheduled Downtime"/>
     <Text ID="121494" Value="Unscheduled Downtime"/>
+    <Text ID="267162" Value="User Change"/>
   </TextLayer>
   <IndexMap>
     <Index ID="121491" Value="0"/>
     <Index ID="121492" Value="1"/>
     <Index ID="121493" Value="2"/>
     <Index ID="121494" Value="3"/>
+    <Index ID="267162" Value="4"/>
   </IndexMap>
 </TextGroup>
