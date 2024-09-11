@@ -16,6 +16,7 @@
     </Connector>
     <Parameter ID="ConfigurationID" Value="MappAssetInt_X20CP1583" />
     <Parameter ID="UserPartitionSize" Value="16" />
+    <Parameter ID="Simulation" Value="1" />
     <Parameter ID="UserRamSize" Value="731936" />
     <Parameter ID="RemMemSize" Value="300000" />
     <Parameter ID="TimerDeviceType" Value="EPLX2X" />

@@ -1,11 +1,14 @@
 // -------------------------------------------------------------------------------------------
-// File version 1000
+// File version 1001
 // -------------------------------------------------------------------------------------------
 // Job UI function block
 FUNCTION_BLOCK exAssetIntJobListUI
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
 	IF NOT Enable THEN
+		IF ADR(UIConnect) <> 0 THEN
+			UIConnect.Filter.Dialog.LayerStatus := UI_LAYER_HIDE;
+		END_IF
 		StatusID := ERR_FUB_ENABLE_FALSE;
 		Active := FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
@@ -22,7 +25,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 				
 				// Check prerequisites, exLink and buffers
-				IF NOT exAssetIntCheckPreq(exLink, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+				IF NOT exAssetIntCheckPreq(exLink, ADR(UIConnect), Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
 					RETURN;
 				END_IF
 
@@ -132,6 +135,9 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
 	IF NOT Enable THEN
+		IF ADR(UIConnect) <> 0 THEN
+			UIConnect.Filter.Dialog.LayerStatus := UI_LAYER_HIDE;
+		END_IF
 		StatusID := ERR_FUB_ENABLE_FALSE;
 		Active := FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
@@ -148,7 +154,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 
 				// Check prerequisites, exLink and buffers
-				IF NOT exAssetIntCheckPreq(exLink, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+				IF NOT exAssetIntCheckPreq(exLink, ADR(UIConnect), Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
 					RETURN;
 				END_IF
 
@@ -259,6 +265,9 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
 	IF NOT Enable THEN
+		IF ADR(UIConnect) <> 0 THEN
+			UIConnect.Filter.Dialog.LayerStatus := UI_LAYER_HIDE;
+		END_IF
 		StatusID := ERR_FUB_ENABLE_FALSE;
 		Active := FALSE;
 		Internal.State := exASSETINT_STATE_INIT_1;
@@ -275,7 +284,7 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 
 				// Check prerequisites, exLink and buffers
-				IF NOT exAssetIntCheckPreq(exLink, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+				IF NOT exAssetIntCheckPreq(exLink, ADR(UIConnect), Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
 					RETURN;
 				END_IF
 
@@ -439,6 +448,13 @@ FUNCTION exAssetIntCheckPreq
 		exAssetIntCheckPreq := FALSE;
 		RETURN;				
 	END_IF
+	// Make sure we have UIConnect
+	IF UIConnect = 0 THEN
+		// Set status, remember state, go to error state
+		StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: UIConnect is 0'), Logger, exCOM_SEV_ERROR,  ADR(State), ADR(InfoDiagStatusID));
+		exAssetIntCheckPreq := FALSE;
+		RETURN;				
+	END_IF
 	// Make sure we have temporary buffer
 	IF exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 OR exLink.MemoryTimeline = 0 THEN
 		// Set status, remember state, go to error state
@@ -520,8 +536,8 @@ FUNCTION exAssetIntFilterListUI
 	IF Filter.ShowDialog THEN
 		CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('show dialog window'), Logger);
 		
-		Filter.Dialog.LayerStatus := 0;
-		Filter.DefaultLayerStatus := 2;
+		Filter.Dialog.LayerStatus := UI_LAYER_SHOW;
+		Filter.DefaultLayerStatus := UI_LAYER_LOCK;
 		Filter.ShowDialog := FALSE;
 	END_IF
 	
@@ -533,8 +549,8 @@ FUNCTION exAssetIntFilterListUI
 		IF Filter.Dialog.Cancel THEN
 			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('dialog canceled'), Logger);
 
-			Filter.Dialog.LayerStatus := 1;
-			Filter.DefaultLayerStatus := 0;
+			Filter.Dialog.LayerStatus := UI_LAYER_HIDE;
+			Filter.DefaultLayerStatus := UI_LAYER_SHOW;
 			Filter.Dialog.Cancel := 0;
 		END_IF
 		// Button ok
@@ -557,8 +573,8 @@ FUNCTION exAssetIntFilterListUI
 			Filter.Current.Until.DateTime := DTStructure_TO_DT(ADR(DT_TO_DTStructure_0));
 			Filter.Current.Until.Enable := Filter.Dialog.Until.Enable;
 	
-			Filter.Dialog.LayerStatus := 1;
-			Filter.DefaultLayerStatus := 0;
+			Filter.Dialog.LayerStatus := UI_LAYER_HIDE;
+			Filter.DefaultLayerStatus := UI_LAYER_SHOW;
 			Filter.Dialog.Confirm := 0;
 						
 			exAssetIntFilterListUI := exASSETINT_STATE_UI_BUFFER;
