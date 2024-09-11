@@ -1,4 +1,4 @@
-(*File Version 1000*)
+(*File Version 1001*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 
 FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset intensity calculation.*) (* $GROUP=mapp Services,$CAT=Asset Intensity,$GROUPICON=Icon_mapp.png,$CATICON=Icon_exOee.png *)
@@ -354,6 +354,7 @@ END_FUNCTION
 FUNCTION exAssetIntCheckPreq : BOOL
 	VAR_INPUT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		UIConnect : UDINT; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Logger : UDINT;
 		State : REFERENCE TO exAssetIntStateEnum;
 		StatusID : REFERENCE TO DINT;

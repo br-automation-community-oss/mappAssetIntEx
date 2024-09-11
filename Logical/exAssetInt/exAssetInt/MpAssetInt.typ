@@ -1,4 +1,4 @@
-(*File Version 1000*)
+(*File Version 1001*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Internal type*)
 
@@ -391,7 +391,8 @@ TYPE
 		Minute : USINT; (*Date&Time: Minute*)
 	END_STRUCT;
 	exAssetIntUIFilterDialogType : 	STRUCT 
-		LayerStatus : UINT;
+		LayerStatus : UINT := UI_LAYER_HIDE; (*			Filter.Dialog.LayerStatus := UI_LAYER_HIDE;
+*)
 		From : exAssetIntUISetDTFilterType; (*Display entries from given date&time*)
 		Until : exAssetIntUISetDTFilterType; (*Display entries until given date&time*)
 		Confirm : BOOL;
