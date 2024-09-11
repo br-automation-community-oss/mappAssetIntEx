@@ -41,7 +41,8 @@ Here is a short list of differences between the official mappAssetInt and the co
 ### What is new
 
 * Most function blocks have an additional Logger input. This is used to log messages to the console. This is useful for debugging purposes.
-* Job events also show up in the shift UI list by default. This can be changed with the UI_SHIFT_SHOW_JOBS constant.
+* Job events can also be listed in the shift UI list. This can be changed with the UI_SHIFT_SHOW_JOBS constant.
+* User name changes are logged in the timeline.
 
 ## Future development
 The goal for version 1.x is to have a complete set of functions that match the official mappAssetInt package. Version 2.x will focus on adding new features and improvements and will be optimized to work with mappView.
