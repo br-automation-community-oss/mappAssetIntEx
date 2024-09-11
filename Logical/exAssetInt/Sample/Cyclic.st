@@ -14,7 +14,6 @@ PROGRAM _CYCLIC
 	END_FOR;
 		
 	exAssetIntConfig_0.Enable := exAssetIntCore_0.Active;
-	exAssetIntConfig_0.exLink := ADR(exAssetIntLink);
 	exAssetIntConfig_0.DeviceName := ADR(gDeviceName);
 	exAssetIntConfig_0.Configuration := ADR(exAssetIntConfig);
 	exAssetIntConfig_0.Logger := ADR(LoggerConfig);

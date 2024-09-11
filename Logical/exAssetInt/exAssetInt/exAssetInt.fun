@@ -1,4 +1,4 @@
-(*File Version 1001*)
+(*File Version 1002*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 
 FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset intensity calculation.*) (* $GROUP=mapp Services,$CAT=Asset Intensity,$GROUPICON=Icon_mapp.png,$CATICON=Icon_exOee.png *)
@@ -45,7 +45,6 @@ END_FUNCTION_BLOCK
 
 FUNCTION_BLOCK exAssetIntCoreConfig
 	VAR_INPUT
-		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
 		ErrorReset : BOOL; (*Resets all function block errors (mapp standard interface)*) (* *) (*#PAR#;*)
 		DeviceName : REFERENCE TO STRING[30]; (*Address of the exported device name*) (* *) (*#CMD#; *)

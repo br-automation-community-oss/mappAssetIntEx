@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1001
+// File version 1003
 // -------------------------------------------------------------------------------------------
 // Core function block
 FUNCTION_BLOCK exAssetIntCore
@@ -14,6 +14,46 @@ FUNCTION_BLOCK exAssetIntCore
 		RETURN;
 	END_IF
 	
+	// Permanent watch critical values
+	IF Internal.State <> exASSETINT_STATE_ERROR THEN
+		// Make sure we have remanent buffer
+		IF ADR(exLink) = 0 THEN
+			// Set status, remember state, go to error state
+			StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			RETURN;			
+		END_IF
+		// Make sure we have valid memory data
+		IF (exLink.MemoryDb = 0 OR exLink.MemoryJob = 0 OR exLink.MemoryShift = 0 OR exLink.MemoryTimeline = 0) AND Active THEN			
+			// Set status, remember state, go to error state
+			StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: memory address is 0'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			RETURN;			
+		END_IF
+		// Make sure we have a configuration
+		IF ADR(Configuration) = 0 THEN
+			// Set status, remember state, go to error state
+			StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No configuation attached'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			RETURN;			
+		END_IF
+		// Make sure we have a parameters
+		IF ADR(Parameters) = 0 THEN
+			// Set status, remember state, go to error state
+			StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No parameters attached'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			RETURN;			
+		END_IF
+		// Make sure we have a device name
+		IF ADR(DeviceName) = 0 THEN
+			// Set status, remember state, go to error state
+			StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No device name attached'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			RETURN;			
+		END_IF
+		// Make sure we have a storage name
+		IF ADR(StorageName) = 0 THEN
+			// Set status, remember state, go to error state
+			StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No storage name attached'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			RETURN;			
+		END_IF
+	END_IF
+	
 	CASE Internal.State OF
 
 		// -------------------------------------------------------------------------------------------
@@ -22,19 +62,6 @@ FUNCTION_BLOCK exAssetIntCore
 		exASSETINT_STATE_INIT_1:
 			IF Enable THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
-
-				// Make sure we have remanent buffer
-				IF ADR(exLink) = 0 THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: exLink is 0'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;			
-				END_IF
-				// Make sure we have a configuration
-				IF ADR(exLink.Configuration) = 0 THEN
-					// Set status, remember state, go to error state
-					StatusID := CreateErrorState(ERR_ASSET_LINK, ADR('ERR: No configuation attached'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
-					RETURN;			
-				END_IF
 							
 				// -------------------------------------------------------------------------------------------
 				// Transfer start values
@@ -97,7 +124,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, ADR('ERR: create folder structure'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, ADR('ERR: create folder structure'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -123,7 +150,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.CreateMemory.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateMemory.Status, ADR('ERR: create internal memory'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.CreateMemory.Status, ADR('ERR: create internal memory'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -168,7 +195,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.ReadEventData.Status, ADR('ERR: read stored events'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.ReadEventData.Status, ADR('ERR: read stored events'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
 			// -------------------------------------------------------------------------------------------
@@ -685,7 +712,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.WriteEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.WriteEventData.Status, ADR('ERR: create new event'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.WriteEventData.Status, ADR('ERR: create new event'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -715,7 +742,7 @@ FUNCTION_BLOCK exAssetIntCore
 				// Error
 			ELSIF Internal.ExportEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.ExportEventData.Status, ADR('ERR: export events'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.ExportEventData.Status, ADR('ERR: export events'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
