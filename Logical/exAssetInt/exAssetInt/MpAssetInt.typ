@@ -1,4 +1,4 @@
-(*File Version 1001*)
+(*File Version 1002*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Internal type*)
 
@@ -71,6 +71,7 @@ TYPE
 		RecordTypeUptime := 3,
 		RecordTypeDowntimeScheduled := 4,
 		RecordTypeDowntimeUnscheduled := 5,
+		RecordTypeUserChange := 6,
 		RecordTypeTimeline := 10
 		);
 	exCoreInternalExportEnum : 
@@ -122,6 +123,7 @@ TYPE
 		ProductionStateStart : DATE_AND_TIME; (*Current state beginning*)
 		ProductionState : exAssetIntUIProductionStateEnum; (*Current state*)
 		ProductionTotalTime : LREAL; (*Milliseconds the state is running*)
+		ProductionUserName : STRING[50]; (*Currently active user*)
 		ProductionShiftName : STRING[20]; (*ShiftName for this timeline*)
 		ProductionJobName : STRING[20]; (*Job name for this timeline*)
 		ProductionDowntime : exAssetIntDowntimeEnum; (*Downtime for this timeline*)
