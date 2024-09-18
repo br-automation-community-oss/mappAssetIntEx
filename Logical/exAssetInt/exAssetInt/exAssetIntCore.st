@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1004
+// File version 1005
 // -------------------------------------------------------------------------------------------
 // Core function block
 FUNCTION_BLOCK exAssetIntCore
@@ -423,7 +423,7 @@ FUNCTION_BLOCK exAssetIntCore
 			
 			// -------------------------------------------------------------------------------------------			
 			// Handle production state change
-			IF (exLink.ShiftStatistics.ShiftName <> exLink.ProductionShiftName) OR (exLink.JobStatistics.JobName <> exLink.ProductionJobName AND exLink.ShiftId >= 0) OR (exLink.JobStatistics.CurrentUser <> exLink.ProductionUserName AND exLink.ShiftId >= 0) OR (Internal.Downtime <> exLink.ProductionDowntime AND exLink.ShiftId >= 0) THEN
+			IF (exLink.ShiftStatistics.ShiftName <> exLink.ProductionShiftName) OR (exLink.JobStatistics.JobName <> exLink.ProductionJobName AND exLink.ShiftId >= 0) OR (exLink.JobStatistics.CurrentUser <> exLink.ProductionUserName AND exLink.ShiftId >= 0) OR (Internal.Downtime <> exLink.ProductionDowntime AND exLink.ShiftId >= 0) OR (Internal.DowntimeReason <> exLink.ProductionDowntimeReason AND exLink.ProductionDowntime > exASSETINT_NO_DOWNTIME) THEN
 
 				// Transfer stats to record, make sure structures are allignent
 				brsmemset(ADR(Internal.RecordData), 0, SIZEOF(Internal.RecordData));
@@ -439,67 +439,99 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.RecordData.TotalTime.Minutes := UDINT_TO_USINT((Internal.ProductionTotalTime - Internal.RecordData.TotalTime.Hours*3600)/60);
 				Internal.RecordData.TotalTime.Seconds := UDINT_TO_USINT(Internal.ProductionTotalTime - Internal.RecordData.TotalTime.Hours*3600 - Internal.RecordData.TotalTime.Minutes*60);
 
-				// Create log message and set event type
-				IF exLink.JobStatistics.CurrentUser <> exLink.ProductionUserName THEN
+				// -------------------------------------------------------------------------------------------			
+				// State change is shift
+				IF exLink.ShiftStatistics.ShiftName <> exLink.ProductionShiftName THEN
+					Internal.RecordData.EventType := UDINT_TO_UINT(exLink.ProductionState + 2);
+
+					Internal.TmpStr1 := 'shift changed from ';
+					IF exLink.ProductionState = exASSETINT_STATE_NO_SHIFT_ACTIVE THEN
+						brsstrcat(ADR(Internal.TmpStr1), ADR('no shift '));
+					ELSE
+						brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ProductionShiftName));						
+					END_IF
+					brsstrcat(ADR(Internal.TmpStr1), ADR(' to '));
+					
+					// State change is to no shift
+					IF exLink.ShiftStatistics.ShiftName = '' THEN
+						brsstrcat(ADR(Internal.TmpStr1), ADR('no shift'));
+						exLink.ProductionState := exASSETINT_STATE_NO_SHIFT_ACTIVE;
+		
+						// State change is to uptime
+					ELSE
+						brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ShiftStatistics.ShiftName));						
+						exLink.ProductionState := exASSETINT_STATE_UPTIME;
+	
+					END_IF
+					
+					// Remember shift name, set event type
+					exLink.ProductionShiftName := exLink.ShiftStatistics.ShiftName;
+					
+					// -------------------------------------------------------------------------------------------			
+					// State change is job
+				ELSIF exLink.JobStatistics.JobName <> exLink.ProductionJobName THEN
+					Internal.RecordData.EventType := UDINT_TO_UINT(exLink.ProductionState + 2);
+
+					Internal.TmpStr1 := 'job changed from ';
+					IF exLink.JobStatistics.JobName = '' THEN
+						brsstrcat(ADR(Internal.TmpStr1), ADR('none '));
+					ELSE
+						brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ProductionJobName));						
+					END_IF
+					brsstrcat(ADR(Internal.TmpStr1), ADR(' to '));
+					
+					// Job name is empty
+					IF exLink.JobStatistics.JobName = '' THEN
+						brsstrcat(ADR(Internal.TmpStr1), ADR('none'));
+						// State change is to uptime
+					ELSE
+						brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.JobStatistics.JobName));						
+					END_IF
+					
+					// Remember job name, set event type
+					exLink.ProductionState := exASSETINT_STATE_UPTIME;
+					exLink.ProductionJobName := exLink.JobStatistics.JobName;
+										
+					// ----------------------------------------------------	
+					// State change is new user
+				ELSIF exLink.JobStatistics.CurrentUser <> exLink.ProductionUserName THEN
+					Internal.RecordData.EventType := RecordTypeUserChange;
+
 					Internal.TmpStr1 := 'user changed from ';
 					IF exLink.ProductionUserName <> '' THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ProductionUserName));
 					ELSE
 						brsstrcat(ADR(Internal.TmpStr1), ADR('none'));
 					END_IF
+					brsstrcat(ADR(Internal.TmpStr1), ADR(' to '));
+					
+					// User name is empty
+					IF Parameters.CurrentUser = '' THEN
+						brsstrcat(ADR(Internal.TmpStr1), ADR('none'));
+					ELSE
+						brsstrcat(ADR(Internal.TmpStr1), ADR(Parameters.CurrentUser));
+					END_IF
 
-					Internal.RecordData.EventType := RecordTypeUserChange;
-				ELSE
+					exLink.ProductionUserName := exLink.JobStatistics.CurrentUser;
+					Internal.RecordData.AdditionalData := LEFT(Internal.TmpStr1, SIZEOF(Internal.RecordData.AdditionalData));
+
+					// ----------------------------------------------------	
+					// State change is downtime					
+				ELSIF Internal.Downtime <> exLink.ProductionDowntime THEN
+					Internal.RecordData.EventType := UDINT_TO_UINT(exLink.ProductionState + 2);
+
 					Internal.TmpStr1 := 'production state changed from ';
-					IF exLink.ProductionState = exASSETINT_STATE_NO_SHIFT_ACTIVE THEN
-						brsstrcat(ADR(Internal.TmpStr1), ADR('no shift to '));
-					ELSIF exLink.ProductionState = exASSETINT_STATE_UPTIME THEN
+					IF exLink.ProductionState = exASSETINT_STATE_UPTIME THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR('uptime to '));
 					ELSIF exLink.ProductionState = exASSETINT_STATE_SCHDL_DOWNTIME THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR('scheduled dt to '));
 					ELSE
 						brsstrcat(ADR(Internal.TmpStr1), ADR('unscheduled dt to '));
 					END_IF
-
-					Internal.RecordData.EventType := UDINT_TO_UINT(exLink.ProductionState + 2);
-				END_IF
-							
-				// State change is new user
-				IF exLink.JobStatistics.CurrentUser <> exLink.ProductionUserName THEN
-					brsstrcat(ADR(Internal.TmpStr1), ADR(' to '));
-					IF Parameters.CurrentUser <> '' THEN
-						brsstrcat(ADR(Internal.TmpStr1), ADR(Parameters.CurrentUser));
-					ELSE
-						brsstrcat(ADR(Internal.TmpStr1), ADR('none'));
-					END_IF
-					Internal.RecordData.AdditionalData := LEFT(Internal.TmpStr1, SIZEOF(Internal.RecordData.AdditionalData));
-						
-					// State change is new job
-				ELSIF (exLink.JobStatistics.JobName <> exLink.ProductionJobName) THEN
-					brsstrcat(ADR(Internal.TmpStr1), ADR('new job > '));
-					brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.JobStatistics.JobName));
-					exLink.ProductionState := exASSETINT_STATE_UPTIME;
-	
-					// State change is to no shift
-				ELSIF (exLink.ProductionShiftName <> '' AND exLink.ShiftStatistics.ShiftName = '') THEN
-					brsstrcat(ADR(Internal.TmpStr1), ADR('no shift'));
-					exLink.ProductionState := exASSETINT_STATE_NO_SHIFT_ACTIVE;
-	
-					// State change is to uptime
-				ELSIF (exLink.ProductionShiftName = '' AND exLink.ShiftStatistics.ShiftName <> '') THEN
-					brsstrcat(ADR(Internal.TmpStr1), ADR('uptime'));
-					exLink.ProductionState := exASSETINT_STATE_UPTIME;
-
-					// State is shift change
-				ELSIF (exLink.ProductionShiftName <> exLink.ShiftStatistics.ShiftName) THEN
-					brsstrcat(ADR(Internal.TmpStr1), ADR('new shift'));
-					exLink.ProductionState := exASSETINT_STATE_UPTIME;
-						
-					// State change is downtime 
-				ELSE
+					
 					IF Internal.Downtime = exASSETINT_NO_DOWNTIME THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR('no downtime'));
-					ELSIF Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
+					ELSIF Internal.Downtime = exASSETINT_SCHEDULED_DOWNTIME THEN
 						brsstrcat(ADR(Internal.TmpStr1), ADR('scheduled dt > '));
 						brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.DowntimeReason));
 					ELSE
@@ -508,23 +540,32 @@ FUNCTION_BLOCK exAssetIntCore
 					END_IF
 	
 					IF exLink.ProductionState = exASSETINT_STATE_SCHDL_DOWNTIME OR exLink.ProductionState = exASSETINT_STATE_UNSCH_DOWNTIME THEN
-						Internal.RecordData.AdditionalData := Internal.DowntimeReason;
+						Internal.RecordData.AdditionalData := exLink.ProductionDowntimeReason;
 					END_IF
-					exLink.ProductionState := UDINT_TO_UINT(Internal.Downtime + 1);				
+					
+					// Remember downtime and reason, set production state
+					exLink.ProductionDowntime := Internal.Downtime;
+					exLink.ProductionDowntimeReason := Internal.DowntimeReason;
+					exLink.ProductionState := UDINT_TO_UINT(Internal.Downtime + 1);		
+
+					// ----------------------------------------------------	
+					// State change is downtime reason				
+				ELSE 
+					Internal.RecordData.EventType := UDINT_TO_UINT(exLink.ProductionState + 2);
+
+					Internal.TmpStr1 := 'dt reason changed from ';
+					brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ProductionDowntimeReason));
+					brsstrcat(ADR(Internal.TmpStr1), ADR(' to '));
+					brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.DowntimeReason));
+					
+					Internal.RecordData.AdditionalData := exLink.ProductionDowntimeReason;
+					
+					// Remember downtime reason, set production state
+					exLink.ProductionDowntimeReason := Internal.DowntimeReason;
 				END_IF
+					
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR(Internal.TmpStr1), Logger);
 										
-				// Remember user name
-				IF exLink.JobStatistics.CurrentUser <> exLink.ProductionUserName THEN
-					exLink.ProductionUserName := exLink.JobStatistics.CurrentUser;
-
-					// Remember production state
-				ELSE
-					exLink.ProductionShiftName := exLink.ShiftStatistics.ShiftName;
-					exLink.ProductionJobName := exLink.JobStatistics.JobName;
-					exLink.ProductionDowntime := Internal.Downtime;
-				END_IF
-	
 				// Remember production start
 				IF exLink.ProductionStateStart <> DT#1970-01-01-00:00:00 THEN
 					exLink.ProductionStateStart := Internal.DTGetTime_0.DT1;		
@@ -537,6 +578,7 @@ FUNCTION_BLOCK exAssetIntCore
 				ELSE
 					exLink.ProductionStateStart := Internal.DTGetTime_0.DT1;		
 				END_IF
+				
 			END_IF
 			// Remember production duration
 			IF Internal.StatsRefresh.Q THEN

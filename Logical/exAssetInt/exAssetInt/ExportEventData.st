@@ -463,7 +463,9 @@ FUNCTION NormalizeFloat
 		brsmemcpy(output, ADR(tmpStr), idx);
 		brsmemset(output + idx, 0, 1);
 	END_IF
-	ReplaceString(output, ADR('.'), ADR(configuration.DecimalMark));	
+	ReplaceString(output, ADR('.'), ADR(configuration.DecimalMark));
+	
+	NormalizeFloat := TRUE;
 END_FUNCTION
 
 // -------------------------------------------------------------------------------------------

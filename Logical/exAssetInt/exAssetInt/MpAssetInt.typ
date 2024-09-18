@@ -1,4 +1,4 @@
-(*File Version 1002*)
+(*File Version 1003*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Internal type*)
 
@@ -127,6 +127,7 @@ TYPE
 		ProductionShiftName : STRING[20]; (*ShiftName for this timeline*)
 		ProductionJobName : STRING[20]; (*Job name for this timeline*)
 		ProductionDowntime : exAssetIntDowntimeEnum; (*Downtime for this timeline*)
+		ProductionDowntimeReason : STRING[50]; (*Donwtime reason for this timeline*)
 	END_STRUCT;
 END_TYPE
 
