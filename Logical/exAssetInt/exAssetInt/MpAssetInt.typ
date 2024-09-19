@@ -1,4 +1,4 @@
-(*File Version 1003*)
+(*File Version 1004*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Internal type*)
 
@@ -136,26 +136,27 @@ END_TYPE
 TYPE
 	exAssetIntStateEnum : 
 		(
-		exASSETINT_STATE_INIT_1 := 1, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_INIT_2 := 2, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_INIT_3 := 3, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_INIT_4 := 4, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_IDLE := 10, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_STORE_EVENT := 20, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_EXPORT_EVENTS := 21, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_UI_BUFFER := 30, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_UI_DATA := 31, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_SAVE_CFG := 40, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_LOAD_CFG := 41, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_ERROR := 90, (*Status: Idle, Waiting for command*)
-		exASSETINT_STATE_NONE := 99 (*Status: Idle, Waiting for command*)
+		exASSETINT_STATE_INIT_1 := 1, (*Init state*)
+		exASSETINT_STATE_INIT_2 := 2, (*Init state*)
+		exASSETINT_STATE_INIT_3 := 3, (*Init state*)
+		exASSETINT_STATE_INIT_4 := 4, (*Init state*)
+		exASSETINT_STATE_INIT_5 := 5, (*Init state*)
+		exASSETINT_STATE_IDLE := 10, (*Wait for command and collect data*)
+		exASSETINT_STATE_STORE_EVENT := 20, (*Store new event data*)
+		exASSETINT_STATE_EXPORT_EVENTS := 21, (*Export all events*)
+		exASSETINT_STATE_UI_BUFFER := 30, (*Copy job data from global buffer to UI buffer*)
+		exASSETINT_STATE_UI_DATA := 31, (*Generate UI data*)
+		exASSETINT_STATE_SAVE_CFG := 40, (*Save configuration*)
+		exASSETINT_STATE_LOAD_CFG := 41, (*Load configuration*)
+		exASSETINT_STATE_ERROR := 90, (*Error state*)
+		exASSETINT_STATE_NONE := 99 (*Empty state*)
 		);
 	exAssetIntLogLevelEnum : 
 		(
-		exASSETINT_LOG_OFF := 0, (*Status: Idle, Waiting for command*)
-		exASSETINT_LOG_ERROR := 1, (*Status: Idle, Waiting for command*)
-		exASSETINT_LOG_INFO := 2, (*Status: Idle, Waiting for command*)
-		exASSETINT_LOG_ALL := 3 (*Status: Idle, Waiting for command*)
+		exASSETINT_LOG_OFF := 0, (*Logging is disabled*)
+		exASSETINT_LOG_ERROR := 1, (*Only log errors*)
+		exASSETINT_LOG_INFO := 2, (*Also log information*)
+		exASSETINT_LOG_ALL := 3 (*Log everything*)
 		);
 	exAssetIntBufferOffsets : 
 		(

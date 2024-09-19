@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1005
+// File version 1006
 // -------------------------------------------------------------------------------------------
 // Core function block
 FUNCTION_BLOCK exAssetIntCore
@@ -63,22 +63,7 @@ FUNCTION_BLOCK exAssetIntCore
 			IF Enable THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 							
-				// -------------------------------------------------------------------------------------------
-				// Transfer start values
-				exLink.RecordCount := 0;
-				exLink.JobStatistics.JobName := Parameters.Job;
-				exLink.JobStatistics.CurrentUser := Parameters.CurrentUser;
-				exLink.JobStatistics.AdditionalData := Parameters.AdditionalData;
-				Internal.JobPieceCounterOld := PieceCounter;
-				Internal.JobRejectCounterOld := RejectCounter;
-
-				exLink.ShiftStatistics.CurrentUser := Parameters.CurrentUser;
-				exLink.ShiftStatistics.AdditionalData := Parameters.AdditionalData;
-				Internal.ShiftPieceCounterOld := PieceCounter;
-				Internal.ShiftRejectCounterOld := RejectCounter;
-				
-				// Transfer configuration
-				brsmemcpy(ADR(exLink.Configuration), ADR(Configuration), SIZEOF(Configuration));				
+				exLink.RecordCount := 0;				
 
 				// -------------------------------------------------------------------------------------------
 				// Reset error, status and function and internal blocks
@@ -90,13 +75,7 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.WriteEventData(Enable := FALSE);
 				Internal.ReadEventData(Enable := FALSE);
 				Internal.WriteEventData(Enable := FALSE);
-				
-				// -------------------------------------------------------------------------------------------
-				// Check shift configuration for errors
-				IF NOT exAssetIntCheckShiftData(exLink.Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
-					RETURN;
-				END_IF
-								
+												
 				// -------------------------------------------------------------------------------------------
 				// Create folder structure and read event data only after boot
 				IF Internal.InitAfterBoot THEN
@@ -180,17 +159,7 @@ FUNCTION_BLOCK exAssetIntCore
 					END_IF
 				END_IF
 				
-				// -------------------------------------------------------------------------------------------
-				// Remember start called time
-				Internal.TimeLastCallShift := clock_ms();
-				Internal.TimeLastCallProduction := clock_ms();
-				
-				// -------------------------------------------------------------------------------------------
-				// Refresh UI data, finish up
-				exLink.RefreshJobUI := TRUE;
-				exLink.RefreshShiftUI := TRUE;
-				exLink.RefreshTimelineUI := TRUE;
-				Internal.State := exASSETINT_STATE_IDLE;
+				Internal.State := exASSETINT_STATE_INIT_5;
 				
 				// Error
 			ELSIF Internal.ReadEventData.Status <> ERR_FUB_BUSY THEN
@@ -198,6 +167,44 @@ FUNCTION_BLOCK exAssetIntCore
 				StatusID := CreateErrorState(Internal.ReadEventData.Status, ADR('ERR: read stored events'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 
+			// -------------------------------------------------------------------------------------------
+			// Set inital values
+			// -------------------------------------------------------------------------------------------
+		exASSETINT_STATE_INIT_5:
+			// -------------------------------------------------------------------------------------------
+			// Transfer start values
+			exLink.JobStatistics.JobName := Parameters.Job;
+			exLink.JobStatistics.CurrentUser := Parameters.CurrentUser;
+			exLink.JobStatistics.AdditionalData := Parameters.AdditionalData;
+			Internal.JobPieceCounterOld := PieceCounter;
+			Internal.JobRejectCounterOld := RejectCounter;
+
+			exLink.ShiftStatistics.CurrentUser := Parameters.CurrentUser;
+			exLink.ShiftStatistics.AdditionalData := Parameters.AdditionalData;
+			Internal.ShiftPieceCounterOld := PieceCounter;
+			Internal.ShiftRejectCounterOld := RejectCounter;
+				
+			// -------------------------------------------------------------------------------------------
+			// Check shift configuration for errors
+			IF NOT exAssetIntCheckShiftData(Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+				RETURN;
+			END_IF
+
+			// Transfer configuration
+			brsmemcpy(ADR(exLink.Configuration), ADR(Configuration), SIZEOF(Configuration));
+			
+			// -------------------------------------------------------------------------------------------
+			// Remember start called time
+			Internal.TimeLastCallShift := clock_ms();
+			Internal.TimeLastCallProduction := clock_ms();
+				
+			// -------------------------------------------------------------------------------------------
+			// Refresh UI data, finish up
+			exLink.RefreshJobUI := TRUE;
+			exLink.RefreshShiftUI := TRUE;
+			exLink.RefreshTimelineUI := TRUE;
+			Internal.State := exASSETINT_STATE_IDLE;
+			
 			// -------------------------------------------------------------------------------------------
 			// Wait for new event
 			// -------------------------------------------------------------------------------------------
@@ -563,9 +570,17 @@ FUNCTION_BLOCK exAssetIntCore
 
 					// Create log message
 					Internal.TmpStr1 := 'dt reason changed from ';
-					brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ProductionDowntimeReason));
+					IF exLink.ProductionDowntimeReason <> '' THEN
+						brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ProductionDowntimeReason));
+					ELSE
+						brsstrcat(ADR(Internal.TmpStr1), ADR('none'));
+					END_IF
 					brsstrcat(ADR(Internal.TmpStr1), ADR(' to '));
-					brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.DowntimeReason));
+					IF Internal.DowntimeReason <> '' THEN
+						brsstrcat(ADR(Internal.TmpStr1), ADR(Internal.DowntimeReason));
+					ELSE
+						brsstrcat(ADR(Internal.TmpStr1), ADR('none'));
+					END_IF
 					
 					Internal.RecordData.AdditionalData := exLink.ProductionDowntimeReason;
 					
@@ -612,7 +627,7 @@ FUNCTION_BLOCK exAssetIntCore
 
 				// -------------------------------------------------------------------------------------------
 				// Check shift configuration for errors
-				IF NOT exAssetIntCheckShiftData(exLink.Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
+				IF NOT exAssetIntCheckShiftData(Configuration, Logger, ADR(Internal.State), ADR(StatusID), ADR(Info.Diag.StatusID)) THEN
 					RETURN;
 				END_IF
 								
@@ -793,7 +808,10 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.RefreshShiftUI := TRUE;
 				exLink.RefreshTimelineUI := TRUE;
 
-				UpdateDone := TRUE;
+				// Set update done flag
+				IF Update AND CommandBusy THEN
+					UpdateDone := TRUE;
+				END_IF
 				CommandBusy := FALSE;
 				CommandDone := TRUE;
 
@@ -840,7 +858,8 @@ FUNCTION_BLOCK exAssetIntCore
 			// Error state
 			// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_ERROR:
-			
+			Error := TRUE;
+      
 			// Reset error state
 			IF EDGEPOS(ErrorReset) THEN
 				Internal.StateError := exASSETINT_STATE_NONE;
