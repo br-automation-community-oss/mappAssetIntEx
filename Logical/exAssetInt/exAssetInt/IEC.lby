@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Library Version="1.00.0" SubType="IEC" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
@@ -20,6 +20,8 @@
     <File>ReadLinkData.st</File>
     <File>WriteLinkData.st</File>
     <File>CalcStats.st</File>
+    <File>TrackShift.st</File>
+    <File>TrackProduction.st</File>
     <File>Common.st</File>
   </Files>
 </Library>
