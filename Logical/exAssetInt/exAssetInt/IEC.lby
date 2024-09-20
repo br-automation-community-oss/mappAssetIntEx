@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <?AutomationStudio FileVersion="4.9"?>
 <Library Version="1.00.0" SubType="IEC" xmlns="http://br-automation.co.at/AS/Library">
   <Files>
@@ -17,6 +17,8 @@
     <File>ExportEventData.st</File>
     <File>ReadConfiguration.st</File>
     <File>WriteConfiguration.st</File>
+    <File>ReadLinkData.st</File>
+    <File>WriteLinkData.st</File>
     <File>CalcStats.st</File>
     <File>Common.st</File>
   </Files>

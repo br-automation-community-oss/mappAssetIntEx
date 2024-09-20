@@ -63,7 +63,7 @@ FUNCTION_BLOCK exAssetIntCore
 			IF Enable THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 							
-				exLink.RecordCount := 0;				
+				exLink.RecordCount := 0;
 
 				// -------------------------------------------------------------------------------------------
 				// Reset error, status and function and internal blocks
@@ -75,13 +75,19 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.WriteEventData(Enable := FALSE);
 				Internal.ReadEventData(Enable := FALSE);
 				Internal.WriteEventData(Enable := FALSE);
-												
+
 				// -------------------------------------------------------------------------------------------
 				// Create folder structure and read event data only after boot
 				IF Internal.InitAfterBoot THEN
 					Internal.State := exASSETINT_STATE_INIT_4;
 				ELSE
-					Internal.State := exASSETINT_STATE_INIT_2;
+					// -------------------------------------------------------------------------------------------
+					// Try to restore backup when link data is empty
+					IF exLink.MemoryDb = 0 THEN
+						Internal.State := exASSETINT_STATE_LOAD_LINK;
+					ELSE
+						Internal.State := exASSETINT_STATE_INIT_2;
+					END_IF
 				END_IF
 			END_IF
 
@@ -224,7 +230,19 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.StatsRefresh.IN := TRUE;
 			Internal.StatsRefresh.PT := exLink.Configuration.CalculationTimeBase/10;	
 			Internal.StatsRefresh();
-			
+
+			// Internal data backup timer
+			Internal.BackupTimer.IN := TRUE;
+			Internal.BackupTimer.PT := CORE_BACKUP_TIMER*60*100;	
+			Internal.BackupTimer();
+			IF Internal.BackupTimer.Q THEN
+				Internal.BackupTimer.IN := FALSE;
+				Internal.BackupTimer();
+
+				Internal.State := exASSETINT_STATE_SAVE_LINK;
+				RETURN;
+			END_IF
+
 			// Transfer downtime information
 			Internal.Downtime := Downtime;
 			IF ADR(DowntimeReason) <> 0 THEN
@@ -852,6 +870,57 @@ FUNCTION_BLOCK exAssetIntCore
 			ELSIF Internal.ExportEventData.Status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
 				StatusID := CreateErrorState(Internal.ExportEventData.Status, ADR('ERR: export events'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+			END_IF
+			
+			// -------------------------------------------------------------------------------------------
+			// Load link data
+		exASSETINT_STATE_LOAD_LINK:
+			Internal.ReadLinkData.Enable := TRUE;
+			Internal.ReadLinkData.Device := ADR(DeviceName);
+			Internal.ReadLinkData.Logger := Logger;
+			Internal.ReadLinkData.Link	 := ADR(exLink);
+			Internal.ReadLinkData();
+		
+			// Link data successful restored
+			IF Internal.ReadLinkData.Status = ERR_OK THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('load link data restored'), Logger);				
+
+				StatusID := ERR_OK;
+				Internal.State := exASSETINT_STATE_INIT_2;
+
+				// Link data does not exist
+			ELSIF Internal.ReadLinkData.Status = fiERR_FILE_NOT_FOUND  THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('no backup file found'), Logger);				
+
+				StatusID := ERR_OK;
+				Internal.State := exASSETINT_STATE_INIT_2;
+			
+				// Error
+			ELSIF Internal.ReadLinkData.Status <> ERR_FUB_BUSY THEN
+				// Set status, remember state, go to error state
+				StatusID := CreateErrorState(Internal.ReadLinkData.Status, ADR('ERR: load link data'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
+			END_IF
+
+			// -------------------------------------------------------------------------------------------
+			// Save link data
+		exASSETINT_STATE_SAVE_LINK:
+			Internal.WriteLinkData.Enable := TRUE;
+			Internal.WriteLinkData.Device := ADR(DeviceName);
+			Internal.WriteLinkData.Logger := Logger;
+			Internal.WriteLinkData.Link := ADR(exLink);
+			Internal.WriteLinkData();
+		
+			// Event successful created
+			IF Internal.WriteLinkData.Status = ERR_OK THEN
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('save link data ok'), Logger);				
+
+				StatusID := ERR_OK;		
+				Internal.State := exASSETINT_STATE_IDLE;
+			
+				// Error
+			ELSIF Internal.WriteLinkData.Status <> ERR_FUB_BUSY THEN
+				// Set status, remember state, go to error state
+				StatusID := CreateErrorState(Internal.WriteLinkData.Status, ADR('ERR: save link data'), Logger, exCOM_SEV_ERROR,  ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------

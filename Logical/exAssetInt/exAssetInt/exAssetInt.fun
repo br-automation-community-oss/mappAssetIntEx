@@ -111,7 +111,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI (*mapp function block which can be used for
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK exAssetIntTimelineUI (*mapp function block which can be used for showing shift statistics in a list *)
+FUNCTION_BLOCK exAssetIntTimelineUI (*mapp function block which can be used for showing timeline statistics in a list *)
 	VAR_INPUT
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
@@ -212,11 +212,49 @@ FUNCTION_BLOCK WriteConfiguration
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK ReadLinkData
+	VAR_INPUT
+		Enable : BOOL;
+		Device : REFERENCE TO STRING[50];
+		Logger : {REDUND_UNREPLICABLE} UDINT;
+		Link : REFERENCE TO exAssetIntLinkType;
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+	END_VAR
+	VAR
+		FileOpen_0 : FileOpen;
+		FileClose_0 : FileClose;
+		FileRead_0 : FileRead;
+		State : USINT;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK WriteLinkData
+	VAR_INPUT
+		Enable : BOOL;
+		Device : REFERENCE TO STRING[50];
+		Logger : UDINT;
+		Link : REFERENCE TO exAssetIntLinkType;
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+	END_VAR
+	VAR
+		FileCreate_0 : FileCreate;
+		FileOpen_0 : FileOpen;
+		FileClose_0 : FileClose;
+		FileWrite_0 : FileWrite;
+		Ident : UDINT;
+		State : USINT;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK ReadEventData
 	VAR_INPUT
 		Enable : BOOL;
 		Device : STRING[50];
-		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		Logger : {REDUND_UNREPLICABLE} UDINT;
 		Memory : UDINT;
 	END_VAR
 	VAR_OUTPUT
