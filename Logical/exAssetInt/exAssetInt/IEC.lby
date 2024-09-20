@@ -18,6 +18,8 @@
     <File>ReadConfiguration.st</File>
     <File>WriteConfiguration.st</File>
     <File>CalcStats.st</File>
+    <File>TrackShift.st</File>
+    <File>TrackProduction.st</File>
     <File>Common.st</File>
   </Files>
 </Library>

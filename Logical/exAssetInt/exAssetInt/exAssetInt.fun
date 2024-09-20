@@ -431,6 +431,25 @@ FUNCTION CalcStatsJob : USINT
 	END_VAR
 END_FUNCTION
 
+FUNCTION TackShiftChange : BOOL
+	VAR_INPUT
+		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		Internal : REFERENCE TO exCoreInternalDataType; (*Internal data*)
+		Info : REFERENCE TO exAssetIntCoreInfoType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
+		Parameters : exAssetIntParType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
+		Logger : UDINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION TackProductionState : BOOL
+	VAR_INPUT
+		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		Internal : REFERENCE TO exCoreInternalDataType; (*Internal data*)
+		Parameters : exAssetIntParType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
+		Logger : UDINT;
+	END_VAR
+END_FUNCTION
+
 FUNCTION CalcStatsShift : USINT
 	VAR_INPUT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
