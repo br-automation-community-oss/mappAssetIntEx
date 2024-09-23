@@ -58,7 +58,7 @@ FUNCTION TackProductionState
 
 			// Create log message
 			Internal.TmpStr1 := 'job changed from ';
-			IF exLink.JobStatistics.JobName = '' THEN
+			IF exLink.ProductionJobName = '' THEN
 				brsstrcat(ADR(Internal.TmpStr1), ADR('none '));
 			ELSE
 				brsstrcat(ADR(Internal.TmpStr1), ADR(exLink.ProductionJobName));						
