@@ -75,7 +75,7 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 			END_IF
 			
 		// -------------------------------------------------------------------------------------------
-		// Save configuration
+		// Load configuration
 		exASSETINT_STATE_LOAD_CFG:
 			Internal.ReadConfiguration.Enable := TRUE;
 			Internal.ReadConfiguration.Device := ADR(DeviceName);

@@ -29,10 +29,13 @@ TYPE
 		TimeOfDay : TIME_OF_DAY;
 		ShiftTotalTimeStart : UDINT;
 		StatsRefresh : TON_10ms;
+		BackupTimer : TON_10ms;
 		CreateDirStructure : CreateDirStructure;
 		CreateMemory : CreateMemory;
 		ReadEventData : ReadEventData;
 		WriteEventData : WriteEventData;
+		ReadLinkData : ReadLinkData;
+		WriteLinkData : WriteLinkData;
 		ExportEventData : ExportEventData;
 		x : UINT;
 		y : UINT;
@@ -148,6 +151,8 @@ TYPE
 		exASSETINT_STATE_UI_DATA := 31, (*Generate UI data*)
 		exASSETINT_STATE_SAVE_CFG := 40, (*Save configuration*)
 		exASSETINT_STATE_LOAD_CFG := 41, (*Load configuration*)
+		exASSETINT_STATE_SAVE_LINK := 50, (*Save internal data*)
+		exASSETINT_STATE_LOAD_LINK := 51, (*Load internal data*)
 		exASSETINT_STATE_ERROR := 90, (*Error state*)
 		exASSETINT_STATE_NONE := 99 (*Empty state*)
 		);

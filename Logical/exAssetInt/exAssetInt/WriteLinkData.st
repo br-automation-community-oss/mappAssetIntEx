@@ -3,7 +3,7 @@
 // -------------------------------------------------------------------------------------------
 // Write configuration
 // -------------------------------------------------------------------------------------------
-FUNCTION_BLOCK WriteConfiguration
+FUNCTION_BLOCK WriteLinkData
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
 	IF NOT Enable THEN
@@ -28,7 +28,7 @@ FUNCTION_BLOCK WriteConfiguration
 				FileClose_0();
 			
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('saving configuration'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('saving link data'), Logger);
 				State := 1;
 			END_IF
 
@@ -37,14 +37,14 @@ FUNCTION_BLOCK WriteConfiguration
 		1:
 			FileOpen_0.enable := TRUE;
 			FileOpen_0.pDevice := ADR(Device);
-			FileOpen_0.pFile := ADR('exAssetConfig');
+			FileOpen_0.pFile := ADR('exAssetLink');
 			FileOpen_0.mode := fiREAD_WRITE;
 			FileOpen_0();
 	
 			// File opened successful
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('open configuration ok'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('open link data ok'), Logger);
 				
 				// Remember ident go to next step
 				Ident := FileOpen_0.ident;
@@ -65,13 +65,13 @@ FUNCTION_BLOCK WriteConfiguration
 		2:
 			FileCreate_0.enable := TRUE;
 			FileCreate_0.pDevice := ADR(Device);
-			FileCreate_0.pFile := ADR('exAssetConfig');
+			FileCreate_0.pFile := ADR('exAssetLink');
 			FileCreate_0();
 	
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('create configuration ok'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('create link data file'), Logger);
 				
 				// Remember ident go to next step
 				Ident := FileCreate_0.ident;
@@ -89,14 +89,14 @@ FUNCTION_BLOCK WriteConfiguration
 		3:			
 			FileWrite_0.enable := TRUE;
 			FileWrite_0.ident := Ident;
-			FileWrite_0.pSrc := ADR(Configuration);
-			FileWrite_0.len := SIZEOF(Configuration);
+			FileWrite_0.pSrc := ADR(Link);
+			FileWrite_0.len := SIZEOF(Link);
 			FileWrite_0();
 	
 			// File created successful
 			IF FileWrite_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('write configuration ok'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('write link data ok'), Logger);
 				
 				// Go to next step
 				State := 4;
@@ -117,7 +117,7 @@ FUNCTION_BLOCK WriteConfiguration
 			// File created successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('close configuration ok'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('close link data ok'), Logger);
 				
 				// Finish up
 				Status := ERR_OK;

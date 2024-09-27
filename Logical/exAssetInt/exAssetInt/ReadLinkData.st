@@ -3,7 +3,7 @@
 // -------------------------------------------------------------------------------------------
 // Read configuration
 // -------------------------------------------------------------------------------------------
-FUNCTION_BLOCK ReadConfiguration
+FUNCTION_BLOCK ReadLinkData
 	// -------------------------------------------------------------------------------------------
 	// Reset everything when enable is false
 	IF NOT Enable THEN
@@ -26,7 +26,7 @@ FUNCTION_BLOCK ReadConfiguration
 				FileClose_0();
 			
 				Status := ERR_FUB_BUSY;
-				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('reading configuration'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('reading link data'), Logger);
 				State := 1;
 			END_IF
 		
@@ -36,14 +36,14 @@ FUNCTION_BLOCK ReadConfiguration
 			// Open file
 			FileOpen_0.enable := TRUE;
 			FileOpen_0.pDevice := ADR(Device);
-			FileOpen_0.pFile := ADR('exAssetConfig');
+			FileOpen_0.pFile := ADR('exAssetLink');
 			FileOpen_0.mode := fiREAD_ONLY;
 			FileOpen_0();
 	
 			// File opened successful
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('open configuration ok'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('open link data ok'), Logger);
 				
 				// Go to next step
 				State := 5;
@@ -59,14 +59,14 @@ FUNCTION_BLOCK ReadConfiguration
 		5:
 			FileRead_0.enable := TRUE;
 			FileRead_0.ident := FileOpen_0.ident;
-			FileRead_0.pDest := ADR(Configuration);
+			FileRead_0.pDest := ADR(Link);
 			FileRead_0.len := FileOpen_0.filelen;
 			FileRead_0();
 	
 			// File read successful
 			IF FileRead_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('read configuration ok'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('read link data ok'), Logger);
 
 				State := 6;
 				
@@ -86,7 +86,7 @@ FUNCTION_BLOCK ReadConfiguration
 			// File closed successful
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
-				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('close configuration ok'), Logger);
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR('closed link data ok'), Logger);
 				
 				// Go to next step
 				Status := ERR_OK;
