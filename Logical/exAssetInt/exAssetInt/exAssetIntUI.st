@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1002
+// File version 1003
 // -------------------------------------------------------------------------------------------
 // Job UI function block
 FUNCTION_BLOCK exAssetIntJobListUI
@@ -57,7 +57,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			exAssetIntScrollListUI(Internal.RecordCount, UI_JOB_LIST_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
+			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_JOB_LIST_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd));
 
 			// Wait for core task to call update command
 			IF exLink.RefreshJobUI AND exLink.RecordCount > 0 THEN			
@@ -109,17 +109,13 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				
 				UNTIL (Internal.x > UI_JOB_LIST_IDX) OR (Internal.x + Internal.RecordStart >= Internal.RecordCount)
 			END_REPEAT;
-											
+							
 			exLink.RefreshJobUI := FALSE;
-			UIConnect.Output.PageUp := FALSE;
-			UIConnect.Output.PageDown := FALSE;
-			UIConnect.Output.StepUp := FALSE;
-			UIConnect.Output.StepDown := FALSE;
 
 			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh job done'), Logger);
 			Internal.State := exASSETINT_STATE_IDLE;	
 			
-		// -------------------------------------------------------------------------------------------
+			// -------------------------------------------------------------------------------------------
 		// Error state
 		exASSETINT_STATE_ERROR:		
 			IF EDGEPOS(ErrorReset) THEN
@@ -186,7 +182,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
+			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd));
 				
 			// Wait for core task to call update command
 			IF exLink.RefreshShiftUI AND exLink.RecordCount > 0 THEN			
@@ -241,10 +237,6 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			END_REPEAT;
 											
 			exLink.RefreshShiftUI := FALSE;
-			UIConnect.Output.PageUp := FALSE;
-			UIConnect.Output.PageDown := FALSE;
-			UIConnect.Output.StepUp := FALSE;
-			UIConnect.Output.StepDown := FALSE;
 			
 			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh shift done'), Logger);
 			Internal.State := exASSETINT_STATE_IDLE;	
@@ -316,7 +308,7 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(Internal.State));
+			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd));
 				
 			// Wait for core task to call update command
 			IF exLink.RefreshTimelineUI AND exLink.RecordCount > 0 THEN			
@@ -381,10 +373,6 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 			END_IF
 			
 			exLink.RefreshTimelineUI := FALSE;
-			UIConnect.Output.PageUp := FALSE;
-			UIConnect.Output.PageDown := FALSE;
-			UIConnect.Output.StepUp := FALSE;
-			UIConnect.Output.StepDown := FALSE;
 			
 			CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('refresh timeline done'), Logger);
 			Internal.State := exASSETINT_STATE_IDLE;	
@@ -475,26 +463,28 @@ END_FUNCTION
 // -------------------------------------------------------------------------------------------
 // Handle list scrolling
 FUNCTION exAssetIntScrollListUI
+	exAssetIntScrollListUI := exASSETINT_STATE_IDLE;
+	
 	// -------------------------------------------------------------------------------------------
 	// Handle page up and down
 	IF PageUp THEN
 		RecordStart := RecordStart - ListMaxCount;
-		State := exASSETINT_STATE_UI_DATA;					
+		exAssetIntScrollListUI := exASSETINT_STATE_UI_DATA;					
 	END_IF
 	IF PageDown THEN
 		RecordStart := RecordStart + ListMaxCount;					
-		State := exASSETINT_STATE_UI_DATA;					
+		exAssetIntScrollListUI := exASSETINT_STATE_UI_DATA;					
 	END_IF
 				
 	// -------------------------------------------------------------------------------------------
 	// Handle step up and down
 	IF StepUp THEN
 		RecordStart := RecordStart - 1;
-		State := exASSETINT_STATE_UI_DATA;					
+		exAssetIntScrollListUI := exASSETINT_STATE_UI_DATA;					
 	END_IF
 	IF StepDown THEN
 		RecordStart := RecordStart + 1;					
-		State := exASSETINT_STATE_UI_DATA;					
+		exAssetIntScrollListUI := exASSETINT_STATE_UI_DATA;					
 	END_IF
 				
 	// -------------------------------------------------------------------------------------------
@@ -506,12 +496,21 @@ FUNCTION exAssetIntScrollListUI
 		RecordStart := 0;
 	END_IF
 	
+	// -------------------------------------------------------------------------------------------
+	// Calculate range start
+	IF UINT_TO_REAL(UI_TIMELINE_IDX + 1) / RecordCount < 1 THEN
+		RangeStart := 100 - (DINT_TO_REAL(RecordStart) / RecordCount) * 100.0;
+		RangeEnd := RangeStart - (UINT_TO_REAL(UI_TIMELINE_IDX + 1) / RecordCount) * 100.0; 
+	ELSE
+		RangeStart := 0;
+		RangeEnd := 100;
+	END_IF
+	
 	PageUp := FALSE;
 	PageDown := FALSE;
 	StepUp := FALSE;
 	StepDown := FALSE;
 	
-	exAssetIntScrollListUI := TRUE;
 END_FUNCTION
 
 // -------------------------------------------------------------------------------------------

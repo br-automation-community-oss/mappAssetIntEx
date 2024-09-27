@@ -1,4 +1,4 @@
-(*File Version 1002*)
+(*File Version 1003*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 
 FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset intensity calculation.*) (* $GROUP=mapp Services,$CAT=Asset Intensity,$GROUPICON=Icon_mapp.png,$CATICON=Icon_exOee.png *)
@@ -111,7 +111,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI (*mapp function block which can be used for
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK exAssetIntTimelineUI (*mapp function block which can be used for showing shift statistics in a list *)
+FUNCTION_BLOCK exAssetIntTimelineUI (*mapp function block which can be used for showing timeline statistics in a list *)
 	VAR_INPUT
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Enable : BOOL; (*Enables/Disables the function block (mapp standard interface)*) (* *) (*#PAR#;*)
@@ -212,11 +212,49 @@ FUNCTION_BLOCK WriteConfiguration
 	END_VAR
 END_FUNCTION_BLOCK
 
+FUNCTION_BLOCK ReadLinkData
+	VAR_INPUT
+		Enable : BOOL;
+		Device : REFERENCE TO STRING[50];
+		Logger : {REDUND_UNREPLICABLE} UDINT;
+		Link : REFERENCE TO exAssetIntLinkType;
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+	END_VAR
+	VAR
+		FileOpen_0 : FileOpen;
+		FileClose_0 : FileClose;
+		FileRead_0 : FileRead;
+		State : USINT;
+	END_VAR
+END_FUNCTION_BLOCK
+
+FUNCTION_BLOCK WriteLinkData
+	VAR_INPUT
+		Enable : BOOL;
+		Device : REFERENCE TO STRING[50];
+		Logger : UDINT;
+		Link : REFERENCE TO exAssetIntLinkType;
+	END_VAR
+	VAR_OUTPUT
+		Status : UINT;
+	END_VAR
+	VAR
+		FileCreate_0 : FileCreate;
+		FileOpen_0 : FileOpen;
+		FileClose_0 : FileClose;
+		FileWrite_0 : FileWrite;
+		Ident : UDINT;
+		State : USINT;
+	END_VAR
+END_FUNCTION_BLOCK
+
 FUNCTION_BLOCK ReadEventData
 	VAR_INPUT
 		Enable : BOOL;
 		Device : STRING[50];
-		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
+		Logger : {REDUND_UNREPLICABLE} UDINT;
 		Memory : UDINT;
 	END_VAR
 	VAR_OUTPUT
@@ -316,16 +354,17 @@ FUNCTION exAssetIntFilterListUI : UDINT
 	END_VAR
 END_FUNCTION
 
-FUNCTION exAssetIntScrollListUI : BOOL
+FUNCTION exAssetIntScrollListUI : exAssetIntStateEnum
 	VAR_INPUT
 		RecordCount : UDINT;
 		ListMaxCount : UINT;
-		PageUp : REFERENCE TO BOOL; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
-		PageDown : REFERENCE TO BOOL; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
-		StepUp : REFERENCE TO BOOL; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
-		StepDown : REFERENCE TO BOOL; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		PageUp : REFERENCE TO BOOL; (* *) (* *) (*#PAR#;*)
+		PageDown : REFERENCE TO BOOL; (* *) (* *) (*#PAR#;*)
+		StepUp : REFERENCE TO BOOL; (* *) (* *) (*#PAR#;*)
+		StepDown : REFERENCE TO BOOL; (* *) (* *) (*#PAR#;*)
 		RecordStart : REFERENCE TO DINT;
-		State : REFERENCE TO exAssetIntStateEnum;
+		RangeStart : REFERENCE TO REAL;
+		RangeEnd : REFERENCE TO REAL;
 	END_VAR
 END_FUNCTION
 
@@ -353,7 +392,7 @@ END_FUNCTION
 FUNCTION exAssetIntCheckPreq : BOOL
 	VAR_INPUT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
-		UIConnect : UDINT; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
+		UIConnect : UDINT; (* *) (* *) (*#PAR#;*)
 		Logger : UDINT;
 		State : REFERENCE TO exAssetIntStateEnum;
 		StatusID : REFERENCE TO DINT;
@@ -407,7 +446,7 @@ END_FUNCTION
 FUNCTION CreateErrorState : DINT
 	VAR_INPUT
 		ErrorID : DINT;
-		ErrorMsg : UDINT; (*Log message*)
+		ErrorMsg : UDINT;
 		Logger : UDINT;
 		Severity : exComSeveritiesEnum;
 		State : REFERENCE TO exAssetIntStateEnum;
@@ -420,12 +459,12 @@ FUNCTION CalcStatsJob : USINT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		DiffLastCall : UDINT;
 		Downtime : exAssetIntDowntimeEnum;
-		Parameter : exAssetIntParType; (*Log Level*)
-		JobStatistics : REFERENCE TO exAssetIntJobStatisticsType; (*Log message*)
+		Parameter : exAssetIntParType;
+		JobStatistics : REFERENCE TO exAssetIntJobStatisticsType;
 	END_VAR
 	VAR
 		JobTotalTime : UDINT;
-		Uptime : UDINT; (*Uptime in seconds*)
+		Uptime : UDINT;
 		NominalProductionTime : UDINT;
 		GoodProductionTime : UDINT;
 	END_VAR
@@ -435,8 +474,8 @@ FUNCTION TackShiftChange : BOOL
 	VAR_INPUT
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Internal : REFERENCE TO exCoreInternalDataType; (*Internal data*)
-		Info : REFERENCE TO exAssetIntCoreInfoType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
-		Parameters : exAssetIntParType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
+		Info : REFERENCE TO exAssetIntCoreInfoType; (* *) (* *) (*#PAR#; *)
+		Parameters : exAssetIntParType; (* *) (* *) (*#PAR#; *)
 		Logger : UDINT;
 	END_VAR
 END_FUNCTION
@@ -445,7 +484,7 @@ FUNCTION TackProductionState : BOOL
 	VAR_INPUT
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Internal : REFERENCE TO exCoreInternalDataType; (*Internal data*)
-		Parameters : exAssetIntParType; (*Function block parameters (mapp standard interface)*) (* *) (*#PAR#; *)
+		Parameters : exAssetIntParType; (* *) (* *) (*#PAR#; *)
 		Logger : UDINT;
 	END_VAR
 END_FUNCTION
@@ -455,12 +494,12 @@ FUNCTION CalcStatsShift : USINT
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		DiffLastCall : UDINT;
 		Downtime : exAssetIntDowntimeEnum;
-		Parameter : exAssetIntParType; (*Log Level*)
-		ShiftStatistics : REFERENCE TO exAssetIntShiftStatisticsType; (*Log message*)
+		Parameter : exAssetIntParType;
+		ShiftStatistics : REFERENCE TO exAssetIntShiftStatisticsType;
 	END_VAR
 	VAR
 		ShiftTotalTime : UDINT;
-		Uptime : UDINT; (*Uptime in seconds*)
+		Uptime : UDINT;
 		NominalProductionTime : UDINT;
 		GoodProductionTime : UDINT;
 	END_VAR
