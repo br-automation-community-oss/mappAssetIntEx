@@ -226,7 +226,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -244,7 +244,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -261,7 +261,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -279,7 +279,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -297,7 +297,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -318,7 +318,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -339,7 +339,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -361,7 +361,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -381,7 +381,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -403,7 +403,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -425,7 +425,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="500"/>
+          <Property Name="Left" Value="494"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -445,7 +445,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -461,7 +461,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="485"/>
+          <Property Name="Left" Value="479"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -477,7 +477,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -495,7 +495,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -511,7 +511,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -529,7 +529,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -546,7 +546,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -566,7 +566,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -586,7 +586,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -607,7 +607,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -626,7 +626,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -647,7 +647,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -667,7 +667,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -684,7 +684,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="500"/>
+          <Property Name="Left" Value="494"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -704,7 +704,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="485"/>
+          <Property Name="Left" Value="479"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -721,7 +721,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -739,7 +739,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -756,7 +756,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -774,7 +774,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -792,7 +792,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -813,7 +813,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -834,7 +834,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -856,7 +856,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -876,7 +876,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -898,7 +898,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -920,7 +920,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="500"/>
+          <Property Name="Left" Value="494"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -940,7 +940,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -956,7 +956,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="485"/>
+          <Property Name="Left" Value="479"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -972,7 +972,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -990,7 +990,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -1006,7 +1006,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -1024,7 +1024,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -1041,7 +1041,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1061,7 +1061,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1081,7 +1081,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1102,7 +1102,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1121,7 +1121,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1142,7 +1142,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1162,7 +1162,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1179,7 +1179,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="500"/>
+          <Property Name="Left" Value="494"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1199,7 +1199,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="485"/>
+          <Property Name="Left" Value="479"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1216,7 +1216,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -1234,7 +1234,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -1251,7 +1251,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -1269,7 +1269,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -1287,7 +1287,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1308,7 +1308,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1329,7 +1329,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1351,7 +1351,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1371,7 +1371,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1393,7 +1393,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1415,7 +1415,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="500"/>
+          <Property Name="Left" Value="494"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1435,7 +1435,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1451,7 +1451,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="485"/>
+          <Property Name="Left" Value="479"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1467,7 +1467,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -1485,7 +1485,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -1501,7 +1501,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -1519,7 +1519,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -1536,7 +1536,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1556,7 +1556,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1576,7 +1576,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1597,7 +1597,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1616,7 +1616,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1637,7 +1637,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1657,7 +1657,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1674,7 +1674,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="500"/>
+          <Property Name="Left" Value="494"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1694,7 +1694,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="485"/>
+          <Property Name="Left" Value="479"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1711,7 +1711,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -1729,7 +1729,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -1746,7 +1746,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -1764,7 +1764,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -1782,7 +1782,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1803,7 +1803,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1824,7 +1824,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1846,7 +1846,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1866,7 +1866,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1888,7 +1888,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1910,7 +1910,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="500"/>
+          <Property Name="Left" Value="494"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -1930,7 +1930,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1946,7 +1946,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="485"/>
+          <Property Name="Left" Value="479"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -1962,7 +1962,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -1980,7 +1980,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -1996,7 +1996,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -2014,7 +2014,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -2031,7 +2031,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2051,7 +2051,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2071,7 +2071,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2092,7 +2092,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2111,7 +2111,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2132,7 +2132,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2152,7 +2152,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="460"/>
+          <Property Name="Left" Value="454"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -2169,7 +2169,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="500"/>
+          <Property Name="Left" Value="494"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2189,7 +2189,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="485"/>
+          <Property Name="Left" Value="479"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -2207,7 +2207,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -2225,7 +2225,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -2243,7 +2243,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -2261,7 +2261,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -2279,7 +2279,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -2297,7 +2297,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -2315,7 +2315,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -2333,7 +2333,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -2349,7 +2349,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="37"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="100"/>
@@ -2364,7 +2364,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="37"/>
           <Property Name="Height" Value="20"/>
-          <Property Name="Left" Value="25"/>
+          <Property Name="Left" Value="19"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2381,7 +2381,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="38"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="120"/>
+          <Property Name="Left" Value="114"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="100"/>
@@ -2396,7 +2396,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="37"/>
           <Property Name="Height" Value="20"/>
-          <Property Name="Left" Value="25"/>
+          <Property Name="Left" Value="19"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2416,7 +2416,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="38"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="115"/>
+          <Property Name="Left" Value="109"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2433,7 +2433,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="39"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="100"/>
@@ -2446,7 +2446,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="39"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="220"/>
+          <Property Name="Left" Value="214"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2463,7 +2463,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="40"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="120"/>
@@ -2474,7 +2474,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="41"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="80"/>
@@ -2487,7 +2487,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="41"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="540"/>
+          <Property Name="Left" Value="534"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2504,7 +2504,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="42"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="620"/>
+          <Property Name="Left" Value="614"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="80"/>
@@ -2515,7 +2515,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="43"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="700"/>
+          <Property Name="Left" Value="694"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="80"/>
@@ -2528,7 +2528,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="42"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="625"/>
+          <Property Name="Left" Value="619"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2547,7 +2547,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="43"/>
           <Property Name="Height" Value="32"/>
-          <Property Name="Left" Value="705"/>
+          <Property Name="Left" Value="699"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2564,7 +2564,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="44"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="80"/>
@@ -2577,7 +2577,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="44"/>
           <Property Name="Height" Value="32"/>
-          <Property Name="Left" Value="780"/>
+          <Property Name="Left" Value="774"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2596,7 +2596,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="40"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="420"/>
+          <Property Name="Left" Value="414"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2613,7 +2613,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="45"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="100"/>
@@ -2626,7 +2626,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="45"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -2647,7 +2647,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="865"/>
+          <Property Name="Left" Value="885"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -2671,7 +2671,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="865"/>
+          <Property Name="Left" Value="885"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -2695,7 +2695,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="865"/>
+          <Property Name="Left" Value="885"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -2719,7 +2719,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="865"/>
+          <Property Name="Left" Value="885"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -2741,7 +2741,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial14pxBold]"/>
           <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -2758,7 +2758,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -2776,7 +2776,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -2793,7 +2793,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -2811,7 +2811,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -2829,7 +2829,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2850,7 +2850,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2871,7 +2871,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2893,7 +2893,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2913,7 +2913,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2935,7 +2935,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2957,7 +2957,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1470"/>
+          <Property Name="Left" Value="1451"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -2977,7 +2977,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -2993,7 +2993,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1455"/>
+          <Property Name="Left" Value="1436"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3009,7 +3009,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -3027,7 +3027,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -3043,7 +3043,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -3061,7 +3061,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -3078,7 +3078,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3098,7 +3098,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3118,7 +3118,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3139,7 +3139,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3158,7 +3158,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3179,7 +3179,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3199,7 +3199,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3216,7 +3216,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1470"/>
+          <Property Name="Left" Value="1451"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3236,7 +3236,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1455"/>
+          <Property Name="Left" Value="1436"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3253,7 +3253,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -3271,7 +3271,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -3288,7 +3288,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -3306,7 +3306,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -3324,7 +3324,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3345,7 +3345,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3366,7 +3366,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3388,7 +3388,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3408,7 +3408,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3430,7 +3430,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3452,7 +3452,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1470"/>
+          <Property Name="Left" Value="1451"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3472,7 +3472,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3488,7 +3488,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1455"/>
+          <Property Name="Left" Value="1436"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3504,7 +3504,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -3522,7 +3522,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -3538,7 +3538,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -3556,7 +3556,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -3573,7 +3573,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3593,7 +3593,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3613,7 +3613,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3634,7 +3634,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3653,7 +3653,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3674,7 +3674,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3694,7 +3694,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3711,7 +3711,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1470"/>
+          <Property Name="Left" Value="1451"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3731,7 +3731,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1455"/>
+          <Property Name="Left" Value="1436"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3748,7 +3748,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -3766,7 +3766,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -3783,7 +3783,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -3801,7 +3801,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -3819,7 +3819,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3840,7 +3840,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3861,7 +3861,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3883,7 +3883,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3903,7 +3903,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3925,7 +3925,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3947,7 +3947,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1470"/>
+          <Property Name="Left" Value="1451"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -3967,7 +3967,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3983,7 +3983,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1455"/>
+          <Property Name="Left" Value="1436"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -3999,7 +3999,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -4017,7 +4017,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -4033,7 +4033,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -4051,7 +4051,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -4068,7 +4068,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4088,7 +4088,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4108,7 +4108,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4129,7 +4129,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4148,7 +4148,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4169,7 +4169,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4189,7 +4189,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -4206,7 +4206,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1470"/>
+          <Property Name="Left" Value="1451"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4226,7 +4226,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1455"/>
+          <Property Name="Left" Value="1436"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -4243,7 +4243,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -4261,7 +4261,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -4278,7 +4278,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -4296,7 +4296,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -4314,7 +4314,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4335,7 +4335,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4356,7 +4356,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4378,7 +4378,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4398,7 +4398,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4420,7 +4420,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4442,7 +4442,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1470"/>
+          <Property Name="Left" Value="1451"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4462,7 +4462,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -4478,7 +4478,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1455"/>
+          <Property Name="Left" Value="1436"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -4494,7 +4494,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -4512,7 +4512,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Job"/>
@@ -4528,7 +4528,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="21"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[global].TextGroup[DateTimeFormats]"/>
@@ -4546,7 +4546,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Operator XY"/>
@@ -4563,7 +4563,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4583,7 +4583,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4603,7 +4603,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4624,7 +4624,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4643,7 +4643,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4664,7 +4664,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4684,7 +4684,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1430"/>
+          <Property Name="Left" Value="1411"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -4701,7 +4701,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="0"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1470"/>
+          <Property Name="Left" Value="1451"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -4721,7 +4721,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="40"/>
-          <Property Name="Left" Value="1455"/>
+          <Property Name="Left" Value="1436"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -4739,7 +4739,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -4757,7 +4757,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -4775,7 +4775,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -4793,7 +4793,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -4811,7 +4811,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -4829,7 +4829,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -4847,7 +4847,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -4865,7 +4865,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="FillStyle" Value="Opaque"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="3"/>
           <Property Name="SimulationValue" Value="Shift"/>
@@ -4881,7 +4881,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="46"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="100"/>
@@ -4896,7 +4896,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="46"/>
           <Property Name="Height" Value="20"/>
-          <Property Name="Left" Value="995"/>
+          <Property Name="Left" Value="976"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -4913,7 +4913,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="47"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1090"/>
+          <Property Name="Left" Value="1071"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="100"/>
@@ -4928,7 +4928,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="46"/>
           <Property Name="Height" Value="20"/>
-          <Property Name="Left" Value="995"/>
+          <Property Name="Left" Value="976"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -4948,7 +4948,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="47"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1085"/>
+          <Property Name="Left" Value="1066"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -4965,7 +4965,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="48"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="100"/>
@@ -4978,7 +4978,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="48"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1190"/>
+          <Property Name="Left" Value="1171"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -4995,7 +4995,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="49"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="120"/>
@@ -5006,7 +5006,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="50"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="80"/>
@@ -5019,7 +5019,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="50"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1510"/>
+          <Property Name="Left" Value="1491"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -5036,7 +5036,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="51"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1590"/>
+          <Property Name="Left" Value="1571"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="80"/>
@@ -5047,7 +5047,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="52"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1670"/>
+          <Property Name="Left" Value="1651"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="80"/>
@@ -5060,7 +5060,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="51"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1595"/>
+          <Property Name="Left" Value="1576"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -5079,7 +5079,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="52"/>
           <Property Name="Height" Value="32"/>
-          <Property Name="Left" Value="1675"/>
+          <Property Name="Left" Value="1656"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -5096,7 +5096,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="53"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="80"/>
@@ -5109,7 +5109,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="53"/>
           <Property Name="Height" Value="32"/>
-          <Property Name="Left" Value="1750"/>
+          <Property Name="Left" Value="1731"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -5128,7 +5128,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="49"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1390"/>
+          <Property Name="Left" Value="1371"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -5145,7 +5145,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="GroupID" Value="54"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Shape]"/>
           <Property Name="Top" Value="50"/>
           <Property Name="Width" Value="100"/>
@@ -5158,7 +5158,7 @@
           <Property Name="ForeColor" Value="254"/>
           <Property Name="GroupID" Value="54"/>
           <Property Name="Height" Value="41"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
@@ -5179,7 +5179,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1835"/>
+          <Property Name="Left" Value="1843"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -5203,7 +5203,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1835"/>
+          <Property Name="Left" Value="1843"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -5227,7 +5227,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1835"/>
+          <Property Name="Left" Value="1843"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -5251,7 +5251,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1835"/>
+          <Property Name="Left" Value="1843"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -5273,7 +5273,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial14pxBold]"/>
           <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -5288,7 +5288,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="255"/>
           <Property Name="Height" Value="28"/>
-          <Property Name="Left" Value="140"/>
+          <Property Name="Left" Value="134"/>
           <Property Name="SimulationValue" Value="12/31/2015 23:59"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
@@ -5304,7 +5304,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="28"/>
-          <Property Name="Left" Value="105"/>
+          <Property Name="Left" Value="99"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -5319,7 +5319,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="255"/>
           <Property Name="Height" Value="28"/>
-          <Property Name="Left" Value="430"/>
+          <Property Name="Left" Value="424"/>
           <Property Name="SimulationValue" Value="12/31/2015 23:59"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
@@ -5335,7 +5335,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="28"/>
-          <Property Name="Left" Value="400"/>
+          <Property Name="Left" Value="394"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -5355,7 +5355,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="575"/>
+          <Property Name="Left" Value="569"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedForeColor" Value="253"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -5380,7 +5380,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="Locking" Value="Datapoint = 0"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.gLocked]"/>
           <Property Name="Multiline" Value="Automatic"/>
@@ -5410,7 +5410,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="320"/>
+          <Property Name="Left" Value="314"/>
           <Property Name="Locking" Value="Datapoint = 0"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.gLocked]"/>
           <Property Name="Multiline" Value="Automatic"/>
@@ -5434,7 +5434,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="255"/>
           <Property Name="Height" Value="28"/>
-          <Property Name="Left" Value="1110"/>
+          <Property Name="Left" Value="1091"/>
           <Property Name="SimulationValue" Value="12/31/2015 23:59"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
@@ -5450,7 +5450,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="28"/>
-          <Property Name="Left" Value="1075"/>
+          <Property Name="Left" Value="1056"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -5465,7 +5465,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="ForeColor" Value="255"/>
           <Property Name="Height" Value="28"/>
-          <Property Name="Left" Value="1400"/>
+          <Property Name="Left" Value="1381"/>
           <Property Name="SimulationValue" Value="12/31/2015 23:59"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[DateTime]"/>
           <Property Name="TextGroup" Value="Source[embedded].TextGroup"/>
@@ -5481,7 +5481,7 @@
           <Property Name="ControlID" Value="0"/>
           <Property Name="Description" Value=""/>
           <Property Name="Height" Value="28"/>
-          <Property Name="Left" Value="1370"/>
+          <Property Name="Left" Value="1351"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -5501,7 +5501,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1545"/>
+          <Property Name="Left" Value="1526"/>
           <Property Name="PressedBitmapSource" Value="Source[embedded].Property[BitmapSource]"/>
           <Property Name="PressedForeColor" Value="253"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -5526,7 +5526,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="Locking" Value="Datapoint = 0"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.gLocked]"/>
           <Property Name="Multiline" Value="Automatic"/>
@@ -5556,7 +5556,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1290"/>
+          <Property Name="Left" Value="1271"/>
           <Property Name="Locking" Value="Datapoint = 0"/>
           <Property Name="LockingDatapoint" Value="Source[global].Variable[DataSource.gLocked]"/>
           <Property Name="Multiline" Value="Automatic"/>
@@ -5583,7 +5583,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="20"/>
+          <Property Name="Left" Value="14"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -5600,7 +5600,7 @@
           <Property Name="Height" Value="30"/>
           <Property Name="InputMinus" Value="Normal"/>
           <Property Name="InputNext" Value="Enter"/>
-          <Property Name="Left" Value="160"/>
+          <Property Name="Left" Value="154"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -5622,7 +5622,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="345"/>
           <Property Name="IndexDatapoint" Value="None"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="LeftBitmap" Value="None"/>
           <Property Name="LeftTextGroup" Value="None"/>
           <Property Name="MaxDatapoint" Value="None"/>
@@ -5648,7 +5648,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial14pxBold]"/>
           <Property Name="Height" Value="35"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -5666,7 +5666,7 @@
           <Property Name="Description" Value=""/>
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="30"/>
-          <Property Name="Left" Value="990"/>
+          <Property Name="Left" Value="971"/>
           <Property Name="SimulationIndex" Value="0"/>
           <Property Name="SimulationValue" Value=""/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Text]"/>
@@ -5683,7 +5683,7 @@
           <Property Name="Height" Value="30"/>
           <Property Name="InputMinus" Value="Normal"/>
           <Property Name="InputNext" Value="Enter"/>
-          <Property Name="Left" Value="1130"/>
+          <Property Name="Left" Value="1111"/>
           <Property Name="MaxDatapoint" Value="None"/>
           <Property Name="MaxValue" Value="None"/>
           <Property Name="MinDatapoint" Value="None"/>
@@ -5695,6 +5695,56 @@
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntShiftListUI_0.StatusID]"/>
           <Property Name="ValueMode" Value="Standard"/>
           <Property Name="Width" Value="110"/>
+        </Control>
+        <Control ClassId="0x00001012" Name="sclScrollBar">
+          <Property Name="BackColor" Value="15"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="325"/>
+          <Property Name="Left" Value="860"/>
+          <Property Name="Marker" Value="None"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxValue" Value="100"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinValue" Value="0"/>
+          <Property Name="MinorPitchLines" Value="1"/>
+          <Property Name="Orientation" Value="Left"/>
+          <Property Name="RangeColor" Value="253"/>
+          <Property Name="RangeEndDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.RangeEnd]"/>
+          <Property Name="RangeEndValue" Value="90"/>
+          <Property Name="RangeStartDatapoint" Value="Source[global].Variable[DataSource.Shift.ShiftListUIConnect.Output.RangeStart]"/>
+          <Property Name="RangeStartValue" Value="30"/>
+          <Property Name="RangeWidth" Value="32"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Scale]"/>
+          <Property Name="Top" Value="93"/>
+          <Property Name="ValueDatapoint" Value="None"/>
+          <Property Name="ValueSimulation" Value="0"/>
+          <Property Name="Width" Value="20"/>
+        </Control>
+        <Control ClassId="0x00001012" Name="sclScrollBar1">
+          <Property Name="BackColor" Value="15"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="324"/>
+          <Property Name="Left" Value="1816"/>
+          <Property Name="Marker" Value="None"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxValue" Value="100"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinValue" Value="0"/>
+          <Property Name="MinorPitchLines" Value="1"/>
+          <Property Name="Orientation" Value="Left"/>
+          <Property Name="RangeColor" Value="253"/>
+          <Property Name="RangeEndDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.RangeEnd]"/>
+          <Property Name="RangeEndValue" Value="90"/>
+          <Property Name="RangeStartDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.ShiftListUIConnect.Output.RangeStart]"/>
+          <Property Name="RangeStartValue" Value="30"/>
+          <Property Name="RangeWidth" Value="32"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Scale]"/>
+          <Property Name="Top" Value="93"/>
+          <Property Name="ValueDatapoint" Value="None"/>
+          <Property Name="ValueSimulation" Value="0"/>
+          <Property Name="Width" Value="20"/>
         </Control>
       </Controls>
       <KeyMapping>
@@ -7018,7 +7068,7 @@
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numFromYear]">
       <Property Name="Down" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilYear]"/>
-      <Property Name="Left" Value="Source[embedded].Layer[FilterDialogOld].Control[numFromMinute]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_179]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromMonth]"/>
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[Listbox_1]"/>
     </MovementEntry>
@@ -7048,7 +7098,7 @@
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[FilterDialogNew].Control[numUntilYear]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_179]"/>
-      <Property Name="Left" Value="Source[embedded].Layer[FilterDialogOld].Control[numFromMinute]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[Numeric_179]"/>
       <Property Name="Right" Value="Source[embedded].Layer[FilterDialogNew].Control[numUntilMonth]"/>
       <Property Name="Up" Value="Source[embedded].Layer[FilterDialogNew].Control[numFromYear]"/>
     </MovementEntry>

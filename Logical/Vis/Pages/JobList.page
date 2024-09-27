@@ -4671,7 +4671,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="805"/>
+          <Property Name="Left" Value="828"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -4695,7 +4695,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="805"/>
+          <Property Name="Left" Value="828"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -4719,7 +4719,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1795"/>
+          <Property Name="Left" Value="1820"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -4731,7 +4731,7 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="80"/>
           <Property Name="VirtualKey" Value="Source[local].VirtualKey[%embVirtualKey_13]"/>
-          <Property Name="Width" Value="70"/>
+          <Property Name="Width" Value="60"/>
         </Control>
         <Control ClassId="0x00001002" Name="Button_6">
           <Property Name="AlignmentHorizontal" Value="Center"/>
@@ -4743,7 +4743,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1795"/>
+          <Property Name="Left" Value="1820"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -4767,7 +4767,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="805"/>
+          <Property Name="Left" Value="828"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -4791,7 +4791,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="805"/>
+          <Property Name="Left" Value="828"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -4815,7 +4815,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1795"/>
+          <Property Name="Left" Value="1820"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -4839,7 +4839,7 @@
           <Property Name="Font" Value="Source[local].Font[Arial9pxValue]"/>
           <Property Name="Height" Value="40"/>
           <Property Name="KeyMatrixOffset" Value="None"/>
-          <Property Name="Left" Value="1795"/>
+          <Property Name="Left" Value="1820"/>
           <Property Name="Multiline" Value="Automatic"/>
           <Property Name="PressedBitmapSource" Value="None"/>
           <Property Name="PressedTextSource" Value="Source[embedded].Property[TextSource]"/>
@@ -5273,6 +5273,56 @@
           <Property Name="TextSource" Value="SingleText"/>
           <Property Name="Top" Value="495"/>
           <Property Name="Width" Value="540"/>
+        </Control>
+        <Control ClassId="0x00001012" Name="sclScrollBar">
+          <Property Name="BackColor" Value="15"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="320"/>
+          <Property Name="Left" Value="804"/>
+          <Property Name="Marker" Value="None"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxValue" Value="100"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinValue" Value="0"/>
+          <Property Name="MinorPitchLines" Value="1"/>
+          <Property Name="Orientation" Value="Left"/>
+          <Property Name="RangeColor" Value="253"/>
+          <Property Name="RangeEndDatapoint" Value="Source[global].Variable[DataSource.Shift.JobListUIConnect.Output.RangeEnd]"/>
+          <Property Name="RangeEndValue" Value="90"/>
+          <Property Name="RangeStartDatapoint" Value="Source[global].Variable[DataSource.Shift.JobListUIConnect.Output.RangeStart]"/>
+          <Property Name="RangeStartValue" Value="30"/>
+          <Property Name="RangeWidth" Value="32"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Scale]"/>
+          <Property Name="Top" Value="79"/>
+          <Property Name="ValueDatapoint" Value="None"/>
+          <Property Name="ValueSimulation" Value="0"/>
+          <Property Name="Width" Value="20"/>
+        </Control>
+        <Control ClassId="0x00001012" Name="sclScrollBar1">
+          <Property Name="BackColor" Value="15"/>
+          <Property Name="ControlID" Value="0"/>
+          <Property Name="Description" Value=""/>
+          <Property Name="Height" Value="318"/>
+          <Property Name="Left" Value="1794"/>
+          <Property Name="Marker" Value="None"/>
+          <Property Name="MaxDatapoint" Value="None"/>
+          <Property Name="MaxValue" Value="100"/>
+          <Property Name="MinDatapoint" Value="None"/>
+          <Property Name="MinValue" Value="0"/>
+          <Property Name="MinorPitchLines" Value="1"/>
+          <Property Name="Orientation" Value="Left"/>
+          <Property Name="RangeColor" Value="253"/>
+          <Property Name="RangeEndDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.RangeEnd]"/>
+          <Property Name="RangeEndValue" Value="90"/>
+          <Property Name="RangeStartDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.JobListUIConnect.Output.RangeStart]"/>
+          <Property Name="RangeStartValue" Value="30"/>
+          <Property Name="RangeWidth" Value="32"/>
+          <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Scale]"/>
+          <Property Name="Top" Value="81"/>
+          <Property Name="ValueDatapoint" Value="None"/>
+          <Property Name="ValueSimulation" Value="0"/>
+          <Property Name="Width" Value="20"/>
         </Control>
       </Controls>
       <KeyMapping>
