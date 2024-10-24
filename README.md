@@ -3,4 +3,4 @@
 
 This is project contains a community version for mappAssetInt.
 
-## [**For a detailed description follow this link**]([https://refactored-adventure-z45nv34.pages.github.io/index.html](https://br-automation-com.github.io/mappAssetIntEx/))
+## [**For a detailed description follow this link**](https://br-automation-com.github.io/mappAssetIntEx/)
