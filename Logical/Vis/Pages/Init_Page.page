@@ -5406,12 +5406,11 @@
           <Property Name="Font" Value="Source[local].Font[Arial12px]"/>
           <Property Name="Height" Value="30"/>
           <Property Name="Left" Value="990"/>
-          <Property Name="MaxChars" Value="20"/>
           <Property Name="SimulationValue" Value="ABC"/>
           <Property Name="StyleClass" Value="Source[relative:StyleGroup].StyleClass[Input]"/>
           <Property Name="Top" Value="700"/>
           <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.exAssetInt.Sample.exAssetIntCore_0.Internal.WriteEventData.FileName]"/>
-          <Property Name="Width" Value="180"/>
+          <Property Name="Width" Value="356"/>
         </Control>
         <Control ClassId="0x00001004" Name="Text_63">
           <Property Name="AlignmentHorizontal" Value="Right"/>
@@ -7806,15 +7805,6 @@
               <Property Name="SetValue" Value="1"/>
               <Property Name="ValueDatapoint" Value="Source[global].Variable[DataSource.Shift.MpAssetIntCore_0.Update]"/>
             </KeyAction>
-            <KeyAction ClassId="0x00000161">
-              <Property Name="CompletionDatapoint" Value="None"/>
-              <Property Name="CompletionValue" Value="0"/>
-              <Property Name="Description" Value=""/>
-              <Property Name="Locking" Value="Never"/>
-              <Property Name="Name" Value="Action_1"/>
-              <Property Name="SetValue" Value="1"/>
-              <Property Name="ValueDatapoint" Value="None"/>
-            </KeyAction>
           </KeyActions>
         </VirtualKey>
         <VirtualKey Name="%embVirtualKey_7">
@@ -8080,7 +8070,7 @@
     </MovementEntry>
     <MovementEntry Control="Source[embedded].Layer[Default].Control[Listbox_1]">
       <Property Name="Down" Value="Source[embedded].Layer[Default].Control[Numeric_15]"/>
-      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[ddbDowntime]"/>
+      <Property Name="Left" Value="Source[embedded].Layer[Default].Control[String_20]"/>
       <Property Name="Right" Value="Source[embedded].Layer[Default].Control[String_1]"/>
       <Property Name="Up" Value="Source[embedded].Layer[Default].Control[String_20]"/>
     </MovementEntry>
