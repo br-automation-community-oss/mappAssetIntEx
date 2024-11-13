@@ -39,7 +39,8 @@ For constants used in the function block see [constants](../appendix.md#constant
 | IN   | DowntimeReason        | Pointer to STRING[50]      | Reason for the downtime.                           |
 | IN   | PieceCounter          | UDINT                      | Number of products manufactured.                   |
 | IN   | RejectCounter         | UDINT                      | Number of rejected products.                      |
-| IN   | DeviceName            | Pointer to STRING[50]      | File device (data storage medium) where the files are stored.|
+| IN   | DeviceName            | Pointer to STRING[50]      | File device (data storage medium) where data is exported to.|
+| IN  **(NEW)** | StorageName            | Pointer to STRING[50]      | File device (data storage medium) where the files are stored.|
 | IN   | Export                | BOOL                       | Exports statistical data regarding overall equipment effectiveness.| 
 | IN   | Reset                 | BOOL                       | Resets the data in the internal buffer.| 
 | OUT  | Active                | BOOL                       | Function Block active.                             |

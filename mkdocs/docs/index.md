@@ -22,6 +22,10 @@ Here is a short list of differences between the official mappAssetInt and the co
 * The parameters "SaveInterval", "RecordMemory", "RecordingSizeShiftStatistics" and "RecordingSizeJobStatistics" are no longer required and were removed from the general config structure.
 * The data structure "exAssetIntUITimelineOutputType" was adjusted to match the other UI structures. Al data from the parameter "Display" was moved one level up to "UIConnect.Output".
 
+#### exAssetIntCore
+
+* The parameter StorageDevice was added. This is where the event data is stored.
+
 #### exAssetIntShiftListUI
 
 * The parameter UISetup.OutputListSize was removed. The list size is now defined by the constant UI_SHIFT_LIST_IDX.
