@@ -15,8 +15,8 @@
     <File>WriteEventData.st</File>
     <File>ReadEventData.st</File>
     <File>ExportEventData.st</File>
-    <File>ReadConfiguration.st</File>
     <File>WriteConfiguration.st</File>
+    <File>ReadConfiguration.st</File>
     <File>ReadLinkData.st</File>
     <File>WriteLinkData.st</File>
     <File>CalcStats.st</File>
