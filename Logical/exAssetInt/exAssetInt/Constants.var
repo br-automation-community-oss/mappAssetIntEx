@@ -39,7 +39,7 @@ END_VAR
 VAR CONSTANT
 	LOG_LEN : UINT := 100; (*Length of one log entry (minimum size is 50)*)
 	LOG_NUM : UINT := 50; (*Number of log entries*)
-	LOG_LEVEL : exAssetIntLogLevelEnum := exASSETINT_LOG_ALL; (*Define log level details*)
+	LOG_LEVEL : exAssetIntLogLevelEnum := exASSETINT_LOG_ERROR; (*Define log level details*)
 	CHAR_RETURN : USINT := 13; (*Carriage return*)
 END_VAR
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
