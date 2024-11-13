@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1007
+// File version 1008
 // -------------------------------------------------------------------------------------------
 // Core function block
 FUNCTION_BLOCK exAssetIntCore
@@ -579,7 +579,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// Load link data
 		exASSETINT_STATE_LOAD_LINK:
 			Internal.ReadLinkData.Enable := TRUE;
-			Internal.ReadLinkData.Device := ADR(DeviceName);
+			Internal.ReadLinkData.Device := ADR(StorageName);
 			Internal.ReadLinkData.Logger := Logger;
 			Internal.ReadLinkData.Link	 := ADR(exLink);
 			Internal.ReadLinkData();
@@ -608,7 +608,7 @@ FUNCTION_BLOCK exAssetIntCore
 			// Save link data
 		exASSETINT_STATE_SAVE_LINK:
 			Internal.WriteLinkData.Enable := TRUE;
-			Internal.WriteLinkData.Device := ADR(DeviceName);
+			Internal.WriteLinkData.Device := ADR(StorageName);
 			Internal.WriteLinkData.Logger := Logger;
 			Internal.WriteLinkData.Link := ADR(exLink);
 			Internal.WriteLinkData();
