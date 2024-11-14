@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1003
+// File version 1004
 // -------------------------------------------------------------------------------------------
 // Config function block
 FUNCTION_BLOCK exAssetIntCoreConfig
@@ -39,10 +39,11 @@ FUNCTION_BLOCK exAssetIntCoreConfig
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 								
 				// Reset error and status
-				CommandBusy := FALSE;
-				CommandDone := FALSE;
+				brsmemset(ADR(Info.Diag), 0, SIZEOF(Info.Diag));
 				Error := FALSE;
 				StatusID := ERR_OK;
+				CommandBusy := FALSE;
+				CommandDone := FALSE;
 
 				Internal.State := exASSETINT_STATE_IDLE;
 			END_IF

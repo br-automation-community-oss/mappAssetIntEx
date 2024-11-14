@@ -30,6 +30,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 				END_IF
 
 				// Reset error and status
+				brsmemset(ADR(Info.Diag), 0, SIZEOF(Info.Diag));
 				Error := FALSE;
 				StatusID := ERR_OK;
 				Internal.SortingStartTimeOld := UDINT_TO_DINT(16#FFFFFFFF);
