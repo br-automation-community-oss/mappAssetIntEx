@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1008
+// File version 1009
 // -------------------------------------------------------------------------------------------
 // Core function block
 FUNCTION_BLOCK exAssetIntCore
@@ -67,6 +67,7 @@ FUNCTION_BLOCK exAssetIntCore
 
 				// -------------------------------------------------------------------------------------------
 				// Reset error, status and function and internal blocks
+				brsmemset(ADR(Info.Diag), 0, SIZEOF(Info.Diag));
 				Error := FALSE;
 				StatusID := ERR_OK;
 				Internal.CreateDirStructure(Enable := FALSE);
