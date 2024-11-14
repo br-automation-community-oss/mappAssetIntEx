@@ -132,25 +132,6 @@ FUNCTION_BLOCK exAssetIntTimelineUI (*mapp function block which can be used for 
 	END_VAR
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK CreateDirStructure
-	VAR_INPUT
-		Enable : BOOL;
-		Device : STRING[50];
-		Logger : {REDUND_UNREPLICABLE} UDINT; (*Address of log buffer*)
-	END_VAR
-	VAR_OUTPUT
-		Status : DINT;
-	END_VAR
-	VAR
-		DirCreate_0 : DirCreate;
-		TmpStr1 : STRING[100];
-		TmpStr2 : STRING[100];
-		DirCount : USINT;
-		State : USINT;
-		zzEdge00000 : BOOL;
-	END_VAR
-END_FUNCTION_BLOCK
-
 FUNCTION_BLOCK CreateMemory
 	VAR_INPUT
 		Enable : BOOL;
@@ -256,6 +237,7 @@ FUNCTION_BLOCK ReadEventData
 		Device : STRING[50];
 		Logger : {REDUND_UNREPLICABLE} UDINT;
 		Memory : UDINT;
+		RecordIndexUsed : REFERENCE TO ARRAY[0..CORE_EVENT_NUM_MAX] OF BOOL;
 	END_VAR
 	VAR_OUTPUT
 		RecordCount : UINT;
@@ -265,8 +247,6 @@ FUNCTION_BLOCK ReadEventData
 		DirOpen_0 : DirOpen;
 		DirReadEx_0 : DirReadEx;
 		DirClose_0 : DirClose;
-		DirName : STRING[100];
-		DirCount : USINT;
 		FileOpen_0 : FileOpen;
 		FileClose_0 : FileClose;
 		FileRead_0 : FileRead;
@@ -274,9 +254,14 @@ FUNCTION_BLOCK ReadEventData
 		FileName : STRING[100];
 		FileInfo_0 : fiDIR_READ_EX_DATA;
 		RecordData : exCoreInternalRecordType;
-		TimeFirst : DATE_AND_TIME;
+		FirstEntryTime : DATE_AND_TIME;
+		LastEntryTime : DATE_AND_TIME;
+		FirstEntryRecord : UINT;
+		LastEntryRecord : UINT;
+		TimeDiff : UDINT;
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
+		FileIndex : UINT;
 		NextFileNameGet : BOOL;
 		NextFileNameReady : BOOL;
 		Override : {REDUND_UNREPLICABLE} USINT;
@@ -293,7 +278,7 @@ FUNCTION_BLOCK WriteEventData
 		Device : STRING[50];
 		Logger : UDINT; (*Address of log buffer*)
 		RecordData : UDINT;
-		RecordNext : UINT;
+		RecordIndex : UINT;
 	END_VAR
 	VAR_OUTPUT
 		Status : DINT;
@@ -304,7 +289,6 @@ FUNCTION_BLOCK WriteEventData
 		FileClose_0 : FileClose;
 		FileWrite_0 : FileWrite;
 		RecordDataIntern : exCoreInternalRecordType;
-		FileName : STRING[100];
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[10];
 		Ident : UDINT;

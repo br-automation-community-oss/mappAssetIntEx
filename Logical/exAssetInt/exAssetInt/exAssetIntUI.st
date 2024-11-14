@@ -396,9 +396,9 @@ FUNCTION exAssetIntBufferUI
 		REPEAT
 			// Check sorting direction
 			IF SortingStartTime = exASSETINT_SORTING_ASC THEN
-				brsmemcpy(ADR(RecordData), exLink.MemoryDb + y*SIZEOF(RecordData), SIZEOF(RecordData));
-			ELSE
 				brsmemcpy(ADR(RecordData), exLink.MemoryDb + (exLink.RecordCount - y - 1)*SIZEOF(RecordData), SIZEOF(RecordData));
+			ELSE
+				brsmemcpy(ADR(RecordData), exLink.MemoryDb + y*SIZEOF(RecordData), SIZEOF(RecordData));
 			END_IF
 					
 			// Data must match event type

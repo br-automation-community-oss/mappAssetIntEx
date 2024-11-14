@@ -18,6 +18,9 @@ FUNCTION_BLOCK ReadEventData
 			// Wait for enable
 			0:
 				IF EDGEPOS(Enable) THEN
+					brsmemset(Memory, 0, CORE_EVENT_NUM_MAX*SIZEOF(RecordData));
+					brsmemset(ADR(RecordIndexUsed), 0, SIZEOF(RecordIndexUsed));
+
 					// Reset function blocks
 					DirOpen_0.enable := FALSE;
 					DirOpen_0();
@@ -35,14 +38,15 @@ FUNCTION_BLOCK ReadEventData
 					// Generate folder name
 					NextFileNameReady := FALSE;
 					NextFileNameGet	:= FALSE;
-					DirCount := 0;
-					TimeFirst := 0;
-					DirName := CORE_FOLDER_NAME;
-					brsstrcat(ADR(DirName), ADR('0'));
 					
 					Status := ERR_FUB_BUSY;
 					StatusRead := ERR_OK;
+
 					RecordCount := 0;
+					FirstEntryTime := 0;
+					FirstEntryRecord := 0;
+					LastEntryTime := 0;
+					LastEntryRecord := 0;
 					CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('reading all events'), Logger);
 					State := 1;
 				END_IF
@@ -52,14 +56,14 @@ FUNCTION_BLOCK ReadEventData
 			1:
 				DirOpen_0.enable := TRUE;
 				DirOpen_0.pDevice := ADR(Device);
-				DirOpen_0.pName := ADR(DirName);
+				DirOpen_0.pName := ADR(CORE_FOLDER_NAME);
 				DirOpen_0();
 		
 				// File created successful
 				IF DirOpen_0.status = ERR_OK THEN
 					// Generate log entry
 					TmpStr1 := 'open dir > ';
-					brsstrcat(ADR(TmpStr1), ADR(DirName));
+					brsstrcat(ADR(TmpStr1), ADR(CORE_FOLDER_NAME));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 					
 					// Go to next step
@@ -75,9 +79,19 @@ FUNCTION_BLOCK ReadEventData
 			// -------------------------------------------------------------------------------------------
 			// Read next file name
 			2:
+				// Wait for dir read to finish
 				IF NextFileNameReady THEN
 					NextFileNameReady := FALSE;
 					State := 4;
+				END_IF
+				
+				// Finish if there are no files
+				IF DirReadEx_0.status = fiERR_NO_MORE_ENTRIES THEN
+					// Generate log entry
+					TmpStr1 := 'read all events ok ';
+					brsstrcat(ADR(TmpStr1), ADR(CORE_FOLDER_NAME));
+					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
+					State := 3;
 				END_IF
 				
 			// -------------------------------------------------------------------------------------------
@@ -91,23 +105,12 @@ FUNCTION_BLOCK ReadEventData
 				IF DirClose_0.status = ERR_OK THEN
 					// Generate log entry
 					TmpStr1 := 'close dir ok > ';
-					brsstrcat(ADR(TmpStr1), ADR(DirName));
+					brsstrcat(ADR(TmpStr1), ADR(CORE_FOLDER_NAME));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 					
-					// Open next directory, finish when all folders are created
-					DirCount := DirCount + 1;
-					IF DirCount >= CORE_EVENT_NUM_MAX / CORE_EVENT_DIR_MAX THEN
-						Status := ERR_OK;
-						State := 0;
-						
-					// Generate next folder name
-					ELSE
-						DirName := CORE_FOLDER_NAME;
-						brsitoa(DirCount, ADR(TmpStr2));
-						brsstrcat(ADR(DirName), ADR(TmpStr2));
-						State := 1;
-					END_IF
-					
+					Status := ERR_OK;
+					State := 0;
+											
 				// Error
 				ELSIF DirClose_0.status <> ERR_FUB_BUSY THEN
 					Status := DirClose_0.status;
@@ -118,8 +121,7 @@ FUNCTION_BLOCK ReadEventData
 			// Open event file
 			4:
 				// Generate file name
-				NextFileNameGet := TRUE;
-				FileName := DirName;
+				FileName := CORE_FOLDER_NAME;
 				brsstrcat(ADR(FileName), ADR('/'));
 				brsstrcat(ADR(FileName), ADR(FileInfo_0.Filename));
 				
@@ -133,6 +135,7 @@ FUNCTION_BLOCK ReadEventData
 				// File opened successful
 				IF FileOpen_0.status = ERR_OK THEN
 					// Generate log entry
+					NextFileNameGet := TRUE;
 					TmpStr1 := 'open event file ok > ';
 					brsstrcat(ADR(TmpStr1), ADR(FileName));
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
@@ -149,7 +152,7 @@ FUNCTION_BLOCK ReadEventData
 						State := 5;
 					END_IF
 					
-					// Error
+				// Error
 				ELSIF FileOpen_0.status <> ERR_FUB_BUSY THEN
 					Status := FileOpen_0.status;
 					State := 0;
@@ -182,12 +185,18 @@ FUNCTION_BLOCK ReadEventData
 					ELSE
 						// Insert record
 						InsertEventData(Memory, RecordCount, RecordData);
+						
+						// Remember file name index is used
+						brsstrcpy(ADR(TmpStr1), ADR(FileName) + FindInstr(ADR(FileName), ADR('#')) + 1);
+						FileIndex := DINT_TO_UINT(brsatoi(ADR(TmpStr1)));
+						RecordIndexUsed[FileIndex] := TRUE;
+						
 						RecordCount := RecordCount + 1;
 					END_IF
 					
 					State := 6;
 					
-					// Error
+				// Error
 				ELSIF FileRead_0.status <> ERR_FUB_BUSY THEN
 					Status := FileRead_0.status;
 					State := 6;
@@ -217,7 +226,7 @@ FUNCTION_BLOCK ReadEventData
 					ELSIF DirReadEx_0.status = fiERR_NO_MORE_ENTRIES THEN
 						// Generate log entry
 						TmpStr1 := 'read all events ok ';
-						brsstrcat(ADR(TmpStr1), ADR(DirName));
+						brsstrcat(ADR(TmpStr1), ADR(CORE_FOLDER_NAME));
 						CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 						State := 3;
 					ELSE
@@ -264,13 +273,16 @@ FUNCTION_BLOCK ReadEventData
 		DirReadEx_0();
 		
 		// New file found
-		IF DirReadEx_0.status = ERR_OK THEN
+		IF DirReadEx_0.status = ERR_OK AND FileInfo_0.Mode = fiFILE THEN
 			IF brsstrcmp(ADR(FileInfo_0.Filename), ADR('.')) <> 0 AND brsstrcmp(ADR(FileInfo_0.Filename), ADR('..')) <> 0 THEN			
 				// Generate log entry
 				TmpStr1 := 'found file > ';
 				brsstrcat(ADR(TmpStr1), ADR(FileInfo_0.Filename));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
-		
+
+				DirReadEx_0.enable := FALSE;
+				DirReadEx_0();
+
 				NextFileNameGet := FALSE;
 				NextFileNameReady := TRUE;
 			END_IF
@@ -281,7 +293,7 @@ FUNCTION_BLOCK ReadEventData
 			NextFileNameReady := TRUE;
 					
 		// Error
-		ELSIF DirReadEx_0.status <> ERR_FUB_BUSY THEN
+		ELSIF DirReadEx_0.status <> ERR_OK AND DirReadEx_0.status <> ERR_FUB_BUSY THEN
 			Status := DirReadEx_0.status;
 			State := 0;
 		END_IF
@@ -301,10 +313,11 @@ FUNCTION InsertEventData
 	x := y;
 
 	// Start itteration	search
+	// Start iteration search
 	WHILE y > 1 DO
 		// Check current entry
 		RecordMemory ACCESS Memory + x*SIZEOF(RecordData);
-		sort := DiffDT(RecordData.TimeEnd, RecordMemory.TimeEnd);
+		sort := DiffDT(RecordMemory.TimeStart, RecordData.TimeStart);
 
 		// Solve new search range
 		IF y MOD 2 = 0 THEN
@@ -325,26 +338,27 @@ FUNCTION InsertEventData
 				x := 1;
 			END_IF
 		END_IF
-	END_WHILE;	
+	END_WHILE;    
 
 	// New entry is this, next or previous
 	RecordMemory ACCESS Memory + x*SIZEOF(RecordData);
-	sort := DiffDT(RecordData.TimeEnd, RecordMemory.TimeEnd);
+	sort := DiffDT(RecordMemory.TimeStart, RecordData.TimeStart);
 
-	IF sort > 0 AND x <> UINT_TO_INT(RecordCount) THEN
+	IF sort <> 16#FFFFFFFF AND x <> UINT_TO_INT(RecordCount) THEN
 		x := x + 1;
 	ELSIF x > 0 THEN
 		RecordMemory ACCESS Memory + (x - 1)*SIZEOF(RecordData);
-		sort := DiffDT(RecordData.TimeEnd, RecordMemory.TimeEnd);
+		sort := DiffDT(RecordMemory.TimeStart, RecordData.TimeStart);
 		IF sort = 16#FFFFFFFF THEN
 			x := x - 1;
 		END_IF
 	END_IF
-	
-	// Move all entrys backwards and fill in new entry
+
+	// Move all entries backwards and fill in new entry
 	brsmemmove(Memory + (x + 1)*SIZEOF(RecordData), Memory + x*SIZEOF(RecordData), (RecordCount - x)*SIZEOF(RecordData));
 	brsmemcpy(Memory + x*SIZEOF(RecordData), ADR(RecordData), SIZEOF(RecordData));
 
 	InsertEventData := TRUE;
+
 END_FUNCTION
 

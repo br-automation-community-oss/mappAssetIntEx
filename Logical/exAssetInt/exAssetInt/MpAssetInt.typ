@@ -4,7 +4,8 @@
 
 TYPE
 	exCoreInternalDataType : 	STRUCT 
-		RecordNext : UINT; (*Next record ID*)
+		RecordIndexUsed : ARRAY[0..CORE_EVENT_NUM_MAX]OF BOOL; (*Next record ID*)
+		RecordIndex : UINT; (*Next record ID*)
 		RecordData : exCoreInternalRecordType;
 		State : exAssetIntStateEnum;
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
@@ -30,7 +31,7 @@ TYPE
 		ShiftTotalTimeStart : UDINT;
 		StatsRefresh : TON_10ms;
 		BackupTimer : TON_10ms;
-		CreateDirStructure : CreateDirStructure;
+		DirCreate_0 : DirCreate;
 		CreateMemory : CreateMemory;
 		ReadEventData : ReadEventData;
 		WriteEventData : WriteEventData;
@@ -109,7 +110,7 @@ TYPE
 		MemoryShift : UDINT; (*Shift data memory*)
 		MemoryTimeline : UDINT; (*Timeline data memory*)
 		Configuration : exAssetIntCoreConfigType; (*Configuration structure*)
-		RecordCount : UDINT; (*Number of total records*)
+		RecordCount : UINT; (*Number of total records*)
 		IsCoreActive : BOOL; (*Core function block is ready*)
 		RefreshJobUI : BOOL; (*Update job stats in UI*)
 		RefreshShiftUI : BOOL; (*Update shift stats in UI*)
