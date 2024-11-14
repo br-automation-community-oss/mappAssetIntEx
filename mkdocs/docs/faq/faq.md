@@ -8,7 +8,7 @@ Data is only recorded when the PLC is running and the current time is within the
 
 Short term data like piece counters are stored in the remanent variable of type `exAssetIntLinkType`. This structure is used for cross function block communication. The short term data will survive a power off but not a cold reboot. 
 
-All long term data is stored in a ring buffer consisting of individual files on the user partition. The data is spread over multiple directories to speed up the reading process during boot-up. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be job or shift change or a downtime event. The total number of stored events can be adjusted with the constant `CORE_EVENT_NUM_MAX`. Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.
+All long term data is stored in a ring buffer consisting of individual files on the user partition. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be job or shift change or a downtime event. The total number of stored events can be adjusted with the constant `CORE_EVENT_NUM_MAX`. Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.
 
 When the data is loaded all files are checked against a CRC as well as the file size. If a file is corrupt it is deleted and the error is logged. To recover from this error the input `ErrorReset` must be set to true. When there are no more corrupt files the system will recover and continue to load the remaining files. Only one file is deleted at a time.
 
@@ -17,7 +17,7 @@ It is recommended to use task class #8 with a 10ms cycle time.
 
 ### How do I increase the number of events stored?
 
-The constant `CORE_EVENT_NUM_MAX` defines the maximum number of events that can be stored. This number can be increased to store more events. Keep in mind that all events must be loaded on boot-up which can take some time. The constant `CORE_EVENT_DIR_MAX` defines the maximum number of events in one directory. Do not change this constant unless you know what you are doing.
+The constant `CORE_EVENT_NUM_MAX` defines the maximum number of events that can be stored. This number can be increased to store more events. Keep in mind that all events must be loaded on boot-up which can take some time.
 
 ### How can I diagnose a problem with the function block?
 
