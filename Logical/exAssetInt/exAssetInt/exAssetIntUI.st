@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1003
+// File version 1004
 // -------------------------------------------------------------------------------------------
 // Job UI function block
 FUNCTION_BLOCK exAssetIntJobListUI
@@ -49,7 +49,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 			Active := TRUE;
 
 			// Handle dialog window
-			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger);
+			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger, Internal.State);
 			
 			// Handle sorting direction change
 			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
@@ -58,7 +58,7 @@ FUNCTION_BLOCK exAssetIntJobListUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_JOB_LIST_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd));
+			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_JOB_LIST_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd), Internal.State);
 
 			// Wait for core task to call update command
 			IF exLink.RefreshJobUI AND exLink.RecordCount > 0 THEN			
@@ -174,7 +174,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			Active := TRUE;
 
 			// Handle dialog window
-			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger);
+			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger, Internal.State);
 			
 			// Handle sorting direction change
 			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
@@ -183,7 +183,7 @@ FUNCTION_BLOCK exAssetIntShiftListUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd));
+			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd), Internal.State);
 				
 			// Wait for core task to call update command
 			IF exLink.RefreshShiftUI AND exLink.RecordCount > 0 THEN			
@@ -300,7 +300,7 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 			Active := TRUE;
 
 			// Handle dialog window
-			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger);
+			Internal.State := exAssetIntFilterListUI(ADR(UIConnect.Filter), ADR(UIConnect.Status), Logger, Internal.State);
 			
 			// Handle sorting direction change
 			IF UISetup.SortingStartTime <> Internal.SortingStartTimeOld AND exLink.RecordCount > 0 THEN
@@ -309,7 +309,7 @@ FUNCTION_BLOCK exAssetIntTimelineUI
 			Internal.SortingStartTimeOld := UISetup.SortingStartTime;
 			
 			// Handle page up and down
-			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd));
+			Internal.State := exAssetIntScrollListUI(Internal.RecordCount, UI_TIMELINE_IDX + 1, ADR(UIConnect.Output.PageUp), ADR(UIConnect.Output.PageDown), ADR(UIConnect.Output.StepUp), ADR(UIConnect.Output.StepDown), ADR(Internal.RecordStart), ADR(UIConnect.Output.RangeStart), ADR(UIConnect.Output.RangeEnd), Internal.State);
 				
 			// Wait for core task to call update command
 			IF exLink.RefreshTimelineUI AND exLink.RecordCount > 0 THEN			
@@ -464,7 +464,7 @@ END_FUNCTION
 // -------------------------------------------------------------------------------------------
 // Handle list scrolling
 FUNCTION exAssetIntScrollListUI
-	exAssetIntScrollListUI := exASSETINT_STATE_IDLE;
+	exAssetIntScrollListUI := State;
 	
 	// -------------------------------------------------------------------------------------------
 	// Handle page up and down
@@ -499,9 +499,9 @@ FUNCTION exAssetIntScrollListUI
 	
 	// -------------------------------------------------------------------------------------------
 	// Calculate range start
-	IF UINT_TO_REAL(UI_TIMELINE_IDX + 1) / RecordCount < 1 THEN
-		RangeStart := 100 - (DINT_TO_REAL(RecordStart) / RecordCount) * 100.0;
-		RangeEnd := RangeStart - (UINT_TO_REAL(UI_TIMELINE_IDX + 1) / RecordCount) * 100.0; 
+	IF UINT_TO_REAL(UI_TIMELINE_IDX + 1) / UINT_TO_REAL(RecordCount) < 1 THEN
+		RangeStart := 100 - (DINT_TO_REAL(RecordStart) / UINT_TO_REAL(RecordCount)) * 100.0;
+		RangeEnd := RangeStart - (UINT_TO_REAL(UI_TIMELINE_IDX + 1) / UINT_TO_REAL(RecordCount)) * 100.0; 
 	ELSE
 		RangeStart := 0;
 		RangeEnd := 100;
@@ -581,6 +581,6 @@ FUNCTION exAssetIntFilterListUI
 			RETURN;
 		END_IF
 	END_IF
-	exAssetIntFilterListUI := exASSETINT_STATE_IDLE;
+	exAssetIntFilterListUI := State;
 
 END_FUNCTION

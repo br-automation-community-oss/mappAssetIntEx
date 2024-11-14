@@ -258,9 +258,7 @@ FUNCTION_BLOCK ReadEventData
 		LastEntryTime : DATE_AND_TIME;
 		FirstEntryRecord : UINT;
 		LastEntryRecord : UINT;
-		TimeDiff : UDINT;
 		TmpStr1 : STRING[100];
-		TmpStr2 : STRING[100];
 		FileIndex : UINT;
 		NextFileNameGet : BOOL;
 		NextFileNameReady : BOOL;
@@ -334,6 +332,7 @@ FUNCTION exAssetIntFilterListUI : UDINT
 		Filter : REFERENCE TO exAssetIntUIFilterType;
 		Status : REFERENCE TO exAssetIntUIStatusEnum;
 		Logger : UDINT;
+		State : exAssetIntStateEnum;
 	END_VAR
 	VAR
 		DT_TO_DTStructure_0 : DTStructure;
@@ -342,7 +341,7 @@ END_FUNCTION
 
 FUNCTION exAssetIntScrollListUI : exAssetIntStateEnum
 	VAR_INPUT
-		RecordCount : UDINT;
+		RecordCount : UINT;
 		ListMaxCount : UINT;
 		PageUp : REFERENCE TO BOOL; (* *) (* *) (*#PAR#;*)
 		PageDown : REFERENCE TO BOOL; (* *) (* *) (*#PAR#;*)
@@ -351,10 +350,11 @@ FUNCTION exAssetIntScrollListUI : exAssetIntStateEnum
 		RecordStart : REFERENCE TO DINT;
 		RangeStart : REFERENCE TO REAL;
 		RangeEnd : REFERENCE TO REAL;
+		State : exAssetIntStateEnum;
 	END_VAR
 END_FUNCTION
 
-FUNCTION exAssetIntBufferUI : UDINT
+FUNCTION exAssetIntBufferUI : UINT
 	VAR_INPUT
 		Memory : UDINT;
 		exLink : exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
@@ -364,7 +364,7 @@ FUNCTION exAssetIntBufferUI : UDINT
 	END_VAR
 	VAR
 		RecordData : exCoreInternalRecordType;
-		RecordCount : UDINT;
+		RecordCount : UINT;
 		y : UDINT;
 	END_VAR
 END_FUNCTION

@@ -92,8 +92,8 @@ TYPE
 	END_STRUCT;
 	exUIInternalDataType : 	STRUCT 
 		RecordStart : DINT; (*Visible list is starting from this index*)
-		RecordCount : UDINT; (*Total number of items*)
-		RecordCountOld : UDINT; (*Old record number is required for DESC list*)
+		RecordCount : UINT; (*Total number of items*)
+		RecordCountOld : UINT; (*Old record number is required for DESC list*)
 		RecordData : exCoreInternalRecordType;
 		TimeSeconds : UDINT;
 		TimeLongest : UDINT;
