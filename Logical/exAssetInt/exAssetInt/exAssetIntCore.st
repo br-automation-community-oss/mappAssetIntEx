@@ -70,7 +70,6 @@ FUNCTION_BLOCK exAssetIntCore
 				brsmemset(ADR(Info.Diag), 0, SIZEOF(Info.Diag));
 				Error := FALSE;
 				StatusID := ERR_OK;
-				Internal.CreateDirStructure(Enable := FALSE);
 				Internal.CreateMemory(Enable := FALSE);
 				Internal.ReadEventData(Enable := FALSE);
 				Internal.WriteEventData(Enable := FALSE);
@@ -96,21 +95,21 @@ FUNCTION_BLOCK exAssetIntCore
 			// Create folder structure
 			// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_INIT_2:
-			Internal.CreateDirStructure.Enable := TRUE;
-			Internal.CreateDirStructure.Device := StorageName;
-			Internal.CreateDirStructure.Logger := Logger;
-			Internal.CreateDirStructure();
-		
+			Internal.DirCreate_0.enable := TRUE;
+			Internal.DirCreate_0.pDevice := ADR(StorageName);
+			Internal.DirCreate_0.pName := ADR(CORE_FOLDER_NAME);
+			Internal.DirCreate_0();
+					
 			// -------------------------------------------------------------------------------------------
 			// Folder structure successful created
-			IF Internal.CreateDirStructure.Status = ERR_OK THEN
+			IF Internal.DirCreate_0.status = ERR_OK OR Internal.DirCreate_0.status = fiERR_DIR_ALREADY_EXIST THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create folder structure ok'), Logger);
 				Internal.State := exASSETINT_STATE_INIT_3;
 			
 				// Error
-			ELSIF Internal.CreateDirStructure.Status <> ERR_FUB_BUSY THEN
+			ELSIF Internal.DirCreate_0.status <> ERR_FUB_BUSY THEN
 				// Set status, remember state, go to error state
-				StatusID := CreateErrorState(Internal.CreateDirStructure.Status, ADR('ERR: create folder structure'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
+				StatusID := CreateErrorState(Internal.DirCreate_0.status, ADR('ERR: create folder structure'), Logger, exCOM_SEV_ERROR, ADR(Internal.State), ADR(Info.Diag.StatusID));
 			END_IF
 			
 			// -------------------------------------------------------------------------------------------
@@ -146,6 +145,7 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.ReadEventData.Enable := TRUE;
 			Internal.ReadEventData.Device := StorageName;
 			Internal.ReadEventData.Memory := exLink.MemoryDb;
+			Internal.ReadEventData.RecordIndexUsed := ADR(Internal.RecordIndexUsed);
 			Internal.ReadEventData.Logger := Logger;
 			Internal.ReadEventData();
 		
@@ -155,17 +155,7 @@ FUNCTION_BLOCK exAssetIntCore
 				
 				// -------------------------------------------------------------------------------------------
 				// Get record count, calculate next entry
-				exLink.RecordCount := Internal.ReadEventData.RecordCount;
-				IF exLink.RecordCount > 0 THEN
-					// Get last entry, make correction if necessary
-					brsmemcpy(ADR(Internal.RecordData), exLink.MemoryDb + (exLink.RecordCount - 1)*SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData));
-					brsstrcpy(ADR(Internal.TmpStr1), ADR(Internal.RecordData.FileName) + FindInstr(ADR(Internal.RecordData.FileName), ADR('#')) + 1);
-					Internal.RecordNext := DINT_TO_UINT(brsatoi(ADR(Internal.TmpStr1))) + 1;
-					IF Internal.RecordNext >= CORE_EVENT_NUM_MAX THEN
-						Internal.RecordNext := 0;
-					END_IF
-				END_IF
-				
+				exLink.RecordCount := Internal.ReadEventData.RecordCount;				
 				Internal.State := exASSETINT_STATE_INIT_5;
 				
 				// Error
@@ -500,11 +490,28 @@ FUNCTION_BLOCK exAssetIntCore
 			// Store new event
 			// -------------------------------------------------------------------------------------------
 		exASSETINT_STATE_STORE_EVENT:
+			// Find new record name
+			IF exLink.RecordCount < CORE_EVENT_NUM_MAX THEN
+				// Make sure record index is not already used
+				FOR Internal.x := 0 TO exLink.RecordCount DO
+					IF NOT Internal.RecordIndexUsed[Internal.x] THEN
+						Internal.RecordIndex := Internal.x;
+						EXIT;
+					END_IF
+				END_FOR;
+			ELSE
+				// Use last entry record name
+				brsmemset(ADR(Internal.TmpStr1), 0, SIZEOF(Internal.TmpStr1));
+				brsmemcpy(ADR(Internal.TmpStr1), exLink.MemoryDb + (exLink.RecordCount - 1)*SIZEOF(Internal.RecordData) +  1, SIZEOF(Internal.RecordData.FileName));
+				brsstrcpy(ADR(Internal.TmpStr1), ADR(Internal.TmpStr1) + FindInstr(ADR(Internal.TmpStr1), ADR('#')) + 1);
+				Internal.RecordIndex := DINT_TO_UINT(brsatoi(ADR(Internal.TmpStr1)));
+			END_IF
+			
 			Internal.WriteEventData.Enable := TRUE;
 			Internal.WriteEventData.Device := StorageName;
 			Internal.WriteEventData.Logger := Logger;
 			Internal.WriteEventData.RecordData := ADR(Internal.RecordData);
-			Internal.WriteEventData.RecordNext := Internal.RecordNext;
+			Internal.WriteEventData.RecordIndex := Internal.RecordIndex;
 			Internal.WriteEventData();
 		
 			// -------------------------------------------------------------------------------------------
@@ -512,19 +519,14 @@ FUNCTION_BLOCK exAssetIntCore
 			IF Internal.WriteEventData.Status = ERR_OK THEN
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('create new event ok'), Logger);
 				
-				// Calculate new last record and record count
-				Internal.RecordNext := Internal.RecordNext + 1;
-				IF Internal.RecordNext >= CORE_EVENT_NUM_MAX THEN
-					Internal.RecordNext := 0;
-				END_IF
 				// Copy new record into memeory
 				IF exLink.RecordCount < CORE_EVENT_NUM_MAX THEN
 					exLink.RecordCount := exLink.RecordCount + 1;
-				ELSE
-					brsmemmove(exLink.MemoryDb, exLink.MemoryDb + SIZEOF(Internal.RecordData), SIZEOF(Internal.RecordData)*(exLink.RecordCount - 1));										
 				END_IF
-				brsmemcpy(exLink.MemoryDb + SIZEOF(Internal.RecordData)*(exLink.RecordCount - 1), ADR(Internal.RecordData), SIZEOF(Internal.RecordData));					
-				
+				brsmemmove(exLink.MemoryDb + SIZEOF(Internal.RecordData), exLink.MemoryDb, SIZEOF(Internal.RecordData)*(exLink.RecordCount - 1));										
+				brsmemcpy(exLink.MemoryDb, ADR(Internal.RecordData), SIZEOF(Internal.RecordData));
+				Internal.RecordIndexUsed[Internal.RecordIndex] := TRUE;
+								
 				// Refrehs UI data, finish up
 				exLink.RefreshJobUI := TRUE;
 				exLink.RefreshShiftUI := TRUE;

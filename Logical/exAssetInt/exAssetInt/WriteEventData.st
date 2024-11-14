@@ -29,12 +29,10 @@ FUNCTION_BLOCK WriteEventData
 				FileClose_0();
 
 				// Generate file name
-				FileName := CORE_FOLDER_NAME;
-				brsitoa(RecordNext/CORE_EVENT_DIR_MAX, ADR(TmpStr1));
-				brsstrcat(ADR(FileName), ADR(TmpStr1));
-				brsstrcat(ADR(FileName), ADR('/event#'));
-				brsitoa(RecordNext, ADR(TmpStr1));
-				brsstrcat(ADR(FileName), ADR(TmpStr1));
+				RecordDataIntern.FileName := CORE_FOLDER_NAME;
+				brsstrcat(ADR(RecordDataIntern.FileName), ADR('/event#'));
+				brsitoa(RecordIndex, ADR(TmpStr1));
+				brsstrcat(ADR(RecordDataIntern.FileName), ADR(TmpStr1));
 				
 				Status := ERR_FUB_BUSY;
 				TmpStr1 := 'creating new event type > ';
@@ -49,7 +47,7 @@ FUNCTION_BLOCK WriteEventData
 		1:
 			FileOpen_0.enable := TRUE;
 			FileOpen_0.pDevice := ADR(Device);
-			FileOpen_0.pFile := ADR(FileName);
+			FileOpen_0.pFile := ADR(RecordDataIntern.FileName);
 			FileOpen_0.mode := fiREAD_WRITE;
 			FileOpen_0();
 	
@@ -57,7 +55,7 @@ FUNCTION_BLOCK WriteEventData
 			IF FileOpen_0.status = ERR_OK THEN
 				// Generate log entry
 				TmpStr1 := 'open event file ok > ';
-				brsstrcat(ADR(TmpStr1), ADR(FileName));
+				brsstrcat(ADR(TmpStr1), ADR(RecordDataIntern.FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
 				// Remember ident go to next step
@@ -79,14 +77,14 @@ FUNCTION_BLOCK WriteEventData
 		2:
 			FileCreate_0.enable := TRUE;
 			FileCreate_0.pDevice := ADR(Device);
-			FileCreate_0.pFile := ADR(FileName);
+			FileCreate_0.pFile := ADR(RecordDataIntern.FileName);
 			FileCreate_0();
 	
 			// File created successful
 			IF FileCreate_0.status = ERR_OK THEN
 				// Generate log entry
 				TmpStr1 := 'create event file ok > ';
-				brsstrcat(ADR(TmpStr1), ADR(FileName));
+				brsstrcat(ADR(TmpStr1), ADR(RecordDataIntern.FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
 				// Remember ident go to next step
@@ -103,7 +101,6 @@ FUNCTION_BLOCK WriteEventData
 			// Write data
 		3:
 			// Add file name to record
-			RecordDataIntern.FileName := FileName;
 			RecordDataIntern.CRC := CalcCrc(ADR(RecordDataIntern), SIZEOF(RecordDataIntern));	
 			
 			FileWrite_0.enable := TRUE;
@@ -116,7 +113,7 @@ FUNCTION_BLOCK WriteEventData
 			IF FileWrite_0.status = ERR_OK THEN
 				// Generate log entry
 				TmpStr1 := 'write event file ok > ';
-				brsstrcat(ADR(TmpStr1), ADR(FileName));
+				brsstrcat(ADR(TmpStr1), ADR(RecordDataIntern.FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
 				// Go to next step
@@ -139,10 +136,11 @@ FUNCTION_BLOCK WriteEventData
 			IF FileClose_0.status = ERR_OK THEN
 				// Generate log entry
 				TmpStr1 := 'close event file ok > ';
-				brsstrcat(ADR(TmpStr1), ADR(FileName));
+				brsstrcat(ADR(TmpStr1), ADR(RecordDataIntern.FileName));
 				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 				
 				// Finish up
+				brsmemcpy(RecordData, ADR(RecordDataIntern), SIZEOF(RecordDataIntern));				
 				Status := ERR_OK;
 				State := 0;
 				
