@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1000
+// File version 1001
 // -------------------------------------------------------------------------------------------
 // Read event data
 // -------------------------------------------------------------------------------------------
@@ -12,7 +12,7 @@ FUNCTION_BLOCK ReadEventData
 	END_IF
 	
 	// Speed up read by executing function block twice
-	FOR Override:=0 TO 1 DO
+	FOR Override:=0 TO 2 DO
 		CASE State OF
 			// -------------------------------------------------------------------------------------------
 			// Wait for enable
@@ -33,6 +33,8 @@ FUNCTION_BLOCK ReadEventData
 					FileClose_0();
 	
 					// Generate folder name
+					NextFileNameReady := FALSE;
+					NextFileNameGet	:= FALSE;
 					DirCount := 0;
 					TimeFirst := 0;
 					DirName := CORE_FOLDER_NAME;
@@ -61,6 +63,7 @@ FUNCTION_BLOCK ReadEventData
 					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
 					
 					// Go to next step
+					NextFileNameGet := TRUE;
 					State := 2;
 					
 				// Error
@@ -72,36 +75,9 @@ FUNCTION_BLOCK ReadEventData
 			// -------------------------------------------------------------------------------------------
 			// Read next file name
 			2:
-				DirReadEx_0.enable := TRUE;
-				DirReadEx_0.ident := DirOpen_0.ident;
-				DirReadEx_0.pData := ADR(FileInfo_0);
-				DirReadEx_0.data_len := SIZEOF(FileInfo_0);
-				DirReadEx_0();
-		
-				// New file found
-				IF DirReadEx_0.status = ERR_OK THEN
-					IF brsstrcmp(ADR(FileInfo_0.Filename), ADR('.')) <> 0 AND brsstrcmp(ADR(FileInfo_0.Filename), ADR('..')) <> 0 THEN			
-						// Generate log entry
-						TmpStr1 := 'found file > ';
-						brsstrcat(ADR(TmpStr1), ADR(FileInfo_0.Filename));
-						CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
-		
-						State := 4;
-					END_IF
-	
-				// No more entries
-				ELSIF DirReadEx_0.status = fiERR_NO_MORE_ENTRIES THEN
-					// Generate log entry
-					TmpStr1 := 'read all events ok ';
-					brsstrcat(ADR(TmpStr1), ADR(DirName));
-					CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
-	
-					State := 3;
-					
-				// Error
-				ELSIF DirReadEx_0.status <> ERR_FUB_BUSY THEN
-					Status := DirReadEx_0.status;
-					State := 0;
+				IF NextFileNameReady THEN
+					NextFileNameReady := FALSE;
+					State := 4;
 				END_IF
 				
 			// -------------------------------------------------------------------------------------------
@@ -142,6 +118,7 @@ FUNCTION_BLOCK ReadEventData
 			// Open event file
 			4:
 				// Generate file name
+				NextFileNameGet := TRUE;
 				FileName := DirName;
 				brsstrcat(ADR(FileName), ADR('/'));
 				brsstrcat(ADR(FileName), ADR(FileInfo_0.Filename));
@@ -234,8 +211,15 @@ FUNCTION_BLOCK ReadEventData
 					IF StatusRead = ERR_ASSET_READ_RECORD_SIZE OR StatusRead = ERR_ASSET_READ_CRC THEN
 						State := 7;						
 					// Abort if there was a previous error, else proceed with next file
-					ELSIF Status <> ERR_FUB_BUSY THEN
+					ELSIF Status <> ERR_FUB_BUSY THEN						
 						State := 0;
+					// Finish reading files
+					ELSIF DirReadEx_0.status = fiERR_NO_MORE_ENTRIES THEN
+						// Generate log entry
+						TmpStr1 := 'read all events ok ';
+						brsstrcat(ADR(TmpStr1), ADR(DirName));
+						CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
+						State := 3;
 					ELSE
 						State := 2;
 					END_IF
@@ -271,6 +255,37 @@ FUNCTION_BLOCK ReadEventData
 				END_IF			
 		END_CASE;
 	END_FOR;
+	
+	IF NextFileNameGet THEN
+		DirReadEx_0.enable := TRUE;
+		DirReadEx_0.ident := DirOpen_0.ident;
+		DirReadEx_0.pData := ADR(FileInfo_0);
+		DirReadEx_0.data_len := SIZEOF(FileInfo_0);
+		DirReadEx_0();
+		
+		// New file found
+		IF DirReadEx_0.status = ERR_OK THEN
+			IF brsstrcmp(ADR(FileInfo_0.Filename), ADR('.')) <> 0 AND brsstrcmp(ADR(FileInfo_0.Filename), ADR('..')) <> 0 THEN			
+				// Generate log entry
+				TmpStr1 := 'found file > ';
+				brsstrcat(ADR(TmpStr1), ADR(FileInfo_0.Filename));
+				CreateLoggerEntry(exASSETINT_LOG_ALL, ADR(TmpStr1), Logger);
+		
+				NextFileNameGet := FALSE;
+				NextFileNameReady := TRUE;
+			END_IF
+	
+		// No more entries
+		ELSIF DirReadEx_0.status = fiERR_NO_MORE_ENTRIES THEN
+			NextFileNameGet := FALSE;
+			NextFileNameReady := TRUE;
+					
+		// Error
+		ELSIF DirReadEx_0.status <> ERR_FUB_BUSY THEN
+			Status := DirReadEx_0.status;
+			State := 0;
+		END_IF
+	END_IF
 
 END_FUNCTION_BLOCK
 

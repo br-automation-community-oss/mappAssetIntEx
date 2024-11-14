@@ -277,6 +277,8 @@ FUNCTION_BLOCK ReadEventData
 		TimeFirst : DATE_AND_TIME;
 		TmpStr1 : STRING[100];
 		TmpStr2 : STRING[100];
+		NextFileNameGet : BOOL;
+		NextFileNameReady : BOOL;
 		Override : {REDUND_UNREPLICABLE} USINT;
 		State : USINT;
 		CRC : USINT;
