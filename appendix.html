@@ -457,7 +457,7 @@
 <h2 id="appendix">Appendix</h2>
 <h3 id="how-the-data-is-stored">How the data is stored</h3>
 <p>Short term data like piece counters are stored in the remanent variable of type <code>exAssetIntLinkType</code>. This structure is used for cross function block communication. The short term data will survive a power off but not a cold reboot. </p>
-<p>All long term data is stored in a ring buffer consisting of individual files on the user partition. The data is spread over multiple directories to speed up the reading process during boot-up. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be a production state, job or shift change or a downtime event. The total number of stored events can be adjusted with the constant <code>CORE_EVENT_NUM_MAX</code>. Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.</p>
+<p>All long term data is stored in a ring buffer consisting of individual files on the user partition. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be a production state, job or shift change or a downtime event. The total number of stored events can be adjusted with the constant <code>CORE_EVENT_NUM_MAX</code>. Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.</p>
 <h3 id="constants">Constants</h3>
 <h4 id="common">Common</h4>
 <table>
@@ -471,16 +471,22 @@
 </thead>
 <tbody>
 <tr>
+<td>CORE_FOLDER_NAME</td>
+<td>STRING[50]</td>
+<td>AssetIntData</td>
+<td>Name of the event data folder</td>
+</tr>
+<tr>
 <td>CORE_EVENT_NUM_MAX</td>
 <td>UINT</td>
 <td>500</td>
 <td>Maximum number of events</td>
 </tr>
 <tr>
-<td>CORE_EVENT_DIR_MAX</td>
+<td>CORE_BACKUP_TIMER</td>
 <td>UINT</td>
-<td>1000</td>
-<td>Maximum number of events in one directory</td>
+<td>10</td>
+<td>Backup timer (minutes) for internal data</td>
 </tr>
 <tr>
 <td>EVENT_ADDITONAL_DATA_LEN</td>
