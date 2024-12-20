@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1001
+// File version 1002
 // -------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------			
@@ -12,7 +12,7 @@ FUNCTION TackProductionState
 					
 		// Collect data for record
 		Internal.RecordData.TimeStart := exLink.ProductionStateStart;
-		Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
+		Internal.RecordData.TimeEnd := Internal.CurrentTime.DT1;
 		Internal.RecordData.ShiftName := exLink.ProductionShiftName;
 		Internal.RecordData.JobName := exLink.ProductionJobName;
 				
@@ -167,7 +167,7 @@ FUNCTION TackProductionState
 										
 		// Remember production start
 		IF exLink.ProductionStateStart <> DT#1970-01-01-00:00:00 THEN
-			exLink.ProductionStateStart := Internal.DTGetTime_0.DT1;		
+			exLink.ProductionStateStart := Internal.CurrentTime.DT1;		
 			exLink.ProductionTotalTime := 0;
 	
 			// Create new event
@@ -175,7 +175,7 @@ FUNCTION TackProductionState
 				
 			// Just remember start time after cold start
 		ELSE
-			exLink.ProductionStateStart := Internal.DTGetTime_0.DT1;		
+			exLink.ProductionStateStart := Internal.CurrentTime.DT1;		
 		END_IF
 		TackProductionState := TRUE;
 		

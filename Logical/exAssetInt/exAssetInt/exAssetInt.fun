@@ -1,4 +1,4 @@
-(*File Version 1003*)
+(*File Version 1004*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 
 FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset intensity calculation.*) (* $GROUP=mapp Services,$CAT=Asset Intensity,$GROUPICON=Icon_mapp.png,$CATICON=Icon_exOee.png *)
@@ -463,6 +463,9 @@ FUNCTION TackShiftChange : BOOL
 		Info : REFERENCE TO exAssetIntCoreInfoType; (* *) (* *) (*#PAR#; *)
 		Parameters : exAssetIntParType; (* *) (* *) (*#PAR#; *)
 		Logger : UDINT;
+	END_VAR
+	VAR
+		DiffTime : DINT;
 	END_VAR
 END_FUNCTION
 

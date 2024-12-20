@@ -1,4 +1,4 @@
-(*File Version 1005*)
+(*File Version 1006*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Internal type*)
 
@@ -25,8 +25,8 @@ TYPE
 		Downtime : exAssetIntDowntimeEnum;
 		DowntimeReason : STRING[50];
 		ProductionTotalTime : UDINT;
-		DTGetTime_0 : DTGetTime;
-		DT_TO_DTStructure_0 : DTStructure;
+		CurrentTime : DTGetTime;
+		PowerOffTime : DATE_AND_TIME;
 		TimeOfDay : TIME_OF_DAY;
 		ShiftTotalTimeStart : UDINT;
 		StatsRefresh : TON_10ms;
@@ -109,6 +109,7 @@ TYPE
 		MemoryJob : UDINT; (*Job data memory*)
 		MemoryShift : UDINT; (*Shift data memory*)
 		MemoryTimeline : UDINT; (*Timeline data memory*)
+		StatsLastCall : DTStructure; (*Date and time when the stats were last calculated*)
 		Configuration : exAssetIntCoreConfigType; (*Configuration structure*)
 		RecordCount : UINT; (*Number of total records*)
 		IsCoreActive : BOOL; (*Core function block is ready*)
@@ -119,6 +120,7 @@ TYPE
 		ShiftTotalTime : LREAL; (*Milliseconds the job is running*)
 		ShiftDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)
 		ShiftDowntimeUnscheduled : UDINT; (*Milliseconds of unscheduled downtime*)
+		ShiftSecondsToEnd : UDINT;
 		JobStatistics : exAssetIntJobStatisticsType; (*Current job stats*)
 		JobTotalTime : LREAL; (*Milliseconds the job is running*)
 		JobDowntimeScheduled : UDINT; (*Milliseconds of scheduled downtime*)

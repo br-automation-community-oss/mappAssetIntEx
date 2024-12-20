@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1009
+// File version 1010
 // -------------------------------------------------------------------------------------------
 // Core function block
 FUNCTION_BLOCK exAssetIntCore
@@ -75,7 +75,16 @@ FUNCTION_BLOCK exAssetIntCore
 				Internal.WriteEventData(Enable := FALSE);
 				Internal.ReadEventData(Enable := FALSE);
 				Internal.WriteEventData(Enable := FALSE);
-
+				
+				// Update time information
+				Internal.CurrentTime(enable := TRUE);
+				IF exLink.StatsLastCall.year > 0 THEN
+					// Make sure we power back on in the future
+					IF DiffDT(Internal.CurrentTime.DT1, DTStructure_TO_DT(ADR(exLink.StatsLastCall))) <> 16#FFFFFFFF THEN
+						Internal.PowerOffTime := DTStructure_TO_DT(ADR(exLink.StatsLastCall));
+					END_IF
+				END_IF
+				
 				// -------------------------------------------------------------------------------------------
 				// Create folder structure and read event data only after boot
 				IF Internal.InitAfterBoot THEN
@@ -213,9 +222,9 @@ FUNCTION_BLOCK exAssetIntCore
 			Internal.WriteEventData(Enable := FALSE);
 			
 			// Update time information
-			Internal.DTGetTime_0(enable := TRUE);
-			DT_TO_DTStructure(Internal.DTGetTime_0.DT1, ADR(Internal.DT_TO_DTStructure_0));          
-			Internal.TimeOfDay := UDINT_TO_TOD((USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.hour) * 3600000) + (USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.minute) * 60000) + (USINT_TO_UDINT(Internal.DT_TO_DTStructure_0.second) * 1000));
+			Internal.CurrentTime(enable := TRUE);
+			DT_TO_DTStructure(Internal.CurrentTime.DT1, ADR(exLink.StatsLastCall));          
+			Internal.TimeOfDay := UDINT_TO_TOD((USINT_TO_UDINT(exLink.StatsLastCall.hour) * 3600000) + (USINT_TO_UDINT(exLink.StatsLastCall.minute) * 60000) + (USINT_TO_UDINT(exLink.StatsLastCall.second) * 1000));
 
 			// Set stats timer
 			Internal.StatsRefresh.IN := TRUE;
@@ -362,7 +371,7 @@ FUNCTION_BLOCK exAssetIntCore
 					// Collect data for record
 					Internal.RecordData.EventType := RecordTypeJob;
 					Internal.RecordData.TimeStart := exLink.JobStatistics.StartTime;
-					Internal.RecordData.TimeEnd := Internal.DTGetTime_0.DT1;
+					Internal.RecordData.TimeEnd := Internal.CurrentTime.DT1;
 					// Take job user is known otherwise use current user from parameter
 					IF exLink.JobStatistics.CurrentUser <> '' THEN
 						Internal.RecordData.CurrentUser := exLink.JobStatistics.CurrentUser;
@@ -395,7 +404,7 @@ FUNCTION_BLOCK exAssetIntCore
 					exLink.JobDowntimeUnscheduled := 0;
 					
 					// Transfer data to job stats
-					exLink.JobStatistics.StartTime := Internal.DTGetTime_0.DT1;
+					exLink.JobStatistics.StartTime := Internal.CurrentTime.DT1;
 					exLink.JobStatistics.JobName := Parameters.Job;
 					
 					Internal.State := exASSETINT_STATE_STORE_EVENT;
@@ -435,7 +444,7 @@ FUNCTION_BLOCK exAssetIntCore
 				exLink.JobDowntimeUnscheduled := 0;
 					
 				// Transfer data to job stats
-				exLink.JobStatistics.StartTime := Internal.DTGetTime_0.DT1;
+				exLink.JobStatistics.StartTime := Internal.CurrentTime.DT1;
 				exLink.JobStatistics.JobName := Parameters.Job;
 				exLink.JobStatistics.CurrentUser := Parameters.CurrentUser;
 				exLink.JobStatistics.AdditionalData := Parameters.AdditionalData;
@@ -450,7 +459,7 @@ FUNCTION_BLOCK exAssetIntCore
 
 				// Transfer data to shift stats
 				exLink.ShiftId := Internal.ShiftId;			
-				exLink.ShiftStatistics.StartTime := Internal.DTGetTime_0.DT1;
+				exLink.ShiftStatistics.StartTime := Internal.CurrentTime.DT1;
 				exLink.ShiftStatistics.ShiftName := Internal.ShiftName;
 				exLink.ShiftStatistics.CurrentUser := Parameters.CurrentUser;
 				exLink.ShiftStatistics.AdditionalData := Parameters.AdditionalData;
