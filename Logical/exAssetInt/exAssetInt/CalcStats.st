@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1001
+// File version 1002
 // -------------------------------------------------------------------------------------------
 // Calculate current job statistics
 FUNCTION CalcStatsJob
@@ -60,10 +60,10 @@ FUNCTION CalcStatsJob
 	exLink.JobStatistics.GoodProductionTime.Minutes := UDINT_TO_USINT((GoodProductionTime - exLink.JobStatistics.GoodProductionTime.Hours*3600)/60);
 	exLink.JobStatistics.GoodProductionTime.Seconds := UDINT_TO_USINT(GoodProductionTime - exLink.JobStatistics.GoodProductionTime.Hours*3600 - exLink.JobStatistics.GoodProductionTime.Minutes*60);
 	
-	IF exLink.JobDowntimeScheduled > 0 THEN
+	IF exLink.JobDowntimeScheduled > 0 AND JobTotalTime > 0 THEN
 		exLink.JobStatistics.ScheduledDowntimeRate := UDINT_TO_REAL(exLink.JobDowntimeScheduled/JobTotalTime)/1000;
 	END_IF
-	IF exLink.JobDowntimeUnscheduled > 0 THEN
+	IF exLink.JobDowntimeUnscheduled > 0 AND JobTotalTime > 0 THEN
 		exLink.JobStatistics.UnscheduledDowntimeRate := UDINT_TO_REAL(exLink.JobDowntimeUnscheduled/JobTotalTime)/1000;
 	END_IF
 	IF Uptime > 0 THEN
