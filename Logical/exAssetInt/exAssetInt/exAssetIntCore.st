@@ -253,7 +253,7 @@ FUNCTION_BLOCK exAssetIntCore
 
 			// -------------------------------------------------------------------------------------------			
 			// Handle shift state change
-			IF TackShiftChange(ADR(exLink), ADR(Internal), ADR(Info), Parameters, Logger) THEN
+			IF TrackShiftChange(ADR(exLink), ADR(Internal), ADR(Info), Parameters, Logger) THEN
 				RETURN;
 			END_IF
 			
@@ -337,7 +337,7 @@ FUNCTION_BLOCK exAssetIntCore
 					
 			// -------------------------------------------------------------------------------------------			
 			// Handle production state change
-			IF TackProductionState(ADR(exLink), ADR(Internal), Parameters, Logger) THEN
+			IF TrackProductionState(ADR(exLink), ADR(Internal), Parameters, Logger) THEN
 				RETURN;
 			END_IF
 			
