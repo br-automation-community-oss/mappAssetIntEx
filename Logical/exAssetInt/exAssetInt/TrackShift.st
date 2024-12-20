@@ -1,10 +1,17 @@
 // -------------------------------------------------------------------------------------------
-// File version 1000
+// File version 1001
 // -------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------			
 // Handle shift change
 FUNCTION TackShiftChange
+	// -------------------------------------------------------------------------------------------
+	// Handle shift change over days
+	IF Internal.PowerOffTime <> DT#1970-01-01-00:00:00 THEN
+		DiffTime := DiffDT(Internal.CurrentTime.DT1, Internal.PowerOffTime);
+		DiffTime := DiffTime - exLink.ShiftSecondsToEnd;
+	END_IF
+
 	// -------------------------------------------------------------------------------------------
 	// Track current shift
 	Internal.ShiftName := '';
@@ -15,6 +22,7 @@ FUNCTION TackShiftChange
 			IF Internal.TimeOfDay >= exLink.Configuration.Shifts[Internal.x].TotalTime.Start AND Internal.TimeOfDay <= exLink.Configuration.Shifts[Internal.x].TotalTime.End THEN
 				Internal.ShiftName := exLink.Configuration.Shifts[Internal.x].Name;
 				Internal.ShiftId := UINT_TO_SINT(Internal.x);
+				exLink.ShiftSecondsToEnd := (TOD_TO_UDINT(exLink.Configuration.Shifts[Internal.x].TotalTime.End) - TOD_TO_UDINT(Internal.TimeOfDay))/1000;
 				EXIT;
 			END_IF
 			// Shift ends next day
@@ -22,6 +30,11 @@ FUNCTION TackShiftChange
 			IF Internal.TimeOfDay >= exLink.Configuration.Shifts[Internal.x].TotalTime.Start OR Internal.TimeOfDay <= exLink.Configuration.Shifts[Internal.x].TotalTime.End THEN
 				Internal.ShiftName := exLink.Configuration.Shifts[Internal.x].Name;
 				Internal.ShiftId := UINT_TO_SINT(Internal.x);
+				IF Internal.TimeOfDay >= exLink.Configuration.Shifts[Internal.x].TotalTime.Start THEN
+					exLink.ShiftSecondsToEnd := (TOD_TO_UDINT(TOD#23:59:59.999) - TOD_TO_UDINT(Internal.TimeOfDay) + TOD_TO_UDINT(exLink.Configuration.Shifts[Internal.x].TotalTime.End))/1000;
+				ELSE
+					exLink.ShiftSecondsToEnd := (TOD_TO_UDINT(exLink.Configuration.Shifts[Internal.x].TotalTime.End) - TOD_TO_UDINT(Internal.TimeOfDay))/1000;
+				END_IF
 				EXIT;
 			END_IF
 		END_IF
@@ -50,10 +63,10 @@ FUNCTION TackShiftChange
 			END_IF
 		END_FOR;
 	END_IF
-					
+	
 	// -------------------------------------------------------------------------------------------
 	// Handle shift change
-	IF exLink.ShiftStatistics.ShiftName <> Internal.ShiftName THEN
+	IF (exLink.ShiftStatistics.ShiftName <> Internal.ShiftName) OR (DiffTime > 0) THEN
 		// Transfer stats to record, make sure structures are allignent
 		brsmemset(ADR(Internal.RecordData), 0, SIZEOF(Internal.RecordData));
 
@@ -72,9 +85,11 @@ FUNCTION TackShiftChange
 			// Collect data for record
 			Internal.RecordData.EventType := RecordTypeShift;
 			Internal.RecordData.TimeStart := exLink.ShiftStatistics.StartTime;
-			Internal.DT_TO_DTStructure_0.hour := UDINT_TO_USINT(TOD_TO_UDINT(exLink.Configuration.Shifts[exLink.ShiftId].TotalTime.End)/3600000);
-			Internal.DT_TO_DTStructure_0.minute := UDINT_TO_USINT((TOD_TO_UDINT(exLink.Configuration.Shifts[exLink.ShiftId].TotalTime.End) - Internal.DT_TO_DTStructure_0.hour*3600000)/60000);
-			Internal.RecordData.TimeEnd := DTStructure_TO_DT(ADR(Internal.DT_TO_DTStructure_0));
+			// Use power off time for shift end
+			IF DiffTime > 0 THEN
+				DT_TO_DTStructure(Internal.PowerOffTime, ADR(exLink.StatsLastCall));
+			END_IF
+			Internal.RecordData.TimeEnd := DTStructure_TO_DT(ADR(exLink.StatsLastCall));
 			Internal.RecordData.CurrentUser := exLink.ShiftStatistics.CurrentUser;
 			Internal.RecordData.AdditionalData := exLink.ShiftStatistics.AdditionalData;
 			Internal.RecordData.ShiftName := exLink.ShiftStatistics.ShiftName;
@@ -104,7 +119,7 @@ FUNCTION TackShiftChange
 				
 		// Remember job start time
 		IF exLink.JobStatistics.StartTime = DT#1970-01-01-00:00:00 THEN 
-			exLink.JobStatistics.StartTime := Internal.DTGetTime_0.DT1; 
+			exLink.JobStatistics.StartTime := Internal.CurrentTime.DT1; 
 		END_IF
 				
 		// Reset stats
@@ -117,10 +132,11 @@ FUNCTION TackShiftChange
 
 		// Transfer data to shift stats
 		exLink.ShiftId := Internal.ShiftId;
-		exLink.ShiftStatistics.StartTime := Internal.DTGetTime_0.DT1;
+		exLink.ShiftStatistics.StartTime := Internal.CurrentTime.DT1;
 		exLink.ShiftStatistics.ShiftName := Internal.ShiftName;
 		exLink.ShiftStatistics.CurrentUser := Parameters.CurrentUser;
 		exLink.ShiftStatistics.AdditionalData := Parameters.AdditionalData;
 	END_IF
-	
+
+	Internal.PowerOffTime := DT#1970-01-01-00:00:00;
 END_FUNCTION
