@@ -4,7 +4,7 @@
 
 // -------------------------------------------------------------------------------------------			
 // Handle shift change
-FUNCTION TackShiftChange
+FUNCTION TrackShiftChange
 	// -------------------------------------------------------------------------------------------
 	// Handle shift change over days
 	IF Internal.PowerOffTime <> DT#1970-01-01-00:00:00 THEN
@@ -110,10 +110,10 @@ FUNCTION TackShiftChange
 			Internal.RecordData.CurrentProductionRate := exLink.ShiftStatistics.CurrentProductionRate;					
 					
 			Internal.State := exASSETINT_STATE_STORE_EVENT;
-			TackShiftChange := TRUE;
+			TrackShiftChange := TRUE;
 
 		ELSE
-			TackShiftChange := FALSE;
+			TrackShiftChange := FALSE;
 			
 		END_IF				
 				

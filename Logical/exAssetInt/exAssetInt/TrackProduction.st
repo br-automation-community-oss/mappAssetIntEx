@@ -4,7 +4,7 @@
 
 // -------------------------------------------------------------------------------------------			
 // Handle production state change
-FUNCTION TackProductionState
+FUNCTION TrackProductionState
 	IF (exLink.ShiftStatistics.ShiftName <> exLink.ProductionShiftName) OR (exLink.JobStatistics.JobName <> exLink.ProductionJobName AND exLink.ShiftId >= 0) OR (exLink.JobStatistics.CurrentUser <> exLink.ProductionUserName AND exLink.ShiftId >= 0) OR (Internal.Downtime <> exLink.ProductionDowntime AND exLink.ShiftId >= 0) OR (Internal.DowntimeReason <> exLink.ProductionDowntimeReason AND exLink.ProductionDowntime > exASSETINT_NO_DOWNTIME) THEN
 
 		// Transfer stats to record, make sure structures are allignent
@@ -177,10 +177,10 @@ FUNCTION TackProductionState
 		ELSE
 			exLink.ProductionStateStart := Internal.CurrentTime.DT1;		
 		END_IF
-		TackProductionState := TRUE;
+		TrackProductionState := TRUE;
 		
 	ELSE
-		TackProductionState := FALSE;
+		TrackProductionState := FALSE;
 				
 	END_IF
 	

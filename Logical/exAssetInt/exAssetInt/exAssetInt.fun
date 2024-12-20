@@ -456,7 +456,7 @@ FUNCTION CalcStatsJob : USINT
 	END_VAR
 END_FUNCTION
 
-FUNCTION TackShiftChange : BOOL
+FUNCTION TrackShiftChange : BOOL
 	VAR_INPUT
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Internal : REFERENCE TO exCoreInternalDataType; (*Internal data*)
@@ -469,7 +469,7 @@ FUNCTION TackShiftChange : BOOL
 	END_VAR
 END_FUNCTION
 
-FUNCTION TackProductionState : BOOL
+FUNCTION TrackProductionState : BOOL
 	VAR_INPUT
 		exLink : REFERENCE TO exAssetIntLinkType; (*Incoming communication handle (mapp standard interface)*) (* *) (*#PAR#;*)
 		Internal : REFERENCE TO exCoreInternalDataType; (*Internal data*)
