@@ -456,8 +456,8 @@
 
 <h2 id="appendix">Appendix</h2>
 <h3 id="how-the-data-is-stored">How the data is stored</h3>
-<p>Short term data like piece counters are stored in the remanent variable of type <code>exAssetIntLinkType</code>. This structure is used for cross function block communication. The short term data will survive a power off but not a cold reboot. </p>
-<p>All long term data is stored in a ring buffer consisting of individual files on the user partition. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be a production state, job or shift change or a downtime event. The total number of stored events can be adjusted with the constant <code>CORE_EVENT_NUM_MAX</code>. Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.</p>
+<p>Short term data like piece counters are stored in the remanent variable of type <code>exAssetIntLinkType</code> . This structure is used for cross function block communication. The short term data will survive a power off but not a cold reboot. </p>
+<p>All long term data is stored in a ring buffer consisting of individual files on the user partition. Data on this user partition will survive restarts and even program updates and be backed up if necessary. Each file contains one event. An event can be a production state, job or shift change or a downtime event. The total number of stored events can be adjusted with the constant <code>CORE_EVENT_NUM_MAX</code> . Keep in mind that all events must be loaded on boot-up which can take some time. As a ball park figure, it takes about 4 seconds to load 100 events.</p>
 <h3 id="constants">Constants</h3>
 <h4 id="common">Common</h4>
 <table>
@@ -495,6 +495,12 @@
 <td>Length of the event comment</td>
 </tr>
 <tr>
+<td>EXLINK_VERSION</td>
+<td>USINT</td>
+<td>1</td>
+<td>exLink structure version</td>
+</tr>
+<tr>
 <td>EXPORT_BUFFER</td>
 <td>UINT</td>
 <td>500</td>
@@ -521,19 +527,19 @@
 <tr>
 <td>EXPORT_JOB_HEADER</td>
 <td>STRING[400]</td>
-<td>'Job Start Time;Job End Time;Job Name;...'</td>
+<td>'Job Start Time; Job End Time; Job Name; ...'</td>
 <td>Export file column headers</td>
 </tr>
 <tr>
 <td>EXPORT_SHIFT_HEADER</td>
 <td>STRING[400]</td>
-<td>'Job Start Time;Job End Time;Job Name;...'</td>
+<td>'Job Start Time; Job End Time; Job Name; ...'</td>
 <td>Export file column headers</td>
 </tr>
 <tr>
 <td>EXPORT_TIMELINE_HEADER</td>
 <td>STRING[400]</td>
-<td>'Start Time;Shift ID;Production State;...'</td>
+<td>'Start Time; Shift ID; Production State; ...'</td>
 <td>Export file column headers</td>
 </tr>
 <tr>
@@ -590,6 +596,18 @@
 <td>DINT</td>
 <td>-1064239102</td>
 <td>Input exLink is 0 pointer</td>
+</tr>
+<tr>
+<td>ERR_ASSET_LINK_VERSION</td>
+<td>DINT</td>
+<td>10001</td>
+<td>exLink version is not compatible with backup data</td>
+</tr>
+<tr>
+<td>ERR_ASSET_LINK_SIZE</td>
+<td>DINT</td>
+<td>10002</td>
+<td>exLink backup data has wrong size</td>
 </tr>
 <tr>
 <td>ERR_ASSET_TEMP_MEMORY</td>
