@@ -1,4 +1,4 @@
-(*File Version 1004*)
+(*File Version 1005*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 
 FUNCTION_BLOCK exAssetIntCore (*mapp function block which can be used for asset intensity calculation.*) (* $GROUP=mapp Services,$CAT=Asset Intensity,$GROUPICON=Icon_mapp.png,$CATICON=Icon_exOee.png *)
@@ -201,12 +201,15 @@ FUNCTION_BLOCK ReadLinkData
 		Link : REFERENCE TO exAssetIntLinkType;
 	END_VAR
 	VAR_OUTPUT
-		Status : UINT;
+		Status : DINT;
 	END_VAR
 	VAR
 		FileOpen_0 : FileOpen;
 		FileClose_0 : FileClose;
 		FileRead_0 : FileRead;
+		FileDelete_0 : FileDelete;
+		LinkRead : exAssetIntLinkType;
+		StatusRead : DINT;
 		State : USINT;
 	END_VAR
 END_FUNCTION_BLOCK

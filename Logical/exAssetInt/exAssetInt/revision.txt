@@ -1,3 +1,6 @@
+Version 1.2
+- Check remanent backup data against structure version to avoid data corruption
+
 Version 1.1
 - Handle division by zero
 - Fix power off and power into the same shift days later does not trigger event
