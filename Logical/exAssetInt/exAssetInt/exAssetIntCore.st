@@ -1,5 +1,5 @@
 // -------------------------------------------------------------------------------------------
-// File version 1010
+// File version 1011
 // -------------------------------------------------------------------------------------------
 // Core function block
 FUNCTION_BLOCK exAssetIntCore
@@ -64,6 +64,7 @@ FUNCTION_BLOCK exAssetIntCore
 				CreateLoggerEntry(exASSETINT_LOG_INFO, ADR('function block enabled'), Logger);
 							
 				exLink.RecordCount := 0;
+				exLink.Version := EXLINK_VERSION;
 
 				// -------------------------------------------------------------------------------------------
 				// Reset error, status and function and internal blocks

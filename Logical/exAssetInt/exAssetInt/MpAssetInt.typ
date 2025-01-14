@@ -1,4 +1,4 @@
-(*File Version 1006*)
+(*File Version 1007*)
 (*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Internal type*)
 
@@ -105,6 +105,7 @@ TYPE
 		StateError : exAssetIntStateEnum := exASSETINT_STATE_NONE;
 	END_STRUCT;
 	exAssetIntLinkType : 	STRUCT 
+		Version : USINT; (*Data structure version*)
 		MemoryDb : UDINT; (*Database memory*)
 		MemoryJob : UDINT; (*Job data memory*)
 		MemoryShift : UDINT; (*Shift data memory*)
